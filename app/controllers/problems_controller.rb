@@ -11,10 +11,13 @@ class ProblemsController < ApplicationController
 		@problem = Problem.new
 	end
 
-	def create
-		@problem = Problem.new(set_params)
-		@problem.user = params[:user_id]
-	end
+    def create
+        @problem = Problem.new(set_params)
+        @problem.user = current_user
+        @problem.save!
+
+        redirect_to problems_path
+    end
 
     # def leaderboard
     #     @problems = Problem.order("votes").last(5)
