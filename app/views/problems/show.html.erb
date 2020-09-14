@@ -1,8 +1,30 @@
-<h2>Problem details</h2>
-
 <div>
-    <h5><%= @problem.title %> - Votes: <span><%= @problem.votes.count %></span></h5>
-    <p><%= @problem.description %></p>
+	<h2><%= @problem.title %></h2>
 </div>
 
-<h3>Solutions:</h3>
+<div>
+	<h5>Problem</h5>
+	<p><%= @problem.description %></p>
+	<h6>POSTED BY</h6>
+	<p><%= @problem.user.first_name %> <%= @problem.user.last_name %></p>
+	<div>
+		<p><span>Votes: <%= @problem.votes.count %> | Solutions: <%= @solutions.count %><span></p>
+	</div>
+</div>
+
+<br>
+
+<div>
+	<h4>Solutions</h4>
+	<div>
+		<% @solutions.each do |solution| %>
+		<h5><%= link_to solution.title, problem_solution_path(solution) %></h5>
+		<%# Need to fix error with problem_id and id swapped in url path %>
+		<p><%= solution.description %></p>
+		<% end %>
+	</div>
+</div>
+
+<div>
+	<%= link_to 'Submit a solution', new_problem_solution_path(@problem) %>
+</div>
