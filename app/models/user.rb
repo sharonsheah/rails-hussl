@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :pitches
   has_many :votes
   has_one_attached :photo
+
+  validates :first_name, uniqueness: { scope: :last_name }
+  validates :first_name, :last_name, length: { minimum: 2 }
+  validates :email, presence: true, uniqueness: true
 end
