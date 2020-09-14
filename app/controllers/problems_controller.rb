@@ -16,6 +16,10 @@ class ProblemsController < ApplicationController
 		@problem.user = params[:user_id]
 	end
 
+    # def leaderboard
+    #     @problems = Problem.order("votes").last(5)
+    # end
+
 	private
 
 	def set_params
