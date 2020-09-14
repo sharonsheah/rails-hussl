@@ -1,0 +1,7 @@
+<h1>Solutions#index</h1>
+<p>Find me in app/views/solutions/index.html.erb</p>
+
+<% @solutions.each do |solution| %>
+  <h2><%= solution.title %></h2>
+  <p><%= solution.description %></p>
+<% end %>
