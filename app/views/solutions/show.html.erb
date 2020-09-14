@@ -1,2 +1,19 @@
-<h2>Solutions#show</h2>
-<p>Find me in app/views/solutions/show.html.erb</p>
+<div>
+	<h2><%= @solution.title %></h2>
+</div>
+
+<div>
+	<h5>Solving</h5>
+  <p><%= @problem.title %></p>
+  <h5>Description</h5>
+	<p><%= @solution.description %></p>
+	<h6>POSTED BY</h6>
+	<p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
+	<div>
+		<p>Votes: <%= @solution.votes.count %></p>
+	</div>
+</div>
+
+<div>
+<h3>Pitch</h3>
+</div>
