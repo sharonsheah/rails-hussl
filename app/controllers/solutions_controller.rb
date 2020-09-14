@@ -1,16 +1,10 @@
 class SolutionsController < ApplicationController
   def index
     @solutions = Solution.all
-
   end
 
   def show
-    @
+    @solution = Solution.new
   end
-
-  def new
-  end
-
-  def create
-  end
+  
 end
