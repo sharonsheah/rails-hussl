@@ -12,6 +12,13 @@ Rails.application.routes.draw do
       collection do
         get :leaderboard
       end
+
+      resources :pitches, only: [ :index, :show, :new, :create ] do
+        collection do
+          get :leaderboard
+        end
+      end
     end
+
   end
 end
