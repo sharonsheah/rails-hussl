@@ -11,7 +11,6 @@ class ProblemsController < ApplicationController
 		@problem = Problem.new
 	end
 
-<<<<<<< HEAD
     def create
         @problem = Problem.new(set_params)
         @problem.user = current_user
@@ -19,12 +18,6 @@ class ProblemsController < ApplicationController
 
         redirect_to problems_path
     end
-=======
-	def create
-		@problem = Problem.new(set_params)
-		@problem.user = params[:user_id]
-	end
->>>>>>> 60f76e06ab08c25370a09d0cea397dbf95c68a22
 
     # def leaderboard
     #     @problems = Problem.order("votes").last(5)
