@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+
   resources :problems, only: [ :index, :show, :new, :create ]  do
     collection do
       get :leaderboard
