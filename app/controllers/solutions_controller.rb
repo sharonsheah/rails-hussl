@@ -13,4 +13,8 @@ class SolutionsController < ApplicationController
 
   def create
   end
+
+   # def leaderboard
+    #     @solutions = Solution.order("votes").last(5)
+    # end
 end
