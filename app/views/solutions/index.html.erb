@@ -1,9 +1,26 @@
-<h1>Solutions#index</h1>
-<p>Find me in app/views/solutions/index.html.erb</p>
+<h2>Solutions</h2>
 
 <% @solutions.each do |solution| %>
-  <h2><%= solution.title %></h2>
-  <p><%= solution.description %></p>
+  <%= link_to problem_solution_path(solution) do %>
+  <div>
+    <h5><%= solution.title %> - Votes: <%= problem.votes.count %></h5>
+
+		<p><%= solution.description %></p>
+  </div>
+  <% end %>
 <% end %>
 
-<%= link_to 'Solution', leaderboard_solution_path %>
+<div>
+  <p>Votes: <%= problem.votes.count %></p>
+</div>
+
+<div>
+  <% @solutions.each do |solution| %>
+  <h5><%= solution.title %></h5>
+  <p><%= solution.description %></p>
+  <% end %>
+</div>
+
+
+
+<%# <%= link_to 'Solution Leaderboard', leaderboard_problem_solutions_path %>
