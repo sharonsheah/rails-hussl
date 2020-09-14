@@ -1,2 +1,9 @@
-<h1>Solutions#new</h1>
-<p>Find me in app/views/solutions/new.html.erb</p>
+<h2>Submit a solution</h2>
+
+<%= simple_form_for [ @problem, @solution ] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
+
+<%# needs fixing %>

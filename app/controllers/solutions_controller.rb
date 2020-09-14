@@ -12,6 +12,7 @@ class SolutionsController < ApplicationController
   # Need to fix error with problem_id and id swapped in url path
 
   def new
+    @solution = Solution.new
   end
 
   def create
