@@ -5,5 +5,5 @@ class Problem < ApplicationRecord
   has_many :votes, as: :votable
 
   validates :title, presence: true, length: { in: 6..60 }, uniqueness: true
-  validates :description, presence: true, length: { maximum: 360 }, uniqueness: true
+  validates :description, presence: true, length: { maximum: 360 }
 end
