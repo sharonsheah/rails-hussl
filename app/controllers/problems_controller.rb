@@ -13,11 +13,12 @@ class ProblemsController < ApplicationController
 
     def create
         @problem = Problem.new(set_params)
+        @problem.user = params[:user_id]
     end
 
     private
 
     def set_params
-        
+        params.require(:problem).permit(:title, :description)
     end
 end
