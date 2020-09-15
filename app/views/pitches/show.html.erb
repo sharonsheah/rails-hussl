@@ -1,0 +1,15 @@
+<div>
+	<h2><%= @pitch.title %></h2>
+</div>
+
+<div>
+	<h5>Solving</h5>
+  <p><%= @pitch.solution.problem.title %></p>
+  <h5>Description</h5>
+	<p><%= @pitch.description %></p>
+	<h6>POSTED BY</h6>
+	<p><%= @pitch.solution.user.first_name %> <%= @pitch.solution.user.last_name %></p>
+	<div>
+		<p>Votes: <%= @pitch.solution.votes.count %></p>
+	</div>
+</div>

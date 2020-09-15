@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   
   resources :solutions, only: [ :index, :show ]
 
+  resources :pitches, only: [ :index, :show ] do 
+    collection do
+      get :leaderboard
+    end
+  end
+
   resources :problems, only: [ :index, :show, :new, :create ]  do
     collection do
       get :leaderboard
@@ -25,11 +31,7 @@ Rails.application.routes.draw do
           post 'upvote'
         end
 
-      resources :pitches, only: [ :index, :show, :new, :create ] do
-        collection do
-          get :leaderboard
-        end
-      end
+      resources :pitches, only: [ :new, :create ]
     end
   end
 end
