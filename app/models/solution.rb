@@ -4,6 +4,6 @@ class Solution < ApplicationRecord
   has_many :pitches
   has_many :votes, as: :votable
 
-  validates :title, presence: true, uniqueness: true, length: { in: 6..30 }
-  validates :description, presence: true, uniqueness: true, length: { maximum: 360 }
+  validates :title, presence: true, uniqueness: true, length: { in: 6..60 }
+  validates :description, presence: true, length: { maximum: 360 }
 end
