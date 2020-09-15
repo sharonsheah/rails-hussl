@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 puts 'Wiping data...'
 
 Pitch.destroy_all
@@ -52,3 +44,5 @@ puts 'Creating pitches...'
 airbnb_pitch = Pitch.create!(title: "Airbnb Pitch", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: user2, solution: airbnb_solution)
 
 uber_pitch = Pitch.create!(title: "Uber Pitch", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: user4, solution: uber_solution)
+
+puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"

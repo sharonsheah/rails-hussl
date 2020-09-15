@@ -5,19 +5,20 @@ class ProblemsController < ApplicationController
 
 	def show
 		@problem = Problem.find(params[:id])
+		@solutions = @problem.solutions
 	end
 
 	def new
 		@problem = Problem.new
 	end
 
-    def create
-        @problem = Problem.new(set_params)
-        @problem.user = current_user
-        @problem.save!
+  def create
+    @problem = Problem.new(set_params)
+    @problem.user = current_user
+    @problem.save!
 
-        redirect_to problems_path
-    end
+    redirect_to problems_path
+  end
 
     # def leaderboard
     #     @problems = Problem.order("votes").last(5)
