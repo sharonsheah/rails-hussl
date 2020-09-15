@@ -28,7 +28,7 @@ class SolutionsController < ApplicationController
 
   private
 
-	def set_params
-		params.require(:solution).permit(:title, :description)
-	end
+  def set_params
+    params.require(:solution).permit(:title, :description)
+  end
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'styleguide', to: 'pages#styleguide'
   
   resources :solutions, only: [ :index, :show ]
-  
+
   resources :problems, only: [ :index, :show, :new, :create ]  do
     collection do
       get :leaderboard
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       collection do
         get :leaderboard
       end
+        member do
+          post 'upvote'
+        end
 
       resources :pitches, only: [ :index, :show, :new, :create ] do
         collection do

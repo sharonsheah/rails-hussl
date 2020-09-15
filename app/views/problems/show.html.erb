@@ -4,6 +4,16 @@
 
 <div>
 	<h5>Problem</h5>
+    <div class="actions">
+      <% if Vote.where(votable: @problem, user:  current_user).empty? %>
+        <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      <% else %>
+        <i class="fas fa-star"></i>
+      <% end %>
+    </div>
+
 	<p><%= @problem.description %></p>
 	<h6>POSTED BY</h6>
 	<p><%= @problem.user.first_name %> <%= @problem.user.last_name %></p>
@@ -26,5 +36,5 @@
 </div>
 
 <div>
-	<%= link_to 'Submit a solution', new_problem_solution_path(@problem) %> 
+	<%= link_to 'Submit a solution', new_problem_solution_path(@problem) %>
 </div>
