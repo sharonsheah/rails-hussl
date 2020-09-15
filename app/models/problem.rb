@@ -1,5 +1,5 @@
 class Problem < ApplicationRecord
-  CATEGORY = ["Software & Services", "Consumer", "Education", "Healthcare", "Real Estate & Construction", "Financial Technology", "Financial Technology", "Government", "Unspecified"]
+  CATEGORY = ["Software & Services", "Consumer", "Education", "Healthcare", "Real Estate & Construction", "Financial Technology", "Government", "Unspecified"]
   
   belongs_to :user
   has_many :solutions
