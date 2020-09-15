@@ -7,18 +7,19 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
   end
 
-
   def new
     @solution = Solution.new
+    @problem = Problem.find(params[:problem_id])
   end
 
   def create
     @solution = Solution.new(set_params)
     @problem = Problem.find(params[:problem_id])
     @solution.problem = @problem
+    @solution.user = current_user
     @solution.save!
 
-    redirect_to problem_path(@problem)
+    redirect_to problems_path
   end
 
   # def leaderboard
