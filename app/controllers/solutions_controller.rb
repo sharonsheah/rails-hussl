@@ -4,9 +4,7 @@ class SolutionsController < ApplicationController
   end
 
   def show
-		@problem = Problem.find(params[:id])
-		@solutions = @problem.solutions
-    @solution = @solutions.find(params[:problem_id])
+    @solution = Solution.find(params[:id])
   end
 
   # Need to fix error with problem_id and id swapped in url path
