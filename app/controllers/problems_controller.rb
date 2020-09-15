@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
   def index
     @problems = Problem.all
   end
-    
+
 	def show
 		@problem = Problem.find(params[:id])
 		@solutions = @problem.solutions
@@ -23,6 +23,12 @@ class ProblemsController < ApplicationController
     # def leaderboard
     #     @problems = Problem.order("votes").last(5)
     # end
+
+  def upvote
+    @problem = Problem.find(params[:id])
+    @problem.votes.create
+    redirect_to(problems_path)
+  end
 
 	private
 
