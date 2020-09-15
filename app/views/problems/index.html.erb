@@ -15,8 +15,11 @@
 <% @problems.each do |problem| %>
   <%= link_to problem_path(problem) do %>
   <div>
-    <h5><%= problem.title %> - Votes: <span><%= problem.votes.count %></span></h5>
+    <h5><%= problem.title %></h5>
 		<p><%= problem.description %></p>
+    <div>
+      <p>Votes: <%= problem.votes.count %></p>
+    </div>
   </div>
   <% end %>
 <% end %>
