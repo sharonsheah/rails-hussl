@@ -17,6 +17,16 @@
   <div>
     <h5><%= solution.title %></h5>
 
+      <div class="actions">
+        <% if Vote.where(votable: solution, user:  current_user).empty? %>
+          <%= link_to upvote_problem_solution_path(solution, solution.problem), method: :post, class: 'button'  do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        <% else %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      </div>
+
 		<p><%=h truncate(solution.description, :length => 150) %></p>
     
   </div>
