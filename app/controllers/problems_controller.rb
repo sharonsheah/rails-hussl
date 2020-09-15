@@ -3,14 +3,14 @@ class ProblemsController < ApplicationController
     @problems = Problem.all
   end
 
-	def show
-		@problem = Problem.find(params[:id])
-		@solutions = @problem.solutions
-	end
+  def show
+    @problem = Problem.find(params[:id])
+    @solutions = @problem.solutions
+  end
 
-	def new
-		@problem = Problem.new
-	end
+  def new
+    @problem = Problem.new
+  end
 
   def create
     @problem = Problem.new(set_params)
@@ -26,11 +26,11 @@ class ProblemsController < ApplicationController
 
   def upvote
     @problem = Problem.find(params[:id])
-    @problem.votes.create
-    redirect_to(problems_path)
+    Vote.create(votable: @problem, user: current_user)
+    redirect_to problems_path
   end
 
-	private
+  private
 
 	def set_params
 		params.require(:problem).permit(:title, :description, :category)
