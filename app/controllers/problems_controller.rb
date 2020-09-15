@@ -33,6 +33,6 @@ class ProblemsController < ApplicationController
 	private
 
 	def set_params
-		params.require(:problem).permit(:title, :description)
+		params.require(:problem).permit(:title, :description, :category)
 	end
 end

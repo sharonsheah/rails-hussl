@@ -1,0 +1,7 @@
+.card-carousel {
+  background-color: red;
+  .card-carousel-scroller {
+    display: flex;
+    overflow-x: auto;
+  }
+}
