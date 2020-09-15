@@ -6,9 +6,19 @@
           <div>
               <h5><%= pitch.title %> - Votes: <span><%= pitch.votes.count %></span></h5>
               <p><%=h truncate(pitch.description, :length => 150) %></p>
-    
+
           </div>
-      </a>
+
+          <div class="actions">
+            <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+              <%= link_to upvote_pitch_path(pitch, pitch.solution), method: :post, class: 'button'  do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            <% else %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          </div>
+
       <% end %>
   <% end %>
 </div>
