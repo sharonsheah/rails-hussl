@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'styleguide', to: 'pages#styleguide'
 
-  resources :solutions, only: [ :index, :show ]
+  resources :solutions, only: [ :index, :show ] do
+    member do
+      post 'upvote'
+    end
+  end
 
   resources :pitches, only: [ :index, :show ] do
     collection do
@@ -30,9 +34,6 @@ Rails.application.routes.draw do
       collection do
         get :leaderboard
       end
-        member do
-          post 'upvote'
-        end
 
       resources :pitches, only: [ :new, :create ]
     end
