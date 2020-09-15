@@ -1,12 +1,12 @@
 <h2>Problems</h2>
 
 <% @problems.each do |problem| %>
-    <%= link_to problem_path(problem) do %>
-        <div>
-            <h5><%= problem.title %> - Votes: <span><%= problem.votes.count %></span></h5>
-            <p><%= problem.description %></p>
-        </div>
-    <% end %>
+  <%= link_to problem_path(problem) do %>
+  <div>
+    <h5><%= problem.title %> - Votes: <span><%= problem.votes.count %></span></h5>
+		<p><%= problem.description %></p>
+  </div>
+  <% end %>
 <% end %>
 
 <%= link_to 'Share a problem', new_problem_path %>
