@@ -1,34 +1,32 @@
 class PitchesController < ApplicationController
-  before_action :set_pitch, only: [ :show, :edit, :update, :create ]
+ 
   def index
     @pitches = Pitch.all
   end
 
-  def show; end
+  def show
+    @pitch = Pitch.find(params[:id])
+  end
 
   def new
       @pitch = Pitch.new
+      @solution = Solution.find(params[:solution_id])
   end
 
   def create
       @pitch = Pitch.new(pitch_params)
-      @pitch.user = current.user
-      @pitch.solution = params[:solution_id]
+      @solution = Solution.find(params[:solution_id])
+      @pitch.solution = @solution
+      @problem = Problem.find(params[:problem_id])
+      @solution.problem = @problem
+      @pitch.user = current_user
       @pitch.save!
 
-      redirect_to problem_solution_path(@pitch)
+      redirect_to pitch_path(@pitch)
   end
 
 
-  def edit; end
-
-
   private
-
-  
-  def set_pitch
-    @pitch = Pitch.find(params[:id])
-end
 
   def pitch_params
       params.require(:pitch).permit(:title, :description)

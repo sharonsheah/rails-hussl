@@ -1,0 +1,8 @@
+<h2>Put forward your pitch</h2>
+
+<%= simple_form_for [ @solution, @pitch ] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
+

@@ -19,7 +19,7 @@ class SolutionsController < ApplicationController
     @solution.user = current_user
     @solution.save!
 
-    redirect_to problems_path
+    redirect_to problem_path(@problem)
   end
 
   # def leaderboard

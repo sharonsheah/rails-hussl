@@ -1,13 +1,15 @@
-<h2>Pitches</h2>
+<h3>Pitches</h3>
 
-<% @pitches.each do |pitch| %>
-    <%= link_to pitch_path(pitch) do %>
-        <div>
-            <h5><%= pitch.title %> - Votes: <span><%= pitch.votes.count %></span></h5>
-            <p><%= pitch.description %></p>
-        </div>
-    </a>
-    <% end %>
-<% end %>
+<div class="pitch-container">
+  <% @pitches.each do |pitch| %>
+      <%= link_to pitch_path(pitch) do %>
+          <div>
+              <h5><%= pitch.title %> - Votes: <span><%= pitch.votes.count %></span></h5>
+              <p><%= pitch.description %></p>
+          </div>
+      </a>
+      <% end %>
+  <% end %>
+</div>
 
-<%= link_to 'Share a pitch', new_problem_solution_pitch_path %>
+<%= link_to 'Pitch Leaderboard', leaderboard_pitches_path %>
