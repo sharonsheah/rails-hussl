@@ -11,14 +11,13 @@ class PitchesController < ApplicationController
   def new
       @pitch = Pitch.new
       @solution = Solution.find(params[:solution_id])
+      @problem = @solution.problem
   end
 
   def create
       @pitch = Pitch.new(pitch_params)
       @solution = Solution.find(params[:solution_id])
       @pitch.solution = @solution
-      @problem = Problem.find(params[:problem_id])
-      @solution.problem = @problem
       @pitch.user = current_user
       @pitch.save!
 
