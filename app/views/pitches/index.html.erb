@@ -5,7 +5,8 @@
       <%= link_to pitch_path(pitch) do %>
           <div>
               <h5><%= pitch.title %> - Votes: <span><%= pitch.votes.count %></span></h5>
-              <p><%= pitch.description %></p>
+              <p><%=h truncate(pitch.description, :length => 150) %></p>
+    
           </div>
       </a>
       <% end %>

@@ -27,8 +27,8 @@
         <% end %>
       </div>
 
-
-		<p><%= solution.description %></p>
+		<p><%=h truncate(solution.description, :length => 150) %></p>
+    
   </div>
 
   <div>
