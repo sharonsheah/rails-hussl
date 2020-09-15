@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'styleguide', to: 'pages#styleguide'
   
-  resources :solutions, only: [ :index, :show ] do
+  resources :solutions, only: [ :index, :show ]
+
+  resources :pitches, only: [ :index, :show ] do 
     collection do
       get :leaderboard
     end
   end
-  
   resources :problems, only: [ :index, :show, :new, :create ]  do
     collection do
       get :leaderboard
@@ -22,7 +23,14 @@ Rails.application.routes.draw do
       end
 
     resources :solutions, only: [ :new, :create ] do
-      resources :pitches, only: [ :index, :show, :new, :create ]
+      collection do
+        get :leaderboard
+      end
+        member do
+          post 'upvote'
+        end
+
+      resources :pitches, only: [ :new, :create ]
     end
   end
 end

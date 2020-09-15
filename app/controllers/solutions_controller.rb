@@ -19,7 +19,7 @@ class SolutionsController < ApplicationController
     @solution.user = current_user
     @solution.save!
 
-    redirect_to problems_path
+    redirect_to problem_path(@problem)
   end
 
   # def leaderboard
@@ -28,7 +28,7 @@ class SolutionsController < ApplicationController
 
   private
 
-	def set_params
-		params.require(:solution).permit(:title, :description)
-	end
+  def set_params
+    params.require(:solution).permit(:title, :description)
+  end
 end
