@@ -1,0 +1,8 @@
+<div class="card-carousel">
+  <h2>Category Title</h2>
+  <div class="card-carousel-scroller">
+  <% items.each do |item| %>
+    <%= render partial: 'shared/carousel-card', locals: {item: item} %>
+  <% end %>
+  </div>
+</div>

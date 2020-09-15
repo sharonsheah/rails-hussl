@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # get 'solutions/create'
   devise_for :users
   root to: 'pages#home'
-
+  get 'styleguide', to: 'pages#styleguide'
+  
   resources :solutions, only: [ :index, :show ]
   resources :pitches, only: [ :index, :show ] do 
     collection do

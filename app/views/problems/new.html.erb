@@ -3,5 +3,6 @@
 <%= simple_form_for(@problem) do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
+  <%= f.input :category, collection: Problem::CATEGORY %>
   <%= f.submit %>
 <% end %>

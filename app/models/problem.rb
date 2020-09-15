@@ -1,4 +1,6 @@
 class Problem < ApplicationRecord
+  CATEGORY = ["Software & Services", "Consumer", "Education", "Healthcare", "Real Estate & Construction", "Financial Technology", "Government", "Unspecified"]
+  
   belongs_to :user
   has_many :solutions
   has_many :pitches, through: :solutions

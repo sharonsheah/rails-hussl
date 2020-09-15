@@ -1,25 +1,29 @@
-<h2>Solutions</h2>
+<h1>Ideate</h1>
+
+<ul class="nav">
+  <li class="nav-item">
+    <h2><%= link_to 'Problems', problems_path, class: 'nav-link' %></h2>
+  </li>
+  <li class="nav-item">
+    <h2><%= link_to 'Solutions', solutions_path, class: 'nav-link active' %></h2>
+  </li>
+  <%# <li class="nav-item">
+  <h2><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h2>
+  <%# </li> %>
+</ul>
 
 <% @solutions.each do |solution| %>
-  <%= link_to problem_solution_path(solution) do %>
+  <%= link_to solution_path(solution) do %>
   <div>
-    <h5><%= solution.title %> - Votes: <%= problem.votes.count %></h5>
+    <h5><%= solution.title %></h5>
 
 		<p><%= solution.description %></p>
   </div>
+
+  <div>
+    <p>Votes: <%= solution.votes.count %></p>
+  </div>
   <% end %>
 <% end %>
-
-<div>
-  <p>Votes: <%= problem.votes.count %></p>
-</div>
-
-<div>
-  <% @solutions.each do |solution| %>
-  <h5><%= solution.title %></h5>
-  <p><%= solution.description %></p>
-  <% end %>
-</div>
-
 
 <%# <%= link_to 'Solution Leaderboard', leaderboard_problem_solutions_path %>
