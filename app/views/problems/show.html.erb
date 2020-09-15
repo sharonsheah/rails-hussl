@@ -18,7 +18,7 @@
 	<h4>Solutions</h4>
 	<div>
 		<% @solutions.each do |solution| %>
-		<h5><%= link_to solution.title, problem_solution_path(solution) %></h5>
+		<h5><%= link_to solution.title, solution_path(solution) %></h5>
 		<%# Need to fix error with problem_id and id swapped in url path %>
 		<p><%= solution.description %></p>
 		<% end %>
@@ -26,5 +26,5 @@
 </div>
 
 <div>
-	<%= link_to 'Submit a solution', new_problem_solution_path %>
+	<%# <%= link_to 'Submit a solution', new_problem_solution_path %> %>
 </div>
