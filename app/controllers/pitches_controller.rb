@@ -12,14 +12,14 @@ class PitchesController < ApplicationController
 
   def create
       @pitch = Pitch.new(pitch_params)
-      @pitch.user = params[:user_id]
+      @pitch.user = current.user
       @pitch.solution = params[:solution_id]
       @pitch.save!
 
       redirect_to problem_solution_path(@pitch)
   end
 
-  
+
   def edit; end
 
 
