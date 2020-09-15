@@ -24,6 +24,12 @@ class ProblemsController < ApplicationController
     #     @problems = Problem.order("votes").last(5)
     # end
 
+  def upvote
+    @problem = Problem.find(params[:id])
+    @problem.votes.create
+    redirect_to(problems_path)
+  end
+
 	private
 
 	def set_params
