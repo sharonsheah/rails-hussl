@@ -17,7 +17,8 @@
   <div>
     <h5><%= solution.title %></h5>
 
-		<p><%= solution.description %></p>
+		<p><%=h truncate(solution.description, :length => 150) %></p>
+    
   </div>
 
   <div>
