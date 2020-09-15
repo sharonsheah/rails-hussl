@@ -1,13 +1,13 @@
 <div>
 	<h2><%= @pitch.title %></h2>
     <div class="actions">
-    <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
-      <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
-        <i class="far fa-star"></i>
+      <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
+        <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      <% else %>
+        <i class="fas fa-star"></i>
       <% end %>
-    <% else %>
-      <i class="fas fa-star"></i>
-    <% end %>
   </div>
 </div>
 

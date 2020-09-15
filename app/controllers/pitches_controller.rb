@@ -9,31 +9,31 @@ class PitchesController < ApplicationController
   end
 
   def new
-      @pitch = Pitch.new
-      @solution = Solution.find(params[:solution_id])
-      @problem = @solution.problem
+    @pitch = Pitch.new
+    @solution = Solution.find(params[:solution_id])
+    @problem = @solution.problem
   end
 
   def create
-      @pitch = Pitch.new(pitch_params)
-      @solution = Solution.find(params[:solution_id])
-      @pitch.solution = @solution
-      @pitch.user = current_user
-      @pitch.save!
+    @pitch = Pitch.new(pitch_params)
+    @solution = Solution.find(params[:solution_id])
+    @pitch.solution = @solution
+    @pitch.user = current_user
+    @pitch.save!
 
-      redirect_to pitch_path(@pitch)
+    redirect_to pitch_path(@pitch)
   end
 
   def upvote
-    @solution = Pitch.find(params[:id])
+    @pitch = Pitch.find(params[:id])
     Vote.create(votable: @pitch, user: current_user)
-    redirect_to pitches_path
+    redirect_to pitch_path
   end
 
   private
 
   def pitch_params
-      params.require(:pitch).permit(:title, :description)
+    params.require(:pitch).permit(:title, :description)
   end
 
 end
