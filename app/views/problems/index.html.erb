@@ -15,14 +15,30 @@
 <% @problems.each do |problem| %>
   <%= link_to problem_path(problem) do %>
   <div>
-    <h5><%= problem.title %></h5>
+
+    <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
+
 		<p><%= problem.description %></p>
     <div>
       <p>Votes: <%= problem.votes.count %></p>
     </div>
   </div>
+
+  <div class="actions">
+    <% if Vote.where(votable: problem, user:  current_user).empty? %>
+      <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    <% else %>
+      <i class="fas fa-star"></i>
+    <!-- comment button? -->
+    <% end %>
+  </div>
+
   <% end %>
 <% end %>
 
 <%= link_to 'Share a problem', new_problem_path %>
 <%= link_to 'Leaderboard', leaderboard_problems_path %>
+
+
