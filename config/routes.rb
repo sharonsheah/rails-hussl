@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     collection do
       get :leaderboard
     end
+      member do
+        post 'upvote'
+      end
 
     resources :solutions, only: [ :new, :create ] do
       collection do
