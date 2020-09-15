@@ -1,10 +1,27 @@
-<h2>Problems</h2>
+<h1>Ideate</h1>
+
+<ul class="nav">
+  <li class="nav-item">
+    <h2><%= link_to 'Problems', problems_path, class: 'nav-link active' %></h2>
+  </li>
+  <li class="nav-item">
+    <h2><%= link_to 'Solutions', solutions_path, class: 'nav-link' %></h2>
+  </li>
+  <%# <li class="nav-item">
+  <h2><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h2>
+  <%# </li> %>
+</ul>
 
 <% @problems.each do |problem| %>
   <%= link_to problem_path(problem) do %>
   <div>
+
     <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
+
 		<p><%= problem.description %></p>
+    <div>
+      <p>Votes: <%= problem.votes.count %></p>
+    </div>
   </div>
 
   <div class="actions">
