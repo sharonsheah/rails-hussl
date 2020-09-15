@@ -6,7 +6,7 @@
 	<h5>Problem</h5>
     <div class="actions">
       <% if Vote.where(votable: @problem, user:  current_user).empty? %>
-        <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
+        <%= link_to upvote_problem_path(@problem), method: :post, class: 'button'  do %>
           <i class="far fa-star"></i>
         <% end %>
       <% else %>

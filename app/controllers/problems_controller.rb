@@ -20,10 +20,12 @@ class ProblemsController < ApplicationController
     redirect_to problems_path
   end
 
-  # def leaderboard
-  #   @votes = Vote.where(votable: "Problem").group(:votable).count
-  # end
-
+  def leaderboard
+    votes_count = Vote.where(votable_type: "Problem")
+            .group(:votable_id)
+            .count
+    @votes = votes_count.sort_by { |k, v| -v }
+  end
 
   def upvote
     @problem = Problem.find(params[:id])

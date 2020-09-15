@@ -23,7 +23,10 @@ class SolutionsController < ApplicationController
   end
 
   # def leaderboard
-  #     @solutions = Solution.order("votes").last(5)
+  #   votes_count = Vote.where(votable_type: "Solution")
+  #           .group(:votable_id)
+  #           .count
+  #   @solutions = votes_count.sort_by { |k, v| -v }
   # end
 
   private
