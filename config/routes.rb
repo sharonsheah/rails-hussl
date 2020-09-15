@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :solutions, only: [ :index, :show ]
-  
+
   resources :problems, only: [ :index, :show, :new, :create ]  do
     collection do
       get :leaderboard
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       collection do
         get :leaderboard
       end
+        member do
+          post 'upvote'
+        end
 
       resources :pitches, only: [ :index, :show, :new, :create ] do
         collection do
