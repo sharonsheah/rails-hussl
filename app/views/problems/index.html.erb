@@ -9,7 +9,7 @@
       <% if problem.category === tag %>
         <%= link_to problem_path(problem) do %>
           <div>
-            <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
+            <h5><%= problem.title %></h5>
             <p><%=h truncate(problem.description, :length => 150) %></p>
           </div>
 
@@ -22,7 +22,7 @@
               <i class="fas fa-star"></i>
             <!-- comment button? -->
             <% end %>
-            <p>Votes: <%= problem.votes.count %></p>
+            <p>Votes: <%= pluralize(problem.votes.count, "vote") %></p>
           </div>
         <% end %>
       <% end %>

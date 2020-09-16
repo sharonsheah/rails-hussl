@@ -1,10 +1,14 @@
-<h2>Pitches leaderboard</h2>
+<div class="container">
+	<h2>Leaderboard</h2>
 
-<% @votes.first(10).each do |vote| %>
-    <% pitch = Pitch.find(vote.first) %>
-    <%= link_to pitch_path(pitch) do %>
-        <div>
-            <p><%= pitch.title %> Votes: <%= vote.last %></p>
-        </div>
-    <% end %>
-<% end %>
+	<%= render "shared/leaderboard-tabs" %>
+
+	<% @votes.first(10).each do |vote| %>
+		<% pitch = Pitch.find(vote.first) %>
+		<%= link_to pitch_path(pitch) do %>
+			<div>
+				<p><%= pitch.title %> Votes: <%= vote.last %></p>
+			</div>
+		<% end %>
+	<% end %>
+</div>
