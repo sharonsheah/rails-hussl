@@ -28,6 +28,10 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+#  display times and dates to users in their local time
+gem 'local_time'
+
+
 gem 'devise'
 
 gem 'autoprefixer-rails'
