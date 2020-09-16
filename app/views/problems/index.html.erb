@@ -12,10 +12,32 @@
   </li>
 </ul>
 
+<% @categories.each do |tag| %>
+  <%= tag %>
+  <% @problems.each do |problem| %>
+    <% if problem.category === tag %>
+      <%= link_to problem_path(problem) do %>
+        <div>
 
-<% @problems.each do |problem| %>
-  <%= link_to problem_path(problem) do %>
-  <div>
+          <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
+
+        
+          <p><%=h truncate(problem.description, :length => 150) %></p>
+          
+        </div>
+
+        <div class="actions">
+          <% if Vote.where(votable: problem, user:  current_user).empty? %>
+            <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-star"></i>
+          <!-- comment button? -->
+          <% end %>
+          <p>Votes: <%= problem.votes.count %></p>
+
+        </div>
 
     <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
 
@@ -38,14 +60,7 @@
       <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
         <i class="far fa-star"></i>
       <% end %>
-    <% else %>
-      <i class="fas fa-star"></i>
-    <!-- comment button? -->
     <% end %>
-    <span><%= problem.votes.count %></span>
-    <p>Votes: <%= problem.votes.count %></p>
-
-  </div>
 
   <% end %>
 <% end %>
