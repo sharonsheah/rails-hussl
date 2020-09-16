@@ -12,6 +12,7 @@
   </li>
 </ul>
 
+
 <% @problems.each do |problem| %>
   <%= link_to problem_path(problem) do %>
   <div>
@@ -24,6 +25,7 @@
     <div>
       <p>Votes: <%= problem.votes.count %></p>
     </div>
+
 
     <div>
       <p><%= local_time_ago(problem.created_at) %></p>
@@ -40,12 +42,14 @@
       <i class="fas fa-star"></i>
     <!-- comment button? -->
     <% end %>
+    <span><%= problem.votes.count %></span>
     <p>Votes: <%= problem.votes.count %></p>
 
   </div>
 
   <% end %>
 <% end %>
+</div>
 
 <%= link_to 'Share a problem', new_problem_path %>
 <%= link_to 'Leaderboard', leaderboard_problems_path %>
