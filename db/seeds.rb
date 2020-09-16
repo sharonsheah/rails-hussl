@@ -45,7 +45,7 @@ importio_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password")
 
-importio_founder = User.create!(
+recyclebank_founder = User.create!(
                     first_name: "Ron", 
                     last_name: "Gonen", 
                     email: Faker::Internet.email, 
@@ -150,7 +150,7 @@ puts 'Creating pitches...'
 
 airbnb_pitch = Pitch.create!(title: "Airbnb", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: airbnb_founder, solution: airbnb_solution)
 
-uber_pitch = Pitch.create!(title: "Uber", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: uber_founder, solution: uber_solution)
+uber_pitch = Pitch.create!(title: "Uber app", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: uber_founder, solution: uber_solution)
 
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"
