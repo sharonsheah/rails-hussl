@@ -1,47 +1,40 @@
-<h2>Ideate</h2>
+<div class="ideate-page container">
+  <h2>Ideate</h2>
 
-<ul class="nav">
-  <li class="nav-item">
-    <h4><%= link_to 'Problems', problems_path, class: 'nav-link active' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h4>
-  </li>
-</ul>
+  <%= render "shared/ideate-tabs" %>
 
-
-<% @categories.each do |tag| %>
-  <%= tag %>
-  <% @problems.each do |problem| %>
-    <% if problem.category === tag %>
-      <%= link_to problem_path(problem) do %>
-        <div>
-          <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
-          <p><%=h truncate(problem.description, :length => 150) %></p>
-        </div>
-
-        <div class="actions">
-          <% if Vote.where(votable: problem, user:  current_user).empty? %>
-            <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
-              <i class="far fa-star"></i>
-            <% end %>
-          <% else %>
-            <i class="fas fa-star"></i>
-          <!-- comment button? -->
-          <% end %>
-          <p>Votes: <%= problem.votes.count %></p>
-
-        </div>
+  <% @categories.each do |tag| %>
+    <%= tag %>
+    <% @problems.each do |problem| %>
+      <% if problem.category === tag %>
+        <%= link_to problem_path(problem) do %>
+          <div>
+            <h5><%= problem.title %></h5>
+            <p><%=h truncate(problem.description, :length => 150) %></p>
+          </div>
+          <div>
+            <p><span>
+              <div class="actions">
+                <% if Vote.where(votable: problem, user:  current_user).empty? %>
+                  <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                <% else %>
+                  <i class="fas fa-star"></i>
+                <!-- comment button? -->
+                <% end %>
+                <%= problem.votes.count %></span></p>
+                <div>
+                  <p><%= local_time_ago(problem.created_at) %></p>
+                </div> 
+              </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
 
 
-<%= link_to 'Share a problem', new_problem_path %>
-<%= link_to 'Leaderboard', leaderboard_problems_path %>
-
-
+  <%= link_to 'Share a problem', new_problem_path %>
+  <%= link_to 'Leaderboard', leaderboard_problems_path %>
+</div>

@@ -1,72 +1,75 @@
-<div class="btn-back">
-  <%= link_to "Back", @back_url %>
-</div>
+<div class="container">
+  <div class="btn-back">
+    <%= link_to "Back", @back_url %>
+  </div>
 
-<div>
-	<h2><%= @problem.title %></h2>
-</div>
+  <div>
+    <h3><%= @problem.title %></h3>
+  </div>
 
-<div>
-	<h5>Problem</h5>
-    <div class="actions">
-      <% if Vote.where(votable: @problem, user:  current_user).empty? %>
-        <%= link_to upvote_problem_path(@problem), method: :post, class: 'button'  do %>
-          <i class="far fa-star"></i>
-        <% end %>
-      <% else %>
-        <i class="fas fa-star"></i>
+  <div>
+    <h5>Problem</h5>
+
+    <p><%= @problem.description %></p>
+    <h6>POSTED BY</h6>
+    <p><%= @problem.user.first_name %> <%= @problem.user.last_name %></p>
+    <div>
+      <p><span>
+        <div class="actions">
+          <% if Vote.where(votable: @problem, user:  current_user).empty? %>
+            <%= link_to upvote_problem_path(@problem), method: :post, class: 'button'  do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <%= @problem.votes.count %> | <svg class="tiny-icon h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg> <%= @solutions.count %></span></p>
+    </div>
+    <div>
+        <p><%= local_time_ago(@problem.created_at) %></p>
+      </div>
+  </div>
+
+  <br>
+
+  <div>
+    <h4>Solutions</h4>
+    <div>
+      <% @solutions.each do |solution| %>
+
+        <div>
+          <p><%= local_time_ago(solution.created_at) %></p>
+        </div>
+
+        <h5><%= link_to solution.title, solution_path(solution) %></h5>
+        <p><%= solution.description %></p>
+
+        <div class="actions">
+          <% if Vote.where(votable: solution, user:  current_user).empty? %>
+            <%= link_to upvote_problem_path(solution), method: :post, class: 'button'  do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-star"></i>      
+          <% end %>
+          <span><%= solution.votes.count %></span>
+
+          <% if solution.collaborators.include?(current_user) %>
+            <i class="fas fa-hand-paper"></i>
+          <% else %>
+            <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+              <i class="far fa-hand-paper"></i>
+            <% end %>
+          <% end %>
+          <span><%= solution.collaborators.count %></span>
+        </div>
       <% end %>
-      <span><%= @problem.votes.count %></span>
     </div>
+  </div>
 
-	<p><%= @problem.description %></p>
-	<h6>POSTED BY</h6>
-	<p><%= @problem.user.first_name %> <%= @problem.user.last_name %></p>
-	<div>
-		<p><span>Votes: <%= @problem.votes.count %> | Solutions: <%= @solutions.count %><span></p>
-	</div>
-   <div>
-      <p><%= local_time_ago(@problem.created_at) %></p>
-    </div>
-</div>
-
-<br>
-
-<div>
-	<h4>Solutions</h4>
-	<div>
-		<% @solutions.each do |solution| %>
-
-      <div>
-        <p><%= local_time_ago(solution.created_at) %></p>
-      </div>
-
-			<h5><%= link_to solution.title, solution_path(solution) %></h5>
-			<p><%= solution.description %></p>
-
-      <div class="actions">
-        <% if Vote.where(votable: solution, user:  current_user).empty? %>
-          <%= link_to upvote_problem_path(solution), method: :post, class: 'button'  do %>
-            <i class="far fa-star"></i>
-          <% end %>
-        <% else %>
-          <i class="fas fa-star"></i>      
-        <% end %>
-        <span><%= solution.votes.count %></span>
-
-        <% if solution.collaborators.include?(current_user) %>
-          <i class="fas fa-hand-paper"></i>
-        <% else %>
-          <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
-            <i class="far fa-hand-paper"></i>
-          <% end %>
-        <% end %>
-        <span><%= solution.collaborators.count %></span>
-      </div>
-		<% end %>
-	</div>
-</div>
-
-<div>
-	<%= link_to 'Submit a solution', new_problem_solution_path(@problem) %>
+  <div>
+    <%= link_to 'Submit a solution', new_problem_solution_path(@problem) %>
+  </div>
 </div>
