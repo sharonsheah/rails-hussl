@@ -24,12 +24,12 @@ class PitchesController < ApplicationController
       redirect_to pitch_path(@pitch)
   end
 
-  # def leaderboard
-  #   votes_count = Vote.where(votable_type: "Solution")
-  #           .group(:votable_id)
-  #           .count
-  #   @solutions = votes_count.sort_by { |k, v| -v }
-  # end
+  def leaderboard
+    votes_count = Vote.where(votable_type: "Pitch")
+            .group(:votable_id)
+            .count
+    @votes = votes_count.sort_by { |k, v| -v }
+  end
   
   def upvote
     @pitch = Pitch.find(params[:id])

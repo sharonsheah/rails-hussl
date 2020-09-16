@@ -26,7 +26,7 @@ class SolutionsController < ApplicationController
     votes_count = Vote.where(votable_type: "Solution")
             .group(:votable_id)
             .count
-    @solutions = votes_count.sort_by { |k, v| -v }
+    @votes = votes_count.sort_by { |k, v| -v }
   end
 
   def upvote
