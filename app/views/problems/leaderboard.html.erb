@@ -1,9 +1,10 @@
 <h2>Problems leaderboard</h2>
 
-<% @problems.each do |problem| %>
+<% @votes.first(10).each do |vote| %>
+    <% problem = Problem.find(vote.first) %>
     <%= link_to problem_path(problem) do %>
         <div>
-            <h5><%= problem.title %> - Votes: <span><%= problem.votes.count %></span></h5>
+            <p><%= problem.title %> Votes: <%= vote.last %></p>
         </div>
     <% end %>
 <% end %>
