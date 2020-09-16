@@ -1,6 +1,6 @@
 <h2>Solutions leaderboard</h2>
 
-<% @votes.each do |vote| %>
+<% @votes.first(10).each do |vote| %>
     <% solution = Solution.find(vote.first) %>
     <%= link_to solution_path(solution) do %>
         <div>
