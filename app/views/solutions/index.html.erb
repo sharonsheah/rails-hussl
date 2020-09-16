@@ -1,21 +1,23 @@
-<h1>Ideate</h1>
+<h2>Ideate</h2>
 
 <ul class="nav">
   <li class="nav-item">
-    <h2><%= link_to 'Problems', problems_path, class: 'nav-link' %></h2>
+    <h4><%= link_to 'Problems', problems_path, class: 'nav-link' %></h4>
   </li>
   <li class="nav-item">
-    <h2><%= link_to 'Solutions', solutions_path, class: 'nav-link active' %></h2>
+    <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link active' %></h4>
   </li>
-  <%# <li class="nav-item">
-  <h2><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h2>
-  <%# </li> %>
+  <li class="nav-item">
+    <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h4>
+  </li>
 </ul>
 
-<% @solutions.each do |solution| %>
-  <%= link_to solution_path(solution) do %>
-  <div>
-    <h5><%= solution.title %></h5>
+<div class="solution-container">
+  <% @solutions.each do |solution| %>
+    <%= link_to solution_path(solution) do %>
+    <div>
+      <h4><%= solution.title %></h4>
+      <p><%=h truncate(solution.description, :length => 150) %></p>
 
       <div class="actions">
         <% if Vote.where(votable: solution, user:  current_user).empty? %>
@@ -25,16 +27,14 @@
         <% else %>
           <i class="fas fa-star"></i>
         <% end %>
+
+        <p>Votes: <%= solution.votes.count %></p>
       </div>
 
-		<p><%=h truncate(solution.description, :length => 150) %></p>
+    </div>
 
-  </div>
-
-  <div>
-    <p>Votes: <%= solution.votes.count %></p>
-  </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <%# <%= link_to 'Solution Leaderboard', leaderboard_problem_solutions_path %>
