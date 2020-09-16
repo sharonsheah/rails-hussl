@@ -10,24 +10,21 @@
 </div>
 
 <div>
-  <p>Description</p>
-  <p><%= @solution.description %></p>
-</div>
-
-<div>
   <p>POSTED BY</p>
-  <p><%= @solution.user.first.name %></p>
+  <p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
 </div>
 
 <%# insert votes icon %>
 <div>
-  <%= @solution.votes %>
+  Votes: <%= @solution.votes.count %>
 </div>
-
-<%= simple_form_for [ @problem, @solution, @pitch ] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.submit %>
-<% end %>
+<br>
+<div>
+  <%= simple_form_for [ @problem, @solution, @pitch ] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.submit %>
+  <% end %>
+</div>
 
 
