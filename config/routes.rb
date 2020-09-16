@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
     member do
       post 'upvote'
+      post 'collaborate'
     end
   end
 

@@ -3,6 +3,7 @@ puts 'Wiping data...'
 Pitch.destroy_all
 Solution.destroy_all
 Problem.destroy_all
+Vote.destroy_all
 User.destroy_all
 
 puts 'Creating 51 users...'
@@ -140,18 +141,13 @@ treeplanet_solution = Solution.create!(title: "A mobile game", description: "A m
 
 solarity_solution = Solution.create!(title: "Smaller instalations", description: "Small- and medium-sizesd photovoltaic installations on rooftops are faster and easier to install. This way companies can immediately benefit from using renewable energy source.", user: solarity_founder, problem: solarity_problem)
 
-airbnb_solution = Solution.create!(title: "Airbnb Solution", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: User.all.sample, problem: airbnb_problem)
-
-uber_solution = Solution.create!(title: "Uber Solution", description: "On demand car service for professionals, convenience of a cab with the experience of a professional chauffeur. Automate dispatch to reduce wait time and guaranteed pickup.", user: User.all.sample, problem: uber_problem)
-
 puts 'Creating pitches...'
 
 # PITCHES
 
-airbnb_pitch = Pitch.create!(title: "Airbnb", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: airbnb_founder, solution: airbnb_solution)
+airbnb_pitch = Pitch.create!(title: "Airbnb", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "https://docs.google.com/presentation/d/1BFFLHUN6acErGNW-huhD6OHMFlXPVmBDdZHFkj46Bg4/preview#slide=id.p", user: airbnb_founder, solution: airbnb_solution)
 
-uber_pitch = Pitch.create!(title: "Uber app", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: uber_founder, solution: uber_solution)
-
+uber_pitch = Pitch.create!(title: "Uber app", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "//www.slideshare.net/slideshow/embed_code/key/jrFtdtaSImlVh1" , user: uber_founder, solution: uber_solution)
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"
 

@@ -1,8 +1,21 @@
-<h2>Share a problem</h2>
 
-<%= simple_form_for(@problem) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :category, collection: Problem::CATEGORY %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form">
+        <h4>Share a problem</h4>
+
+        <%= simple_form_for(@problem) do |f| %>
+          <%= f.input :title, placeholder: "Enter your problem title" %>
+          <%= f.input :description, placeholder: "Describe your problem" %>
+          <%= f.input :category, collection: Problem::CATEGORY %>
+          <%= f.button :submit, "Share problem", class: "btn btn-info" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Back", @back_url %>
+
