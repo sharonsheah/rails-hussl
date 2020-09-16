@@ -13,7 +13,6 @@
 </ul>
 
 <div class="solution-container">
-
   <% @categories.each do |tag| %>
     <%= tag %>
     <% @solutions.each do |solution| %>
@@ -32,15 +31,23 @@
                 <i class="fas fa-star"></i>
               <% end %>
 
-              <p>Votes: <%= solution.votes.count %></p>
-            </div>
+        <span><%= solution.votes.count %></span>
 
-          </div>
-
+        <% if solution.collaborators.include?(current_user) %>
+          <i class="fas fa-hand-paper"></i>
+        <% else %>
+          <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+            <i class="far fa-hand-paper"></i>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+        <span><%= solution.collaborators.count %></span>
 
+        <p>Votes: <%= solution.votes.count %></p>
+      </div>
+      
+    </div>
+  
+   <% end %>
   <% end %>
 </div>
 

@@ -39,7 +39,6 @@
 
         </div>
 
-
     <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
 
 	
@@ -48,6 +47,7 @@
     <div>
       <p>Votes: <%= problem.votes.count %></p>
     </div>
+
 
     <div>
       <p><%= local_time_ago(problem.created_at) %></p>
@@ -61,8 +61,10 @@
         <i class="far fa-star"></i>
       <% end %>
     <% end %>
+
   <% end %>
 <% end %>
+</div>
 
 <%= link_to 'Share a problem', new_problem_path %>
 <%= link_to 'Leaderboard', leaderboard_problems_path %>
