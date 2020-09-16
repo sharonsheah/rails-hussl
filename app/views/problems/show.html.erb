@@ -28,19 +28,19 @@
 	<h4>Solutions</h4>
 	<div>
 		<% @solutions.each do |solution| %>
-       <div class="actions">
+			<h5><%= link_to solution.title, solution_path(solution) %></h5>
+
+			<p><%= solution.description %></p>
+
+      <div class="actions">
         <% if Vote.where(votable: solution, user:  current_user).empty? %>
-          <%= link_to upvote_problem_solution_path(solution), method: :post, class: 'button'  do %>
+          <%= link_to upvote_problem_path(solution), method: :post, class: 'button'  do %>
             <i class="far fa-star"></i>
           <% end %>
         <% else %>
           <i class="fas fa-star"></i>
         <% end %>
       </div>
-
-		<h5><%= link_to solution.title, solution_path(solution) %></h5>
-		<%# Need to fix error with problem_id and id swapped in url path %>
-		<p><%= solution.description %></p>
 		<% end %>
 	</div>
 </div>
