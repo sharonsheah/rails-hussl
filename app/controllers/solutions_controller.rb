@@ -3,10 +3,12 @@ class SolutionsController < ApplicationController
 
   def index
     @solutions = Solution.all
+    @categories = Problem::CATEGORY
   end
 
   def show
     @solution = Solution.find(params[:id])
+    @pitches = @solution.pitches
   end
 
   def new
@@ -34,6 +36,13 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     Vote.create(votable: @solution, user: current_user)
+    redirect_to solutions_path
+  end
+
+  def collaborate
+    @solution = Solution.find(params[:id])
+    Collaboration.create(solution: @solution, user: current_user)
+
     redirect_to solutions_path
   end
 

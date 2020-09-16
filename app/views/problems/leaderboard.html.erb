@@ -2,13 +2,12 @@
   <h2>Leaderboard</h2>
 
   <%= render "shared/leaderboard-tabs" %>
-
 	<% @votes.first(10).each do |vote| %>
-		<% problem = Problem.find(vote.first) %>
-		<%= link_to problem_path(problem) do %>
-			<div>
-				<p><%= problem.title %> Votes: <%= vote.last %></p>
-			</div>
-		<% end %>
+			<% problem = Problem.find(vote.first) %>
+			<%= link_to problem_path(problem) do %>
+					<div>
+							<p><%= problem.title %><%= vote.last %></p>
+					</div>
+			<% end %>
 	<% end %>
 </div>

@@ -16,6 +16,7 @@
       <% else %>
         <i class="fas fa-star"></i>
       <% end %>
+      <span><%= @problem.votes.count %></span>
     </div>
 
 	<p><%= @problem.description %></p>
@@ -51,6 +52,16 @@
         <% else %>
           <i class="fas fa-star"></i>      
         <% end %>
+        <span><%= solution.votes.count %></span>
+
+        <% if solution.collaborators.include?(current_user) %>
+          <i class="fas fa-hand-paper"></i>
+        <% else %>
+          <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+            <i class="far fa-hand-paper"></i>
+          <% end %>
+        <% end %>
+        <span><%= solution.collaborators.count %></span>
       </div>
 		<% end %>
 	</div>

@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
   after_action :save_previous_url, only: [ :show, :new ]
   def index
     @problems = Problem.all
+    @categories = Problem::CATEGORY
   end
 
   def show
