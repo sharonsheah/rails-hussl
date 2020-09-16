@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'styleguide', to: 'pages#styleguide'
 
+
+  resources :users do
+    resources :profiles, only: [ :index ]
+  end
+
   resources :problems, only: [ :index, :show, :new, :create ]  do
     resources :solutions, only: [ :new, :create ] do
       resources :pitches, only: [ :new, :create ]

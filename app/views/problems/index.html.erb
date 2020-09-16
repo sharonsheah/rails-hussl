@@ -1,3 +1,9 @@
+<div class="header">
+  <header>
+    <p class="text-right"><%= link_to 'My Profile', user_profiles_path(current_user) %></p>
+  </header>
+</div>
+
 <h2>Ideate</h2>
 
 <ul class="nav">
@@ -18,9 +24,9 @@
 
     <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
 
-	
+
     <p><%=h truncate(problem.description, :length => 150) %></p>
-    
+
     <div>
       <p>Votes: <%= problem.votes.count %></p>
     </div>
