@@ -1,6 +1,7 @@
 class ProblemsController < ApplicationController
   def index
     @problems = Problem.all
+    @categories = Problem::CATEGORY
   end
 
   def show
