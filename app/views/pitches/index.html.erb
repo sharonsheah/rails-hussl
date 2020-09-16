@@ -1,40 +1,32 @@
-<h2>Ideate</h2>
+<div class="ideate-page container">
+  <h2>Ideate</h2>
 
-<ul class="nav">
-  <li class="nav-item">
-    <h4><%= link_to 'Problems', problems_path, class: 'nav-link' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link active' %></h4>
-  </li>
-</ul>
+  <%= render "shared/ideate-tabs" %>
 
-<div class="pitch-container">
-  <% @pitches.each do |pitch| %>
-    <%= link_to pitch_path(pitch) do %>
-      <h4><%= pitch.title %></h4>
-      <p><%=h truncate(pitch.description, :length => 150) %></p>
-      <div>
-        <% if Vote.where(votable: pitch, user:  current_user).empty? %>
-          <%= link_to upvote_pitch_path(pitch, pitch.solution), method: :post, class: 'button'  do %>
-            <i class="far fa-star"></i>
+  <div class="pitch-container">
+    <% @pitches.each do |pitch| %>
+      <%= link_to pitch_path(pitch) do %>
+        <h4><%= pitch.title %></h4>
+        <p><%=h truncate(pitch.description, :length => 150) %></p>
+        <div>
+          <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+            <%= link_to upvote_pitch_path(pitch, pitch.solution), method: :post, class: 'button'  do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-star"></i>
           <% end %>
-        <% else %>
-          <i class="fas fa-star"></i>
+
+          <p>Votes: <%= pitch.votes.count %></p>
+        </div>
+
+        <div>
+          <p><%= local_time_ago(pitch.created_at) %></p>
+        </div>  
+      
         <% end %>
+    <% end %>
+  </div>
 
-        <p>Votes: <%= pitch.votes.count %></p>
-      </div>
-
-      <div>
-        <p><%= local_time_ago(pitch.created_at) %></p>
-      </div>  
-     
-      <% end %>
-  <% end %>
+  <%= link_to 'Pitch Leaderboard', leaderboard_pitches_path %>
 </div>
-
-<%= link_to 'Pitch Leaderboard', leaderboard_pitches_path %>
