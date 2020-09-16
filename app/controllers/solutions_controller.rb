@@ -1,10 +1,14 @@
 class SolutionsController < ApplicationController
+  after_action :save_previous_url, only: [ :show, :new ]
+
   def index
     @solutions = Solution.all
+    @categories = Problem::CATEGORY
   end
 
   def show
     @solution = Solution.find(params[:id])
+    @pitches = @solution.pitches
   end
 
   def new
@@ -35,9 +39,21 @@ class SolutionsController < ApplicationController
     redirect_to solutions_path
   end
 
+  def collaborate
+    @solution = Solution.find(params[:id])
+    Collaboration.create(solution: @solution, user: current_user)
+
+    redirect_to solutions_path
+  end
+
   private
 
   def set_params
     params.require(:solution).permit(:title, :description)
+  end
+
+  def save_previous_url
+    session[:previous_url] = URI(request.referer || '').path
+    @back_url = session[:previous_url]
   end
 end
