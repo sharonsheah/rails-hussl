@@ -3,8 +3,6 @@
 
   <%= render "shared/ideate-tabs" %>
 
-
-
   <% @categories.each do |tag| %>
     <%= tag %>
     <% @problems.each do |problem| %>
@@ -40,18 +38,7 @@
 
       </div>
 
-      <div class="actions">
-        <% if Vote.where(votable: problem, user:  current_user).empty? %>
-          <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
-            <i class="far fa-star"></i>
-          <% end %>
-        <% else %>
-          <i class="fas fa-star"></i>
-        <!-- comment button? -->
-        <% end %>
-        <p>Votes: <%= problem.votes.count %></p>
 
-      </div>
 
     <% end %>
   <% end %>
