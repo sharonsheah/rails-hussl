@@ -17,25 +17,45 @@
   <%= tag %>
   <% @problems.each do |problem| %>
     <% if problem.category === tag %>
-      <%= link_to problem_path(problem) do %>
-        <div>
-          <h5><%= problem.title %> - <span><%= pluralize(problem.votes.count, "vote") %></span></h5>
-          <p><%=h truncate(problem.description, :length => 150) %></p>
-        </div>
+        <%= link_to problem_path(problem) do %>
+          <div class="problem-card">
+            <div class="card-title">
+              <h5><%= problem.title %></h5>
+            </div>
 
-        <div class="actions">
-          <% if Vote.where(votable: problem, user:  current_user).empty? %>
-            <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
-              <i class="far fa-star"></i>
-            <% end %>
-          <% else %>
-            <i class="fas fa-star"></i>
-          <!-- comment button? -->
-          <% end %>
-          <p>Votes: <%= problem.votes.count %></p>
+            <div class="card-text">
+              <p><%=h truncate(problem.description, :length => 150) %></p>
+            </div>
 
-        </div>
-      <% end %>
+            <div class="card-actions">
+              <div class="author">
+                <img class="avatar-small" src="https://mindbodygreen-res.cloudinary.com/images/c_fill,w_250,h_250,g_face:center,q_85,fl_lossy,f_jpg/usr/RetocQT/20.jpg">
+                <div class="text-preview">
+                  <p><%= problem.user.first_name %> <%= problem.user.last_name %></p>
+                </div>
+              </div>
+
+              <div class="votes">
+                <% if Vote.where(votable: problem, user:  current_user).empty? %>
+                  <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                <% else %>
+                  <i class="fas fa-star"></i>
+                <!-- comment button? -->
+                <% end %>
+                <p><%= problem.votes.count %></p>
+                
+              </div>
+
+              <div class="solutions">
+                <i class="far fa-lightbulb"></i>
+                <p><%= problem.solutions.count %></p>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
     <% end %>
   <% end %>
 <% end %>

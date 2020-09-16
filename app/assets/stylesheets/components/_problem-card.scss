@@ -1,0 +1,61 @@
+.problem-card {
+    height: 141px;
+    width: 236px;
+    background-color: #2D4059;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 8px;
+}
+
+.card-title {
+    width: 100%;
+    h5 {
+        $headings-font-family:    $headers-font;
+        color: $white;
+        font-size: 14px;
+        line-height: 16px;
+    }
+}
+
+.card-text {
+    width: 100%;
+    color: $white;
+    
+    p {
+        $font-family-sans-serif:  $body-font;
+        font-size: 13px;
+        font-weight: 200;
+        white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    }
+}
+
+.card-actions {
+    display: flex;
+    width: 100%;
+    p, i {
+        color: $white;
+    }
+}
+
+.author {
+    display: flex;
+    width: 60%;
+    p { font-size: 12px; }
+}
+
+.votes, .solutions {
+    
+    display: flex;
+    width: 20%;
+    align-items: center;
+    i {
+        font-size: 15px;
+        padding: 4px;
+    }
+    p {
+        font-size: 15px;
+        margin: 0;
+    }
+}
