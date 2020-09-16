@@ -1,13 +1,37 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-  overflow: hidden;
+  overflow: auto;
   position: fixed;
   bottom: 0;
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.icons {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  -webkit-filter: drop-shadow( 0 0 8px #E6E6E6 );
+  filter: drop-shadow( 0 0 8px #E6E6E6 );
+}
+
+.icon-add {
+  height: 50px;
+  weight: 50px;
+  -webkit-filter: drop-shadow( 0 0 8px #E6E6E6 );
+  filter: drop-shadow( 0 0 8px #E6E6E6 );
+}
+
+
+svg {
+  color:$dark-blue;
+}
+
+svg:active {
+  color: $yellow;
 }
 
 // .navbar-nav {
