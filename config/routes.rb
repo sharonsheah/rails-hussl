@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  # get 'solutions/index'
-  # get 'solutions/show'
-  # get 'solutions/new'
-  # get 'solutions/create'
   devise_for :users
 
   authenticated :user do
-    root 'problems#index', as: :authenticated_root
+    root to: 'problems#index', as: :authenticated_root
   end
 
   root to: 'pages#home'
