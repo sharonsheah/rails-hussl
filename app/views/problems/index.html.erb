@@ -26,7 +26,10 @@
       <p>Votes: <%= problem.votes.count %></p>
     </div>
 
-    
+
+    <div>
+      <p><%= local_time_ago(problem.created_at) %></p>
+    </div>
 
   </div>
 

@@ -1,6 +1,25 @@
+<%# <div class="btn-back">
+  <%# <%= link_to @pitch.solution.title, solution_path(@pitch.solution) %>
+  <%# <%= link_to :back %>
+</div>
+
+<div class="btn-back">
+  <%= link_to "Back", @back_url %>
+</div>
+
 <div>
 	<h2><%= @pitch.title %></h2>
+</div>
 
+<div class="pitch-card">
+	<h5>Solving</h5>
+  <p><%= @pitch.solution.problem.title %></p>
+  <h5>Description</h5>
+	<p><%= @pitch.description %></p>
+	<h6>POSTED BY</h6>
+	<p><%= @pitch.solution.user.first_name %> <%= @pitch.solution.user.last_name %></p>
+	<div>
+		<p>Votes: <%= @pitch.solution.votes.count %></p>
     <div class="actions">
       <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
         <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
@@ -11,19 +30,16 @@
       <% end %>
       <span><%= @pitch.votes.count %></span>
     </div>
-
+	</div>
+  <div>
+    <p><%= local_time_ago(@pitch.created_at) %></p>
+  </div> 
 </div>
 
-<div>
-	<h5>Solving</h5>
-  <p><%= @pitch.solution.problem.title %></p>
-  <h5>Description</h5>
-	<p><%= @pitch.description %></p>
-	<h6>POSTED BY</h6>
-	<p><%= @pitch.solution.user.first_name %> <%= @pitch.solution.user.last_name %></p>
-	<div>
-		<p>Votes: <%= @pitch.solution.votes.count %></p>
-	</div>
+<div class="pitch-link">
+  <iframe src="<%= @pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="275px" width="375px" allowfullscreen></iframe>
+  <p>OR</p>
+  <a href="<%= @pitch.link %>" alt="original-link">View Pitch Here</a>
 </div>
 
 <%= link_to 'Pitches Leaderboard', leaderboard_pitches_path %>
