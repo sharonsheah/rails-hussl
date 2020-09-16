@@ -12,6 +12,7 @@
   </li>
 </ul>
 
+
 <% @problems.each do |problem| %>
   <%= link_to problem_path(problem) do %>
   <div>
@@ -21,6 +22,12 @@
 	
     <p><%=h truncate(problem.description, :length => 150) %></p>
     
+    <div>
+      <p>Votes: <%= problem.votes.count %></p>
+    </div>
+
+    
+
   </div>
 
   <div class="actions">
@@ -39,6 +46,7 @@
 
   <% end %>
 <% end %>
+</div>
 
 <%= link_to 'Share a problem', new_problem_path %>
 <%= link_to 'Leaderboard', leaderboard_problems_path %>

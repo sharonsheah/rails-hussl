@@ -57,14 +57,6 @@
         <% end %>
         <span><%= pitch.votes.count %></span>
 
-        <% if pitch.collaborators.include?(current_user) %>
-          <i class="fas fa-hand-paper"></i>
-        <% else %>
-          <%= link_to collaborate_pitch_path(pitch), method: :post, class: 'button'  do %>
-            <i class="far fa-hand-paper"></i>
-          <% end %>
-        <% end %>
-        <span><%= pitch.collaborators.count %></span>
       </div>
 		<% end %>
 	</div>
