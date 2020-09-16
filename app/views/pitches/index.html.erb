@@ -17,6 +17,10 @@
               <p><%=h truncate(pitch.description, :length => 150) %></p>
 
           </div>
+
+          <div>
+            <p><%= local_time_ago(pitch.created_at) %></p>
+          </div>  
       </a>
       <% end %>
   <% end %>

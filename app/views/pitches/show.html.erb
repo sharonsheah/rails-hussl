@@ -20,7 +20,12 @@
 	<p><%= @pitch.description %></p>
 	<h6>POSTED BY</h6>
 	<p><%= @pitch.solution.user.first_name %> <%= @pitch.solution.user.last_name %></p>
+
 	<div>
 		<p>Votes: <%= @pitch.solution.votes.count %></p>
 	</div>
+
+  <div>
+    <p><%= local_time_ago(@pitch.created_at) %></p>
+  </div> 
 </div>
