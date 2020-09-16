@@ -12,10 +12,10 @@ puts 'Creating 51 users...'
 default_user = User.create!(first_name: "Sharon", last_name: "Sheah", email: "user@user.com", password: "password")
 
 50.times do
-    User.create!(first_name: Faker::Name.first_name, 
-    last_name: Faker::Name.last_name, 
-    email: Faker::Internet.email, 
-    password: "password")
+  User.create!(first_name: Faker::Name.first_name, 
+  last_name: Faker::Name.last_name, 
+  email: Faker::Internet.email, 
+  password: "password")
 end
 
 puts 'Creating problems...'
