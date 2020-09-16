@@ -22,9 +22,12 @@ class SolutionsController < ApplicationController
     redirect_to problem_path(@problem)
   end
 
-  # def leaderboard
-  #     @solutions = Solution.order("votes").last(5)
-  # end
+  def leaderboard
+    votes_count = Vote.where(votable_type: "Solution")
+            .group(:votable_id)
+            .count
+    @votes = votes_count.sort_by { |k, v| -v }
+  end
 
   def upvote
     @solution = Solution.find(params[:id])
