@@ -38,8 +38,38 @@
 	</div>
 </div>
 
+
 <div>
-<h3>Pitch</h3>
+	<h4>Pitches</h4>
+	<div>
+		<% @pitches.each do |pitch| %>
+			<h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
+
+			<p><%= pitch.description %></p>
+
+      <div class="actions">
+        <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+          <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        <% else %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <span><%= pitch.votes.count %></span>
+
+        <% if pitch.collaborators.include?(current_user) %>
+          <i class="fas fa-hand-paper"></i>
+        <% else %>
+          <%= link_to collaborate_pitch_path(pitch), method: :post, class: 'button'  do %>
+            <i class="far fa-hand-paper"></i>
+          <% end %>
+        <% end %>
+        <span><%= pitch.collaborators.count %></span>
+      </div>
+		<% end %>
+	</div>
+
+
 </div>
 
 <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution) %>

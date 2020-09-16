@@ -4,7 +4,7 @@
     <% problem = Problem.find(vote.first) %>
     <%= link_to problem_path(problem) do %>
         <div>
-            <p><%= problem.title %> Votes: <%= vote.last %></p>
+            <p><%= problem.title %><%= vote.last %></p>
         </div>
     <% end %>
 <% end %>
