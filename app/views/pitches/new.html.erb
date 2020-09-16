@@ -1,4 +1,28 @@
-<h2>Put forward your pitch</h2>
+<h3>Submit a pitch</h3>
+
+<p>You are submitting a pitch for...</p>
+<h3><%= @solution.title %></h3>
+
+<%# insert solution card here %>
+<div>
+  <p>Description</p>
+  <p><%= @solution.description %></p>
+</div>
+
+<div>
+  <p>Description</p>
+  <p><%= @solution.description %></p>
+</div>
+
+<div>
+  <p>POSTED BY</p>
+  <p><%= @solution.user.first.name %></p>
+</div>
+
+<%# insert votes icon %>
+<div>
+  <%= @solution.votes %>
+</div>
 
 <%= simple_form_for [ @problem, @solution, @pitch ] do |f| %>
   <%= f.input :title %>
