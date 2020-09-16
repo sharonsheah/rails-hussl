@@ -1,13 +1,6 @@
 <div>
 	<h2><%= @solution.title %></h2>
     <div class="actions">
-      <% if @solution.collaborators.include?(current_user) %>
-        <i class="fas fa-hand-paper"></i>
-      <% else %>
-        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-          <i class="far fa-hand-paper"></i>
-        <% end %>
-      <% end %>
       <% if Vote.where(votable: @solution, user:  current_user).empty? %>
         <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
           <i class="far fa-star"></i>
@@ -15,6 +8,17 @@
       <% else %>
         <i class="fas fa-star"></i>
       <% end %>
+      <span><%= @solution.votes.count %></span>
+      
+      <% if @solution.collaborators.include?(current_user) %>
+        <i class="fas fa-hand-paper"></i>
+      <% else %>
+        <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button'  do %>
+          <i class="far fa-hand-paper"></i>
+        <% end %>
+      <% end %>
+      <span><%= @solution.collaborators.count %></span>
+      
     </div>
 </div>
 
@@ -25,6 +29,10 @@
 	<p><%= @solution.description %></p>
 	<h6>POSTED BY</h6>
 	<p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
+  <h6>COLLABORATORS</h6>
+	<% @solution.collaborators.each do |user|%> 
+  <p><%= user.first_name %> <%= user.last_name  %></p>
+  <% end %>
 	<div>
 		<p>Votes: <%= @solution.votes.count %></p>
 	</div>

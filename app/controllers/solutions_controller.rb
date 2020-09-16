@@ -35,6 +35,13 @@ class SolutionsController < ApplicationController
     redirect_to solutions_path
   end
 
+  def collaborate
+    @solution = Solution.find(params[:id])
+    Collaboration.create(solution: @solution, user: current_user)
+
+    redirect_to solutions_path
+  end
+
   private
 
   def set_params
