@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # get 'solutions/new'
   # get 'solutions/create'
   devise_for :users
+
+  authenticated :user do
+    root 'problems#index', as: :authenticated_root
+  end
+
   root to: 'pages#home'
   get 'styleguide', to: 'pages#styleguide'
 
