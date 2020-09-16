@@ -21,6 +21,9 @@
 	<div>
 		<p>Votes: <%= @solution.votes.count %></p>
 	</div>
+  <div>
+    <p><%= local_time_ago(@solution.created_at) %></p>
+  </div>
 </div>
 
 <div>

@@ -24,6 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import LocalTime from "local-time";
+LocalTime.start();
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
