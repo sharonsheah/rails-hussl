@@ -29,6 +29,12 @@ class SolutionsController < ApplicationController
   #   @solutions = votes_count.sort_by { |k, v| -v }
   # end
 
+  def upvote
+    @solution = Solution.find(params[:id])
+    Vote.create(votable: @solution, user: current_user)
+    redirect_to solutions_path
+  end
+
   private
 
   def set_params

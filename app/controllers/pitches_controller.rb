@@ -1,5 +1,5 @@
 class PitchesController < ApplicationController
- 
+
   def index
     @pitches = Pitch.all
   end
@@ -30,6 +30,11 @@ class PitchesController < ApplicationController
   #           .count
   #   @solutions = votes_count.sort_by { |k, v| -v }
   # end
+  def upvote
+    @pitch = Pitch.find(params[:id])
+    Vote.create(votable: @pitch, user: current_user)
+    redirect_to pitch_path
+  end
 
   private
 
