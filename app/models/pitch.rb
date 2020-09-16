@@ -6,4 +6,5 @@ class Pitch < ApplicationRecord
   
   validates :title, length: { in: 6..60 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 360 }, presence: true
+  validates :link, uniqueness: true
 end

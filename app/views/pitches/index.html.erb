@@ -29,7 +29,11 @@
         <p>Votes: <%= pitch.votes.count %></p>
       </div>
 
-    <% end %>
+      <div>
+        <p><%= local_time_ago(pitch.created_at) %></p>
+      </div>  
+     
+      <% end %>
   <% end %>
 </div>
 

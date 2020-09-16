@@ -1,14 +1,9 @@
+<div class="btn-back">
+  <%= link_to "Back", @back_url %>
+</div>
+
 <div>
 	<h2><%= @solution.title %></h2>
-    <div class="actions">
-      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-          <i class="far fa-star"></i>
-        <% end %>
-      <% else %>
-        <i class="fas fa-star"></i>
-      <% end %>
-    </div>
 </div>
 
 <div>
@@ -20,11 +15,33 @@
 	<p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
 	<div>
 		<p>Votes: <%= @solution.votes.count %></p>
+    <div class="actions">
+      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
+        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      <% else %>
+        <i class="fas fa-star"></i>
+      <% end %>
+    </div>
 	</div>
+  <div>
+    <p><%= local_time_ago(@solution.created_at) %></p>
+  </div>
 </div>
 
 <div>
-<h3>Pitch</h3>
+  <h3>Pitch</h3>
+  <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution) %>
+  <% if @solution.pitches.exists? %>
+    
+    <% @solution.pitches.each do |pitch| %>
+      <div class="pitch-link">
+        <iframe src="<%= pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="250px" width="350px" allowfullscreen></iframe>
+      </div>
+    <% end %>
+    
+  <% else %>
+    <p>When all you husslrs are ready, submit link/files for your pitch!</p>
+  <% end %>
 </div>
-
-<%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution) %>
