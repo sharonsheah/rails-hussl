@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :pitches
   has_many :votes
   has_one :profile
-  has_many :solutions, through: :collaboration
+  # has_many :solutions, through: :collaboration
   has_one_attached :photo
 
   validates :first_name, uniqueness: { scope: :last_name }

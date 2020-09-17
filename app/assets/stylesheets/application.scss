@@ -81,6 +81,14 @@ img {
   border-radius: 50px;
 }
 
-.category-header {
-
+.small-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  width: 10%;
+  letter-spacing: 0.5px;
+  background-color: $yellow;
+  color: $white;
+  border-radius: 50px;
+  box-shadow: $box-shadow;
+  margin: 10px 0;
 }

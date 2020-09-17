@@ -2,5 +2,4 @@
 
 var problem = document.getElementById("problem_<%= @problem.id %>");
 var html = '<%= j render "problems/problem_card", problem: @problem, tag: "rerender", star: false %>';
-console.log(html);
 problem.innerHTML = html;
