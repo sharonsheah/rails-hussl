@@ -1,7 +1,7 @@
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), problem_path() %>...</li>
+      <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), solution_path(@pitch.solution) %>...</li>
       <li class="breadcrumb-item active" aria-current="page"><%= @pitch.title %></li>
     </ol>
   </nav>
