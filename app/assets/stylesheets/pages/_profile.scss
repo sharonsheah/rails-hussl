@@ -1,6 +1,9 @@
 .container {
-  margin-left: 8px;
   margin-top: 70px;
+}
+
+.first-line{
+  display: flex;
 }
 
 .row {
@@ -22,6 +25,8 @@
     width: 90px;
     color: white;
     margin: auto;
+    display: flex;
+    justify-content: center;
   }
 
   .solution-card {
@@ -31,6 +36,8 @@
     height: 90px;
     width: 90px;
     color: white;
+    display: flex;
+    justify-content: center;
   }
 
   .pitch-card {
@@ -40,6 +47,8 @@
     height: 90px;
     width: 90px;
     color: white;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -90,7 +99,7 @@ tr {
 
 .dropup {
   position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: flex-end;
 }
 
@@ -104,9 +113,10 @@ tr {
 
 .dropup-content a {
   color: $dark-blue;
-  padding: 8px 4px;
+  padding: 4px;
   text-decoration: none;
   display: inline-block;
+  margin-left: 8px;
 }
 
 .dropup:hover .dropup-content {
