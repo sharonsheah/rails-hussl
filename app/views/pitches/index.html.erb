@@ -20,10 +20,10 @@
         <div class="actions">
           <% if Vote.where(votable: pitch, user:  current_user).empty? %>
             <%= link_to upvote_pitch_path(pitch, pitch.solution), method: :post, class: 'button'  do %>
-              <i class="far fa-star"></i>
+              <i class="far fa-thumbs-up"></i>
             <% end %>
           <% else %>
-            <i class="fas fa-star"></i>
+            <i class="fas fa-thumbs-up"></i>
           <% end %>
           <%= pitch.votes.count %>
         </div>

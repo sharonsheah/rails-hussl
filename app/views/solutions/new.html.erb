@@ -22,12 +22,21 @@
   Votes: <%= @problem.votes.count %>
 </div>
 <br>
-<div>
-  <%= simple_form_for [ @problem, @solution ] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.submit %>
-  <% end %>
-</div>
 
-<%# needs fixing %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form">
+        
+        <%= simple_form_for [ @problem, @solution ] do |f| %>
+          <%= f.input :title, placeholder: "Enter your solution title" %>
+          <%= f.input :description, placeholder: "Enter your full solution description" %>
+          <%= f.input :category, collection: Problem::CATEGORY %>
+          <%= f.button :submit, "Submit solution", class: "btn btn-info" %>
+        <% end %>
+        
+      </div>
+     
+    </div>
+  </div>
+</div>
