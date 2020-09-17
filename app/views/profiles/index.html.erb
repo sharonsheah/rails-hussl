@@ -1,4 +1,20 @@
 <div class="container">
+
+<!--   <div class="text-right">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+    <i class="fas fa-sign-out-alt"></i>
+    <% end %>
+  </div> -->
+
+  <div class="dropup">
+    <button class="dropbtn"><i class="fas fa-bars"></i></button>
+    <div class="dropup-content">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    </div>
+  </div>
+
   <h2><%= @user.first_name %> <%= @user.last_name %></h2>
   <h4>You have submitted...</h4>
 
