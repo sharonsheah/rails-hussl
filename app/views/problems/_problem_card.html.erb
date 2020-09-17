@@ -21,12 +21,12 @@
         <div class="votes">
           <% if Vote.where(votable: problem, user:  current_user).empty? && star != false %>
             <%= link_to upvote_problem_path(problem), method: :post, remote: true,  class: 'button'  do %>
-              <i class="far fa-star"></i>
+              <i class="far fa-thumbs-up"></i>
             <% end %>
           <% else %>
-            <i class="fas fa-star"></i>
-          <!-- comment button? -->
+            <i class="fas fa-thumbs-up"></i>
           <% end %>
+          <!-- comment button? -->
           <p><%= problem.votes.count %></p>   
         </div>
         <div class="solutions">
