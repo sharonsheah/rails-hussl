@@ -21,6 +21,9 @@
           <div class="problem-card">
             <div class="card-title">
               <h5><%= problem.title %></h5>
+              <div class="time-ago">
+                <p><%= local_time_ago(problem.created_at) %></p>
+              </div>
             </div>
 
             <div class="card-text">
@@ -30,9 +33,7 @@
             <div class="card-actions">
               <div class="author">
                 <img class="avatar-small" src="https://mindbodygreen-res.cloudinary.com/images/c_fill,w_250,h_250,g_face:center,q_85,fl_lossy,f_jpg/usr/RetocQT/20.jpg">
-                <div class="text-preview">
-                  <p><%= problem.user.first_name %> <%= problem.user.last_name %></p>
-                </div>
+                <p><%= problem.user.first_name %> <%= problem.user.last_name.first %></p>
               </div>
 
               <div class="votes">
@@ -49,7 +50,9 @@
               </div>
 
               <div class="solutions">
-                <i class="far fa-lightbulb"></i>
+                <svg class="solution-icon"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
                 <p><%= problem.solutions.count %></p>
               </div>
 
