@@ -1,16 +1,57 @@
 .tag-container {
-  width: 30px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   text-transform: uppercase;
+  color: $white;
 
+ 
   .problem-tag {
     background-color: $red;
-    border-radius: 50px;
+    width: auto;
+    padding: 6px 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
   }
+
+
+  .solution-tag {
+    background-color: $green;
+    width: auto;
+    padding: 6px 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+  }
+
+  .pitch-tag {
+    background-color: $dark-blue;
+    width: auto;
+    padding: 6px 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+  }
+
+
+
 
   .category-tag {
     background-color: $yellow;
-    border-radius: 50px;
+    width: auto;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
   }
+
+  p {
+    font-size: 8px;
+    font-weight: bold;
+    margin: 0;
+  }
+
 }
