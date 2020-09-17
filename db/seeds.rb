@@ -28,8 +28,6 @@ default_user = User.create!(
   email: Faker::Internet.email, 
   password: "password"
   )
-  file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600307295/default_profile_pic_ypyuhz.png")
-  fake_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 end
 
 #FAMOUS USERS
