@@ -36,9 +36,6 @@
     margin-right: 4px;
   }
 
-
-
-
   .category-tag {
     background-color: $yellow;
     width: auto;
@@ -46,11 +43,15 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
+    p {
+      color: $dark-blue;
+      font-weight: 900;
+    }
   }
-
+  
   p {
-    font-size: 8px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 900;
     margin: 0;
   }
 

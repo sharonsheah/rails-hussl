@@ -2,7 +2,7 @@
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to 'Problems', problems_path %></li>
+      <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
       <li class="breadcrumb-item active" aria-current="page"><%= @problem.title.first(10) %>...</li>
     </ol>
   </nav>
@@ -58,7 +58,6 @@
     <div>
       <% @solutions.each do |solution| %>
         <h5><%= link_to solution.title, solution_path(solution) %></h5>
-        <p><%= solution.description %></p>
 
         <div class="actions">
           <% if Vote.where(votable: solution, user:  current_user).empty? %>

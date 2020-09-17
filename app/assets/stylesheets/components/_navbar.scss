@@ -9,6 +9,7 @@
   border-top-right-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 0 !important;
+  z-index: 1000;
 }
 
 .icons {
@@ -27,10 +28,6 @@
 }
 
 
-svg {
-  color:$dark-blue;
-}
-
-svg:active {
+.active {
   color: $yellow;
 }

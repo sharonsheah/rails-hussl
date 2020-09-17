@@ -113,7 +113,7 @@ homies_founder = User.create!(
                 password: "password"
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/sergey_osipov_sut4sf.jpg")
-                aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+                homies_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 weather_founder = User.create!(
                 first_name: "Sam", 
@@ -122,7 +122,7 @@ weather_founder = User.create!(
                 password: "password"
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/sam_cheney_lxydqy.jpg")
-                aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+                weather_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 
 puts 'Creating problems...'

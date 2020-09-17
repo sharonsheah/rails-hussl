@@ -1,24 +1,39 @@
 <div class="ideate-page">
-
-  <div class="text-right" style="font-size:7vw">
-    <%= link_to user_profiles_path(current_user) do %>
-      <i class="far fa-user"></i>
-    <% end %>
-  </div>
-
-  <h2>Ideate</h2>
-
-  <%= render "shared/ideate-tabs" %>
-
-  <% @categories.each do |tag| %>
-    <div class="card-carousel">
-      <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
-      <div class="card-carousel-scroller">
-        <% @solutions.each do |solution| %>
-          <%= render "solution-card", solution: solution, tag: tag, star: true %>
+  <div class="header">
+    <div class="btn-profile">
+      <div class="text-right" style="font-size:7vw">
+        <%= link_to user_profiles_path(current_user) do %>
+          <i class="far fa-user"></i>
         <% end %>
       </div>
     </div>
 
-  <% end %>
+    <h2>Ideate</h2>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <h4><%= link_to 'Problems', problems_path, class: 'nav-link tabs' %></h4>
+      </li>
+      <li class="nav-item">
+        <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tab-active tabs' %></h4>
+      </li>
+      <li class="nav-item">
+        <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link tabs' %></h4>
+      </li>
+    </ul>
+  </div>
+
+  <div class="solution-container pad-left">
+    <% @categories.each do |tag| %>
+      <div class="card-carousel">
+        <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
+        <div class="card-carousel-scroller">
+          <% @solutions.each do |solution| %>
+            <%= render "solution-card", solution: solution, tag: tag, star: true %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+
