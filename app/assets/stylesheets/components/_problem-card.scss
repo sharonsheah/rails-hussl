@@ -1,10 +1,17 @@
 .problem-card {
     height: 141px;
     width: 236px;
-    background-color: #2D4059;
     border-radius: 10px;
     padding: 16px;
     margin: 8px;
+}
+
+.dark-blue {
+    background-color: $dark-blue;
+}
+
+.light-blue {
+    background-color: $light-blue;
 }
 
 .problem-card p {
@@ -74,7 +81,7 @@
     }
 }
 
-.votes, .solutions {
+.votes, .solutions, .collaborators {
     display: flex;
     width: 20%;
     align-items: center;
@@ -94,6 +101,6 @@
        color: $white;
     }
 }
-.solutions {
+.solutions, .collaborators {
     margin-left: 16px; 
 }
