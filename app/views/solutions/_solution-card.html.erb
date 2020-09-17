@@ -2,13 +2,16 @@
     <div id=<%= "problem_#{solution.id}" %> >
 
         <%= link_to solution_path(solution) do %>
-            <div class="problem-card light-blue">
+            <div class="problem-card light-blue solution-card ">
                 <div class="card-title">
-                <h5><%= solution.title %></h5>
-                <div class="time-ago">
-                    <p><%= local_time_ago(solution.created_at) %></p>
+                    <h5 class="p-0"><%= solution.title %></h5>
+                    <div class="time-ago">
+                        <p><%= local_time_ago(solution.created_at) %></p>
+                    </div>
                 </div>
-                </div>
+                <div class="solving-tag">
+                        <p><%= solution.problem.title.upcase %></p>
+                    </div>
                 <div class="card-text">
                 <p><%=h truncate(solution.description, :length => 150) %></p>
                 </div>
@@ -21,19 +24,19 @@
                         <% end %>
                     </div>
                     <div class="votes">
-                            <% if Vote.where(votable: solution, user:  current_user).empty? && star != false %>
+                        <% if Vote.where(votable: solution, user:  current_user).empty? && star != false %>
                             <%= link_to upvote_solution_path(solution), method: :post, remote: true,  class: 'button'  do %>
                                 <i class="far fa-thumbs-up"></i>
                             <% end %>
-                            <% else %>
+                        <% else %>
                             <i class="fas fa-thumbs-up"></i>
-                            <% end %>
+                        <% end %>
                             <!-- comment button? -->
-                            <p><%= solution.votes.count %></p>   
+                        <p><%= solution.votes.count %></p>   
                     </div>
-                    <div class="collaborators d-flex">
+                    <div class="collaborators">
                         <% if solution.collaborators.include?(current_user) %>
-                        <i class="fas fa-hand-paper"></i>
+                            <i class="fas fa-hand-paper"></i>
                         <% else %>
                             <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
                                 <i class="far fa-hand-paper"></i>
