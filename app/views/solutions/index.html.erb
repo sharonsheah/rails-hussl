@@ -1,54 +1,52 @@
-<h2>Ideate</h2>
+<div class="ideate-page container">
+  <h2>Ideate</h2>
+  
+  <%= render "shared/ideate-tabs" %>
 
-<ul class="nav">
-  <li class="nav-item">
-    <h4><%= link_to 'Problems', problems_path, class: 'nav-link' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link active' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h4>
-  </li>
-</ul>
-
-<div class="solution-container">
-  <% @categories.each do |tag| %>
-    <%= tag %>
-    <% @solutions.each do |solution| %>
-      <% if solution.problem.category === tag %>
-        <%= link_to solution_path(solution) do %>
-          <div>
-            <h4><%= solution.title %></h4>
-            <p><%=h truncate(solution.description, :length => 150) %></p>
-
-            <div class="actions">
-              <% if Vote.where(votable: solution, user:  current_user).empty? %>
-                <%= link_to upvote_solution_path(solution, solution.problem), method: :post, class: 'button'  do %>
-                  <i class="far fa-star"></i>
+  <div class="solution-container">
+    <% @categories.each do |tag| %>
+      <%= tag %>
+      <% @solutions.each do |solution| %>
+        <% if solution.problem.category === tag %>
+          <%= link_to solution_path(solution) do %>
+            <div>
+              <h4><%= solution.title %></h4>
+              <p><%=h truncate(solution.description, :length => 150) %></p>
+              <div>
+                <% if solution.user.photo.attached? %>
+                  <p><span><%= cl_image_tag solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= solution.user.first_name %> <%= solution.user.last_name %></span></p>
+                  <% else %>
+                    <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= solution.user.first_name %> <%= solution.user.last_name %></span></p>
                 <% end %>
-              <% else %>
-                <i class="fas fa-star"></i>
-              <% end %>
+              </div>
+              <div class="actions">
+                <% if Vote.where(votable: solution, user:  current_user).empty? %>
+                  <%= link_to upvote_solution_path(solution, solution.problem), method: :post, class: 'button'  do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                <% else %>
+                  <i class="fas fa-star"></i>
+                <% end %>
 
-        <span><%= solution.votes.count %></span>
+                <span><%= solution.votes.count %></span>
 
-        <% if solution.collaborators.include?(current_user) %>
-          <i class="fas fa-hand-paper"></i>
-        <% else %>
-          <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
-            <i class="far fa-hand-paper"></i>
+                <% if solution.collaborators.include?(current_user) %>
+                  <i class="fas fa-hand-paper"></i>
+                <% else %>
+                  <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+                    <i class="far fa-hand-paper"></i>
+                  <% end %>
+                <% end %>
+                <span><%= solution.collaborators.count %></span>
+
+                <div>
+                  <p><%= local_time_ago(solution.created_at) %></p>
+                </div> 
+              </div>
+            </div>
           <% end %>
         <% end %>
-        <span><%= solution.collaborators.count %></span>
-
-        <p>Votes: <%= solution.votes.count %></p>
-      </div>
-      
-    </div>
-  
-   <% end %>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to 'Solution Leaderboard', leaderboard_solutions_path %>

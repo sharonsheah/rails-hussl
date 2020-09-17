@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_050224) do
+ActiveRecord::Schema.define(version: 2020_09_16_064219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 2020_09_16_050224) do
     t.index ["user_id"], name: "index_problems_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "solutions", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -109,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_050224) do
   add_foreign_key "pitches", "solutions"
   add_foreign_key "pitches", "users"
   add_foreign_key "problems", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "solutions", "problems"
   add_foreign_key "solutions", "users"
   add_foreign_key "votes", "users"

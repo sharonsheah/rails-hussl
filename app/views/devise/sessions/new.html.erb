@@ -1,12 +1,14 @@
-
-<div class="container">
+<div class="login-bg">
 
   <div class="row">
 
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 padding-none">
+      <div>
+        <h1 class="hussl-big-white">hussl<span class="hussl-big-yellow">.</span></h1>
+        <h4 class="hussl-small-white">Make it happen.</h4>
+      </div>
       <div class="form-login">
-        <h2>Log in</h2>
+        <h4>Log in</h4>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">

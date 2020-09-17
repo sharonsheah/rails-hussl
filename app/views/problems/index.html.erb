@@ -1,19 +1,9 @@
-<h2>Ideate</h2>
+<div class="ideate-page container">
+  <h2>Ideate</h2>
 
-<ul class="nav">
-  <li class="nav-item">
-    <h4><%= link_to 'Problems', problems_path, class: 'nav-link active' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link' %></h4>
-  </li>
-  <li class="nav-item">
-    <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link' %></h4>
-  </li>
-</ul>
-
-
-<% @categories.each do |tag| %>
+  <%= render "shared/ideate-tabs" %>
+  
+  <% @categories.each do |tag| %>
   <%= tag %>
   <% @problems.each do |problem| %>
     <% if problem.category === tag %>
@@ -32,10 +22,12 @@
 
             <div class="card-actions">
               <div class="author">
-                <img class="avatar-small" src="https://mindbodygreen-res.cloudinary.com/images/c_fill,w_250,h_250,g_face:center,q_85,fl_lossy,f_jpg/usr/RetocQT/20.jpg">
-                <p><%= problem.user.first_name %> <%= problem.user.last_name.first %></p>
+                  <% if problem.user.photo.attached? %>
+                    <p><span><%= cl_image_tag problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
+                  <% else %>
+                    <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
+                  <% end %>
               </div>
-
               <div class="votes">
                 <% if Vote.where(votable: problem, user:  current_user).empty? %>
                   <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
@@ -45,10 +37,8 @@
                   <i class="fas fa-star"></i>
                 <!-- comment button? -->
                 <% end %>
-                <p><%= problem.votes.count %></p>
-                
+                <p><%= problem.votes.count %></p>   
               </div>
-
               <div class="solutions">
                 <svg class="solution-icon"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -61,10 +51,7 @@
         <% end %>
     <% end %>
   <% end %>
-<% end %>
 
 
-<%= link_to 'Share a problem', new_problem_path %>
-<%= link_to 'Leaderboard', leaderboard_problems_path %>
-
-
+  <%= link_to 'Share a problem', new_problem_path %>
+</div>

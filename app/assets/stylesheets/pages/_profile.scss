@@ -1,0 +1,59 @@
+.container {
+  margin-left: 8px;
+  margin-top: 70px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+  padding: 24px;
+
+  .problem-card {
+    padding: 16px;
+    background-color: $red;
+    border-radius: 8px;
+    height: 90px;
+    width: 90px;
+    color: white;
+    margin: auto;
+  }
+
+  .solution-card {
+    padding: 16px;
+    background-color: $green;
+    border-radius: 8px;
+    height: 90px;
+    width: 90px;
+    color: white;
+  }
+
+  .pitch-card {
+    padding: 16px;
+    background-color: $dark-blue;
+    border-radius: 8px;
+    height: 90px;
+    width: 90px;
+    color: white;
+  }
+}
+
+tr {
+  width: 300px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+
+  .user-problems {
+    height: 24px;
+    width: 24px;
+    color: white;
+    background-color: $red;
+    border-radius: 5px;
+  }
+}
