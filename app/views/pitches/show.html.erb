@@ -17,19 +17,26 @@
     <h5>Description</h5>
     <p><%= @pitch.description %></p>
     <h6>POSTED BY</h6>
-    <p><%= @pitch.solution.user.first_name %> <%= @pitch.solution.user.last_name %></p>
     <div>
-      <p>Votes: <%= @pitch.solution.votes.count %></p>
-      <div class="actions">
-        <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
-          <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
-            <i class="far fa-star"></i>
-          <% end %>
+      <% if @pitch.user.photo.attached? %>
+        <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
         <% else %>
-          <i class="fas fa-star"></i>
-        <% end %>
-        <span><%= @pitch.votes.count %></span>
-      </div>
+          <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
+      <% end %>
+    </div> 
+    <div>
+      <p><span>
+        <div class="actions">
+          <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
+            <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <%= @pitch.votes.count %></span>
+        </div>
+      </p></span>
     </div>
     <div>
       <p><%= local_time_ago(@pitch.created_at) %></p>
