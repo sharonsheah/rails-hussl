@@ -1,3 +1,5 @@
+require 'open-uri'
+
 puts 'Wiping data...'
 
 Pitch.destroy_all
@@ -10,77 +12,116 @@ puts 'Creating 51 users...'
 
 # USERS
 
-default_user = User.create!(first_name: "Sharon", last_name: "Sheah", email: "user@user.com", password: "password")
+default_user = User.create!(
+                first_name: "Sharon",
+                last_name: "Sheah",
+                email: "user@user.com", 
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305401/sharon_sheah.jpg_dnrfpw.jpg")
+                default_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 50.times do
-  User.create!(first_name: Faker::Name.first_name, 
-  last_name: Faker::Name.last_name, 
+  fake_user = User.create!(first_name: Faker::Name.first_name, 
+  last_name: Faker::Name.last_name,
   email: Faker::Internet.email, 
-  password: "password")
+  password: "password"
+  )
+  file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600307295/default_profile_pic_ypyuhz.png")
+  fake_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 end
-
 
 #FAMOUS USERS
 
 airbnb_founder = User.create!(
                 first_name: "Brian", 
-                last_name: "Chesky", 
-                email: Faker::Internet.email, 
-                password: "password")
+                last_name: "Chesky",
+                email: Faker::Internet.email,
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305269/brian_chesky_vg8c3n.jpg")
+                airbnb_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 uber_founder = User.create!(
                 first_name: "Travis", 
-                last_name: "Kalanick", 
+                last_name: "Kalanick",
                 email: Faker::Internet.email, 
-                password: "password")
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/travis_kalanick_fgwvty.jpg")
+                uber_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 facebook_founder = User.create!(
                 first_name: "Mark", 
-                last_name: "Zuckerberg", 
+                last_name: "Zuckerberg",
                 email: Faker::Internet.email, 
-                password: "password")
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305857/mark_zuckerberg_xzbrw6.jpg")
+                facebook_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 importio_founder = User.create!(
                     first_name: "Matthew", 
-                    last_name: "Painter", 
+                    last_name: "Painter",
                     email: Faker::Internet.email, 
-                    password: "password")
+                    password: "password"
+                    )
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/matthew_painter_v4fkwe.jpg")
+                    importio_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 recyclebank_founder = User.create!(
-                    first_name: "Ron", 
-                    last_name: "Gonen", 
-                    email: Faker::Internet.email, 
-                    password: "password")
+                    first_name: "Ron",
+                    last_name: "Gonen",
+                    email: Faker::Internet.email,
+                    password: "password"
+                    )
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/ron_gonen_u9zuk5.jpg")
+                    recyclebank_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 treeplanet_founder = User.create!(
                     first_name: "Kim", 
-                    last_name: "Hyung-soo", 
+                    last_name: "Hyung-soo",
                     email: Faker::Internet.email, 
-                    password: "password")
+                    password: "password"
+                    )
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/kim_hyung_soo_ov1s99.jpg")
+                    treeplanet_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 solarity_founder = User.create!(
                     first_name: "Horacio", 
                     last_name: "Melo", 
                     email: Faker::Internet.email, 
-                    password: "password")
+                    password: "password"
+                    )
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305857/horacio_melo_jc7nhh.jpg")
+                    solarity_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 aussie_founder = User.create!(
                 first_name: "Mathieu", 
-                last_name: "Longe", 
+                last_name: "Longe",
                 email: Faker::Internet.email, 
-                password: "password")
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/mathieu_longe_uga63s.jpg")
+                aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 homies_founder = User.create!(
                 first_name: "Sergey", 
-                last_name: "Osipov", 
+                last_name: "Osipov",
                 email: Faker::Internet.email, 
-                password: "password")
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/sergey_osipov_sut4sf.jpg")
+                aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 weather_founder = User.create!(
                 first_name: "Sam", 
-                last_name: "Cheney", 
+                last_name: "Cheney",
                 email: Faker::Internet.email, 
-                password: "password")
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/sam_cheney_lxydqy.jpg")
+                aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 
 puts 'Creating problems...'
@@ -106,7 +147,7 @@ recyclebank_problem = Problem.create!(title: "Recycling household waste", descri
 
 treeplanet_problem = Problem.create!(title: "Lack of commitment to planting new trees", description: "Deforestation is responsible for 15% of global greenhouse gas emissions. Planting new trees and whole forests is important for maintaining the natural balance but not so many people are taking action.", user: User.all.sample, category: "Education")
 
-solarity_problem = Problem.create!(title: "Solar energ is not popular enough", description: "Usually solar installations often are built quicker than a transmission network. Thus many companies and individuals can’t benefit from country’s solar energy potential.", user: User.all.sample, category: "Real Estate & Construction")
+solarity_problem = Problem.create!(title: "Solar energy is not popular enough", description: "Usually solar installations often are built quicker than a transmission network. Thus many companies and individuals can’t benefit from country’s solar energy potential.", user: User.all.sample, category: "Real Estate & Construction")
 
 uaroads_problem = Problem.create!(title: "Lack of quality roads", description: "The quality of Ukrainian roads is nothing but satisfactory. As many as 95% of them need a repair but government lacks money for monitoring their quality.", user: User.all.sample, category: "Real Estate & Construction")
 
@@ -121,7 +162,6 @@ zerogachis_problem = Problem.create!(title: "Supermarkets throw away food", desc
 puts 'Creating solutions...'
 
 # SOLUTIONS
-
 
 airbnb_solution = Solution.create!(title: "Renting out private owned flats", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: airbnb_founder, problem: airbnb_problem)
 
@@ -148,6 +188,8 @@ puts 'Creating pitches...'
 airbnb_pitch = Pitch.create!(title: "Airbnb", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "https://docs.google.com/presentation/d/1BFFLHUN6acErGNW-huhD6OHMFlXPVmBDdZHFkj46Bg4/preview#slide=id.p", user: airbnb_founder, solution: airbnb_solution)
 
 uber_pitch = Pitch.create!(title: "Uber app", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "//www.slideshare.net/slideshow/embed_code/key/jrFtdtaSImlVh1" , user: uber_founder, solution: uber_solution)
+
+
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"
 

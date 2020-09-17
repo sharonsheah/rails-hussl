@@ -2,11 +2,13 @@
   <h2>Ideate</h2>
 
   <%= render "shared/ideate-tabs" %>
-
+  
   <% @categories.each do |tag| %>
+
     <%= tag %>
     <% @problems.each do |problem| %>
       <%= render "problem_card", problem: problem, tag: tag, star: true %>
+
     <% end %>
   <% end %>
 
