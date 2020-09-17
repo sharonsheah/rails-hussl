@@ -165,11 +165,13 @@ puts 'Creating solutions...'
 
 airbnb_solution = Solution.create!(title: "Renting out private owned flats", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: airbnb_founder, problem: airbnb_problem)
 
+facebook_solution = Solution.create!(title: "", description: "", user: airbnb_founder, problem: airbnb_problem)
+
 aussie_solution = Solution.create!(title: "Proudly Aussie", description: "A free application that connect you to the local producer: the producer is in the spotlight - UX optimized for businesses and customers.", user: aussie_founder, problem: aussie_problem)
 
 uber_solution = Solution.create!(title: "A booking app?", description: "On demand car service for professionals, convenience of a cab with the experience of a professional chauffeur. Automate dispatch to reduce wait time and guaranteed pickup.", user: uber_founder, problem: uber_problem)
 
-importio_solution = Solution.create!(title: "A user-friendly tool", description: "A tool that allows you to scrape data from websites and transform it into an organized table or structured API in less than a minute with no coding or training required. According to the site, the tool can be and is used for everything from personal data projects to app creation, data journalism, database population, competitive analysis and much more.", user: importio_founder, problem: importio_problem)
+importio_solution = Solution.create!(title: "A user-friendly dev tool", description: "A tool for developers that allows you to scrape data from websites and transform it into an organized table or structured API in less than a minute with no coding or training required. According to the site, the tool can be and is used for everything from personal data projects to app creation, data journalism, database population, competitive analysis and much more.", user: importio_founder, problem: importio_problem)
 
 homies_solution = Solution.create!(title: "Homies", description: "To build a Web App that keeps track of all bills, chores and events in the house.", user: homies_founder, problem: homies_problem)
 
@@ -185,11 +187,11 @@ puts 'Creating pitches...'
 
 # PITCHES
 
-airbnb_pitch = Pitch.create!(title: "Airbnb", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "https://docs.google.com/presentation/d/1BFFLHUN6acErGNW-huhD6OHMFlXPVmBDdZHFkj46Bg4/preview#slide=id.p", user: airbnb_founder, solution: airbnb_solution)
+airbnb_pitch = Pitch.create!(title: "Airbnb", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "https://docs.google.com/presentation/d/1BFFLHUN6acErGNW-huhD6OHMFlXPVmBDdZHFkj46Bg4/preview#slide=id.p", user: airbnb_founder, solution: airbnb_solution)
 
-uber_pitch = Pitch.create!(title: "Uber app", description: "Welcome to our pitch. A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "//www.slideshare.net/slideshow/embed_code/key/jrFtdtaSImlVh1" , user: uber_founder, solution: uber_solution)
+uber_pitch = Pitch.create!(title: "Uber", description: "Next-generation car service. A fast & efficient on-demand car service for professionals in American cities. It provides a 1-click car service", link: "//www.slideshare.net/slideshow/embed_code/key/jrFtdtaSImlVh1" , user: uber_founder, solution: uber_solution)
 
-
+facebook_pitch = Pitch.create!(title: "Facebook", description: "Facebook is an expanding online directory that connects students, alumni, faculty and staff through social networks at colleges and universities. This online directory allows for user connections on the basis of friendship, courses and social networks (including intra and inter-school networks), and has a built-in messaging system.", link: "//www.slideshare.net/slideshow/embed_code/key/ns8gcypQTWIeal" , user: facebook_founder, solution: facebook_solution)
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"
 
