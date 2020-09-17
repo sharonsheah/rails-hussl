@@ -1,6 +1,15 @@
-<div class="container">
+<div class="ideate-page">
+  <div class="header">
+    <div class="btn-profile">
+      <div class="text-right" style="font-size:7vw">
+        <%= link_to user_profiles_path(current_user) do %>
+          <i class="far fa-user"></i>
+        <% end %>
+      </div>
+    </div>
+	
 	<h2>Leaderboard</h2>
-
+	
 	<ul class="nav">
 		<li class="nav-item">
 			<h4><%= link_to 'Problems', leaderboard_problems_path, class: 'nav-link tabs' %></h4>
@@ -12,13 +21,16 @@
 			<h4><%= link_to 'Pitches', leaderboard_pitches_path, class: 'nav-link tab-active tabs' %></h4>
 		</li>
 	</ul>
+	</div>
 
-	<% @votes.first(10).each do |vote| %>
-		<% pitch = Pitch.find(vote.first) %>
-		<%= link_to pitch_path(pitch) do %>
-			<div>
-				<p><%= pitch.title %> Votes: <%= vote.last %></p>
-			</div>
+	<div class="ideate-content-container leaderboard-content-container pad-left">
+		<% @votes.first(10).each do |vote| %>
+			<% pitch = Pitch.find(vote.first) %>
+			<%= link_to pitch_path(pitch) do %>
+				<div>
+					<p><%= pitch.title %> Votes: <%= vote.last %></p>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
+	</div>
 </div>
