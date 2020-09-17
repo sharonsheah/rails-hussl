@@ -1,16 +1,11 @@
-<%# helper method doesn't work, needs fixing %>
-<% def active_class(link_path) %> 
-  <%= current_page?(link_path) ? "active" : "" %>
-<% end %>
-
 <ul class="nav">
   <li class="nav-item">
-    <h4 class="<%= active_class(problems_path) %>"><%= link_to 'Problems', leaderboard_problems_path, class: 'nav-link tabs' %></h4>
+    <h4><%= link_to 'Problems', leaderboard_problems_path, class: "#{ current_page?(leaderboard_problems_path) ? "nav-link tabs active" : "nav-link tabs" }" %></h4>
   </li>
   <li class="nav-item">
-    <h4 class="<%= active_class(solutions_path) %>"><%= link_to 'Solutions', leaderboard_solutions_path, class: 'nav-link tabs' %></h4>
+    <h4><%= link_to 'Solutions', leaderboard_solutions_path, class: "#{ current_page?(leaderboard_solutions_path) ? "nav-link tabs active" : "nav-link tabs" }" %></h4>
   </li>
   <li class="nav-item">
-    <h4 class="<%= active_class(pitches_path) %>"><%= link_to 'Pitches', leaderboard_pitches_path, class: 'nav-link tabs' %></h4>
+    <h4><%= link_to 'Pitches', leaderboard_pitches_path, class: "#{ current_page?(leaderboard_pitches_path) ? "nav-link tabs active" : "nav-link tabs" }" %></h4>
   </li>
 </ul>
