@@ -7,10 +7,18 @@
     <%= tag %>
     <% @problems.each do |problem| %>
       <% if problem.category === tag %>
-        <%= link_to problem_path(problem) do %>
           <div>
-            <h5><%= problem.title %></h5>
+            <%= link_to problem_path(problem) do %>
+              <h5><%= problem.title %></h5>
+            <% end %>
             <p><%=h truncate(problem.description, :length => 150) %></p>
+          </div>
+          <div class="">
+            <% if problem.user.photo.attached? %>
+              <p><span><%= cl_image_tag problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name %></span></p>
+              <% else %>
+                <img src="https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg" alt="user-avatar" height="24" width="24" style="crop:fill">
+            <% end %>
           </div>
           <div>
             <p><span>
@@ -23,13 +31,13 @@
                   <i class="fas fa-star"></i>
                 <!-- comment button? -->
                 <% end %>
-                <%= problem.votes.count %></span></p>
-                <div>
-                  <p><%= local_time_ago(problem.created_at) %></p>
-                </div> 
+                <%= problem.votes.count %>
               </div>
+            </span></p>
           </div>
-        <% end %>
+          <div>
+            <p><%= local_time_ago(problem.created_at) %></p>
+          </div>
       <% end %>
     <% end %>
   <% end %>
