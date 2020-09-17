@@ -18,7 +18,7 @@ class ProblemsController < ApplicationController
     @problem.user = current_user
     @problem.save!
 
-    redirect_to problems_path
+    redirect_to problems_path, notice: "Problem created!"
   end
 
   def leaderboard
@@ -39,4 +39,12 @@ class ProblemsController < ApplicationController
 	def set_params
 		params.require(:problem).permit(:title, :description, :category)
   end
+<<<<<<< HEAD
+=======
+
+  def save_previous_url
+    session[:previous_url] = URI(request.referer || '').path
+    @back_url = session[:previous_url]
+  end
+>>>>>>> ab05f678f21ba953f74d8019e0d9165469f7282a
 end

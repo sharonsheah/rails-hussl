@@ -20,7 +20,7 @@ class PitchesController < ApplicationController
       @pitch.user = current_user
       @pitch.save!
 
-      redirect_to pitch_path(@pitch)
+      redirect_to pitch_path(@pitch), notice: "Pitch submitted!"
   end
 
   def leaderboard
@@ -29,7 +29,7 @@ class PitchesController < ApplicationController
             .count
     @votes = votes_count.sort_by { |k, v| -v }
   end
-  
+
   def upvote
     @pitch = Pitch.find(params[:id])
     Vote.create(votable: @pitch, user: current_user)
