@@ -6,31 +6,7 @@
   <% @categories.each do |tag| %>
     <%= tag %>
     <% @problems.each do |problem| %>
-      <% if problem.category === tag %>
-        <%= link_to problem_path(problem) do %>
-          <div>
-            <h5><%= problem.title %></h5>
-            <p><%=h truncate(problem.description, :length => 150) %></p>
-          </div>
-          <div>
-            <p><span>
-              <div class="actions">
-                <% if Vote.where(votable: problem, user:  current_user).empty? %>
-                  <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
-                    <i class="far fa-star"></i>
-                  <% end %>
-                <% else %>
-                  <i class="fas fa-star"></i>
-                <!-- comment button? -->
-                <% end %>
-                <%= problem.votes.count %></span></p>
-                <div>
-                  <p><%= local_time_ago(problem.created_at) %></p>
-                </div> 
-              </div>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render "problem_card", problem: problem, tag: tag, star: true %>
     <% end %>
   <% end %>
 

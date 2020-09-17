@@ -1,0 +1,25 @@
+<% if problem.category === tag || tag == "rerender" %>
+  <%= link_to problem_path(problem), id: "problem_#{problem.id}" do %>
+    <div>
+      <h5><%= problem.title %></h5>
+      <p><%=h truncate(problem.description, :length => 150) %></p>
+    </div>
+    <div>
+      <p><span>
+        <div class="actions">
+          <% if Vote.where(votable: problem, user:  current_user).empty? && star != false %>
+            <%= link_to upvote_problem_path(problem), method: :post, remote: true, class: 'button' do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-star"></i>
+          <!-- comment button? -->
+          <% end %>
+          <%= problem.votes.count %></span></p>
+          <div>
+            <p><%= local_time_ago(problem.created_at) %></p>
+          </div> 
+        </div>
+    </div>
+  <% end %>
+<% end %>

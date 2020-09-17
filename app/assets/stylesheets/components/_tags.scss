@@ -1,0 +1,16 @@
+.tag-container {
+  width: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  text-transform: uppercase;
+
+  .solution-tag {
+    background-color: $red;
+    border-radius: 50px;
+  }
+
+  .solution-tag {
+    background-color: $yellow;
+    border-radius: 50px;
+  }
+}

@@ -8,13 +8,13 @@
     font-weight: bold;
     }
 
-  .string.required, .select.optional, .text.required {
+  .string.required, .select.optional, .text.required, .string.optional {
     font-size: 14px;
     letter-spacing: 0.5px;
     font-weight: bold;
   }
 
-  .form-control.string.required, .form-control.select.optional, .form-control.text.required {
+  .form-control.string.required, .form-control.select.optional, .form-control.text.required, .form-control.string.optional {
     background-color: $light-gray;
     border: none;
     font-weight: lighter;
