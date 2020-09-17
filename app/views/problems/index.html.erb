@@ -23,17 +23,16 @@
     </ul>
   </div>
 
-  <div class="problem-container pad-left">
+  <div class="ideate-content-container pad-left">
     <% @categories.each do |tag| %>
-    <div class="card-carousel">
-      <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
-      <div class="card-carousel-scroller">
-        <% @problems.each do |problem| %>
-          <%= render "problem_card", problem: problem, tag: tag, star: true %>
-        <% end %>
+      <div class="card-carousel">
+        <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
+        <div class="card-carousel-scroller">
+          <% @problems.each do |problem| %>
+            <%= render "problem_card", problem: problem, tag: tag, star: true %>
+          <% end %>
+        </div>
       </div>
-    </div>
-
     <% end %>
   </div>
 </div>
