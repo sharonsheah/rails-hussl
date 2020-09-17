@@ -4,6 +4,10 @@
   </div>
 
   <div>
+    <div>
+      <%= render "shared/solution-tags" %>
+    </div>
+    
     <h2><%= @solution.title %></h2>
       <div class="actions">
         <% if Vote.where(votable: @solution, user:  current_user).empty? %>

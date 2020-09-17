@@ -12,6 +12,10 @@
   </div>
 
   <div class="pitch-card">
+    <div>
+     <%= render "shared/pitch-tags" %>
+    </div>
+    
     <h5>Solving</h5>
     <p><%= @pitch.solution.problem.title %></p>
     <h5>Description</h5>
