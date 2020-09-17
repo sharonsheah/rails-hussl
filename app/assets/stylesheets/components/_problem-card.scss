@@ -1,9 +1,10 @@
 .problem-card {
-    height: 141px;
+    height: 145px;
     width: 236px;
     border-radius: 10px;
     padding: 16px;
-    margin: 8px;
+    margin: 0px 8px;
+    position: relative;
 }
 
 .dark-blue {
@@ -46,23 +47,22 @@
 .card-text {
     width: 100%;
     color: $white;
-    
     p {
         $font-family-sans-serif:  $body-font;
         font-size: 13px;
         font-weight: 200;
-        white-space: nowrap;
-    overflow: hidden;
-    text-overflow: clip;
+        overflow: hidden;
+        text-overflow: clip;
+        height: 40px;
     }
 }
 
 .card-actions {
     display: flex;
-    width: 100%;
     height: 30px;
-    position: relative;
-    bottom: -25px;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 16px;
     p, i {
         color: $white;
     }
@@ -70,7 +70,7 @@
 
 .author {
     display: flex;
-    width: 120px;
+    width: 140px;
     align-items:center;
     p {
         font-size: 12px;
@@ -103,4 +103,29 @@
 }
 .solutions, .collaborators {
     margin-left: 16px; 
+}
+
+.solution-card {
+    height: 165px;
+}
+
+.solving-tag {
+    display: block;
+    background-color: $dark-blue;
+    width: fit-content;
+    padding: 6px 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+    max-width: -webkit-fill-available;
+    margin: 4px;
+    p {
+        color: $white;
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
