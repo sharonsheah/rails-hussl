@@ -7,8 +7,17 @@
     <% @pitches.each do |pitch| %>
       <%= link_to pitch_path(pitch) do %>
         <h4><%= pitch.title %></h4>
-        <p><%=h truncate(pitch.description, :length => 150) %></p>
-        <div>
+      <% end %>
+      <p><%=h truncate(pitch.description, :length => 150) %></p>
+      <div>
+        <% if pitch.user.photo.attached? %>
+          <p><span><%= cl_image_tag pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
+          <% else %>
+            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
+        <% end %>
+      </div> 
+      <p><span>
+        <div class="actions">
           <% if Vote.where(votable: pitch, user:  current_user).empty? %>
             <%= link_to upvote_pitch_path(pitch, pitch.solution), method: :post, class: 'button'  do %>
               <i class="far fa-thumbs-up"></i>
@@ -16,15 +25,12 @@
           <% else %>
             <i class="fas fa-thumbs-up"></i>
           <% end %>
-
-          <p>Votes: <%= pitch.votes.count %></p>
+          <%= pitch.votes.count %>
         </div>
-
-        <div>
-          <p><%= local_time_ago(pitch.created_at) %></p>
-        </div>
-
-        <% end %>
+      </span></p>
+      <div>
+        <p><%= local_time_ago(pitch.created_at) %></p>
+      </div>
     <% end %>
   </div>
 </div>

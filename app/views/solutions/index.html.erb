@@ -12,7 +12,13 @@
             <div>
               <h4><%= solution.title %></h4>
               <p><%=h truncate(solution.description, :length => 150) %></p>
-
+              <div>
+                <% if solution.user.photo.attached? %>
+                  <p><span><%= cl_image_tag solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= solution.user.first_name %> <%= solution.user.last_name %></span></p>
+                  <% else %>
+                    <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= solution.user.first_name %> <%= solution.user.last_name %></span></p>
+                <% end %>
+              </div>
               <div class="actions">
                 <% if Vote.where(votable: solution, user:  current_user).empty? %>
                   <%= link_to upvote_solution_path(solution, solution.problem), method: :post, class: 'button'  do %>

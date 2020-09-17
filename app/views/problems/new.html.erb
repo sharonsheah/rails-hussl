@@ -10,11 +10,12 @@
           <%= f.input :category, collection: Problem::CATEGORY %>
           <%= f.button :submit, "Share problem", class: "btn btn-info" %>
         <% end %>
-
+        
       </div>
+      <%= link_to "Back", @back_url %>  
     </div>
   </div>
 </div>
 
-<%= link_to "Back", @back_url %>
+
 

@@ -32,22 +32,30 @@
     <h5>Description</h5>
     <p><%= @solution.description %></p>
     <h6>POSTED BY</h6>
-    <p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
+    <div>
+      <% if @solution.user.photo.attached? %>
+        <p><span><%= cl_image_tag @solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+        <% else %>
+          <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+      <% end %>
+    </div>    
     <h6>COLLABORATORS</h6>
-    <% @solution.collaborators.each do |user|%>
-    <p><%= user.first_name %> <%= user.last_name  %></p>
+    <% @solution.collaborators.each do |user|%> 
+    <p><%= cl_image_tag user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= user.first_name %> <%= user.last_name  %></p>
     <% end %>
     <div>
-      <p>Votes: <%= @solution.votes.count %></p>
-      <div class="actions">
-        <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-          <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-            <i class="far fa-thumbs-up"></i>
+      <p><span>
+        <div class="actions">
+          <% if Vote.where(votable: @solution, user:  current_user).empty? %>
+            <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
+              <i class="far fa-thumbs-up"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-thumbs-up"></i>
           <% end %>
-        <% else %>
-          <i class="fas fa-thumbs-up"></i>
-        <% end %>
-      </div>
+          <%= @solution.votes.count %>
+        </div>
+      </span></p>
     </div>
     <div>
       <p><%= local_time_ago(@solution.created_at) %></p>
@@ -62,7 +70,6 @@
       <% if @solution.pitches.exists? %>
         <% @pitches.each do |pitch| %>
           <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
-
           <p><%= pitch.description %></p>
 
           <div class="actions">
