@@ -41,7 +41,11 @@
     </div>    
     <h6>COLLABORATORS</h6>
     <% @solution.collaborators.each do |user|%> 
-    <p><%= cl_image_tag user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= user.first_name %> <%= user.last_name  %></p>
+      <% if user.photo.attached? %>
+        <p><%= cl_image_tag user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= user.first_name %> <%= user.last_name  %></p>
+      <% else %>
+          <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+      <% end %>
     <% end %>
     <div>
       <p><span>
@@ -66,7 +70,7 @@
   <div>
     <h4>Pitches</h4>
     <div>
-      <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution) %>
+      <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
       <% if @solution.pitches.exists? %>
         <% @pitches.each do |pitch| %>
           <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
