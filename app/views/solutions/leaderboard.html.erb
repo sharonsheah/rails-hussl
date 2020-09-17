@@ -1,7 +1,17 @@
 <div class="container">
 	<h2>Leaderboard</h2>
 
-	<%= render "shared/leaderboard-tabs" %>
+	<ul class="nav">
+		<li class="nav-item">
+			<h4><%= link_to 'Problems', leaderboard_problems_path, class: 'nav-link tabs' %></h4>
+		</li>
+		<li class="nav-item">
+			<h4><%= link_to 'Solutions', leaderboard_solutions_path, class: 'nav-link tab-active tabs' %></h4>
+		</li>
+		<li class="nav-item">
+			<h4><%= link_to 'Pitches', leaderboard_pitches_path, class: 'nav-link tabs' %></h4>
+		</li>
+	</ul>
 
 	<% @votes.first(10).each do |vote| %>
 		<% solution = Solution.find(vote.first) %>
