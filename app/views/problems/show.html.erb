@@ -14,7 +14,7 @@
 
   <div>
 
-   <%= render "shared/solution-tags" %>
+   <%= render "shared/problem-tags" %>
 
     <p><%= @problem.description %></p>
     <h6>POSTED BY</h6>
@@ -49,6 +49,9 @@
   <div>
     <h4>Solutions</h4>
     <div>
+      <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+    </div>
+    <div>
       <% @solutions.each do |solution| %>
 
         <div>
@@ -79,9 +82,5 @@
         </div>
       <% end %>
     </div>
-  </div>
-
-  <div>
-    <%= link_to 'Submit a solution', new_problem_solution_path(@problem) %>
   </div>
 </div>
