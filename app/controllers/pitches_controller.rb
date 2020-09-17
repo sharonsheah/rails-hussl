@@ -1,6 +1,4 @@
 class PitchesController < ApplicationController
-  after_action :save_previous_url, only: [ :show, :new ]
-
   def index
     @pitches = Pitch.all
   end
@@ -42,10 +40,5 @@ class PitchesController < ApplicationController
 
   def pitch_params
       params.require(:pitch).permit(:title, :description)
-  end
-
-  def save_previous_url
-    session[:previous_url] = URI(request.referer || '').path
-    @back_url = session[:previous_url]
   end
 end

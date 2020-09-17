@@ -2,6 +2,7 @@ require 'open-uri'
 
 puts 'Wiping data...'
 
+Collaboration.destroy_all
 Pitch.destroy_all
 Solution.destroy_all
 Problem.destroy_all
@@ -131,6 +132,8 @@ puts 'Creating problems...'
 
 airbnb_problem = Problem.create!(title: "Hotels are too expensive", description: "Price is important concern for customers booking travel online. Hotels leave you disconnected from the city and its culture. No easy way exists to book a room with a local or become a host.", user: User.all.sample, category: "Consumer")
 
+facebook_problem = Problem.create!(title: "Can't remember all my classmates", description: "Coming from a big cohort, it is difficult for me to remember every single one of my classmates and also makes me lose connections over the years. Is there a platform for me to stay connected with my classmates when I graduate?", user: User.all.sample, category: "Consumer")
+
 aussie_problem = Problem.create!(title: "Products made in STRAYAAA", description: "I only want to buy products made in australia by australians for australians. Products made in Australia can be very hard to source (not accessible and take time). No clear supply and hard to interact online with local producers.", user: User.all.sample, category: "Consumer")
 
 heroku_problem = Problem.create!(title: "Heroku keeps ruining my layout", description: "There has to be a better way.", user: User.all.sample, category: "Software & Services")
@@ -165,13 +168,17 @@ puts 'Creating solutions...'
 
 airbnb_solution = Solution.create!(title: "Renting out private owned flats", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: airbnb_founder, problem: airbnb_problem)
 
-facebook_solution = Solution.create!(title: "", description: "", user: airbnb_founder, problem: airbnb_problem)
+facebook_solution = Solution.create!(title: "Digital Yearbook", description: "A digital yearbook that allows classmates and staff members stay connected wherever they may go in the future. Everyone nowadays move away from their home town and with globalisation happening, we are more likely to get disconnected. Let's stay connected with a digital yearbook", user: facebook_founder, problem: facebook_problem)
 
 aussie_solution = Solution.create!(title: "Proudly Aussie", description: "A free application that connect you to the local producer: the producer is in the spotlight - UX optimized for businesses and customers.", user: aussie_founder, problem: aussie_problem)
 
-uber_solution = Solution.create!(title: "A booking app?", description: "On demand car service for professionals, convenience of a cab with the experience of a professional chauffeur. Automate dispatch to reduce wait time and guaranteed pickup.", user: uber_founder, problem: uber_problem)
+uber_solution = Solution.create!(title: "Cab booking app", description: "On demand car service for professionals, convenience of a cab with the experience of a professional chauffeur. Automate dispatch to reduce wait time and guaranteed pickup.", user: uber_founder, problem: uber_problem)
 
-importio_solution = Solution.create!(title: "A user-friendly dev tool", description: "A tool for developers that allows you to scrape data from websites and transform it into an organized table or structured API in less than a minute with no coding or training required. According to the site, the tool can be and is used for everything from personal data projects to app creation, data journalism, database population, competitive analysis and much more.", user: importio_founder, problem: importio_problem)
+grab_solution = Solution.create!(title: "Ride sharing for SEA", description: "A multilingual taxi booking app that auto-detects customers' current location. It is very important that Southeast Asian countries' transportation sector are often chaotic and unorganised. We need to build something that can fit into the SEA market. A final established price is essential in SEA.", user: User.all.sample, problem: uber_problem)
+
+didi_solution = Solution.create!(title: "Focus on drivers' happiness", description: "", user: User.all.sample, problem: uber_problem)
+
+importio_solution = Solution.create!(title: "User-friendly dev tool", description: "A tool for developers that allows you to scrape data from websites and transform it into an organized table or structured API in less than a minute with no coding or training required. According to the site, the tool can be and is used for everything from personal data projects to app creation, data journalism, database population, competitive analysis and much more.", user: importio_founder, problem: importio_problem)
 
 homies_solution = Solution.create!(title: "Homies", description: "To build a Web App that keeps track of all bills, chores and events in the house.", user: homies_founder, problem: homies_problem)
 
