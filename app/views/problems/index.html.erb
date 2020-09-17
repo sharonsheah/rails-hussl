@@ -1,58 +1,23 @@
 <div class="ideate-page container">
+
+  <div class="text-right" style="font-size:7vw">
+    <%= link_to user_profiles_path(current_user) do %>
+      <i class="far fa-user"></i>
+    <% end %>
+  </div>
+
   <h2>Ideate</h2>
 
   <%= render "shared/ideate-tabs" %>
   
   <% @categories.each do |tag| %>
-  <%= tag %>
-  <% @problems.each do |problem| %>
-    <% if problem.category === tag %>
-        <%= link_to problem_path(problem) do %>
-          <div class="problem-card">
-            <div class="card-title">
-              <h5><%= problem.title %></h5>
-              <div class="time-ago">
-                <p><%= local_time_ago(problem.created_at) %></p>
-              </div>
-            </div>
 
-            <div class="card-text">
-              <p><%=h truncate(problem.description, :length => 150) %></p>
-            </div>
+    <%= tag %>
+    <% @problems.each do |problem| %>
 
-            <div class="card-actions">
-              <div class="author">
-                  <% if problem.user.photo.attached? %>
-                    <p><span><%= cl_image_tag problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
-                  <% else %>
-                    <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
-                  <% end %>
-              </div>
-              <div class="votes">
-                <% if Vote.where(votable: problem, user:  current_user).empty? %>
-                  <%= link_to upvote_problem_path(problem), method: :post, class: 'button'  do %>
-                    <i class="far fa-star"></i>
-                  <% end %>
-                <% else %>
-                  <i class="fas fa-star"></i>
-                <!-- comment button? -->
-                <% end %>
-                <p><%= problem.votes.count %></p>   
-              </div>
-              <div class="solutions">
-                <svg class="solution-icon"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-                <p><%= problem.solutions.count %></p>
-              </div>
+      <%= render "problem_card", problem: problem, tag: tag, star: true %>
 
-            </div>
-          </div>
-        <% end %>
-      <% end %>
     <% end %>
   <% end %>
-
-
   <%= link_to 'Share a problem', new_problem_path %>
 </div>
