@@ -1,4 +1,11 @@
 <div class="ideate-page container">
+
+  <div class="text-right" style="font-size:7vw">
+    <%= link_to user_profiles_path(current_user) do %>
+      <i class="far fa-user"></i>
+    <% end %>
+  </div>
+
   <h2>Ideate</h2>
 
   <%= render "shared/ideate-tabs" %>
@@ -7,11 +14,10 @@
 
     <%= tag %>
     <% @problems.each do |problem| %>
+
       <%= render "problem_card", problem: problem, tag: tag, star: true %>
 
     <% end %>
   <% end %>
-
-
   <%= link_to 'Share a problem', new_problem_path %>
 </div>

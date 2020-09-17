@@ -43,11 +43,15 @@
   }
 }
 
+.submitted {
+  padding: 24px;
+}
+
 tr {
   width: 300px;
   height: auto;
   display: grid;
-  grid-template-columns: 0.5fr 2fr 0.5fr;
+  grid-template-columns: 0.5fr 2.25fr 0.25fr;
 
   .user-problems {
     height: 24px;
@@ -56,4 +60,60 @@ tr {
     background-color: $red;
     border-radius: 5px;
   }
+  .user-solutions {
+    height: 24px;
+    width: 24px;
+    color: white;
+    background-color: $green;
+    border-radius: 5px;
+  }
+
+  .user-pitches {
+    height: 24px;
+    width: 24px;
+    color: white;
+    background-color: $dark-blue;
+    border-radius: 5px;
+  }
+}
+
+.dropbtn {
+  background-color: $dark-blue;
+  color: white;
+  height: 40px;
+  width: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.dropup {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  color: $dark-blue;
+  min-width: 80px;
+  z-index: 1;
+}
+
+.dropup-content a {
+  color: $dark-blue;
+  padding: 8px 4px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: $yellow;
+  color: $dark-blue;
 }
