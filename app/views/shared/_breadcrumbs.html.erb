@@ -4,7 +4,24 @@
   </ol>
 </nav>
 
-<%# Show pages %>
+<%# Problem#show page %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Problems', problems_path %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @problem.title %></li>
+  </ol>
+</nav>
+
+<%# Solution#show page %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Problem', solutions_path %></li>
+    <li class="breadcrumb-item"><%= link_to @solution.title, solutions_path %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @solution.title %></li>
+  </ol>
+</nav>
+
+<%# Pitch#show page %>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -12,19 +29,33 @@
   </ol>
 </nav>
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Library</li>
-  </ol>
-</nav>
-
-<%# Submit form pages %>
-
+<%# Submit Problem form pages %>
+<%# Submit Solution form pages %>
+<%# Submit Pitch form pages %>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Ideate</a></li>
-    <li class="breadcrumb-item"><a href="#">Library</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Data</li>
+    <li class="breadcrumb-item"><a href="#">Problem</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Solution</li>
   </ol>
 </nav>
+
+
+<%# From leaderboard pages %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Leaderboard</a></li>
+    <li class="breadcrumb-item"><a href="#">Problem</a></li>
+    <li class="breadcrumb-item active" aria-current="page"></li>
+  </ol>
+</nav>
+
+
+
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>

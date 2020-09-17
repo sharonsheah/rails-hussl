@@ -176,9 +176,9 @@ uber_solution = Solution.create!(title: "Cab booking app", description: "On dema
 
 grab_solution = Solution.create!(title: "Ride sharing for SEA", description: "A multilingual taxi booking app that auto-detects customers' current location. It is very important that Southeast Asian countries' transportation sector are often chaotic and unorganised. We need to build something that can fit into the SEA market. A final established price is essential in SEA.", user: User.all.sample, problem: uber_problem)
 
-didi_solution = Solution.create!(title: "Focus on drivers' happiness", description: "", user: User.all.sample, problem: uber_problem)
+didi_solution = Solution.create!(title: "Focus on drivers' happiness", description: "A ride sharing app that focuses on giving driver's satisfaction and benefits by providing insurance and subsidies.", user: User.all.sample, problem: uber_problem)
 
-importio_solution = Solution.create!(title: "User-friendly dev tool", description: "A tool for developers that allows you to scrape data from websites and transform it into an organized table or structured API in less than a minute with no coding or training required. According to the site, the tool can be and is used for everything from personal data projects to app creation, data journalism, database population, competitive analysis and much more.", user: importio_founder, problem: importio_problem)
+importio_solution = Solution.create!(title: "User-friendly dev tool", description: "A dev tool that allows you to scrape data from websites and transform it into an organized table or structured API in less than a minute with no coding or training required. According to the site, the tool can be and is used for everything from personal data projects to app creation, data journalism, database population, competitive analysis and much more.", user: importio_founder, problem: importio_problem)
 
 homies_solution = Solution.create!(title: "Homies", description: "To build a Web App that keeps track of all bills, chores and events in the house.", user: homies_founder, problem: homies_problem)
 
