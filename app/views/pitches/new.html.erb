@@ -23,13 +23,18 @@
   Votes: <%= @solution.votes.count %>
 </div>
 <br>
-<div>
-  <%= simple_form_for [ @problem, @solution, @pitch ] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :link %>
-    <%= f.submit %>
-  <% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="form">
+        <%= simple_form_for [ @problem, @solution, @pitch ] do |f| %>
+          <%= f.input :title , placeholder: "Enter your pitch title" %>
+          <%= f.input :description, placeholder: "Enter your full pitch description" %>
+          <%= f.input :link %>
+          <%= f.button :submit, "Submit solution", class: "btn btn-info" %>
+        <% end %>       
+      </div>    
+    </div>
+  </div>
 </div>
-
-

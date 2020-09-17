@@ -32,7 +32,7 @@ class ProblemsController < ApplicationController
   def upvote
     @problem = Problem.find(params[:id])
     Vote.create(votable: @problem, user: current_user)
-    redirect_to problems_path
+    # redirect_to problems_path
   end
 
   private
