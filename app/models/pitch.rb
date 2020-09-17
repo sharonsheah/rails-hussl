@@ -4,7 +4,7 @@ class Pitch < ApplicationRecord
   has_one :problem, through: :solution
   has_many :votes, as: :votable
   
-  validates :title, length: { in: 6..60 }, presence: true, uniqueness: true
-  validates :description, length: { maximum: 360 }, presence: true
+  validates :title, length: { in: 3..60 }, presence: true, uniqueness: true
+  validates :description, length: { maximum: 400 }, presence: true
   validates :link, uniqueness: true
 end

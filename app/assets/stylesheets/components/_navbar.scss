@@ -10,6 +10,7 @@
   border-top-right-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 0 !important;
+  z-index: 1000;
 }
 
 .icons {
@@ -21,17 +22,10 @@
 }
 
 .icon-add {
-  height: 50px;
-  weight: 50px;
-  -webkit-filter: drop-shadow( 0 0 8px #E6E6E6 );
-  filter: drop-shadow( 0 0 8px #E6E6E6 );
+  height: 70px;
+  width: 70px;
 }
 
-
-svg {
-  color:$dark-blue;
-}
-
-svg:active {
+.active {
   color: $yellow;
 }

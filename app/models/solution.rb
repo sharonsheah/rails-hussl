@@ -6,6 +6,6 @@ class Solution < ApplicationRecord
   has_many :collaborations
   has_many :collaborators, through: :collaborations, source: :user
 
-  validates :title, presence: true, uniqueness: true, length: { in: 6..60 }
-  validates :description, presence: true, length: { maximum: 360 }
+  validates :title, presence: true, uniqueness: true, length: { in: 3..60 }
+  validates :description, presence: true, length: { maximum: 400 }
 end
