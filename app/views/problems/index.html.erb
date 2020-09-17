@@ -1,12 +1,14 @@
 <div class="ideate-page container">
 
-  <div class="text-right" style="font-size:7vw">
-    <%= link_to user_profiles_path(current_user) do %>
+  <div class="mr-4 d-flex justify-content-between" style="font-size:7vw">
+      <h2>Ideate</h2>
+        <%= link_to user_profiles_path(current_user) do %>
       <i class="far fa-user"></i>
     <% end %>
+
   </div>
 
-  <h2>Ideate</h2>
+
 
   <%= render "shared/ideate-tabs" %>
 
