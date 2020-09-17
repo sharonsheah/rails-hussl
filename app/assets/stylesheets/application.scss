@@ -18,6 +18,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Spartan', sans-serif;
+  font-weight: 600;
 }
 
 p {
@@ -51,6 +52,10 @@ h4 {
 }
 
 h5 {
+  font-size: 16px;
+}
+
+h6 {
   font-size: 12px;
 }
 
@@ -84,6 +89,7 @@ img {
 .small-btn {
   padding: 4px 8px;
   font-size: 12px;
+  font-weight: 800;
   width: 10%;
   letter-spacing: 0.5px;
   background-color: $yellow;
@@ -91,4 +97,8 @@ img {
   border-radius: 50px;
   box-shadow: $box-shadow;
   margin: 10px 0;
+}
+
+.breadcrumb {
+  margin-right: 20px;
 }
