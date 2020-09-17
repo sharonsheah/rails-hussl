@@ -1,6 +1,8 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  top: 50px;
   z-index: 1000;
+  min-width: -webkit-fill-available;
+  background-color: #D4EDDA;
+  color: #155724;
 }
