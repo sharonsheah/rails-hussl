@@ -1,21 +1,18 @@
-<%# <div class="btn-back">
-  <%# <%= link_to @pitch.solution.title, solution_path(@pitch.solution) %>
-  <%# <%= link_to :back %>
-<%# </div> %>
 <div class="container">
-  <div class="btn-back">
-    <%= link_to "Back", @back_url %>
-  </div>
-
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), problem_path() %>...</li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @pitch.title %></li>
+    </ol>
+  </nav>
   <div>
     <h2><%= @pitch.title %></h2>
   </div>
-
+  <div>
+    <%= render "shared/pitch-tags" %>
+  </div>
+  <br>
   <div class="pitch-card">
-    <div>
-     <%= render "shared/pitch-tags" %>
-    </div>
-    
     <h5>Solving</h5>
     <p><%= @pitch.solution.problem.title %></p>
     <h5>Description</h5>

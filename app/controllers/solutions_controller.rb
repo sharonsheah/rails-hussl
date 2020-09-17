@@ -1,6 +1,4 @@
 class SolutionsController < ApplicationController
-  after_action :save_previous_url, only: [ :show, :new ]
-
   def index
     @solutions = Solution.all
     @categories = Problem::CATEGORY
@@ -50,10 +48,5 @@ class SolutionsController < ApplicationController
 
   def set_params
     params.require(:solution).permit(:title, :description)
-  end
-
-  def save_previous_url
-    session[:previous_url] = URI(request.referer || '').path
-    @back_url = session[:previous_url]
   end
 end

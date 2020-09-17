@@ -1,8 +1,13 @@
-<div class="container">
-  <h1>hussl.</h1>
-  <p>Where startups are born.</p>
+<div class="home-bg">
+  <div>
+    <h1 class="hussl-big-white">hussl<span class="hussl-big-yellow">.</span></h1>
+    <h4 class="hussl-small-white">Make it happen.</h4>
+  </div>
 
-  <%= link_to 'Sign up', new_user_registration_path %>
-  <%= link_to 'Log in', new_user_session_path %>
+  <div class="cta">
+  <h5>Start ideating now</h5>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'btn' %>
+    <%= link_to 'Log in', new_user_session_path, class: 'btn' %>
+  </div>
   <%= render "shared/navbar" if user_signed_in? %>
 </div>

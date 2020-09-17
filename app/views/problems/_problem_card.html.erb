@@ -4,7 +4,7 @@
     <%= link_to problem_path(problem) do %>
       <div class="problem-card dark-blue">
         <div class="card-title">
-          <h5><%= problem.title %></h5>
+          <h5 class="pb-2"><%= problem.title %></h5>
           <div class="time-ago">
             <p><%= local_time_ago(problem.created_at) %></p>
           </div>

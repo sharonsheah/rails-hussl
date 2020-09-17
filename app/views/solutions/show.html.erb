@@ -1,35 +1,15 @@
 <div class="container">
-  <div class="btn-back">
-    <%= link_to "Back", @back_url %>
-  </div>
-
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to @solution.problem.title.first(10), problem_path(@solution.problem) %>...</li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @solution.title.first(7) %>...</li>
+    </ol>
+  </nav>
+  <h3><%= @solution.title %></h3>
   <div>
-    <div>
-      <%= render "shared/solution-tags" %>
-    </div>
-    
-    <h2><%= @solution.title %></h2>
-      <div class="actions">
-        <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-          <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-            <i class="far fa-thumbs-up"></i>
-          <% end %>
-        <% else %>
-          <i class="fas fa-thumbs-up"></i>
-        <% end %>
-        <span><%= @solution.votes.count %></span>
-
-        <% if @solution.collaborators.include?(current_user) %>
-          <i class="fas fa-hand-paper"></i>
-        <% else %>
-          <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button'  do %>
-            <i class="far fa-hand-paper"></i>
-          <% end %>
-        <% end %>
-        <span><%= @solution.collaborators.count %></span>
-      </div>
+    <%= render "shared/solution-tags" %>
   </div>
-
+  <br>
   <div>
     <h5>Solving</h5>
     <p><%= @solution.problem.title %></p>
@@ -43,42 +23,54 @@
           <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
       <% end %>
     </div>    
-    <h6>COLLABORATORS</h6>
-    <% @solution.collaborators.each do |user|%> 
-      <% if user.photo.attached? %>
-        <p><%= cl_image_tag user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= user.first_name %> <%= user.last_name  %></p>
+    <div class="actions">
+      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
+        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
+          <i class="far fa-thumbs-up"></i>
+        <% end %>
       <% else %>
-          <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+        <i class="fas fa-thumbs-up"></i>
       <% end %>
+      <span><%= @solution.votes.count %></span>
+
+      <% if @solution.collaborators.include?(current_user) %>
+        <i class="fas fa-hand-paper"></i>
+      <% else %>
+        <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button'  do %>
+          <i class="far fa-hand-paper"></i>
+        <% end %>
+      <% end %>
+      <span><%= @solution.collaborators.count %></span>
+    </div>
+    <div>
+      <small><%= local_time_ago(@solution.created_at) %></small>
+    </div>
+    <br>
+    <h6>COLLABORATORS</h6>
+    <% if @solution.collaborators.exists? %>
+      <% @solution.collaborators.each do |user|%> 
+        <% if user.photo.attached? %>
+          <p><%= cl_image_tag user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= user.first_name %> <%= user.last_name  %></p>
+        <% else %>
+            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <i>Raise your hand to be the first collaborator!</i>
     <% end %>
-    <div>
-      <p><span>
-        <div class="actions">
-          <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-            <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-              <i class="far fa-thumbs-up"></i>
-            <% end %>
-          <% else %>
-            <i class="fas fa-thumbs-up"></i>
-          <% end %>
-          <%= @solution.votes.count %>
-        </div>
-      </span></p>
-    </div>
-    <div>
-      <p><%= local_time_ago(@solution.created_at) %></p>
-    </div>
   </div>
 
 
-  <div>
-    <h4>Pitches</h4>
-    <div>
-      <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+  <div class="pr-3">
+    <div class="row px-3 align-items-center justify-content-between">
+      <h4 class="my-3">Pitches</h4>
+      <div class="my-3">
+        <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+      </div>
+    </div>
       <% if @solution.pitches.exists? %>
         <% @pitches.each do |pitch| %>
           <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
-          <p><%= pitch.description %></p>
 
           <div class="actions">
             <% if Vote.where(votable: pitch, user:  current_user).empty? %>
@@ -91,16 +83,11 @@
             <span><%= pitch.votes.count %></span>
           </div>
         <% end %>
-        <% @solution.pitches.each do |pitch| %>
-          <div class="pitch-link">
-            <iframe src="<%= pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="250px" width="350px" allowfullscreen></iframe>
-          </div>
-        <% end %>
-
+        <br>
+        <div>
       <% else %>
-        <p>When all you husslrs are ready, submit link/files for your pitch!</p>
+        <i>When all you husslrs are ready, submit link/files for your pitch!</i>
       <% end %>
-
     </div>
   </div>
 </div>

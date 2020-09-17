@@ -1,8 +1,12 @@
 <div class="container">
 
-  <div class="btn-back">
-    <%= link_to "Back", @back_url %>
-  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @problem.title.first(10) %>...</li>
+    </ol>
+  </nav>
+
 
   <div>
     <h3><%= @problem.title %></h3>
@@ -41,23 +45,19 @@
       <div>
         <p><%= local_time_ago(@problem.created_at) %></p>
       </div>
-
+    </div>
   <br>
 
-  <div>
-    <h4>Solutions</h4>
-    <div>
-      <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+  <div class="pr-3">
+    <div class="row px-3 align-items-center justify-content-between">
+      <h4 class="my-3">Solutions</h4>
+      <div class="my-3">
+        <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+      </div>
     </div>
     <div>
       <% @solutions.each do |solution| %>
-
-        <div>
-          <p><%= local_time_ago(solution.created_at) %></p>
-        </div>
-
         <h5><%= link_to solution.title, solution_path(solution) %></h5>
-        <p><%= solution.description %></p>
 
         <div class="actions">
           <% if Vote.where(votable: solution, user:  current_user).empty? %>
@@ -77,6 +77,9 @@
             <% end %>
           <% end %>
           <span><%= solution.collaborators.count %></span>
+        </div>
+        <div>
+          <p><%= local_time_ago(solution.created_at) %></p>
         </div>
       <% end %>
     </div>
