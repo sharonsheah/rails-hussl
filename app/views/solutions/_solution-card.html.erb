@@ -1,4 +1,4 @@
-<% if solution.problem.category === tag || tag == "rerender" %>
+<% if solution.problem.category === tag %>
     <div id=<%= "problem_#{solution.id}" %> >
 
         <%= link_to solution_path(solution) do %>
@@ -10,11 +10,12 @@
                     </div>
                 </div>
                 <div class="mx-0 solving-tag">
-                        <p><%= solution.problem.title.upcase %></p>
-                    </div>
-                <div class="card-text">
-                <p><%=h truncate(solution.description, :length => 150) %></p>
+                    <p><%= solution.problem.title.upcase %></p>
                 </div>
+                <div class="card-text">
+                    <p><%=h truncate(solution.description, :length => 150) %></p>
+                </div>
+        
                 <div class="card-actions">
                     <div class="author">
                         <% if solution.user.photo.attached? %>
@@ -24,21 +25,22 @@
                         <% end %>
                     </div>
                     <div class="votes">
-                        <% if Vote.where(votable: solution, user:  current_user).empty? && star != false %>
-                            <%= link_to upvote_solution_path(solution), method: :post, remote: true,  class: 'button'  do %>
+                        <% if Vote.where(votable: solution, user:  current_user).empty? %>
+                            <%= link_to upvote_solution_path(solution), method: :post  do %>
                                 <i class="far fa-thumbs-up"></i>
                             <% end %>
                         <% else %>
-                            <i class="fas fa-thumbs-up"></i>
+                            <a href="#"><i class="fas fa-thumbs-up"></i></a>
                         <% end %>
                             <!-- comment button? -->
                         <p><%= solution.votes.count %></p>   
                     </div>
                     <div class="collaborators">
                         <% if solution.collaborators.include?(current_user) %>
-                            <i class="fas fa-hand-paper"></i>
+                            <a href="#"><i class="fas fa-hand-paper"></i></a>
                         <% else %>
-                            <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+                        <!-- TODO: need to change display property of fontawesome icons -->
+                            <%= link_to collaborate_solution_path(solution), method: :post do %>
                                 <i class="far fa-hand-paper"></i>
                             <% end %>
                         <% end %>
@@ -47,6 +49,5 @@
                 </div>
             </div>
         <% end %>
-
     </div>
 <% end %>
