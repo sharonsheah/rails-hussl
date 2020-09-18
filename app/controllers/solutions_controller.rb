@@ -19,9 +19,11 @@ class SolutionsController < ApplicationController
     @problem = Problem.find(params[:problem_id])
     @solution.problem = @problem
     @solution.user = current_user
-    @solution.save!
-
-    redirect_to problem_path(@problem), notice: "Solution added!"
+    if @solution.save!
+      redirect_to solution_path(@solution), notice: "Solution added!"
+    else
+      render :new
+    end
   end
 
   def leaderboard
