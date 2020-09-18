@@ -21,14 +21,19 @@
 			</li>
 		</ul>
 	</div>
-<div class="ideate-content-container leaderboard-content-container pad-left">
-	<% @votes.first(10).each do |vote| %>
-		<% solution = Solution.find(vote.first) %>
-		<%= link_to solution_path(solution) do %>
-			<div>
-				<p><%= solution.title %> Votes: <%= vote.last %></p>
-			</div>
-		<% end %>
-	<% end %>
+	<div class="ideate-content-container leaderboard-content-container pad-left">
+		<ol class="ranking-list">
+			<% @votes.first(10).each do |vote| %>
+				<% solution = Solution.find(vote.first) %>
+				<li>
+					<%= link_to solution_path(solution) do %>
+						<div class="ranking-item">
+							<p class="px-2"><%= solution.title %></p>
+							<p class="d-inline-flex"><i class="far fa-thumbs-up pr-1"></i><%= solution.votes.count %></p>
+						</div>
+					<% end %>
+				</li>
+			<% end %>
+		</ol>
 	</div>
 </div>
