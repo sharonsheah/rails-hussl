@@ -1,0 +1,48 @@
+.show-card-container {
+  background-color: $dark-blue;
+  height: auto;
+  width: auto;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 0px 6px;
+  color: $white;
+
+  .tags {
+    margin: 10px 0 18px 0;
+  }
+
+  h5 {
+    margin: 12px 0;
+  }
+
+  h6 {
+    color: lightgray;
+    font-size: 10px;
+    margin-top: 24px;
+  }
+
+  .bottom-card {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin-bottom: 0;
+    }
+    
+  }
+
+  .actions {
+    color: $white;
+    padding-right: 8px;
+  }
+
+  .time-section {
+    margin-top: 10px;
+    margin-bottom: 0;
+
+    p {
+    font-size: 11px;
+    color: lightgray;
+    }
+  }
+}
