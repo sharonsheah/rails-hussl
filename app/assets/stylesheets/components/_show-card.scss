@@ -1,0 +1,20 @@
+.show-card-container {
+  background-color: $dark-blue;
+  height: auto;
+  width: auto;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 0px 8px;
+
+  p {
+    color: $white;
+  }
+
+  .tags {
+    margin: 6px 0;
+  }
+
+  .actions {
+    color: $white;
+  }
+}
