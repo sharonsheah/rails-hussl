@@ -3,8 +3,11 @@
   <div class="tags">
     <%= render "shared/problem-tags" %>
   </div>
-  <p><%= @problem.description %></p>
-  <h6>POSTED BY</h6>
+
+    <h5>Problem</h5>
+    <p><%= @problem.description %></p>
+    <h6>POSTED BY</h6>
+
   <div class="bottom-card">
     <% if @problem.user.photo.attached? %>
       <p><span><%= cl_image_tag @problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @problem.user.first_name %> <%= @problem.user.last_name %></span></p>
