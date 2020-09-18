@@ -23,13 +23,18 @@
 		</ul>
 	</div>
 	<div class="ideate-content-container leaderboard-content-container pad-left">
-		<% @votes.first(10).each do |vote| %>
+		<ol class="ranking-list">
+			<% @votes.first(10).each do |vote| %>
 				<% problem = Problem.find(vote.first) %>
-				<%= link_to problem_path(problem) do %>
-						<div>
-								<p><%= problem.title %><%= vote.last %></p>
+				<li>
+					<%= link_to problem_path(problem) do %>
+						<div class="ranking-item">
+							<p class="px-2"><%= problem.title %></p>
+							<p class="d-inline-flex"><i class="far fa-thumbs-up pr-1"></i><%= problem.votes.count %></p>
 						</div>
-				<% end %>
-		<% end %>
+					<% end %>
+				</li>
+			<% end %>
+		</ol>
 	</div>
 </div>

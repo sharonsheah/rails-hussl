@@ -1,9 +1,13 @@
 <div class="ideate-page">
   <div class="header">
     <div class="btn-profile">
-      <div class="text-right" style="font-size:7vw">
+      <div class="text-right mt-2" style="font-size:8vw">
         <%= link_to user_profiles_path(current_user) do %>
-          <i class="far fa-user"></i>
+          <% if current_user.photo.attached? %>
+            <span class="card-img-top"><%= cl_image_tag current_user.photo.key, height: 42, width: 42, crop: :fill, gravity: :face %></span>
+          <% else %>
+            <i class="far fa-user-circle"></i>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -33,9 +37,9 @@
         <% if pitch.user.photo.attached? %>
           <p><span><%= cl_image_tag pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
           <% else %>
-            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
+            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
         <% end %>
-      </div> 
+      </div>
       <p><span>
         <div class="actions">
           <% if Vote.where(votable: pitch, user:  current_user).empty? %>

@@ -77,6 +77,11 @@ img {
   border-radius: 50px;
 }
 
+.small-avatar {
+  height: 24px;
+  width:24px;
+}
+
 .small-btn {
   padding: 4px 8px;
   font-size: 12px;
@@ -91,7 +96,8 @@ img {
 }
 
 .breadcrumb {
-  margin-right: 20px;
+  background-color: white;
+  padding: 0 ;
 }
 
 .ideate-page {
@@ -107,7 +113,7 @@ img {
 }
 
 .ideate-content-container {
-  padding-top: 150px;
+  padding-top: 180px;
 }
 
 .btn-profile {
@@ -116,8 +122,4 @@ img {
 
 .pad-left {
   padding-left: 20px;
-}
-
-.breadcrumb {
-  background-color: white;
 }

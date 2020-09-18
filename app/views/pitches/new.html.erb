@@ -1,34 +1,30 @@
-<div class="btn-back">
-  <%= link_to "Back", @back_url %>
-</div>
-
-<h3>Submit a pitch</h3>
-
-<p>You are submitting a pitch for...</p>
-<h3><%= @solution.title %></h3>
-
-<%# insert solution card here %>
-<div>
-  <%= render "shared/solution-tags" %>
-</div>
-  
-<div>
-  <p>Description</p>
-  <p><%= @solution.description %></p>
-</div>
-
-<div>
-  <p>POSTED BY</p>
-  <p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
-</div>
-
-<%# insert votes icon %>
-<div>
-  Votes: <%= @solution.votes.count %>
-</div>
-<br>
-
 <div class="container">
+  <h3>Submit a pitch</h3>
+
+  <p>You are submitting a pitch for...</p>
+  <h3><%= @solution.title %></h3>
+
+  <%# insert solution card here %>
+  <div>
+    <%= render "shared/solution-tags" %>
+  </div>
+    
+  <div>
+    <p>Description</p>
+    <p><%= @solution.description %></p>
+  </div>
+
+  <div>
+    <p>POSTED BY</p>
+    <p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
+  </div>
+
+  <%# insert votes icon %>
+  <div>
+    Votes: <%= @solution.votes.count %>
+  </div>
+  <br>
+
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="form">
