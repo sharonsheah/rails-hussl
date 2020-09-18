@@ -1,27 +1,11 @@
 <div class="container">
   <h3>Submit a solution</h3>
   <p>You are submitting a pitch for...</p>
-  <h3><%= @problem.title %></h3>
-
-  <%# insert solution card here %>
-  <div>
-    <%= render "shared/problem-tags" %>
-  </div>
-    
-  <div>
-    <p>Description</p>
-    <p><%= @problem.description %></p>
-  </div>
 
   <div>
-    <p>POSTED BY</p>
-    <p><%= @problem.user.first_name %> <%= @problem.user.last_name %></p>
+    <%= render "problems/show-card" %>
   </div>
 
-  <%# insert votes icon %>
-  <div>
-    Votes: <%= @problem.votes.count %>
-  </div>
   <br>
 
   <div class="row">
