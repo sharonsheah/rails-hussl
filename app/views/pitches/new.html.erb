@@ -38,7 +38,10 @@
           <%= f.input :link %>
           <%= f.button :submit, "Submit solution", class: "btn btn-info" %>
         <% end %>       
-      </div>    
+      </div> 
+      </div>
+        <%= link_to "Cancel", solution_path(@solution) %>  
+      </div>   
     </div>
   </div>
 </div>
