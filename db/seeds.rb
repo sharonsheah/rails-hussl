@@ -9,7 +9,7 @@ Problem.destroy_all
 Vote.destroy_all
 User.destroy_all
 
-puts 'Creating 51 users...'
+puts 'Creating 52 users...'
 
 # USERS
 
@@ -19,7 +19,7 @@ default_user = User.create!(
                 email: "user@user.com", 
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305401/sharon_sheah.jpg_dnrfpw.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sharon_sheah.jpg_qhu4tc.jpg")
                 default_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 50.times do
@@ -38,7 +38,7 @@ airbnb_founder = User.create!(
                 email: Faker::Internet.email,
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305269/brian_chesky_vg8c3n.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/brian_chesky_ab5qna.jpg")
                 airbnb_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 uber_founder = User.create!(
@@ -47,16 +47,16 @@ uber_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/travis_kalanick_fgwvty.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/travis_kalanick_k91mjw.jpg")
                 uber_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 facebook_founder = User.create!(
                 first_name: "Mark", 
                 last_name: "Zuckerberg",
-                email: Faker::Internet.email, 
+                email: "markzuckerberg@user.com", 
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305857/mark_zuckerberg_xzbrw6.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394323/mark_zuckerberg_yrbimu.jpg")
                 facebook_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 importio_founder = User.create!(
@@ -65,7 +65,7 @@ importio_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password"
                     )
-                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/matthew_painter_v4fkwe.jpg")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/matthew_painter_t5mt1n.jpg")
                     importio_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 recyclebank_founder = User.create!(
@@ -74,7 +74,7 @@ recyclebank_founder = User.create!(
                     email: Faker::Internet.email,
                     password: "password"
                     )
-                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/ron_gonen_u9zuk5.jpg")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/ron_gonen_bxihto.jpg")
                     recyclebank_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 treeplanet_founder = User.create!(
@@ -83,7 +83,7 @@ treeplanet_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password"
                     )
-                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/kim_hyung_soo_ov1s99.jpg")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/kim_hyung_soo_jj8wzo.jpg")
                     treeplanet_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 solarity_founder = User.create!(
@@ -92,7 +92,7 @@ solarity_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password"
                     )
-                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305857/horacio_melo_jc7nhh.jpg")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/horacio_melo_xvrbaj.jpg")
                     solarity_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 aussie_founder = User.create!(
@@ -101,7 +101,7 @@ aussie_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/mathieu_longe_uga63s.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/mathieu_longe_ygpsvu.jpg")
                 aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 homies_founder = User.create!(
@@ -110,7 +110,7 @@ homies_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/sergey_osipov_sut4sf.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sergey_osipov_yfpqvh.jpg")
                 homies_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 weather_founder = User.create!(
@@ -119,8 +119,26 @@ weather_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600305856/sam_cheney_lxydqy.jpg")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/sam_cheney_xjvt2a.jpg")
                 weather_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+
+canva_founder = User.create!(
+                first_name: "Melanie", 
+                last_name: "Perkins",
+                email: Faker::Internet.email, 
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600396202/melanie_perkins_qz0d1v.jpg")
+                canva_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+
+spanx_founder = User.create!(
+                first_name: "Sara", 
+                last_name: "Blakely",
+                email: Faker::Internet.email, 
+                password: "password"
+                )
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600398527/sara_blakely_do9tle.jpg")
+                spanx_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 
 puts 'Creating problems...'
@@ -130,19 +148,19 @@ puts 'Creating problems...'
 
 airbnb_problem = Problem.create!(title: "Hotels are too expensive", description: "Price is important concern for customers booking travel online. Hotels leave you disconnected from the city and its culture. No easy way exists to book a room with a local or become a host.", user: User.all.sample, category: "Consumer")
 
-facebook_problem = Problem.create!(title: "Can't remember all my classmates", description: "Coming from a big cohort, it is difficult for me to remember every single one of my classmates and also makes me lose connections over the years. Is there a platform for me to stay connected with my classmates when I graduate?", user: User.all.sample, category: "Consumer")
+facebook_problem = Problem.create!(title: "Can't remember my high school mates faces", description: "I want to keep in touch with my high school friends and watch the rest of my cohort go bald or age gracefully. It's so difficult to keep in touch. Can someone think of a solution for this??", user: User.all.sample, category: "Software & Services")
 
 aussie_problem = Problem.create!(title: "Products made in STRAYAAA", description: "I only want to buy products made in australia by australians for australians. Products made in Australia can be very hard to source (not accessible and take time). No clear supply and hard to interact online with local producers.", user: User.all.sample, category: "Consumer")
 
 heroku_problem = Problem.create!(title: "Heroku keeps ruining my layout", description: "There has to be a better way.", user: User.all.sample, category: "Software & Services")
 
-uber_problem = Problem.create!(title: "Taxis are for boomers", description: "Most use aging and inefficient technology like radio dispatching. Always the same car models. Hailing is done by hand or phone(no GPS coordination between driver/passenger).", user: User.all.sample, category:"Consumer")
+uber_problem = Problem.create!(title: "Taxis are for boomers", description: "Most use aging and inefficient technology like radio dispatching. Always the same car models. Hailing is done by hand or phone(no GPS coordination between driver/passenger).", user: User.all.sample, category:"Software & Services")
 
 importio_problem = Problem.create!(title: "Scraping data feels like mining", description: "Web pages are full of data, but harvesting that data is often manual and always time-consuming.", user: User.all.sample, category:"Software & Services")
 
-homies_problem = Problem.create!(title: "My flatmate owes me money and doesn't clean the bathroom", description: "There is no centralised digital system to manage all house hold needs.", user: User.all.sample, category: "Consumer")
+homies_problem = Problem.create!(title: "My flatmate owes me money and doesn't clean the bathroom", description: "There is no centralised digital system to manage all house hold needs.", user: User.all.sample, category: "Software & Services")
 
-weather_problem = Problem.create!(title: "Everytime I go out it starts rainning", description: "The weather report is too general, and not actionable based on an individual's schedule.", user: User.all.sample, category: "Unspecified")
+weather_problem = Problem.create!(title: "Everytime I go out it starts raining", description: "The weather report is too general, and not actionable based on an individual's schedule.", user: User.all.sample, category: "Unspecified")
 
 recyclebank_problem = Problem.create!(title: "Recycling household waste", description: "Recycling household waste is important but it’s often hard for people to stay committed to this goal.", user: User.all.sample, category: "Software & Services")
 
@@ -158,6 +176,9 @@ mayapedal_problem = Problem.create!(title: "Access to electricity in Guatemala",
 
 zerogachis_problem = Problem.create!(title: "Supermarkets throw away food", description: "Supermarkets often have to throw away food due to expiration.", user: User.all.sample, category: "Consumer")
 
+canva_problem = Problem.create!(title: "Designers are so expensive", description: "I run a small business and Adobe is too expensive and too difficult to use. There has to be q more affordable way to get quick graphics for my marketing! I don't know how to design too and graphic designers are too expensive!", user: User.all.sample, category: "Software & Services")
+
+spanx_problem = Problem.create!(title: "Undergarment problems", description: "I had spent money on a pair of cream pants. I spent $98 dollars on them, which, for me, was a lot of money. And they just hung in my closet unworn because every time I would go to wear them, you could see the undergarment.", user: User.all.sample, category: "Consumer")
 
 
 puts 'Creating solutions...'
@@ -165,8 +186,6 @@ puts 'Creating solutions...'
 # SOLUTIONS
 
 airbnb_solution = Solution.create!(title: "Renting out private owned flats", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", user: airbnb_founder, problem: airbnb_problem)
-
-facebook_solution = Solution.create!(title: "Digital Yearbook", description: "A digital yearbook that allows classmates and staff members stay connected wherever they may go in the future. Everyone nowadays move away from their home town and with globalisation happening, we are more likely to get disconnected. Let's stay connected with a digital yearbook", user: facebook_founder, problem: facebook_problem)
 
 aussie_solution = Solution.create!(title: "Proudly Aussie", description: "A free application that connect you to the local producer: the producer is in the spotlight - UX optimized for businesses and customers.", user: aussie_founder, problem: aussie_problem)
 
@@ -188,15 +207,28 @@ treeplanet_solution = Solution.create!(title: "A mobile game", description: "A m
 
 solarity_solution = Solution.create!(title: "Smaller instalations", description: "Small- and medium-sizesd photovoltaic installations on rooftops are faster and easier to install. This way companies can immediately benefit from using renewable energy source.", user: solarity_founder, problem: solarity_problem)
 
+canva_solution = Solution.create!(title: "Simple adobe suite/ DIY designs", description: "Imagine an easy-to-use web-based design tool with ready made graphics and cool designs so that people don't need to spend thousands on hiring a professional graphic designer for a social media post. Say bye to learning how to use complex vector lines!", user: canva_founder, problem: canva_problem)
+
+spanx_solution = Solution.create!(title: "Elastic undergarment", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs. Regular underwear left a panty line. The thong isn't a great solution. It also left marks that you could see. And then, the shape wear was like the girdles were so thick and overdone.", user: spanx_founder, problem: spanx_problem)
+
 puts 'Creating pitches...'
 
 # PITCHES
 
-airbnb_pitch = Pitch.create!(title: "Airbnb", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "https://docs.google.com/presentation/d/1BFFLHUN6acErGNW-huhD6OHMFlXPVmBDdZHFkj46Bg4/preview#slide=id.p", user: airbnb_founder, solution: airbnb_solution)
+airbnb_pitch = Pitch.create!(title: "Airbnb", description: "A web platform where users can rent out their space to host travellers to: save money, make money, share culture.", link: "//www.slideshare.net/slideshow/embed_code/key/CjBW6nNhL18X7S", user: airbnb_founder, solution: airbnb_solution)
 
-uber_pitch = Pitch.create!(title: "Uber", description: "Next-generation car service. A fast & efficient on-demand car service for professionals in American cities. It provides a 1-click car service", link: "//www.slideshare.net/slideshow/embed_code/key/jrFtdtaSImlVh1" , user: uber_founder, solution: uber_solution)
+uber_pitch = Pitch.create!(title: "Uber", description: "Next-generation car service. A fast & efficient on-demand car service for professionals in American cities. It provides a 1-click car service", link: "//www.slideshare.net/slideshow/embed_code/key/L4ARVYM14a51lq" , user: uber_founder, solution: uber_solution)
 
-facebook_pitch = Pitch.create!(title: "Facebook", description: "Facebook is an expanding online directory that connects students, alumni, faculty and staff through social networks at colleges and universities. This online directory allows for user connections on the basis of friendship, courses and social networks (including intra and inter-school networks), and has a built-in messaging system.", link: "//www.slideshare.net/slideshow/embed_code/key/ns8gcypQTWIeal" , user: facebook_founder, solution: facebook_solution)
+canva_pitch = Pitch.create!(title: "Canva", description: "Canva is a graphic design platform that allows users to create social media graphics, presentations, posters, documents and other visual content. Users can choose from many professional designed templates, and edit the designs and upload their own photos through a drag and drop interface.", link: "https://www.canva.com/design/DACscjV6_AI/view?utm_content=DACscjV6_AI&utm_campaign=designshare&utm_medium=embeds&utm_source=link" , user: canva_founder, solution: canva_solution)
+
+spanx_pitch = Pitch.create!(title: "Spanx", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs", link: "https://www.youtube.com/embed/o4IIkCtqDuU" , user: spanx_founder, solution: spanx_solution)
+
+homies_pitch = Pitch.create!(title: "Homies", description: "A fun house share organiser that helps you and your homies to stay ahead of your bills, chores and in-house events!", link: "https://docs.google.com/presentation/d/e/2PACX-1vSkmWdJfT_NPmGto_kGrUDMFp1p5Fis88mAqvZcV62GARoDgb_CFLD_O_ovy0rcjtFxpG4brDmZR5Xo/pub?start=false&loop=false&delayms=60000" , user: homies_founder, solution: homies_solution)
+
+weather_pitch = Pitch.create!(title: "Weather or Not", description: "Make the most of your hour outside", link: "https://docs.google.com/presentation/d/1XV5qV-oqM21_FTDLV22oWVTTSXq8VT7lp1C7erXhQK8/preview#slide=id.g9090ddd909_0_52" , user: weather_founder, solution: weather_solution)
+
+aussie_pitch = Pitch.create!(title: "Proudly Aussie", description: "Buy Australian Made, help your local community", link: "https://docs.google.com/presentation/d/1XV5qV-oqM21_FTDLV22oWVTTSXq8VT7lp1C7erXhQK8/preview#slide=id.g9090ddd909_0_52" , user: aussie_founder, solution: aussie_solution)
+
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"
 
