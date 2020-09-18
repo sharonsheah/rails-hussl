@@ -223,9 +223,11 @@ canva_pitch = Pitch.create!(title: "Canva", description: "Canva is a graphic des
 
 spanx_pitch = Pitch.create!(title: "Spanx", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs", link: "https://www.youtube.com/embed/o4IIkCtqDuU" , user: spanx_founder, solution: spanx_solution)
 
-homies_pitch = Pitch.create!(title: "Spanx", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs", link: "https://www.youtube.com/embed/o4IIkCtqDuU" , user: homies_founder, solution: homies_solution)
+homies_pitch = Pitch.create!(title: "Homies", description: "A fun house share organiser that helps you and your homies to stay ahead of your bills, chores and in-house events!", link: "https://docs.google.com/presentation/d/e/2PACX-1vSkmWdJfT_NPmGto_kGrUDMFp1p5Fis88mAqvZcV62GARoDgb_CFLD_O_ovy0rcjtFxpG4brDmZR5Xo/pub?start=false&loop=false&delayms=60000" , user: homies_founder, solution: homies_solution)
 
-https://docs.google.com/presentation/d/e/2PACX-1vSkmWdJfT_NPmGto_kGrUDMFp1p5Fis88mAqvZcV62GARoDgb_CFLD_O_ovy0rcjtFxpG4brDmZR5Xo/pub?start=false&loop=false&delayms=60000
+weather_pitch = Pitch.create!(title: "Weather or Not", description: "Make the most of your hour outside", link: "https://docs.google.com/presentation/d/1XV5qV-oqM21_FTDLV22oWVTTSXq8VT7lp1C7erXhQK8/preview#slide=id.g9090ddd909_0_52" , user: weather_founder, solution: weather_solution)
+
+aussie_pitch = Pitch.create!(title: "Proudly Aussie", description: "Buy Australian Made, help your local community", link: "https://docs.google.com/presentation/d/1XV5qV-oqM21_FTDLV22oWVTTSXq8VT7lp1C7erXhQK8/preview#slide=id.g9090ddd909_0_52" , user: aussie_founder, solution: aussie_solution)
 
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"

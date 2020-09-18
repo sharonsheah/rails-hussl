@@ -1,9 +1,13 @@
 <div class="ideate-page">
   <div class="header">
     <div class="btn-profile">
-      <div class="text-right" style="font-size:7vw">
+      <div class="text-right mt-2" style="font-size:8vw">
         <%= link_to user_profiles_path(current_user) do %>
-          <i class="far fa-user"></i>
+          <% if current_user.photo.attached? %>
+            <img class="card-img-top" src="<%= cl_image_path current_user.photo.key %>" alt="Card image cap">
+          <% else %>
+            <i class="far fa-user-circle"></i>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -36,3 +40,6 @@
     <% end %>
   </div>
 </div>
+
+
+
