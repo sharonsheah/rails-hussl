@@ -39,7 +39,7 @@
                         <% if solution.collaborators.include?(current_user) %>
                             <a href="#"><i class="fas fa-hand-paper"></i></a>
                         <% else %>
-                        <!-- TODO: need to change display property of fontawesome icons -->
+                        <!-- FIXME: need to change display property of fontawesome icons -->
                             <%= link_to collaborate_solution_path(solution), method: :post do %>
                                 <i class="far fa-hand-paper"></i>
                             <% end %>
