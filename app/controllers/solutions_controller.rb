@@ -36,7 +36,7 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     Vote.create(votable: @solution, user: current_user)
-    redirect_to solutions_path
+    redirect_to solution_path
   end
 
   def collaborate
