@@ -17,9 +17,11 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(set_params)
     @problem.user = current_user
-    @problem.save!
-
-    redirect_to problems_path, notice: "Problem created!"
+    if @problem.save!
+      redirect_to problem_path(@problem), notice: "Problem created!"
+    else
+      render :new
+    end
   end
 
   def leaderboard

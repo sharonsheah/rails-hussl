@@ -20,9 +20,11 @@ class PitchesController < ApplicationController
       @solution = Solution.find(params[:solution_id])
       @pitch.solution = @solution
       @pitch.user = current_user
-      @pitch.save!
-
-      redirect_to pitch_path(@pitch), notice: "Pitch submitted!"
+      if @pitch.save!
+        redirect_to pitch_path(@pitch), notice: "Pitch submitted!"
+      else
+        render :new
+      end
   end
 
   def leaderboard
