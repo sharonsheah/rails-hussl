@@ -19,7 +19,7 @@ default_user = User.create!(
                 email: "user@user.com", 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sharon_sheah.jpg_qhu4tc.jpg")
                 default_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 50.times do
@@ -38,7 +38,7 @@ airbnb_founder = User.create!(
                 email: Faker::Internet.email,
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/brian_chesky_ab5qna.jpg")
                 airbnb_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 uber_founder = User.create!(
@@ -47,7 +47,7 @@ uber_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/travis_kalanick_k91mjw.jpg")
                 uber_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 facebook_founder = User.create!(
@@ -65,7 +65,7 @@ importio_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password"
                     )
-                    file = URI.open("")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/matthew_painter_t5mt1n.jpg")
                     importio_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 recyclebank_founder = User.create!(
@@ -74,7 +74,7 @@ recyclebank_founder = User.create!(
                     email: Faker::Internet.email,
                     password: "password"
                     )
-                    file = URI.open("")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/ron_gonen_bxihto.jpg")
                     recyclebank_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 treeplanet_founder = User.create!(
@@ -83,7 +83,7 @@ treeplanet_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password"
                     )
-                    file = URI.open("")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/kim_hyung_soo_jj8wzo.jpg")
                     treeplanet_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 solarity_founder = User.create!(
@@ -92,7 +92,7 @@ solarity_founder = User.create!(
                     email: Faker::Internet.email, 
                     password: "password"
                     )
-                    file = URI.open("")
+                    file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/horacio_melo_xvrbaj.jpg")
                     solarity_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 aussie_founder = User.create!(
@@ -101,7 +101,7 @@ aussie_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/mathieu_longe_ygpsvu.jpg")
                 aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 homies_founder = User.create!(
@@ -110,7 +110,7 @@ homies_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sergey_osipov_yfpqvh.jpg")
                 homies_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 weather_founder = User.create!(
@@ -119,7 +119,7 @@ weather_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/sam_cheney_xjvt2a.jpg")
                 weather_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 canva_founder = User.create!(
@@ -137,7 +137,7 @@ spanx_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600398527/sara_blakely_do9tle.jpg")
                 spanx_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 
@@ -222,6 +222,10 @@ uber_pitch = Pitch.create!(title: "Uber", description: "Next-generation car serv
 canva_pitch = Pitch.create!(title: "Canva", description: "Canva is a graphic design platform that allows users to create social media graphics, presentations, posters, documents and other visual content. Users can choose from many professional designed templates, and edit the designs and upload their own photos through a drag and drop interface.", link: "https://www.canva.com/design/DACscjV6_AI/view?utm_content=DACscjV6_AI&utm_campaign=designshare&utm_medium=embeds&utm_source=link" , user: canva_founder, solution: canva_solution)
 
 spanx_pitch = Pitch.create!(title: "Spanx", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs", link: "https://www.youtube.com/embed/o4IIkCtqDuU" , user: spanx_founder, solution: spanx_solution)
+
+homies_pitch = Pitch.create!(title: "Spanx", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs", link: "https://www.youtube.com/embed/o4IIkCtqDuU" , user: homies_founder, solution: homies_solution)
+
+https://docs.google.com/presentation/d/e/2PACX-1vSkmWdJfT_NPmGto_kGrUDMFp1p5Fis88mAqvZcV62GARoDgb_CFLD_O_ovy0rcjtFxpG4brDmZR5Xo/pub?start=false&loop=false&delayms=60000
 
 
 puts "Created #{User.all.count} users, #{Problem.all.count} problems, #{Solution.all.count} solutions, #{Pitch.all.count} pitches!"
