@@ -56,7 +56,7 @@ facebook_founder = User.create!(
                 email: "markzuckerberg@user.com", 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394323/mark_zuckerberg_yrbimu.jpg")
                 facebook_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 importio_founder = User.create!(
@@ -128,7 +128,7 @@ canva_founder = User.create!(
                 email: Faker::Internet.email, 
                 password: "password"
                 )
-                file = URI.open("")
+                file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600396202/melanie_perkins_qz0d1v.jpg")
                 canva_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 spanx_founder = User.create!(
