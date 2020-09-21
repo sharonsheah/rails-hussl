@@ -1,46 +1,36 @@
-    <%# <div class="dropup ml-2">
-      <button class="dropbtn"><i class="fas fa-bars"></i></button>
-        <%# <div class="dropup-content"> %>
-          <%# <%= link_to destroy_user_session_path, method: :delete do %>
-            <%# <i class="fas fa-sign-out-alt"></i> %>
-          <%# <% end %>
-        <%# </div> %>
-      <%# </div> %>
-    <%# </div> %>
-
 <div class="container">
-
   <div class="first-line">
     <h2 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h2>
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
-    </div>
 
+    <%=  %>
     <div id="main">
-      <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-      <h2>Collapsed Sidebar</h2>
-      <p>Content...</p>
+      <button class="openbtn btn btn-info">&#9776;</button>
+    </div>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
+      link_to
+      <%= link_to 'Edit profile', edit_user_registration_path(current_user)  %>
+      <%= link_to 'About hussl', root_path  %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete  %>
     </div>
   </div>
 
-<h4 class="w-75 ml-2">You have submitted...</h4>
+
+
+  <h4 class="w-75 ml-2">You have submitted...</h4>
 
   <div class="row">
       <div class="cards">
         <div class="problem-card text-center">
-          <%=pluralize(@user.problems.count, "problem") %>
+          <%= pluralize(@user.problems.count, "problem") %>
         </div>
 
         <div class="solution-card text-center">
-          <%=pluralize(@user.solutions.count, "solution") %>
+          <%= pluralize(@user.solutions.count, "solution") %>
         </div>
 
         <div class="pitch-card text-center">
-          <%=pluralize(@user.pitches.count, "pitch") %>
+          <%= pluralize(@user.pitches.count, "pitch") %>
         </div>
     </div>
   </div>
