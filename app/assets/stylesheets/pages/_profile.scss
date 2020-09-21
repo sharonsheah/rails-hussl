@@ -15,7 +15,6 @@
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 8px;
   padding: 24px;
 
   .problem-card {
@@ -25,9 +24,9 @@
     height: 90px;
     width: 90px;
     color: white;
-    margin: auto;
     display: flex;
     justify-content: center;
+    margin: 8px;
   }
 
   .solution-card {
@@ -39,6 +38,7 @@
     color: white;
     display: flex;
     justify-content: center;
+    margin: 8px;
   }
 
   .pitch-card {
@@ -50,6 +50,7 @@
     color: white;
     display: flex;
     justify-content: center;
+    margin: 8px;
   }
 }
 
