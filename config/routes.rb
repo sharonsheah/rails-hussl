@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     member do
       post 'upvote'
       post 'collaborate'
+      patch 'collab_status'
     end
   end
 

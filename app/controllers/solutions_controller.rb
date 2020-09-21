@@ -46,6 +46,14 @@ class SolutionsController < ApplicationController
     redirect_to solution_path(@solution)
   end
 
+  def collab_status
+    @collaboration = Collaboration.find(params[:id])
+    @collaboration.status = params[:status]
+    @collaboration.save!
+
+    redirect_to solution_path(@collaboration.solution)
+  end
+
   private
 
   def set_params
