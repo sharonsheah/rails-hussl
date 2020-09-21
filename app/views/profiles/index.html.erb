@@ -17,13 +17,14 @@
       <li class="nav-item">
         <h4><%= link_to 'Summary', user_profiles_path, class: 'nav-link tab-active tabs' %></h4>
       </li>
-      <%# <li class="nav-item"> %>
-        <%# <h4><%= link_to 'Notifications', _path, class: 'nav-link tabs' %>
-      <%# </li> %>
+      <li class="nav-item">
+        <h4><%= link_to 'Notifications', user_notifications_path, class: 'nav-link tabs' %></h4>
+      </li>
     </ul>
     <br>
     <h5>About Me</h5>
     <p><%= @user.description %></p>
+    <br>
     <h4 class="">You have submitted...</h4>
 
     <div class="row">
