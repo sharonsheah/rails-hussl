@@ -6,60 +6,11 @@
     </ol>
   </nav>
   <h3><%= @solution.title %></h3>
+
   <div>
-    <%= render "shared/solution-tags" %>
+    <%= render "showcard" %>
   </div>
   <br>
-  <div>
-    <h5>Solving</h5>
-    <p><%= @solution.problem.title %></p>
-    <h5>Description</h5>
-    <p><%= @solution.description %></p>
-    <h6>POSTED BY</h6>
-    <div>
-      <% if @solution.user.photo.attached? %>
-        <p><span><%= cl_image_tag @solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-        <% else %>
-          <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-      <% end %>
-    </div>    
-    <div class="actions">
-      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-          <i class="far fa-thumbs-up"></i>
-        <% end %>
-      <% else %>
-        <i class="fas fa-thumbs-up"></i>
-      <% end %>
-      <span><%= @solution.votes.count %></span>
-
-      <% if @solution.collaborators.include?(current_user) %>
-        <i class="fas fa-hand-paper"></i>
-      <% else %>
-        <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button'  do %>
-          <i class="far fa-hand-paper"></i>
-        <% end %>
-      <% end %>
-      <span><%= @solution.collaborators.count %></span>
-    </div>
-    <div>
-      <small><%= local_time_ago(@solution.created_at) %></small>
-    </div>
-    <br>
-    <h6>COLLABORATORS</h6>
-    <% if @solution.collaborators.exists? %>
-      <% @solution.collaborators.each do |collaborator|%> 
-        <% if collaborator.photo.attached? %>
-          <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
-        <% else %>
-            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
-        <% end %>
-      <% end %>
-    <% else %>
-      <i>Raise your hand to be the first collaborator!</i>
-    <% end %>
-  </div>
-
 
   <div class="pr-3">
     <div class="row px-3 align-items-center justify-content-between">
@@ -90,4 +41,19 @@
       <% end %>
     </div>
   </div>
+  <div class="collab-section">
+    <h6>COLLABORATORS</h6>
+    <% if @solution.collaborators.exists? %>
+      <% @solution.collaborators.each do |collaborator|%> 
+        <% if collaborator.photo.attached? %>
+          <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
+        <% else %>
+            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <i>Raise your hand to be the first collaborator!</i>
+    <% end %>
+  </div>
+  
 </div>
