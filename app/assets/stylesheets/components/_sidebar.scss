@@ -1,9 +1,9 @@
 /* The sidebar menu */
 .sidebar {
+  z-index: 10;
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 10;
   top: 0;
   right: 0;
   background-color: $dark-blue;
@@ -46,14 +46,14 @@
   top: 0;
   right: 25px;
   font-size: 36px;
-  margin-left: 50px;
+  // margin-left: 50px;
 }
 
 /* The button used to open the sidebar */
 .openbtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: #111;
+  background-color: $yellow;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -65,8 +65,9 @@
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-right .5s; /* If you want a transition effect */
+  transition: margin-right .5s;
   padding: 20px;
+  margin-left: 0 !important;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
