@@ -1,19 +1,29 @@
+    <%# <div class="dropup ml-2">
+      <button class="dropbtn"><i class="fas fa-bars"></i></button>
+        <%# <div class="dropup-content"> %>
+          <%# <%= link_to destroy_user_session_path, method: :delete do %>
+            <%# <i class="fas fa-sign-out-alt"></i> %>
+          <%# <% end %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# </div> %>
+
 <div class="container">
-<!--   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to 'Ideate', problems_path %></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @user.first_name %>'s Profile</li>
-    </ol>
-  </nav> -->
+
   <div class="first-line">
     <h2 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h2>
-    <div class="dropup ml-2">
-      <button class="dropbtn"><i class="fas fa-bars"></i></button>
-        <div class="dropup-content">
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i>
-          <% end %>
-      </div>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div id="main">
+      <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+      <h2>Collapsed Sidebar</h2>
+      <p>Content...</p>
     </div>
   </div>
 
@@ -36,7 +46,7 @@
   </div>
 
   <div class="submitted">
-    <h6>My posts</h6>
+    <h5>My posts</h5>
     <table>
       <tbody>
         <% @user.problems.each do |problem| %>
@@ -49,7 +59,7 @@
 
         <% @user.solutions.each do |solution| %>
           <tr>
-            <td class="user-solutions text-center">P</td>
+            <td class="user-solutions text-center">S</td>
             <td><%= solution.title %></td>
             <td><%=  solution.votes.count %></td>
           </tr>
