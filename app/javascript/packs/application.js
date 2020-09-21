@@ -30,6 +30,8 @@ LocalTime.start();
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initChatroomCable } from '../channels/chatroom_channel';
+import { nav } from '../components/sidebar';
+nav();
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users
 
   authenticated :user do
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   get 'styleguide', to: 'pages#styleguide'
 
 
-  resources :users do
+  resources :users, only: [ :show ] do
     resources :profiles, only: [ :index ]
   end
 
