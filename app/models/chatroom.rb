@@ -1,4 +1,4 @@
 class Chatroom < ApplicationRecord
-    belongs_to :solution, foreign_key: :chatroom
+    belongs_to :solution
     has_many :messages, dependent: :destroy
 end

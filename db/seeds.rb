@@ -3,11 +3,13 @@ require 'open-uri'
 puts 'Wiping data...'
 
 Collaboration.destroy_all
+Chatroom.destroy_all
 Pitch.destroy_all
 Solution.destroy_all
 Problem.destroy_all
 Vote.destroy_all
 User.destroy_all
+Chatroom.destroy_all
 
 puts 'Creating 52 users...'
 
@@ -238,4 +240,8 @@ User.all.each do |user|
     Vote.create!(votable: Problem.all.sample, user: user)
     Vote.create!(votable: Solution.all.sample, user: user)
     Vote.create!(votable: Pitch.all.sample, user: user)
+end
+
+Solution.all.each do |solution|
+  solution.chatroom = Chatroom.create!(name: solution.title, solution: solution)
 end

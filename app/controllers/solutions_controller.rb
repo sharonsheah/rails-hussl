@@ -19,7 +19,7 @@ class SolutionsController < ApplicationController
     @problem = Problem.find(params[:problem_id])
     @solution.problem = @problem
     @solution.user = current_user
-    @solution.chatroom = Chatroom.new(name: @solution.title)
+    @solution.chatroom = Chatroom.new(name: @solution.title, solution: @solution)
 
     if @solution.save!
       redirect_to solution_path(@solution), notice: "Solution added!"
