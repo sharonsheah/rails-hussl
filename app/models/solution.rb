@@ -3,6 +3,7 @@ class Solution < ApplicationRecord
   belongs_to :problem
   has_many :pitches
   has_many :votes, as: :votable
+  
   has_many :collaborations
   has_many :collaborators, through: :collaborations, source: :user
 

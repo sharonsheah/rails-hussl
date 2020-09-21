@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_064219) do
+ActiveRecord::Schema.define(version: 2020_09_21_044534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2020_09_16_064219) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["solution_id"], name: "index_collaborations_on_solution_id"
     t.index ["user_id"], name: "index_collaborations_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "pitches", force: :cascade do |t|
@@ -113,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_064219) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "collaborations", "solutions"
   add_foreign_key "collaborations", "users"
+  add_foreign_key "comments", "users"
   add_foreign_key "pitches", "solutions"
   add_foreign_key "pitches", "users"
   add_foreign_key "problems", "users"

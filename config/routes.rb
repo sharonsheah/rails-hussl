@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :pitches, only: [ :new, :create ]
     end
 
+    resources :comments, only: [ :create ], controller: "problem/comments"
+    
     collection do
       get :leaderboard
     end

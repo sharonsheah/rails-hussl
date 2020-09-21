@@ -14,7 +14,7 @@
 
   <div>  
     <div>
-      <%= render "show-card" %>
+      <%= render "problems/show-card" %>
     </div>
     
   <br>
@@ -54,5 +54,14 @@
         </div>
       <% end %>
     </div>
+
+    <h4 class="my-3">Comments</h4>
+      <div class="my-3">
+        <%= simple_form_for [@problem, @comment] do |f| %>
+          <%= f.input :content %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+
   </div>
 </div>
