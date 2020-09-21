@@ -12,17 +12,19 @@
 }
 
 .chat-container {
-    height: 100vh;
+    height: 94vh;
     padding: 20px;
     margin-top: 40px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 0px 4px 10px rgba($dark-blue, 0.5);
-    display: grid;
 }
 
 #messages {
     display: grid;
+    overflow-y: scroll;
+    height: fit-content;
+    max-height: 72vh;
 }
 
 .message-container {
@@ -31,9 +33,11 @@
     border-radius: 10px;
     padding: 8px;
     margin: 8px 0px;
+    align-self: end;
     p {
         margin: 0px;
         font-size: 14px;
+        font-weight: 300;
     }
     .message-author {
         font-family: $headers-font;
@@ -47,4 +51,28 @@
     color: $white;
     background-color: $dark-blue;
     justify-self: end;
+}
+.chat-container form {
+    align-self: end;
+    display: flex;
+    height: 38px;
+    margin: 16px 0;
+    input {
+        background-color: $light-gray;
+        border: 0px;
+        border-radius: 0px;
+    }
+    .message_content {
+        width: 100%;
+    }
+    #message_content {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .btn {
+        background-color: $yellow;
+        color: $white;
+        border-radius: 5px;
+        font-weight: 600;
+    }
 }
