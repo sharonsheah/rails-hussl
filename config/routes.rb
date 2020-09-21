@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :solutions, only: [ :index, :show ] do
+  resources :solutions, only: [ :index, :show ] do    
     collection do
       get :leaderboard
     end
@@ -48,5 +48,9 @@ Rails.application.routes.draw do
     member do
       post 'upvote'
     end
+  end
+
+  resources :chatrooms, only: [ :index, :show ] do
+    resources :messages, only: :create
   end
 end
