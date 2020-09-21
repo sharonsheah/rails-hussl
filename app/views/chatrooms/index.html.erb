@@ -1,0 +1,15 @@
+<h2>Chatrooms</h2>
+
+<ul>
+    <% @chatrooms.each do |chatroom| %>
+        <% if chatroom.solution.user === current_user %>
+        <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
+        <% end %>
+    <% end %>
+
+    <% @collaborations.each do |collaboration| %>
+        <% if collaboration.status === "Accepted"  %>
+        <li><%= link_to collaboration.solution.chatroom.name, chatroom_path(collaboration.solution.chatroom) %></li>
+        <% end %>
+    <% end %>
+</ul>
