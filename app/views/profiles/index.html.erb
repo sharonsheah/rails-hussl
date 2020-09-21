@@ -1,74 +1,81 @@
 <div class="container">
   <div class="first-line">
-    <h2 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h2>
-
-    <%=  %>
+    <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h3>
     <div id="main">
       <button class="openbtn btn btn-info">&#9776;</button>
     </div>
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn">&times;</a>
-      link_to
       <%= link_to 'Edit profile', edit_user_registration_path(current_user)  %>
       <%= link_to 'About hussl', root_path  %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete  %>
     </div>
   </div>
 
-  <div>
+  <div class="px-3">
+    <ul class="nav">
+      <li class="nav-item">
+        <h4><%= link_to 'Summary', user_profiles_path, class: 'nav-link tab-active tabs' %></h4>
+      </li>
+      <li class="nav-item">
+        <h4><%= link_to 'Notifications', user_notifications_path, class: 'nav-link tabs' %></h4>
+      </li>
+    </ul>
+    <br>
     <h5>About Me</h5>
     <p><%= @user.description %></p>
-  </div>
+    <br>
+    <h4 class="">You have submitted...</h4>
 
-  <h4 class="w-75 ml-2">You have submitted...</h4>
+    <div class="row">
+      <div class="cards">
+        <div class="problem-card text-center align-items-center d-block">
+          <h3><%= @user.problems.count %></h3>
+          <p><%= "problem".pluralize(@user.problems.count) %></p>
+        </div>
 
-  <div class="row">
-    <div class="cards">
-      <div class="problem-card text-center align-items-center d-block">
-        <h3><%= @user.problems.count %></h3>
-        <p><%= "problem".pluralize(@user.problems.count) %></p>
+        <div class="solution-card text-center align-items-center d-block">
+          <h3><%= @user.solutions.count %></h3>
+          <p><%= "solution".pluralize(@user.solutions.count) %></p>
+        </div>
+
+        <div class="pitch-card text-center align-items-center d-block">
+          <h3><%= @user.pitches.count %></h3>
+          <p><%= "pitch".pluralize(@user.pitches.count) %></p>
+        </div>
       </div>
+    </div>
 
-      <div class="solution-card text-center align-items-center d-block">
-        <h3><%= @user.solutions.count %></h3>
-        <p><%= "solution".pluralize(@user.solutions.count) %></p>
-      </div>
+    <div class="submitted">
+      <h5>My posts</h5>
+      <table>
+        <tbody>
+          <% @user.problems.each do |problem| %>
+            <tr>
+              <td class="user-problems text-center">P</td>
+              <td><%= problem.title %></td>
+              <td><%=  problem.votes.count %></td>
+            </tr>
+          <% end %>
 
-      <div class="pitch-card text-center align-items-center d-block">
-        <h3><%= @user.pitches.count %></h3>
-        <p><%= "pitch".pluralize(@user.pitches.count) %></p>
-      </div>
+          <% @user.solutions.each do |solution| %>
+            <tr>
+              <td class="user-solutions text-center">S</td>
+              <td><%= solution.title %></td>
+              <td><%=  solution.votes.count %></td>
+            </tr>
+          <% end %>
+
+          <% @user.pitches.each do |pitch| %>
+            <tr>
+              <td class="user-pitches text-center">P</td>
+              <td><%= pitch.title %></td>
+              <td><%=  pitch.votes.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="submitted">
-    <h5>My posts</h5>
-    <table>
-      <tbody>
-        <% @user.problems.each do |problem| %>
-          <tr>
-            <td class="user-problems text-center">P</td>
-            <td><%= problem.title %></td>
-            <td><%=  problem.votes.count %></td>
-          </tr>
-        <% end %>
-
-        <% @user.solutions.each do |solution| %>
-          <tr>
-            <td class="user-solutions text-center">S</td>
-            <td><%= solution.title %></td>
-            <td><%=  solution.votes.count %></td>
-          </tr>
-        <% end %>
-
-        <% @user.pitches.each do |pitch| %>
-          <tr>
-            <td class="user-pitches text-center">P</td>
-            <td><%= pitch.title %></td>
-            <td><%=  pitch.votes.count %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
 </div>
