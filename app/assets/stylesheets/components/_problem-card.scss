@@ -1,131 +1,180 @@
 .problem-card {
-    height: 145px;
-    width: 236px;
-    border-radius: 10px;
-    padding: 16px;
-    margin: 0px 8px;
-    position: relative;
+  height: 145px;
+  width: 236px;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 8px 8px 16px 8px;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
 }
 
 .dark-blue {
-    background-color: $dark-blue;
+  background-color: $dark-blue;
+}
+
+.problem-card .arrow {
+  border-style: solid;
+  position: relative;
+}
+
+.bottom {
+  border-color: $dark-blue transparent transparent transparent;
+  border-width: 16px 2px 0px 16px;
+  bottom: -29px;
+  right: 35px;
+}
+
+.bottom:after {
+  border-color: $dark-blue transparent transparent transparent;
+  border-style: solid;
+  border-width: 8px 0px 8px 8px;
+  bottom: -29px;
+  position: relative;
+  right: 35px;
 }
 
 .light-blue {
-    background-color: $light-blue;
+  background-color: $light-blue;
 }
 
 .problem-card p {
-    margin: 0;
+  margin: 0;
 }
 
 .card-title {
-    display:flex;
-    width: 100%;
-    margin: 0;
-    h5 {
-        width: 90%;
-        $headings-font-family:    $headers-font;
-        color: $white;
-        font-size: 14px;
-        line-height: 16px;
-        margin: 0;
-        padding-bottom: 8px;
-    }
-}    
+  display:flex;
+  width: 100%;
+  margin: 0;
+  h5 {
+      width: 90%;
+      $headings-font-family:    $headers-font;
+      color: $white;
+      font-size: 14px;
+      line-height: 16px;
+      margin: 0;
+      padding-bottom: 8px;
+  }
+}
 .time-ago {
-    p {
-        color: $light-blue;
-        line-height: 1;
-        font-size: 10px;
-        display:none;
-    }
-    margin: 0;
-
+  p {
+      color: $light-blue;
+      line-height: 1;
+      font-size: 10px;
+      display:none;
+  }
+  margin: 0;
 }
 
 .card-text {
-    width: 100%;
-    color: $white;
-    p {
-        $font-family-sans-serif:  $body-font;
-        font-size: 14px;
-        font-weight: 200;
-        overflow: hidden;
-        text-overflow: clip;
-        height: 40px;
-    }
+  width: 100%;
+  color: $white;
+  p {
+      $font-family-sans-serif:  $body-font;
+      font-size: 14px;
+      font-weight: 200;
+      overflow: hidden;
+      text-overflow: clip;
+      height: 40px;
+  }
 }
 
 .card-actions {
-    display: flex;
-    height: 30px;
-    position: absolute;
-    bottom: 0;
-    padding-bottom: 16px;
-    p, i {
-        color: $white;
-    }
+  display: flex;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 16px;
+  p, i {
+      color: $white;
+  }
 }
 
 .author {
-    display: flex;
-    width: 140px;
-    align-items:center;
-    p {
-        font-size: 12px;
-        margin: 0;
-    }
-    img {
-        margin-right: 8px;
-    }
+  display: flex;
+  width: 140px;
+  align-items:center;
+  p {
+      font-size: 12px;
+      margin: 0;
+  }
+  img {
+      margin-right: 8px;
+  }
 }
 
 .votes, .solutions, .collaborators {
-    display: flex;
-    width: 20%;
-    align-items: center;
-    justify-content: space-between;
-    i {
-        font-size: 15px;
-        // margin: 0px 4px;
-    }
-    p {
-        font-size: 12px;
-        padding: 4px 0px;
-        margin: 0;
-    }
-    .solution-icon {
-       height: 25px;
-       width: 25px;
-       color: $white;
-    }
+  display: flex;
+  width: 20%;
+  align-items: center;
+  justify-content: space-between;
+  i {
+      font-size: 15px;
+      // margin: 0px 4px;
+  }
+  p {
+      font-size: 12px;
+      padding: 4px 0px;
+      margin: 0;
+  }
+  .solution-icon {
+     height: 25px;
+     width: 25px;
+     color: $white;
+  }
 }
 .solutions, .collaborators {
-    margin-left: 16px; 
+  margin-left: 16px;
+}
+
+
+
+.solving-tag {
+  display: block;
+  background-color: $dark-blue;
+  width: fit-content;
+  padding: 6px 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  max-width: -webkit-fill-available;
+  margin: 4px;
+  p {
+    color: $white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
 .solution-card {
-    height: 165px;
-}
+  height: 165px;
+  width: 236px;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 8px 8px 16px 8px;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
 
-.solving-tag {
-    display: block;
-    background-color: $dark-blue;
-    width: fit-content;
-    padding: 6px 8px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    margin-right: 4px;
-    max-width: -webkit-fill-available;
-    margin: 4px;
-    p {
-        color: $white;
-        font-size: 12px;
-        font-weight: bold;
-        margin: 0;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+  .arrow {
+    border-style: solid;
+    position: absolute;
+  }
+
+  .bottom {
+    border-color: $light-blue transparent transparent transparent;
+    border-width: 16px 16px 0px 2px;
+    bottom: -16px;
+    right: 200px;
+  }
+
+ .bottom:after {
+    border-color: $light-blue transparent transparent transparent;
+    border-style: solid;
+    border-width: 8px 8px 0px 8px;
+    bottom: -16px;
+    right: 200px;
+  }
 }
