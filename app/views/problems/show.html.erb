@@ -12,14 +12,12 @@
     <h3><%= @problem.title %></h3>
   </div>
 
-  <div>  
+
     <div>
       <%= render "problems/show-card" %>
     </div>
     
-  <br>
-
-  <div class="pr-3">
+  <div class="bottom-page">
     <div class="row px-3 align-items-center justify-content-between">
       <h4 class="my-3">Solutions</h4>
       <div class="my-3">
@@ -54,24 +52,25 @@
         </div>
       <% end %>
     </div>
-
+ 
     <h4 class="my-3">Comments</h4>
 
-    <% @problem.comments .each do |comment| %>
-    <div class="comment">
-      <p>@comment.</p>
-     <p>@comment.content</p>
-    </div>
-   
-      
-    <% end %>
-    
-      <div class="my-3">
-        <%= simple_form_for [@problem, @comment] do |f| %>
-          <%= f.input :content %>
-          <%= f.submit %>
-        <% end %>
+      <% @problem.comments.each do |comment| %>
+      <div class="comment">
+        <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+        <p><%= comment.content %></p>
       </div>
+    <% end %>
+ 
+
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @comment] do |f| %>
+        <%= f.input :content %>
+        <%= f.button :submit do %>
+          <i class="fal fa-paper-plane"></i>
+        <% end %>
+      <% end %>
+    </div>
 
   </div>
 </div>
