@@ -13,6 +13,12 @@ const nav = () => {
   }
   const closeButton = document.querySelector(".closebtn");
   closeButton.addEventListener("click", closeNav);
+  
+  const myFunction = () => {
+    var element = document.getElementById("myDIV");
+    element.classList.add("mystyle");
+  }
 }
+
 
 export { nav };
