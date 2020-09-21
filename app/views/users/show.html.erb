@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="first-line">
+    <h2 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h2>
+  </div>
+
+
+
+  <h4 class="w-75 ml-2"><%= @user.first_name %> has submitted...</h4>
+
+  <div class="row">
+      <div class="cards">
+        <div class="problem-card text-center">
+          <%= pluralize(@user.problems.count, "problem") %>
+        </div>
+
+        <div class="solution-card text-center">
+          <%= pluralize(@user.solutions.count, "solution") %>
+        </div>
+
+        <div class="pitch-card text-center">
+          <%= pluralize(@user.pitches.count, "pitch") %>
+        </div>
+    </div>
+  </div>
+
+  <div class="submitted">
+    <h5><%= @user.first_name %> posts</h5>
+    <table>
+      <tbody>
+        <% @user.problems.each do |problem| %>
+          <tr>
+            <td class="user-problems text-center">P</td>
+            <td><%= problem.title %></td>
+            <td><%=  problem.votes.count %></td>
+          </tr>
+        <% end %>
+
+        <% @user.solutions.each do |solution| %>
+          <tr>
+            <td class="user-solutions text-center">S</td>
+            <td><%= solution.title %></td>
+            <td><%=  solution.votes.count %></td>
+          </tr>
+        <% end %>
+
+        <% @user.pitches.each do |pitch| %>
+          <tr>
+            <td class="user-pitches text-center">P</td>
+            <td><%= pitch.title %></td>
+            <td><%=  pitch.votes.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -19,7 +19,7 @@
   padding: 24px;
 
   .problem-card {
-    padding: 16px;
+    padding: 16px 8px;
     background-color: $red;
     border-radius: 8px;
     height: 90px;
@@ -31,7 +31,7 @@
   }
 
   .solution-card {
-    padding: 16px;
+    padding: 16px 8px;
     background-color: $green;
     border-radius: 8px;
     height: 90px;
@@ -42,7 +42,7 @@
   }
 
   .pitch-card {
-    padding: 16px;
+    padding: 16px 8px;
     background-color: $dark-blue;
     border-radius: 8px;
     height: 90px;

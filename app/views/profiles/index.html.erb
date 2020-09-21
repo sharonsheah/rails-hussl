@@ -15,23 +15,24 @@
     </div>
   </div>
 
-
-
   <h4 class="w-75 ml-2">You have submitted...</h4>
 
   <div class="row">
-      <div class="cards">
-        <div class="problem-card text-center">
-          <%= pluralize(@user.problems.count, "problem") %>
-        </div>
+    <div class="cards">
+      <div class="problem-card text-center align-items-center d-block">
+        <h3><%= @user.problems.count %></h3>
+        <p><%= "problem".pluralize(@user.problems.count) %></p>
+      </div>
 
-        <div class="solution-card text-center">
-          <%= pluralize(@user.solutions.count, "solution") %>
-        </div>
+      <div class="solution-card text-center align-items-center d-block">
+        <h3><%= @user.solutions.count %></h3>
+        <p><%= "solution".pluralize(@user.solutions.count) %></p>
+      </div>
 
-        <div class="pitch-card text-center">
-          <%= pluralize(@user.pitches.count, "pitch") %>
-        </div>
+      <div class="pitch-card text-center align-items-center d-block">
+        <h3><%= @user.pitches.count %></h3>
+        <p><%= "pitch".pluralize(@user.pitches.count) %></p>
+      </div>
     </div>
   </div>
 
