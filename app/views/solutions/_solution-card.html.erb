@@ -2,9 +2,17 @@
     <div id=<%= "problem_#{solution.id}" %> >
 
         <%= link_to solution_path(solution) do %>
-            <div class="problem-card light-blue solution-card ">
+            <div class="solution-card light-blue">
+              <div class="text-left open-quote" style="color: white; opacity: 0.5;">
+                <small><i class="fas fa-quote-left"></i></small>
+              </div>
+
                 <div class="card-title">
-                    <h5 class="p-0"><%= solution.title %></h5>
+                    <h5 class="pl-3 pr-3"><%= solution.title %></h5>
+                      <div class="text-right close-quote" style="color: white; opacity: 0.5;">
+                        <small><i class="fas fa-quote-right"></i></small>
+                      </div>
+
                     <div class="time-ago">
                         <p><%= local_time_ago(solution.created_at) %></p>
                     </div>
@@ -32,7 +40,7 @@
                             <i class="fas fa-thumbs-up"></i>
                         <% end %>
                             <!-- comment button? -->
-                        <p><%= solution.votes.count %></p>   
+                        <p><%= solution.votes.count %></p>
                     </div>
                     <div class="collaborators">
                         <% if solution.collaborators.include?(current_user) %>
@@ -45,6 +53,7 @@
                         <p><%= solution.collaborators.count %></p>
                     </div>
                 </div>
+                <div class="arrow bottom"></div>
             </div>
         <% end %>
 

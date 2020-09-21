@@ -19,6 +19,8 @@ class SolutionsController < ApplicationController
     @problem = Problem.find(params[:problem_id])
     @solution.problem = @problem
     @solution.user = current_user
+    @solution.chatroom = Chatroom.new(name: @solution.title, solution: @solution)
+
     if @solution.save!
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
@@ -41,9 +43,17 @@ class SolutionsController < ApplicationController
 
   def collaborate
     @solution = Solution.find(params[:id])
-    Collaboration.create(solution: @solution, user: current_user)
+    Collaboration.create(solution: @solution, user: current_user, status: "Pending")
 
-    redirect_to solutions_path
+    redirect_to solution_path(@solution)
+  end
+
+  def collab_status
+    @collaboration = Collaboration.find(params[:id])
+    @collaboration.status = params[:status]
+    @collaboration.save!
+
+    redirect_to solution_path(@collaboration.solution)
   end
 
   private

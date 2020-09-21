@@ -56,6 +56,16 @@
     </div>
 
     <h4 class="my-3">Comments</h4>
+
+    <% @problem.comments .each do |comment| %>
+    <div class="comment">
+      <p>@comment.</p>
+     <p>@comment.content</p>
+    </div>
+   
+      
+    <% end %>
+    
       <div class="my-3">
         <%= simple_form_for [@problem, @comment] do |f| %>
           <%= f.input :content %>
