@@ -1,12 +1,18 @@
+.comment {
+  background-color: $light-gray;
+  height: auto;
+  width: auto;
+  border-radius: 10px;
+  padding: 12px 12px;
+  margin-bottom: 6px;
+  color: $white;
 
- .comment {
-    background-color: $light-gray;
-    height: auto;
-    width: auto;
-    border-radius: 10px;
-    padding: 12px 12px;
-    margin-bottom: 6px;
-    color: $white;
+  #username {
+    color:$dark-blue;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
 
     #username {
       color:$dark-blue;

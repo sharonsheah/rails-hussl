@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   get 'users/show'
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   authenticated :user do
     root to: 'problems#index', as: 'problems'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :show ] do
     resources :profiles, only: [ :index ]
+    resources :notifications, only: [ :index ]
   end
 
   resources :problems, only: [ :index, :show, :new, :create ]  do
