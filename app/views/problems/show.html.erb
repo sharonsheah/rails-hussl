@@ -55,19 +55,11 @@
  
     <h4 class="my-3">Comments</h4>
 
-      <% @problem.comments.each do |comment| %>
-      <div class="comment">
-        <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
-        <p><%= comment.content %></p>
-      </div>
-    <% end %>
- 
-
     <div class="new-comment">
-      <%= simple_form_for [@problem, @comment] do |f| %>
-        <%= f.input :content %>
-        <%= f.button :submit do %>
-          <i class="fal fa-paper-plane"></i>
+      <%= simple_form_for [@problem, @comment], wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
+        <%= f.input :content, placeholder: "Type your comment here..." %>
+        <%= f.button :button, wrapper_html: { id: 'button' } do %>
+          <i class="far fa-paper-plane"></i>
         <% end %>
       <% end %>
     </div>

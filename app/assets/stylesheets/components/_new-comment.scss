@@ -14,8 +14,37 @@
       font-size: 12px;
       letter-spacing: 0.5px;
     }
+
     > p {
       color:$dark-blue;
       font-size: 13px;
     }
+  }
+
+
+.new-comment {
+  display: flex;
+  align-items: center;
+
+ .form-control.text.required {
+  height: 30px;
+  width: 100%;
+  background-color: $light-gray;
+  position: relative;
+  z-index: -0.5;
+  font-weight: lighter;
+  font-size: 14px;
+  letter-spacing: 0.5px;
  }
+ .btn {
+  height: 30px;
+  background-color: $yellow;
+  color: $white;
+  position: absolute;
+  left: 55%;
+  z-index: 1;
+  i {
+    text-align: center;
+  }
+ }
+}
