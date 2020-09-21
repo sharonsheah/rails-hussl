@@ -1,15 +1,55 @@
-<h2>Chatrooms</h2>
-
-<ul>
-    <% @chatrooms.each do |chatroom| %>
-        <% if chatroom.solution.user === current_user %>
-        <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
+<div class="ideate-page">
+  <div class="header">
+    <div class="btn-profile">
+      <div class="text-right mt-2" style="font-size:8vw">
+        <%= link_to user_profiles_path(current_user) do %>
+          <% if current_user.photo.attached? %>
+            <span class="card-img-top"><%= cl_image_tag current_user.photo.key, height: 42, width: 42, crop: :fill, gravity: :face %></span>
+          <% else %>
+            <i class="far fa-user-circle"></i>
+          <% end %>
         <% end %>
-    <% end %>
+      </div>
+    </div>
 
-    <% @collaborations.each do |collaboration| %>
-        <% if collaboration.status === "Accepted"  %>
-        <li><%= link_to collaboration.solution.chatroom.name, chatroom_path(collaboration.solution.chatroom) %></li>
-        <% end %>
-    <% end %>
-</ul>
+    <h2>Chatrooms</h2>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tab-active tabs' %></h4>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="ideate-content-container leaderboard-content-container pad-left">
+      <ul class="ranking-list chatrooms-list">
+          <% @chatrooms.each do |chatroom| %>
+              <% if chatroom.solution.user === current_user %>
+                  <li class="chatroom-item">
+                    <% if current_user.photo.attached? %>
+                        <span><%= cl_image_tag current_user.photo.key, height: 32, width: 32, crop: :fill, gravity: :face %></span>
+                    <% else %>
+                        <span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span>
+                    <% end %>
+                    <%= link_to chatroom.name, chatroom_path(chatroom) %>
+                  </li>
+              <% end %>
+          <% end %>
+
+          <% @collaborations.each do |collaboration| %>
+              <% if collaboration.status === "Accepted"  %>
+                  <li class="chatroom-item">
+                    <% if collaboration.solution.user.photo.attached? %>
+                        <p><span><%= cl_image_tag collaboration.solution.user.photo.key, height: 32, width: 32, crop: :fill, gravity: :face %></span>
+                    <% else %>
+                        <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span>
+                    <% end %>
+                    <%= link_to collaboration.solution.chatroom.name, chatroom_path(collaboration.solution.chatroom) %>
+                  </li>
+              <% end %>
+          <% end %>
+      </ul>
+  </div>
+  
+</div>
