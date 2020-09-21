@@ -46,20 +46,7 @@
       <small><%= local_time_ago(@solution.created_at) %></small>
     </div>
     <br>
-    <h6>COLLABORATORS</h6>
-    <% if @solution.collaborators.exists? %>
-      <% @solution.collaborators.each do |collaborator|%> 
-        <% if collaborator.photo.attached? %>
-          <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
-        <% else %>
-            <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
-        <% end %>
-            <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
-            <p><%= collaboration.status %></p>
-      <% end %>
-    <% else %>
-      <i>Raise your hand to be the first collaborator!</i>
-    <% end %>
+  
   </div>
 
 
