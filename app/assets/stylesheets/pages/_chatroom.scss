@@ -10,3 +10,41 @@
     margin: 16px;
     }
 }
+
+.chat-container {
+    height: 100vh;
+    padding: 20px;
+    margin-top: 40px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0px 4px 10px rgba($dark-blue, 0.5);
+    display: grid;
+}
+
+#messages {
+    display: grid;
+}
+
+.message-container {
+    width: 70vw;
+    background-color: $light-gray;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 8px 0px;
+    p {
+        margin: 0px;
+        font-size: 14px;
+    }
+    .message-author {
+        font-family: $headers-font;
+        font-weight: 500;
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+}
+
+.message-container.blue {
+    color: $white;
+    background-color: $dark-blue;
+    justify-self: end;
+}
