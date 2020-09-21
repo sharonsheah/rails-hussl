@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
             @chatroom,
             render_to_string(partial: "message", locals: { message: @message })
             )
+
         else
           render "chatrooms/show"
         end

@@ -24,7 +24,8 @@
     display: grid;
     overflow-y: scroll;
     height: fit-content;
-    max-height: 72vh;
+    height: 72vh;
+    padding-top: 100%;
 }
 
 .message-container {

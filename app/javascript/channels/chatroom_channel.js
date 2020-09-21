@@ -6,11 +6,11 @@ const initChatroomCable = () => {
     const id = messagesContainer.dataset.chatroomId;
 
     consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
-        received(data) {
-          messagesContainer.insertAdjacentHTML('beforeend', data);
-        }
+      received(data) {
+        messagesContainer.insertAdjacentHTML('beforeend', data);
+      }
     });
   }
 }
-
+  
 export { initChatroomCable };
