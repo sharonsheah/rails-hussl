@@ -54,6 +54,8 @@
         <% else %>
             <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
         <% end %>
+            <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
+            <p><%= collaboration.status %></p>
       <% end %>
     <% else %>
       <i>Raise your hand to be the first collaborator!</i>

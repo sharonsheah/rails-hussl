@@ -41,9 +41,9 @@ class SolutionsController < ApplicationController
 
   def collaborate
     @solution = Solution.find(params[:id])
-    Collaboration.create(solution: @solution, user: current_user)
+    Collaboration.create(solution: @solution, user: current_user, status: "Pending")
 
-    redirect_to solutions_path
+    redirect_to solution_path(@solution)
   end
 
   private
