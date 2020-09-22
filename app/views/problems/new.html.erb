@@ -5,8 +5,8 @@
         <h4>Share a problem</h4>
 
         <%= simple_form_for(@problem) do |f| %>
-          <%= f.input :title, label: "Name your problem", placeholder: "Keep it short, sweet & catchy" %>
-          <%= f.input :description, placeholder: "Describe your problem in detail" %>
+          <%= f.input :title, label: "Name your problem", placeholder: "Keep it short & sweet. This is what others will see first." %>
+          <%= f.input :description, label: "Describe your problem", placeholder: "Be detailed so that others can understand your exact pain" %>
           <%= f.input :category, collection: Problem::CATEGORY %>
           <%= f.button :submit, "Share problem", class: "btn btn-info" %>
         <% end %>

@@ -76,6 +76,7 @@
         <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
       </div>
     </div>
+    <div class="d-inline-flex justify-content-around">
       <% if @solution.pitches.exists? %>
         <% @pitches.each do |pitch| %>
           <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
@@ -92,9 +93,8 @@
           </div>
         <% end %>
         <br>
-        <div>
       <% else %>
-        <i>When all you husslrs are ready, submit link/files for your pitch!</i>
+        <i>When all you husslrs are ready, submit a link to your pitch deck!</i>
       <% end %>
     </div>
   </div>
