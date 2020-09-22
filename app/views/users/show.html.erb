@@ -15,7 +15,7 @@
     <% if @user.description.present? %>
       <p><%= @user.description %></p>
     <% else %>
-      <i><%= @user.first_name %> hasn't told us about herself...</i>
+      <i>We don't know much about <%= @user.first_name %>...</i>
     <% end %>
   </div>
   <br>

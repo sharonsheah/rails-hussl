@@ -19,10 +19,12 @@
     <p><%= @pitch.description %></p>
     <h6>POSTED BY</h6>
     <div>
-      <% if @pitch.user.photo.attached? %>
-        <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
-        <% else %>
-          <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
+      <%# <%= link_to user_path(@pitch.user) do %> %>
+        <% if @pitch.user.photo.attached? %>
+          <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
+          <% else %>
+            <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
+        <% end %>
       <% end %>
     </div> 
     <div>
