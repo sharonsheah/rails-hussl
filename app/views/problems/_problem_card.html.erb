@@ -23,11 +23,7 @@
           <div class="author">
             <%= link_to user_path(problem.user) do %>
               <% if problem.user.photo.attached? %>
-<<<<<<< HEAD
-                  <p><span><%= cl_image_tag problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
-=======
                 <p><span><%= cl_image_tag problem.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
->>>>>>> 6cd37f1b7bf17f083e1902d40a047c34a0510553
               <% else %>
                 <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
               <% end %>
