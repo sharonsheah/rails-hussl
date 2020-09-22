@@ -1,56 +1,64 @@
+.wrapper-pages {
+position: relative;
+}
+
 .comment {
   background-color: $light-gray;
   height: auto;
   width: auto;
   border-radius: 10px;
-  padding: 12px 12px;
+  padding: 10px 12px;
   margin-bottom: 6px;
-  color: $white;
 
   #username {
     color:$dark-blue;
     font-weight: bold;
     font-size: 12px;
     letter-spacing: 0.5px;
+    margin-bottom: 2px;
   }
 
-    #username {
-      color:$dark-blue;
-      font-weight: bold;
-      font-size: 12px;
-      letter-spacing: 0.5px;
-    }
-
-    > p {
-      color:$dark-blue;
-      font-size: 13px;
-    }
+  > p {
+    color:$dark-blue;
+    font-size: 12px;
+    margin-bottom: 6px;
   }
-
+}
+.new-comment-bar {
+  width: 100%;
+  height: 200px;
+  background-color: $white;
+}
 
 .new-comment {
-  display: flex;
+  display: inline-block;
   align-items: center;
+  width: auto;
+  position: fixed;
+  bottom: 16px;
 
- .form-control.text.required {
+  .form-control.text.required {
   height: 30px;
-  width: 100%;
+  width: 90vw;
   background-color: $light-gray;
   position: relative;
   z-index: -0.5;
   font-weight: lighter;
   font-size: 14px;
   letter-spacing: 0.5px;
- }
- .btn {
+  }
+
+  .btn {
   height: 30px;
   background-color: $yellow;
   color: $white;
   position: absolute;
-  left: 55%;
+  right: 0%;
   z-index: 1;
+  }
+
   i {
     text-align: center;
   }
- }
 }
+  

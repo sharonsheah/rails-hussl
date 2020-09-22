@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container wrapper-pages">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
@@ -24,7 +23,7 @@
         <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
       </div>
     </div>
-    <div>
+    <div class="solutions-section">
       <% @solutions.each do |solution| %>
         <h5><%= link_to solution.title, solution_path(solution) %></h5>
 
@@ -47,22 +46,31 @@
           <% end %>
           <span><%= solution.collaborators.count %></span>
         </div>
-        <div>
+        <div class="time-section">
           <p><%= local_time_ago(solution.created_at) %></p>
         </div>
       <% end %>
-    </div>
- 
-    <h4 class="my-3">Comments</h4>
+    </div>  
 
-    <div class="new-comment">
-      <%= simple_form_for [@problem, @comment], wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
-        <%= f.input :content, placeholder: "Type your comment here..." %>
-        <%= f.button :button, wrapper_html: { id: 'button' } do %>
-          <i class="far fa-paper-plane"></i>
-        <% end %>
+    <h4 class="my-3">Comments</h4>
+    <div class="comments-container">
+      <% @problem.comments.each do |comment| %>
+        <div class="comment">
+          <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+          <p><%= comment.content %></p>
+        </div>
       <% end %>
     </div>
 
+    <div class="new-comment-bar">
+      <div class="new-comment">
+        <%= simple_form_for [@problem, @comment], wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
+            <%= f.input :content, placeholder: "Type your comment here..." %>
+            <%= f.button :button, wrapper_html: { id: 'button' } do %>
+              <i class="far fa-paper-plane"></i>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
