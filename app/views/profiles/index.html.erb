@@ -23,7 +23,11 @@
     </ul>
     <br>
     <h5>About Me</h5>
-    <p><%= @user.description %></p>
+    <% if @user.description.present? %>
+      <p><%= @user.description %></p>
+    <% else %>
+      <i>Edit your profile and introduce yourself to the husslr community!</i>
+    <% end %>
     <br>
     <h4 class="">You have submitted...</h4>
 

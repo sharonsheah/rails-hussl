@@ -1,17 +1,17 @@
 <% if solution.problem.category === tag || tag == "rerender" %>
-    <div id=<%= "problem_#{solution.id}" %> >
+	<div id=<%= "problem_#{solution.id}" %> >
 
-        <%= link_to solution_path(solution) do %>
-            <div class="solution-card light-blue">
-              <div class="text-left open-quote" style="color: white; opacity: 0.5;">
-                <small><i class="fas fa-quote-left"></i></small>
-              </div>
+		<%= link_to solution_path(solution) do %>
+			<div class="solution-card light-blue">
+				<div class="text-left open-quote" style="color: white; opacity: 0.5;">
+					<small><i class="fas fa-quote-left"></i></small>
+				</div>
 
-                <div class="card-title">
-                    <h5 class="pl-3 pr-3"><%= solution.title %></h5>
-                      <div class="text-right close-quote" style="color: white; opacity: 0.5;">
-                        <small><i class="fas fa-quote-right"></i></small>
-                      </div>
+				<div class="card-title">
+						<h5 class="pl-3 pr-3"><%= solution.title %></h5>
+							<div class="text-right close-quote" style="color: white; opacity: 0.5;">
+								<small><i class="fas fa-quote-right"></i></small>
+							</div>
 
                     <div class="time-ago">
                         <p><%= local_time_ago(solution.created_at) %></p>
