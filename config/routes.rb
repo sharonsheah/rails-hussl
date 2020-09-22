@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'notifications/index'
   get 'users/show'
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   authenticated :user do
-    root to: 'problems#index', as: 'problems'
+    root to: 'problems#index', as: 'prob_root'
   end
 
   root to: 'pages#home'
