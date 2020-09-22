@@ -2,7 +2,8 @@
   <div class="head">
     <h3 class="text-center mb-4"><%= @chatroom.name %></h3>
     <%= link_to new_problem_solution_pitch_path(@chatroom.solution.problem, @chatroom.solution) do %>
-      <span class="iconify upload-btn" data-icon="heroicons-outline:upload" data-inline="false"></span>
+      <svg class="upload-btn" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none">
+      <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
     <% end %>
   </div>
 
@@ -14,6 +15,8 @@
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Type your message..." %>
-    <%= f.button :submit, 'Send', class: 'btn' %>
+    <%= button_tag(type: 'submit', class: "btn") do %>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1em" height="1em"   viewBox="0 0 32 32"><path d="M27.45 15.11l-22-11a1 1 0 0 0-1.08.12a1 1 0 0 0-.33 1L7 16L4 26.74A1 1 0 0 0 5 28a1 1 0 0 0 .45-.11l22-11a1 1 0 0 0 0-1.78zm-20.9 10L8.76 17H18v-2H8.76L6.55 6.89L24.76 16z" fill="white"/></svg>
+    <% end %>
   <% end %>
 </div>

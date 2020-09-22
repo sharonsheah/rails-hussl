@@ -1,4 +1,4 @@
-<% if message.user == current_user%>
+<% if message.user === current_user%>
   <div class="message-container blue" id="message-<%= message.id %>">
     <p class="message-author"><%= message.user.first_name %> <%= message.user.last_name %></p>
     <p><%= message.content %></p>
