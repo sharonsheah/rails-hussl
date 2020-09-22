@@ -32,6 +32,7 @@
           <%= f.input :title , placeholder: "Enter your pitch title" %>
           <%= f.input :description, placeholder: "Enter your full pitch description" %>
           <%= f.input :link %>
+          <%= f.input :photo, as: :file %>
           <%= f.button :submit, "Pitch your solution", class: "btn btn-info" %>
         <% end %>       
       </div> 
