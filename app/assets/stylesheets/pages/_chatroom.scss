@@ -24,11 +24,11 @@
 }
 
 #messages {
-    display: grid;
+    display: flex;
     overflow-y: scroll;
     height: fit-content;
     height: 72vh;
-    //padding-top: 100%;
+    flex-direction: column;
 }
 
 .message-container {
@@ -54,7 +54,7 @@
 .message-container.blue {
     color: $white;
     background-color: $dark-blue;
-    justify-self: end;
+    align-self: flex-end;
 }
 .chat-container form {
     align-self: end;
