@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :pitches
   has_many :votes
   has_many :bookmarks
+  has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_one :profile
   # has_many :solutions, through: :collaboration
   has_one_attached :photo

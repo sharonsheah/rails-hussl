@@ -22,6 +22,13 @@ class SolutionsController < ApplicationController
     @solution.chatroom = Chatroom.new(name: @solution.title, solution: @solution)
 
     if @solution.save!
+      voters = @problem.votes.map { |vote| vote.user }
+
+      (voters.uniq - [current_user]).each do |voter|
+        Notification.create(recipient: voter, actor: current_user, action: "posted", notifiable: @solution)
+      end
+
+      Notification.create(recipient: current_user, actor: current_user, action: "posted", notifiable: @solution)
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
       render :new

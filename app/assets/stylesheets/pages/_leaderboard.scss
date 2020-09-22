@@ -1,24 +1,24 @@
 .ranking-list {
-    font-family: "Spartan", "sans-serif";
-    padding-left: 30px;
-    padding-right: 40px;
-    font-size: 14px;
-    font-weight: bold;
-}
+	font-family: "Spartan", "sans-serif";
+	padding-left: 30px;
+	padding-right: 40px;
+	font-size: 14px;
+	font-weight: bold;
 
-.ranking-list li {
-    //padding: 0 16px;
-    border-bottom: 1px solid lightgray;
+	li {
+		//padding: 0 16px;
+		border-bottom: 1px solid lightgray;
+	}
 }
 
 .ranking-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0px;
-    p {
-        font-family: "Spartan", "sans-serif";
-        font-size: 14px;
-        margin: 0;
-        font-weight: 500;
-    }
+	display: flex;
+	justify-content: space-between;
+	padding: 16px 0px;
+	p {
+		font-family: "Spartan", "sans-serif";
+		font-size: 14px;
+		margin: 0;
+		font-weight: 500;
+	}
 }
