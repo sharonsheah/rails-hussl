@@ -17,11 +17,11 @@
     </ul>
   </div>
 
-  <div class="ideate-content-container pad-left d-flex flex-wrap">
+  <div class="ideate-content-container pad-left pad-right d-flex flex-wrap">
     <% @pitches.each do |pitch| %>
       <%= link_to pitch_path(pitch) do %>
         <% if pitch.photo.attached? %>
-          <div class="pitch-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pitch.photo.key, height: 234, width: 160, crop: :fill %>')">
+          <div class="pitch-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pitch.photo.key, height: 234, width: 158, crop: :fill %>')">
             <h4><%= pitch.title %></h4>
             <div class="actions">
               <i class="far fa-thumbs-up">
