@@ -1,14 +1,25 @@
 <div class="container">
-  <div class="first-line">
-    <h2 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h2>
+  <div class="first-line d-flex">
+  <%= link_to user_path(@user) do %>
+    <% if @user.photo.attached? %>
+      <p><span><%= cl_image_tag @user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span></p>
+    <% else %>
+      <p><span><img class="big-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span></p>
+    <% end %>
+  <% end %>
+    <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h3>
   </div>
 
   <div>
     <h5>About Me</h5>
-    <p><%= @user.description %></p>
+    <% if @user.description.present? %>
+      <p><%= @user.description %></p>
+    <% else %>
+      <i><%= @user.first_name %> hasn't told us about herself...</i>
+    <% end %>
   </div>
-
-  <h4 class="w-75 ml-2"><%= @user.first_name %> has submitted...</h4>
+  <br>
+  <h4><%= @user.first_name %> has submitted...</h4>
 
   <div class="row">
     <div class="cards">
