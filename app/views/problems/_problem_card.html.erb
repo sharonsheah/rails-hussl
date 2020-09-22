@@ -1,18 +1,20 @@
 <% if problem.category === tag || tag == "rerender" %>
   <div id=<%= "problem_#{problem.id}" %> >
 
-    <%= link_to problem_path(problem) do %>
       <div class="problem-card dark-blue">
-        <div class="text-left open-quote" style="color: white; opacity: 0.5;">
-          <small><i class="fas fa-quote-left"></i></small>
-        </div>
-        <div class="card-title">
-          <h5 class="pl-3 pr-3"><%= problem.title %></h5>
-            <div class="text-right close-quote" style="color: white; opacity: 0.5;">
-              <small><i class="fas fa-quote-right"></i></small>
+        <%= link_to problem_path(problem), class: "card-full-link" do %><% end %>
+        <div class="problem-card-inner">
+          <div class="text-left open-quote" style="color: white; opacity: 0.5;">
+            <small><i class="fas fa-quote-left"></i></small>
+          </div>
+          <div class="card-title">
+            <h5 class="pl-3"><%= problem.title %></h5>
+              <%# <div class="text-right close-quote" style="color: white; opacity: 0.5;">
+                <small><i class="fas fa-quote-right"></i></small>
+              </div> %>
+            <div class="time-ago">
+              <p><%= local_time_ago(problem.created_at) %></p>
             </div>
-          <div class="time-ago">
-            <p><%= local_time_ago(problem.created_at) %></p>
           </div>
         </div>
 <!--         <div class="card-text">
@@ -47,11 +49,11 @@
             <p><%= problem.solutions.count %></p>
           </div>
 
-          <div class="arrow bottom right">
-        </div>
+      </div>
+      <div class="arrow bottom right">
       </div>
     </div>
-    <% end %>
+
 
   </div>
 <% end %>

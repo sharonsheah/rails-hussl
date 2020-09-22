@@ -27,21 +27,21 @@
     p {
       margin-bottom: 0;
     }
-
-  }
-
-  .actions {
-    color: $white;
-    padding-right: 8px;
-  }
-
-  .time-section {
-    margin-top: 10px;
-    margin-bottom: 0;
-
-    p {
-    font-size: 11px;
-    color: lightgray;
+    
+    .actions, i {
+      color: $white;
+      padding-right: 8px;
     }
+  }
+}
+ 
+
+.time-section {
+  margin-top: 10px;
+  margin-bottom: 0;
+
+  p {
+  font-size: 11px;
+  color: lightgray;
   }
 }
