@@ -12,7 +12,7 @@
     <% if @problem.user.photo.attached? %>
       <p><span><%= cl_image_tag @problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @problem.user.first_name %> <%= @problem.user.last_name %></span></p>
       <% else %>
-        <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= @problem.user.first_name %> <%= @problem.user.last_name %></span></p>
+        <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"><%= @problem.user.first_name %> <%= @problem.user.last_name %></span></p>
     <% end %>
     
     <div class="actions">
