@@ -9,13 +9,13 @@
 
 				<div class="card-title">
 						<h5 class="pl-3 pr-3"><%= solution.title %></h5>
-							<div class="text-right close-quote" style="color: white; opacity: 0.5;">
+							<%# <div class="text-right close-quote" style="color: white; opacity: 0.5;">
 								<small><i class="fas fa-quote-right"></i></small>
-							</div>
+							</div> %>
 
-                    <div class="time-ago">
-                        <p><%= local_time_ago(solution.created_at) %></p>
-                    </div>
+						<div class="time-ago">
+								<p><%= local_time_ago(solution.created_at) %></p>
+						</div>
                 </div>
                 <div class="mx-0 solving-tag">
                         <p><%= solution.problem.title.upcase %></p>
