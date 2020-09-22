@@ -1,18 +1,20 @@
 <% if problem.category === tag || tag == "rerender" %>
   <div id=<%= "problem_#{problem.id}" %> >
 
-    <%= link_to problem_path(problem) do %>
       <div class="problem-card dark-blue">
-        <div class="text-left open-quote" style="color: white; opacity: 0.5;">
-          <small><i class="fas fa-quote-left"></i></small>
-        </div>
-        <div class="card-title">
-          <h5 class="pl-3 pr-3"><%= problem.title %></h5>
-            <div class="text-right close-quote" style="color: white; opacity: 0.5;">
-              <small><i class="fas fa-quote-right"></i></small>
+        <%= link_to problem_path(problem), class: "card-full-link" do %><% end %>
+        <div class="problem-card-inner">
+          <div class="text-left open-quote" style="color: white; opacity: 0.5;">
+            <small><i class="fas fa-quote-left"></i></small>
+          </div>
+          <div class="card-title">
+            <h5 class="pl-3"><%= problem.title %></h5>
+              <%# <div class="text-right close-quote" style="color: white; opacity: 0.5;">
+                <small><i class="fas fa-quote-right"></i></small>
+              </div> %>
+            <div class="time-ago">
+              <p><%= local_time_ago(problem.created_at) %></p>
             </div>
-          <div class="time-ago">
-            <p><%= local_time_ago(problem.created_at) %></p>
           </div>
         </div>
 <!--         <div class="card-text">
@@ -23,11 +25,7 @@
           <div class="author">
             <%= link_to user_path(problem.user) do %>
               <% if problem.user.photo.attached? %>
-<<<<<<< HEAD
-                  <p><span><%= cl_image_tag problem.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
-=======
                 <p><span><%= cl_image_tag problem.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
->>>>>>> 6cd37f1b7bf17f083e1902d40a047c34a0510553
               <% else %>
                 <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
               <% end %>
@@ -51,11 +49,11 @@
             <p><%= problem.solutions.count %></p>
           </div>
 
-          <div class="arrow bottom right">
-        </div>
+      </div>
+      <div class="arrow bottom right">
       </div>
     </div>
-    <% end %>
+
 
   </div>
 <% end %>

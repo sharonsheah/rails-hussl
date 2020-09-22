@@ -1,2 +1,2 @@
-class CommentsController < ApplicationController
+class Solution::CommentsController < ApplicationController
 end

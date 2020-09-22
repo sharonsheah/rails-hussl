@@ -7,7 +7,7 @@
   </nav>
   <h3><%= @solution.title %></h3>
   <div>
-    <%= render "shared/solution-tags" %>
+    <%= render "solutions/showcard" %>
   </div>
   <br>
   <div>
@@ -18,11 +18,11 @@
     <h6>POSTED BY</h6>
     <div>
       <% if @solution.user.photo.attached? %>
-        <p><span><%= cl_image_tag @solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+        <p><span><%= cl_image_tag @solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
         <% else %>
-          <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+          <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
       <% end %>
-    </div>    
+    </div>
     <div class="actions">
       <% if Vote.where(votable: @solution, user:  current_user).empty? %>
         <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
@@ -48,7 +48,7 @@
     <br>
       <h6>COLLABORATORS</h6>
       <% if @solution.collaborators.exists? %>
-        <% @solution.collaborators.each do |collaborator|%> 
+        <% @solution.collaborators.each do |collaborator|%>
           <% if collaborator.photo.attached? %>
             <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
           <% else %>

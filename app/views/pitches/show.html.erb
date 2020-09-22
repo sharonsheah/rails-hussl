@@ -21,9 +21,14 @@
 
     <h5 class="mt-4">Description</h5>
     <p><%= @pitch.description %></p>
+<<<<<<< HEAD
 
     <h6 class="mt-4">POSTED BY</h6>
     <div class="d-flex justify-content-between mb-2">
+=======
+    <h6>POSTED BY</h6>
+    <div>
+>>>>>>> 866458a0b062b1dae4cc5232ac8e1af0d7197fe7
       <%= link_to user_path(@pitch.user) do %>
         <% if @pitch.user.photo.attached? %>
           <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
