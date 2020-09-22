@@ -8,6 +8,17 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
   scroll-snap-align: start;
   scroll-snap-align: center;
+  display: flex;
+  padding-bottom: 50px;
+  align-items: center;
+}
+
+.problem-card-inner {
+  display: flex;
+}
+
+.open-quote {
+  margin-top: -5px;
 }
 
 .dark-blue {
@@ -16,13 +27,14 @@
 
 .problem-card .arrow {
   border-style: solid;
-  position: relative;
+  position: absolute;
+  
 }
 
 .bottom {
   border-color: $dark-blue transparent transparent transparent;
   border-width: 16px 2px 0px 16px;
-  bottom: -29px;
+  bottom: -16px;
   right: 35px;
 }
 
@@ -52,7 +64,7 @@
       $headings-font-family:    $headers-font;
       color: $white;
       font-size: 14px;
-      line-height: 16px;
+      line-height: 20px;
       margin: 0;
       padding-bottom: 8px;
   }
@@ -83,10 +95,10 @@
 .card-actions {
   display: flex;
   align-items: center;
-  height: 30px;
   position: absolute;
-  bottom: 0;
-  padding-bottom: 18px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
   p, i {
       color: $white;
   }
@@ -94,7 +106,7 @@
 
 .author {
   display: flex;
-  width: 120px;
+  flex: 1;
   align-items:center;
   p {
       font-size: 12px;
@@ -107,7 +119,6 @@
 
 .votes, .solutions, .collaborators {
   display: flex;
-  width: 20%;
   align-items: center;
   justify-content: space-between;
   i {
@@ -126,10 +137,8 @@
   }
 }
 .solutions, .collaborators {
-  margin-left: 14px;
+  margin-left: 8px;
 }
-
-
 
 .solving-tag {
   display: block;
@@ -142,6 +151,14 @@
   margin-right: 4px;
   max-width: -webkit-fill-available;
   margin: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   p {
     color: $white;
     font-size: 12px;
@@ -162,6 +179,7 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
   scroll-snap-align: start;
   scroll-snap-align: center;
+  padding-top: 40px;
 
   .arrow {
     border-style: solid;
@@ -182,4 +200,13 @@
     bottom: -16px;
     right: 200px;
   }
+}
+
+.card-full-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
