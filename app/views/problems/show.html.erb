@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="new-comment-bar">
+  <div class="problem-comment-bar">
     <div class="new-comment">
       <%= simple_form_for [@problem, @comment], wrapper: :inline_form, remote: true, html: { class: 'form-inline' } do |f| %>
           <%= f.input :content, placeholder: "Type your comment here..." %>

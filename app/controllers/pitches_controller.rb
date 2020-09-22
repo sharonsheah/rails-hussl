@@ -5,6 +5,10 @@ class PitchesController < ApplicationController
 
   def show
     @pitch = Pitch.find(params[:id])
+    @solution = @pitch.solution
+    @pitches = @solution.pitches
+    @problem =  @solution.problem
+    @comment = Comment.new
   end
 
   def new

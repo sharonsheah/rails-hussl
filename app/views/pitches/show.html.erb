@@ -1,51 +1,66 @@
-<div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), solution_path(@pitch.solution) %>...</li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @pitch.title %></li>
-    </ol>
-  </nav>
-  <div>
-    <h2><%= @pitch.title %></h2>
-  </div>
-  <div>
-    <%= render "shared/pitch-tags" %>
-  </div>
-  <br>
-  <div class="pitch-card">
-    <h5>Solving</h5>
-    <p><%= @pitch.solution.problem.title %></p>
-    <h5>Description</h5>
-    <p><%= @pitch.description %></p>
-    <h6>POSTED BY</h6>
+
+<div class="wrapper-pages">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), solution_path(@pitch.solution) %>...</li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @pitch.title %></li>
+      </ol>
+    </nav>
     <div>
-      <% if @pitch.user.photo.attached? %>
-        <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
-        <% else %>
-          <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
-      <% end %>
-    </div> 
+      <h2><%= @pitch.title %></h2>
+    </div>
     <div>
-      <p><span>
-        <div class="actions">
-        <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
-          <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
-            <i class="far fa-thumbs-up"></i>
-          <% end %>
-        <% else %>
-          <i class="fas fa-thumbs-up"></i>
+      <%= render "shared/pitch-tags" %>
+    </div>
+    <br>
+    <div class="pitch-card">
+      <h5>Solving</h5>
+      <p><%= @pitch.solution.problem.title %></p>
+      <h5>Description</h5>
+      <p><%= @pitch.description %></p>
+      <h6>POSTED BY</h6>
+      <div>
+        <% if @pitch.user.photo.attached? %>
+          <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
+          <% else %>
+            <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
         <% end %>
-        <span><%= @pitch.votes.count %></span>
+      </div> 
+      <div>
+        <p><span>
+          <div class="actions">
+          <% if Vote.where(votable: @pitch, user:  current_user).empty? %>
+            <%= link_to upvote_pitch_path(@pitch, @pitch.solution), method: :post, class: 'button'  do %>
+              <i class="far fa-thumbs-up"></i>
+            <% end %>
+          <% else %>
+            <i class="fas fa-thumbs-up"></i>
+          <% end %>
+          <span><%= @pitch.votes.count %></span>
+        </div>
+        </p></span>
       </div>
-      </p></span>
+      <div>
+        <p><%= local_time_ago(@pitch.created_at) %></p>
+      </div>
     </div>
-    <div>
-      <p><%= local_time_ago(@pitch.created_at) %></p>
+    <div class="container pitch-link">
+      <iframe src="<%= @pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="275px" width="375px" allowfullscreen></iframe>
+      <a href="<%= @pitch.link %>" alt="original-link">View Pitch Here</a>
     </div>
   </div>
-  <div class="container pitch-link">
-    <iframe src="<%= @pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="275px" width="375px" allowfullscreen></iframe>
-    <a href="<%= @pitch.link %>" alt="original-link">View Pitch Here</a>
-  </div>
+
+  <div class="comment-bar">
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @solution, @pitch, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
+          <%= f.input :content, placeholder: "Type your comment here..." %>
+          <%= f.button :button, wrapper_html: { id: 'button' } do %>
+            <i class="far fa-paper-plane"></i>
+          <% end %>
+      <% end %>
+    </div>
+    </div>
+
 </div>
 

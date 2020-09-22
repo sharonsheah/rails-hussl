@@ -3,6 +3,7 @@ class Pitch < ApplicationRecord
   belongs_to :user
   has_one :problem, through: :solution
   has_many :votes, as: :votable
+  has_many :comments, as: :commentable
   
   validates :title, length: { in: 3..60 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 400 }, presence: true
