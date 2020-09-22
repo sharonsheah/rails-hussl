@@ -107,6 +107,7 @@
 .author {
   display: flex;
   flex: 1;
+  z-index: 20;
   align-items:center;
   p {
       font-size: 12px;
@@ -141,16 +142,14 @@
 }
 
 .solving-tag {
-  display: block;
+  display: flex;
   background-color: $dark-blue;
   width: fit-content;
-  padding: 6px 8px;
+  padding: 6px 10px;
   border-radius: 5px;
-  display: flex;
   align-items: center;
   margin-right: 4px;
   max-width: -webkit-fill-available;
-  margin: 4px;
   position: absolute;
   top: 0;
   left: 0;

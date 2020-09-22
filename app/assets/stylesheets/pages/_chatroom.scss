@@ -77,8 +77,14 @@
         background-color: $yellow;
         color: $white;
         border-radius: 5px;
-        font-weight: 600;
+        font-size: 25px;
+        padding: 0 8px;
+        margin: 0;
     }
+}
+
+.btn svg {
+    display: flex;
 }
 
 .upload-btn {
