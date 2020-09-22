@@ -28,7 +28,7 @@ class SolutionsController < ApplicationController
         Notification.create(recipient: voter, actor: current_user, action: "posted", notifiable: @solution)
       end
 
-      Notification.create(recipient: current_user, actor: current_user, action: "posted", notifiable: @solution)
+      # Notification.create(recipient: current_user, actor: current_user, action: "posted", notifiable: @solution)
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
       render :new
