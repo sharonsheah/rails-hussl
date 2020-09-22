@@ -52,15 +52,13 @@
           <% if collaborator.photo.attached? %>
             <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
           <% else %>
-              <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/c_scale,h_24/v1600307295/default_profile_pic_ypyuhz.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
+              <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
           <% end %>
 
           <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
           <% if current_user === @solution.user && collaboration.status === "Pending" %>
             <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
             <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
-          <% else %>
-            <%= collaboration.status %>
           <% end %>
         <% end %>
       <% else %>
@@ -76,6 +74,7 @@
         <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
       </div>
     </div>
+    <div class="d-inline-flex justify-content-around">
       <% if @solution.pitches.exists? %>
         <% @pitches.each do |pitch| %>
           <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
@@ -92,9 +91,8 @@
           </div>
         <% end %>
         <br>
-        <div>
       <% else %>
-        <i>When all you husslrs are ready, submit link/files for your pitch!</i>
+        <i>When all you husslrs are ready, submit a link to your pitch deck!</i>
       <% end %>
     </div>
   </div>

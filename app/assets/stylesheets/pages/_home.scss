@@ -14,6 +14,10 @@
   }
 }
 
+.logo {
+  margin-bottom: 20px;
+}
+
 .hussl-big-white {
   color: $white;
   padding-left: 20px;
@@ -30,6 +34,11 @@
   padding-left: 25px;
   padding-right: 20px;
   margin-bottom: 50px;
+}
+
+.hussl-small-blue {
+  color: $dark-blue;
+  margin-bottom: 0;
 }
 
 .cta {

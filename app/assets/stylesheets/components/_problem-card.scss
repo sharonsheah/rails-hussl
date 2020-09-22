@@ -6,6 +6,8 @@
   margin: 8px 16px 16px 0px;
   position: relative;
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 
 .dark-blue {
@@ -155,9 +157,11 @@
   width: 236px;
   border-radius: 10px;
   padding: 16px;
-  margin: 8px 8px 16px 8px;
+  margin: 8px 16px 16px 0px;
   position: relative;
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  scroll-snap-align: start;
+  scroll-snap-align: center;
 
   .arrow {
     border-style: solid;

@@ -2,6 +2,7 @@ require 'open-uri'
 
 puts 'Wiping data...'
 
+Message.destroy_all
 Collaboration.destroy_all
 Chatroom.destroy_all
 Pitch.destroy_all
@@ -23,6 +24,27 @@ default_user = User.create!(
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sharon_sheah.jpg_qhu4tc.jpg")
                 default_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+
+maite_user = User.create!(
+            first_name: "Maite",
+            last_name: "Brown",
+            email: "maite@user.com", 
+            password: "password"
+            )
+
+annmarie_user = User.create!(
+              first_name: "AnnMarie",
+              last_name: "De Silva",
+              email: "annmarie@user.com", 
+              password: "password"
+              )
+
+rae_user = User.create!(
+          first_name: "Rae",
+          last_name: "Ho",
+          email: "rae@user.com", 
+          password: "password"
+          )  
 
 50.times do
   fake_user = User.create!(first_name: Faker::Name.first_name, 
@@ -244,4 +266,11 @@ end
 
 Solution.all.each do |solution|
   solution.chatroom = Chatroom.create!(name: solution.title, solution: solution)
+end
+
+User.all.each do |user|
+  Collaboration.create!(user: user, solution: Solution.all.sample, status: ["Pending", "Accepted", "Rejected"].sample)
+  3.times do
+    Message.create(user: user, content: "This is a sample message", chatroom: Chatroom.all.sample)
+  end  
 end
