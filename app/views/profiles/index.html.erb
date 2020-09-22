@@ -1,6 +1,6 @@
 <div class="container">
   <div class="first-line">
-    <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h3>
+    <h4 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h4>
     <div id="main">
       <button class="openbtn btn btn-info">&#9776;</button>
     </div>
@@ -15,10 +15,13 @@
   <div class="px-3">
     <ul class="nav">
       <li class="nav-item">
-        <h4><%= link_to 'Summary', user_profiles_path, class: 'nav-link tab-active tabs' %></h4>
+        <h6><%= link_to 'Summary', user_profiles_path, class: 'nav-link tab-active profile-tabs' %></h6>
       </li>
       <li class="nav-item">
-        <h4><%= link_to 'Notifications', user_notifications_path, class: 'nav-link tabs' %></h4>
+        <h6><%= link_to 'Notifications', user_notifications_path, class: 'nav-link profile-tabs' %></h6>
+      </li>
+      <li class="nav-item">
+        <h6><%= link_to 'Saved', user_notifications_path, class: 'nav-link profile-tabs' %></h6>
       </li>
     </ul>
     <br>
