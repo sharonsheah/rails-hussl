@@ -1,73 +1,75 @@
 <div class="container">
   <div class="first-line d-flex">
-  <%= link_to user_path(@user) do %>
-    <% if @user.photo.attached? %>
-      <p><span><%= cl_image_tag @user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span></p>
-    <% else %>
-      <p><span><img class="big-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span></p>
+    <%= link_to user_path(@user) do %>
+      <% if @user.photo.attached? %>
+        <p><span><%= cl_image_tag @user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span></p>
+      <% else %>
+        <p><span><img class="avatar-large" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span></p>
+      <% end %>
     <% end %>
-  <% end %>
     <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h3>
   </div>
-
-  <div>
-    <h5>About Me</h5>
-    <% if @user.description.present? %>
-      <p><%= @user.description %></p>
-    <% else %>
-      <i>We don't know much about <%= @user.first_name %>...</i>
-    <% end %>
-  </div>
   <br>
-  <h4><%= @user.first_name %> has submitted...</h4>
+  <div class="px-3">
+    <div>
+      <h5>About Me</h5>
+      <% if @user.description.present? %>
+        <p><%= @user.description %></p>
+      <% else %>
+        <i>We don't know much about <%= @user.first_name %>...</i>
+      <% end %>
+    </div>
+    <br>
+    <h4><%= @user.first_name %> has submitted...</h4>
 
-  <div class="row">
-    <div class="cards">
-      <div class="problem-card text-center align-items-center d-block">
-        <h3><%= @user.problems.count %></h3>
-        <p><%= "problem".pluralize(@user.problems.count) %></p>
-      </div>
+    <div class="row">
+      <div class="cards">
+        <div class="problem-card text-center align-items-center d-block">
+          <h3><%= @user.problems.count %></h3>
+          <p><%= "problem".pluralize(@user.problems.count) %></p>
+        </div>
 
-      <div class="solution-card text-center align-items-center d-block">
-        <h3><%= @user.solutions.count %></h3>
-        <p><%= "solution".pluralize(@user.solutions.count) %></p>
-      </div>
+        <div class="solution-card text-center align-items-center d-block">
+          <h3><%= @user.solutions.count %></h3>
+          <p><%= "solution".pluralize(@user.solutions.count) %></p>
+        </div>
 
-      <div class="pitch-card text-center align-items-center d-block">
-        <h3><%= @user.pitches.count %></h3>
-        <p><%= "pitch".pluralize(@user.pitches.count) %></p>
+        <div class="pitch-card text-center align-items-center d-block">
+          <h3><%= @user.pitches.count %></h3>
+          <p><%= "pitch".pluralize(@user.pitches.count) %></p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="submitted">
-    <h5><%= @user.first_name %>'s posts</h5>
-    <table>
-      <tbody>
-        <% @user.problems.each do |problem| %>
-          <tr>
-            <td class="user-problems text-center">P</td>
-            <td><%= problem.title %></td>
-            <td><%=  problem.votes.count %></td>
-          </tr>
-        <% end %>
+    <div class="submitted">
+      <h5><%= @user.first_name %>'s posts</h5>
+      <table>
+        <tbody>
+          <% @user.problems.each do |problem| %>
+            <tr>
+              <td class="user-problems text-center">P</td>
+              <td><%= problem.title %></td>
+              <td><%=  problem.votes.count %></td>
+            </tr>
+          <% end %>
 
-        <% @user.solutions.each do |solution| %>
-          <tr>
-            <td class="user-solutions text-center">S</td>
-            <td><%= solution.title %></td>
-            <td><%=  solution.votes.count %></td>
-          </tr>
-        <% end %>
+          <% @user.solutions.each do |solution| %>
+            <tr>
+              <td class="user-solutions text-center">S</td>
+              <td><%= solution.title %></td>
+              <td><%=  solution.votes.count %></td>
+            </tr>
+          <% end %>
 
-        <% @user.pitches.each do |pitch| %>
-          <tr>
-            <td class="user-pitches text-center">P</td>
-            <td><%= pitch.title %></td>
-            <td><%=  pitch.votes.count %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <% @user.pitches.each do |pitch| %>
+            <tr>
+              <td class="user-pitches text-center">P</td>
+              <td><%= pitch.title %></td>
+              <td><%=  pitch.votes.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
