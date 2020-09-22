@@ -2,6 +2,7 @@ require 'open-uri'
 
 puts 'Wiping data...'
 
+Comment.destroy_all
 Message.destroy_all
 Collaboration.destroy_all
 Chatroom.destroy_all
