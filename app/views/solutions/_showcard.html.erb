@@ -11,10 +11,12 @@
     <h6>POSTED BY</h6>
 
     <div class="bottom-card">
-      <% if @solution.user.photo.attached? %>
-        <p><span><%= cl_image_tag @solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-        <% else %>
-          <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+      <%= link_to user_path(@solution.user) do %>
+        <% if @solution.user.photo.attached? %>
+          <p><span><%= cl_image_tag @solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+          <% else %>
+            <p><span><img class="small-avatar" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+        <% end %>
       <% end %>
 
       <div class="actions">

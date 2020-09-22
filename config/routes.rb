@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'users/show'
-  devise_for :users, :controllers => {:registrations => "registrations"}
-
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   authenticated :user do
     root to: 'problems#index', as: 'prob_root'
   end
