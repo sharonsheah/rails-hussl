@@ -17,10 +17,12 @@
 			</div>
 			<div class="card-actions">
 				<div class="author">
-					<% if solution.user.photo.attached? %>
-							<p><span><%= cl_image_tag solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= solution.user.first_name %> <%= solution.user.last_name.first %></span></p>
-					<% else %>
-							<p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= solution.user.first_name %> <%= solution.user.last_name.first %></span></p>
+					<%= link_to user_path(solution.user) do %>
+						<% if solution.user.photo.attached? %>
+								<p><span><%= cl_image_tag solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= solution.user.first_name %> <%= solution.user.last_name.first %></span></p>
+						<% else %>
+								<p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= solution.user.first_name %> <%= solution.user.last_name.first %></span></p>
+						<% end %>
 					<% end %>
 				</div>
 				<div class="votes">

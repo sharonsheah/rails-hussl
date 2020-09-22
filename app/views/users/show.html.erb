@@ -1,13 +1,17 @@
-<div class="container">
-  <div class="first-line d-flex">
+<div class="px-3">
+  <%= render "shared/header" %>
+  <div class="d-flex justify-content-center">
     <%= link_to user_path(@user) do %>
       <% if @user.photo.attached? %>
-        <p><span><%= cl_image_tag @user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span></p>
+        <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, gravity: :face %>
       <% else %>
-        <p><span><img class="avatar-large" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span></p>
+        <img class="avatar-large" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill">
       <% end %>
     <% end %>
-    <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h3>
+  </div>
+  <br>
+  <div class="d-flex justify-content-center">
+    <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %><span class="hussl-big-yellow">.</span></h3>
   </div>
   <br>
   <div class="px-3">
