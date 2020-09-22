@@ -1,4 +1,4 @@
-<div class="container">
+<div class="chat-container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), solution_path(@pitch.solution) %>...</li>
@@ -6,7 +6,7 @@
     </ol>
   </nav>
   <div>
-    <h2><%= @pitch.title %></h2>
+    <h4><%= @pitch.title %></h4>
   </div>
   <div>
     <%= render "shared/pitch-tags" %>
