@@ -9,7 +9,7 @@
     <h6>POSTED BY</h6>
 
   <div class="bottom-card">
-    <%= link_to user_path(problem.user) do %>
+    <%= link_to user_path(@problem.user) do %>
       <% if @problem.user.photo.attached? %>
         <p><span><%= cl_image_tag @problem.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= @problem.user.first_name %> <%= @problem.user.last_name %></span></p>
         <% else %>
