@@ -1,0 +1,54 @@
+h5 {
+  font-size: 12px;
+}
+
+
+.notice {
+  color: grey;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  width: 70%;
+  text-align: center;
+}
+
+.pitch-section {
+  width: auto;
+  
+
+  .submit-pitch {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px O;
+  }
+  .pitches {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+  }
+
+  #pitch-title {
+    font-size: 11px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+  
+    i,.votes {
+      font-size: 11px;
+      color: gray;
+    }
+  }
+}
+
+
+
+.solution-comment-bar {
+  width: 100%;
+  height: 60px;
+  background-color: $white;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+ 
+}

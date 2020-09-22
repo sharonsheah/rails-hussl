@@ -13,10 +13,41 @@
       <%= render "solutions/showcard" %>
     </div>
     
-    <div class="display-flex m-3">
-    
-    
-      <h6>COLLABORATORS</h6>
+    <div class="pitch-section">
+      <div class="submit-pitch">
+        <h5 class="my-3">Pitches</h5>
+        <div class="my-3">
+          <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+        </div>
+      </div>
+      
+      <div class="pitches">
+        <% if @solution.pitches.exists? %>
+          <% @pitches.each do |pitch| %>
+            <div class="pitch-titles">
+              <h6 id='pitch-title'><%= link_to pitch.title, pitch_path(pitch) %></h6>
+            </div>
+
+            <div class="actions">
+              <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+                <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
+                  <i class="far fa-thumbs-up"></i>
+                <% end %>
+              <% else %>
+                <i class="fas fa-thumbs-up"></i>
+              <% end %>
+              <span class="votes"><%= pitch.votes.count %></span>
+            </div>
+          <% end %>
+          <br>
+        <% else %>
+          <p class="notice">When all you husslrs are ready, submit a link to your pitch deck!</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="collaborators-section">
+      <h5>Collaborators</h5>
       <% if @solution.collaborators.exists? %>
         <% @solution.collaborators.each do |collaborator|%> 
           <% if collaborator.photo.attached? %>
@@ -34,42 +65,13 @@
           <% end %>
         <% end %>
       <% else %>
-        <i>Raise your hand to be the first collaborator!</i>
+        <p class="notice">Raise your hand to be the first collaborator!</p>
       <% end %>
     </div>
     
 
-    <div class="pitch-section">
-      <div class="row px-3 align-items-center justify-content-between">
-        <h4 class="my-3">Pitches</h4>
-        <div class="my-3">
-          <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
-        </div>
-      </div>
-      <div class="d-inline-flex justify-content-around">
-        <% if @solution.pitches.exists? %>
-          <% @pitches.each do |pitch| %>
-            <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
 
-            <div class="actions">
-              <% if Vote.where(votable: pitch, user:  current_user).empty? %>
-                <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
-                  <i class="far fa-thumbs-up"></i>
-                <% end %>
-              <% else %>
-                <i class="fas fa-thumbs-up"></i>
-              <% end %>
-              <span><%= pitch.votes.count %></span>
-            </div>
-          <% end %>
-          <br>
-        <% else %>
-          <i>When all you husslrs are ready, submit a link to your pitch deck!</i>
-        <% end %>
-      </div>
-    </div>
-
-    <h4 class="my-3">Comments</h4>
+    <h5 class="my-3">Comments</h5>
     <div class="comments-container">
       <% @solution.comments.each do |comment| %>
         <div class="comment">
@@ -79,9 +81,9 @@
       <% end %>
     </div>
 
-    <div class="new-comment-bar">
+    <div class="solution-comment-bar">
       <div class="new-comment">
-        <%= simple_form_for ([@problem, @solution, @comment]), remote: true do |f| %>
+        <%= simple_form_for [@problem, @solution, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
             <%= f.input :content, placeholder: "Type your comment here..." %>
             <%= f.button :button, wrapper_html: { id: 'button' } do %>
               <i class="far fa-paper-plane"></i>
