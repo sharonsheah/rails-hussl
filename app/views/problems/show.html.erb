@@ -1,75 +1,77 @@
-<div class="container wrapper-pages">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @problem.title.first(10) %>...</li>
-    </ol>
-  </nav>
+<div class="wrapper-pages">
 
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @problem.title.first(10) %>...</li>
+      </ol>
+    </nav>
 
-  <div>
-    <h3><%= @problem.title %></h3>
-  </div>
-
+    <div>
+      <h3><%= @problem.title %></h3>
+    </div>
 
     <div>
       <%= render "problems/show-card" %>
     </div>
-    
-  <div class="bottom-page">
-    <div class="row px-3 align-items-center justify-content-between">
-      <h4 class="my-3">Solutions</h4>
-      <div class="my-3">
-        <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+      
+    <div class="bottom-page">
+      <div class="row px-3 align-items-center justify-content-between">
+        <h4 class="my-3">Solutions</h4>
+        <div class="my-3">
+          <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+        </div>
       </div>
-    </div>
 
-    <div class="d-inline-flex">
+      <div class="d-inline-flex">
 
-      <% @solutions.each do |solution| %>
-        <h5><%= link_to solution.title, solution_path(solution) %></h5>
+        <% @solutions.each do |solution| %>
+          <h5><%= link_to solution.title, solution_path(solution) %></h5>
 
-        <div class="actions">
-          <% if Vote.where(votable: solution, user:  current_user).empty? %>
-            <%= link_to upvote_problem_path(solution), method: :post, class: 'button'  do %>
-              <i class="far fa-thumbs-up"></i>
+          <div class="actions">
+            <% if Vote.where(votable: solution, user:  current_user).empty? %>
+              <%= link_to upvote_problem_path(solution), method: :post, class: 'button'  do %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+            <% else %>
+              <i class="fas fa-thumbs-up"></i>
             <% end %>
-          <% else %>
-            <i class="fas fa-thumbs-up"></i>
-          <% end %>
-          <span><%= solution.votes.count %></span>
+            <span><%= solution.votes.count %></span>
 
-          <% if solution.collaborators.include?(current_user) %>
-            <i class="fas fa-hand-paper"></i>
-          <% else %>
-            <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
-              <i class="far fa-hand-paper"></i>
+            <% if solution.collaborators.include?(current_user) %>
+              <i class="fas fa-hand-paper"></i>
+            <% else %>
+              <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+                <i class="far fa-hand-paper"></i>
+              <% end %>
             <% end %>
-          <% end %>
-          <span><%= solution.collaborators.count %></span>
-        </div>
-      <% end %>
-    </div>  
+            <span><%= solution.collaborators.count %></span>
+          </div>
+        <% end %>
+      </div>  
 
-    <h4 class="my-3">Comments</h4>
-    <div class="comments-container">
-      <% @problem.comments.each do |comment| %>
-        <div class="comment">
-          <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
-          <p><%= comment.content %></p>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="new-comment-bar">
-      <div class="new-comment">
-        <%= simple_form_for [@problem, @comment], wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
-            <%= f.input :content, placeholder: "Type your comment here..." %>
-            <%= f.button :button, wrapper_html: { id: 'button' } do %>
-              <i class="far fa-paper-plane"></i>
-            <% end %>
+      <h4 class="my-3">Comments</h4>
+      <div class="comments-container">
+        <% @problem.comments.each do |comment| %>
+          <div class="comment">
+            <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+            <p><%= comment.content %></p>
+          </div>
         <% end %>
       </div>
+
+    </div>
+  </div>
+
+  <div class="new-comment-bar">
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @comment], wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
+          <%= f.input :content, placeholder: "Type your comment here..." %>
+          <%= f.button :button, wrapper_html: { id: 'button' } do %>
+            <i class="far fa-paper-plane"></i>
+          <% end %>
+      <% end %>
     </div>
   </div>
 </div>
