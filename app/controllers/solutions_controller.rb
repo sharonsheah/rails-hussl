@@ -41,6 +41,18 @@ class SolutionsController < ApplicationController
     redirect_to solution_path
   end
 
+  def bookmark
+    @solution = Solution.find(params[:id])
+    Bookmark.create(bookmarked: @solution, user: current_user)
+    redirect_to solution_path
+  end
+
+  def unbookmark
+    @solution = Solution.find(params[:id])
+    Bookmark.where(bookmarked_id: @solution, user_id: current_user.id).first.destroy
+    redirect_to solution_path
+  end
+
   def collaborate
     @solution = Solution.find(params[:id])
     Collaboration.create(solution: @solution, user: current_user, status: "Pending")

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :solutions, only: [ :new, :create ] do
 
       resources :comments, only: [ :create ], controller: "problem/solutions"
-      
+
       resources :pitches, only: [ :new, :create ]
     end
 
@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
     member do
       post 'upvote'
+      post 'bookmark'
+      delete 'unbookmark'
     end
   end
 
@@ -40,6 +42,8 @@ Rails.application.routes.draw do
 
     member do
       post 'upvote'
+      post 'bookmark'
+      delete 'unbookmark'
       post 'collaborate'
       patch 'collab_status'
     end
@@ -58,4 +62,5 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [ :index, :show ] do
     resources :messages, only: :create
   end
+
 end
