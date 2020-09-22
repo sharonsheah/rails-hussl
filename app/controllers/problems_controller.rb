@@ -7,6 +7,7 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
     @solutions = @problem.solutions
+    @comment = Comment.new
   end
 
   def new
