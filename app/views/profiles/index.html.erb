@@ -6,6 +6,10 @@
     </div>
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn">&times;</a>
+      <div>
+        <a href="#" class="hussl-big-white">hussl<span class="hussl-big-yellow">.</span></span></a>
+      </div>
+      <br>
       <%= link_to 'Edit profile', edit_user_registration_path(current_user)  %>
       <%= link_to 'About hussl', root_path  %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete  %>
