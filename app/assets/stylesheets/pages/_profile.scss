@@ -52,10 +52,11 @@
 }
 
 tr {
-  width: 300px;
+  width: 313px;
   height: auto;
   display: grid;
-  grid-template-columns: 0.5fr 2.25fr 0.25fr;
+  grid-template-columns: 0.3fr 2.45fr 0.25fr;
+  padding-bottom: 8px;
 
   .user-problems {
     height: 24px;
@@ -79,46 +80,4 @@ tr {
     background-color: $dark-blue;
     border-radius: 5px;
   }
-}
-
-.dropbtn {
-  background-color: $dark-blue;
-  color: white;
-  height: 40px;
-  width: 40px;
-  font-size: 16px;
-  border: none;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.dropup {
-  position: relative;
-  display: inline-block;
-  justify-content: flex-end;
-}
-
-.dropup-content {
-  display: none;
-  position: absolute;
-  color: $dark-blue;
-  min-width: 80px;
-  z-index: 1;
-}
-
-.dropup-content a {
-  color: $dark-blue;
-  padding: 4px;
-  text-decoration: none;
-  display: inline-block;
-  margin-left: 8px;
-}
-
-.dropup:hover .dropup-content {
-  display: block;
-}
-
-.dropup:hover .dropbtn {
-  background-color: $yellow;
-  color: $dark-blue;
 }

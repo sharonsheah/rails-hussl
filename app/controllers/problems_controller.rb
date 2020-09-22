@@ -22,6 +22,7 @@ class ProblemsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def leaderboard
@@ -37,9 +38,22 @@ class ProblemsController < ApplicationController
     redirect_to problem_path
   end
 
+  def bookmark
+    @problem = Problem.find(params[:id])
+    Bookmark.create(bookmarked: @problem, user: current_user)
+    redirect_to problem_path
+  end
+
+  def unbookmark
+    @problem = Problem.find(params[:id])
+    Bookmark.where(bookmarked_id: @problem, user_id: current_user.id).first.destroy
+    redirect_to problem_path
+  end
+
   private
 
-	def set_params
-		params.require(:problem).permit(:title, :description, :category)
+  def set_params
+    params.require(:problem).permit(:title, :description, :category)
   end
+  
 end

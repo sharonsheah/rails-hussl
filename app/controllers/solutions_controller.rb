@@ -22,6 +22,13 @@ class SolutionsController < ApplicationController
     @solution.chatroom = Chatroom.new(name: @solution.title, solution: @solution)
 
     if @solution.save!
+      voters = @problem.votes.map { |vote| vote.user }
+
+      (voters.uniq - [current_user]).each do |voter|
+        Notification.create(recipient: voter, actor: current_user, action: "posted", notifiable: @solution)
+      end
+
+      Notification.create(recipient: current_user, actor: current_user, action: "posted", notifiable: @solution)
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
       render :new
@@ -38,6 +45,18 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     Vote.create(votable: @solution, user: current_user)
+    redirect_to solution_path
+  end
+
+  def bookmark
+    @solution = Solution.find(params[:id])
+    Bookmark.create(bookmarked: @solution, user: current_user)
+    redirect_to solution_path
+  end
+
+  def unbookmark
+    @solution = Solution.find(params[:id])
+    Bookmark.where(bookmarked_id: @solution, user_id: current_user.id).first.destroy
     redirect_to solution_path
   end
 
