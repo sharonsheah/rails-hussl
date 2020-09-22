@@ -77,3 +77,15 @@
         font-weight: 600;
     }
 }
+
+.upload-btn {
+    background-color: $yellow;
+    color: $white;
+    border-radius: 50%;
+    font-size: 50px;
+    box-shadow: 0px 4px 10px rgba(45, 64, 89, 0.12);
+    padding: 10px;
+    position: relative;
+    left: 78vw;
+    bottom: 60px;
+}

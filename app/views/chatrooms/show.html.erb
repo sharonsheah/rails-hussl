@@ -1,5 +1,10 @@
 <div class="chat-container">
-  <h3 class="text-center mb-4"><%= @chatroom.name %></h3>
+  <div class="head">
+    <h3 class="text-center mb-4"><%= @chatroom.name %></h3>
+    <%= link_to new_problem_solution_pitch_path(@chatroom.solution.problem, @chatroom.solution) do %>
+      <span class="iconify upload-btn" data-icon="heroicons-outline:upload" data-inline="false"></span>
+    <% end %>
+  </div>
 
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
@@ -18,7 +23,7 @@
   </div>
 
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+    <%= f.input :content, label: false, placeholder: "Type your message..." %>
     <%= f.button :submit, 'Send', class: 'btn' %>
   <% end %>
 </div>
