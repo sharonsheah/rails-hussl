@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   authenticated :user do
-    root to: 'problems#index', as: 'problems'
+    root to: 'problems#index', as: 'prob_home'
   end
 
   root to: 'pages#home'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [ :create ], controller: "problem/comments"
-    
+
     collection do
       get :leaderboard
     end
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :solutions, only: [ :index, :show ] do    
+  resources :solutions, only: [ :index, :show ] do
     collection do
       get :leaderboard
     end
