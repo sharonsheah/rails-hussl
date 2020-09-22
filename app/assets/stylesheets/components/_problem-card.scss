@@ -82,10 +82,11 @@
 
 .card-actions {
   display: flex;
+  align-items: center;
   height: 30px;
   position: absolute;
   bottom: 0;
-  padding-bottom: 16px;
+  padding-bottom: 18px;
   p, i {
       color: $white;
   }
@@ -93,7 +94,7 @@
 
 .author {
   display: flex;
-  width: 140px;
+  width: 120px;
   align-items:center;
   p {
       font-size: 12px;
@@ -115,7 +116,7 @@
   }
   p {
       font-size: 12px;
-      padding: 4px 0px;
+      padding: 4px 4px;
       margin: 0;
   }
   .solution-icon {
@@ -125,7 +126,7 @@
   }
 }
 .solutions, .collaborators {
-  margin-left: 16px;
+  margin-left: 14px;
 }
 
 
@@ -170,7 +171,7 @@
   .bottom {
     border-color: $light-blue transparent transparent transparent;
     border-width: 16px 16px 0px 2px;
-    bottom: -16px;
+    bottom: -15px;
     right: 200px;
   }
 

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [ :create ], controller: "problem/comments"
-    
+
     collection do
       get :leaderboard
     end
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :solutions, only: [ :index, :show ] do    
+  resources :solutions, only: [ :index, :show ] do
     collection do
       get :leaderboard
     end
