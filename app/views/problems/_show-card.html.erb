@@ -18,7 +18,7 @@
     <div class="actions">
       <% if Vote.where(votable: @problem, user:  current_user).empty? %>
         <%= link_to upvote_problem_path(@problem), method: :post, class: 'button'  do %>
-          <i class="far fa-thumbs-up"></i>
+          <i class="far fa-thumbs-up icon-white"></i>
         <% end %>
       <% else %>
         <i class="fas fa-thumbs-up"></i>
