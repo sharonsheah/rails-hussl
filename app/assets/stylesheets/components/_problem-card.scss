@@ -151,6 +151,14 @@
   margin-right: 4px;
   max-width: -webkit-fill-available;
   margin: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   p {
     color: $white;
     font-size: 12px;
@@ -171,6 +179,7 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
   scroll-snap-align: start;
   scroll-snap-align: center;
+  padding-top: 40px;
 
   .arrow {
     border-style: solid;
