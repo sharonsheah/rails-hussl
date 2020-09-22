@@ -1,0 +1,23 @@
+.pitch-container {
+    padding: 0;
+    padding-right: 20px;
+    overflow-x: hidden;
+}
+
+.tags-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    .time {
+        font-size: 14px;
+        font-style: italic;
+    }
+}
+
+.pitch-link{
+    margin: 0;
+    margin-left: -20px;
+    text-align: center;
+    line-height: 40px;
+}
