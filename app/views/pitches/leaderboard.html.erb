@@ -1,16 +1,6 @@
 <div class="ideate-page">
   <div class="header">
-    <div class="btn-profile">
-      <div class="text-right mt-2" style="font-size:8vw">
-        <%= link_to user_profiles_path(current_user) do %>
-          <% if current_user.photo.attached? %>
-            <span class="card-img-top"><%= cl_image_tag current_user.photo.key, height: 42, width: 42, crop: :fill, gravity: :face %></span>
-          <% else %>
-            <i class="far fa-user-circle"></i>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render "shared/header" %>
 	
 		<h2>Leaderboard</h2>
 	
