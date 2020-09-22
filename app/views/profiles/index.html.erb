@@ -1,10 +1,6 @@
 <div class="container">
   <div class="first-line">
-<<<<<<< HEAD
     <h3 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %><span class="hussl-big-yellow">.</span></h3>
-=======
-    <h4 class="name mx-2"><%= @user.first_name %> <%= @user.last_name %></h4>
->>>>>>> 866458a0b062b1dae4cc5232ac8e1af0d7197fe7
     <div id="main">
       <button class="openbtn btn btn-info">&#9776;</button>
     </div>
@@ -29,12 +25,14 @@
       </li>
     </ul>
     <br>
-    <h5>About Me</h5>
-    <% if @user.description.present? %>
-      <p><%= @user.description %></p>
-    <% else %>
-      <i>Edit your profile and introduce yourself to the husslr community!</i>
-    <% end %>
+    <div>
+      <h5>About Me</h5>
+      <% if @user.description.present? %>
+        <p><%= @user.description %></p>
+      <% else %>
+        <i>Edit your profile and introduce yourself to the husslr community!</i>
+      <% end %>
+    </div>
     <br>
     <h4 class="">You have submitted...</h4>
 

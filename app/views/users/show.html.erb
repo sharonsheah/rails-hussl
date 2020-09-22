@@ -47,33 +47,37 @@
 
     <div class="submitted">
       <h5><%= @user.first_name %>'s posts</h5>
-      <table>
-        <tbody>
-          <% @user.problems.each do |problem| %>
-            <tr>
-              <td class="user-problems text-center">P</td>
-              <td><%= problem.title %></td>
-              <td><%=  problem.votes.count %></td>
-            </tr>
-          <% end %>
+      <% if @user.solutions.present? || @user.problems.present? || @user.pitches.present? %>
+        <table>
+          <tbody>
+            <% @user.problems.each do |problem| %>
+              <tr>
+                <td class="user-problems text-center">P</td>
+                <td><%= problem.title %></td>
+                <td><%=  problem.votes.count %></td>
+              </tr>
+            <% end %>
 
-          <% @user.solutions.each do |solution| %>
-            <tr>
-              <td class="user-solutions text-center">S</td>
-              <td><%= solution.title %></td>
-              <td><%=  solution.votes.count %></td>
-            </tr>
-          <% end %>
+            <% @user.solutions.each do |solution| %>
+              <tr>
+                <td class="user-solutions text-center">S</td>
+                <td><%= solution.title %></td>
+                <td><%=  solution.votes.count %></td>
+              </tr>
+            <% end %>
 
-          <% @user.pitches.each do |pitch| %>
-            <tr>
-              <td class="user-pitches text-center">P</td>
-              <td><%= pitch.title %></td>
-              <td><%=  pitch.votes.count %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+            <% @user.pitches.each do |pitch| %>
+              <tr>
+                <td class="user-pitches text-center">P</td>
+                <td><%= pitch.title %></td>
+                <td><%=  pitch.votes.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <i><%= @user.first_name %> has no posts yet</i>
+      <% end %>
     </div>
   </div>
 </div>
