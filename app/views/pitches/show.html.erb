@@ -19,7 +19,7 @@
     <p><%= @pitch.description %></p>
     <h6>POSTED BY</h6>
     <div>
-      <%# <%= link_to user_path(@pitch.user) do %> %>
+      <%= link_to user_path(@pitch.user) do %>
         <% if @pitch.user.photo.attached? %>
           <p><span><%= cl_image_tag @pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @pitch.user.first_name %> <%= @pitch.user.last_name %></span></p>
           <% else %>
