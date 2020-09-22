@@ -17,39 +17,29 @@
     </ul>
   </div>
 
-  <div class="ideate-content-container pad-left">
+  <div class="ideate-content-container pad-left d-flex flex-wrap">
     <% @pitches.each do |pitch| %>
       <%= link_to pitch_path(pitch) do %>
-        <h4><%= pitch.title %></h4>
-      <% end %>
-      <p><%=h truncate(pitch.description, :length => 150) %></p>
-      <div>
-        <%= link_to user_path(pitch.user) do %>
-          <% if pitch.user.photo.attached? %>
-            <p><span><%= cl_image_tag pitch.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
-            <% else %>
-              <p><span><img src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= pitch.user.first_name %> <%= pitch.user.last_name %></span></p>
-          <% end %>
+        <% if pitch.photo.attached? %>
+          <div class="pitch-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pitch.photo.key, height: 234, width: 150, crop: :fill %>')">
+            <h4><%= pitch.title %></h4>
+            <div class="actions">
+              <i class="far fa-thumbs-up">
+              </i><%= pitch.votes.count %>
+            </div>
+          </div>
+        <% else %>
+          <div class="pitch-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random')">
+            <div class="pitch-footer">
+              <h5><%= pitch.title %></h5>
+              <div class="pitch-votes">
+                <p><i class="far fa-thumbs-up"></i>
+                <%= pitch.votes.count %></p>
+              </div>
+            </div>
+          </div>
         <% end %>
-      </div>
-      <p><span>
-        <div class="actions">
-          <% if Vote.where(votable: pitch, user:  current_user).empty? %>
-            <%= link_to upvote_pitch_path(pitch, pitch.solution), method: :post, class: 'button'  do %>
-              <i class="far fa-thumbs-up"></i>
-            <% end %>
-          <% else %>
-            <i class="fas fa-thumbs-up"></i>
-          <% end %>
-          <%= pitch.votes.count %>
-        </div>
-      </span></p>
-      <div>
-        <iframe src="<%= pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="275px" width="375px" allowfullscreen></iframe>
-      </div>
-      <div>
-        <p><%= local_time_ago(pitch.created_at) %></p>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
