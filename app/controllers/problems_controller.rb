@@ -35,6 +35,7 @@ class ProblemsController < ApplicationController
     @problem = Problem.find(params[:id])
     Vote.create(votable: @problem, user: current_user)
     @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "voted", notifiable: @problem)
+    
     NotificationChannel.broadcast_to(
       @problem.user,
       { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),

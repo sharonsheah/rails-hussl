@@ -7,6 +7,7 @@ class Problem::CommentsController < ApplicationController
     @comment.commentable = @problem
     if @comment.save
       @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "commented", notifiable: @problem)
+      
       NotificationChannel.broadcast_to(
         @problem.user,
         { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),

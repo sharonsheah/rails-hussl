@@ -7,9 +7,8 @@ const initNotificationCable = () => {
 
     consumer.subscriptions.create({ channel: "NotificationChannel", id: id }, {
       received(data) {
-        console.log(data); // called when data is broadcast in the cable
+        console.log(data.notification_body); // called when data is broadcast in the cable
         notificationList.insertAdjacentHTML('afterbegin', data.notification_body);
-        
       },
     });
   }
