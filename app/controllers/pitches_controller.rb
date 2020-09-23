@@ -41,9 +41,25 @@ class PitchesController < ApplicationController
     Vote.create(votable: @pitch, user: current_user)
     collaborators = @pitch.solution.collaborators
     (collaborators.uniq - [current_user]).each do |collaborator|
-      Notification.create(recipient: collaborator, actor: current_user, action: "voted", notifiable: @pitch)
+      @collab_notif = Notification.create(recipient: collaborator, actor: current_user, action: "voted", notifiable: @pitch)
+
+      NotificationChannel.broadcast_to(
+        collaborator,
+        { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @collab_notif }),
+        notification_counter: collaborator.notifications.unread.count 
+        }
+      )
     end
-    Notification.create(recipient: @pitch.user, actor: current_user, action: "voted", notifiable: @pitch)
+
+    @notif = Notification.create(recipient: @pitch.user, actor: current_user, action: "voted", notifiable: @pitch)
+
+    NotificationChannel.broadcast_to(
+      @pitch.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @pitch.user.notifications.unread.count 
+      }
+    )
+    
     redirect_to pitch_path
   end
 

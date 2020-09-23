@@ -26,12 +26,25 @@ class SolutionsController < ApplicationController
 
     if @solution.save!
       voters = @problem.votes.map { |vote| vote.user }
-
       (voters.uniq - [current_user]).each do |voter|
-        Notification.create(recipient: voter, actor: current_user, action: "submitted", notifiable: @solution)
+        @voter_notif = Notification.create(recipient: voter, actor: current_user, action: "submitted", notifiable: @solution)
+        
+        NotificationChannel.broadcast_to(
+          voter,
+          { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @voter_notif }),
+          notification_counter: voter.notifications.unread.count 
+          }
+        )
       end
-      
-      Notification.create(recipient: @problem.user, actor: current_user, action: "submitted", notifiable: @solution)
+
+      @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "submitted", notifiable: @solution)
+
+      NotificationChannel.broadcast_to(
+        @solution.user,
+        { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+        notification_counter: @solution.user.notifications.unread.count 
+        }
+      )
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
       render :new
@@ -48,8 +61,14 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     Vote.create(votable: @solution, user: current_user)
-    Notification.create(recipient: @solution.user, actor: current_user, action: "voted", notifiable: @solution)
+    @notif = Notification.create(recipient: @solution.user, actor: current_user, action: "voted", notifiable: @solution)
 
+    NotificationChannel.broadcast_to(
+      @solution.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @solution.user.notifications.unread.count 
+      }
+    )
     redirect_to solution_path
   end
 
@@ -68,8 +87,14 @@ class SolutionsController < ApplicationController
   def collaborate
     @solution = Solution.find(params[:id])
     Collaboration.create(solution: @solution, user: current_user, status: "Pending")
-    Notification.create(recipient: @solution.user, actor: current_user, action: "requested", notifiable: @solution.collaborations.last)
+    @notif = Notification.create(recipient: @solution.user, actor: current_user, action: "requested", notifiable: @solution.collaborations.last)
 
+    NotificationChannel.broadcast_to(
+      @solution.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @solution.user.notifications.unread.count 
+      }
+    )
     redirect_to solution_path(@solution)
   end
 
@@ -78,7 +103,14 @@ class SolutionsController < ApplicationController
     @collaboration.status = params[:status]
     @collaboration.save!
     if @collaboration.status == "Accepted"
-      Notification.create(recipient: @collaboration.user, actor: current_user, action: "accepted", notifiable: @collaboration)
+      @notif = Notification.create(recipient: @collaboration.user, actor: current_user, action: "accepted", notifiable: @collaboration)
+
+      NotificationChannel.broadcast_to(
+        @collaboration.user,
+        { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+        notification_counter: @collaboration.user.notifications.unread.count 
+        }
+      )
     end
     redirect_to solution_path(@collaboration.solution)
   end
