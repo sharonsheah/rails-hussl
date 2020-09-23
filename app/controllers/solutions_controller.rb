@@ -27,7 +27,14 @@ class SolutionsController < ApplicationController
     if @solution.save!
       voters = @problem.votes.map { |vote| vote.user }
       (voters.uniq - [current_user]).each do |voter|
-        Notification.create(recipient: voter, actor: current_user, action: "submitted", notifiable: @solution)
+        @voter_notif = Notification.create(recipient: voter, actor: current_user, action: "submitted", notifiable: @solution)
+        
+        NotificationChannel.broadcast_to(
+          voter,
+          { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @voter_notif }),
+          notification_counter: voter.notifications.unread.count 
+          }
+        )
       end
 
       @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "submitted", notifiable: @solution)
@@ -99,9 +106,9 @@ class SolutionsController < ApplicationController
       @notif = Notification.create(recipient: @collaboration.user, actor: current_user, action: "accepted", notifiable: @collaboration)
 
       NotificationChannel.broadcast_to(
-        @solution.user,
+        @collaboration.user,
         { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
-        notification_counter: @solution.user.notifications.unread.count 
+        notification_counter: @collaboration.user.notifications.unread.count 
         }
       )
     end
