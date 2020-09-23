@@ -1,19 +1,21 @@
 <div class="ideate-page">
-  <div class="header">
-    <%= render "shared/header" %>
+  <div class="notif-container">
+    <div>
+      <%= render "shared/header" %>
 
-    <h2>Notifications</h2>
-  </div>
-  <br>
-  <div class="notifications">
-    <ul class="notif-list" id="js-notification-list" data-user="<%= current_user.id %>">
-      <% if @notifications.empty? %>
-        <p>You are all caught up! 🎉</p>
-        <% else %>
-        <% @notifications.each do |notif| %> 
-          <%= render 'shared/notification', notif: notif %>
+      <h2>Notifications</h2>
+    </div>
+    <br>
+    <div class="notifications">
+      <ul class="notif-list" id="js-notification-list" data-user="<%= current_user.id %>">
+        <% if @notifications.empty? %>
+          <p class="alert alert-warning">You are all caught up! 🎉</p>
+          <% else %>
+          <% @notifications.each do |notif| %> 
+            <%= render 'shared/notification', notif: notif %>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
 </div>
