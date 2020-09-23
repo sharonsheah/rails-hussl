@@ -12,9 +12,10 @@
 }
 
 .chat-container {
-    height: 94vh;
+    min-height: 94vh;
     padding: 20px;
     margin-top: 40px;
+    margin-bottom: 40px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 0px 4px 10px rgba($dark-blue, 0.5);

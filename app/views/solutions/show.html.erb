@@ -1,52 +1,53 @@
-<div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to @solution.problem.title.first(10), problem_path(@solution.problem) %>...</li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @solution.title.first(7) %>...</li>
-    </ol>
-  </nav>
-  <h3><%= @solution.title %></h3>
-  <div>
-    <%= render "solutions/showcard" %>
-  </div>
-  <br>
-  <div>
-    <h5>Solving</h5>
-    <p><%= @solution.problem.title %></p>
-    <h5>Description</h5>
-    <p><%= @solution.description %></p>
-    <h6>POSTED BY</h6>
-    <div>
-      <% if @solution.user.photo.attached? %>
-        <p><span><%= cl_image_tag @solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-        <% else %>
-          <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-      <% end %>
-    </div>
-    <div class="actions">
-      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-          <i class="far fa-thumbs-up"></i>
-        <% end %>
-      <% else %>
-        <i class="fas fa-thumbs-up"></i>
-      <% end %>
-      <span><%= @solution.votes.count %></span>
+<div class="wrapper-pages">
+  <div class="chat-container pitch-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @solution.problem.title.first(10), problem_path(@solution.problem) %>...</li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @solution.title.first(7) %>...</li>
+      </ol>
+    </nav>
 
-      <% if @solution.collaborators.include?(current_user) %>
-        <i class="fas fa-hand-paper"></i>
-      <% else %>
-        <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button'  do %>
-          <i class="far fa-hand-paper"></i>
-        <% end %>
-      <% end %>
-      <span><%= @solution.collaborators.count %></span>
-    </div>
+    <h3><%= @solution.title %></h3>
+
     <div>
-      <small><%= local_time_ago(@solution.created_at) %></small>
+      <%= render "solutions/showcard" %>
     </div>
-    <br>
-      <h6>COLLABORATORS</h6>
+    
+    <div class="pitch-section">
+      <div class="submit-pitch">
+        <h5 class="my-3">Pitches</h5>
+        <div class="my-3">
+          <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+        </div>
+      </div>
+      
+      <div class="pitches">
+        <% if @solution.pitches.exists? %>
+          <% @pitches.each do |pitch| %>
+            <div class="pitch-titles">
+              <h6 id='pitch-title'><%= link_to pitch.title, pitch_path(pitch) %></h6>
+            </div>
+
+            <div class="actions">
+              <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+                <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
+                  <i class="far fa-thumbs-up"></i>
+                <% end %>
+              <% else %>
+                <i class="fas fa-thumbs-up"></i>
+              <% end %>
+              <span class="votes"><%= pitch.votes.count %></span>
+            </div>
+          <% end %>
+          <br>
+        <% else %>
+          <p class="notice">When all you husslrs are ready, submit a link to your pitch deck!</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="collaborators-section">
+      <h5>Collaborators</h5>
       <% if @solution.collaborators.exists? %>
         <% @solution.collaborators.each do |collaborator|%>
           <% if collaborator.photo.attached? %>
@@ -62,37 +63,28 @@
           <% end %>
         <% end %>
       <% else %>
-        <i>Raise your hand to be the first collaborator!</i>
+        <p class="notice">Raise your hand to be the first collaborator!</p>
       <% end %>
+    </div>
+
+    <h5 class="my-3">Comments</h5>
+    <div class="comments-container">
+      <% @solution.comments.each do |comment| %>
+        <div id="comment-<%= comment.id %>" class="comment">
+          <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+          <p><%= comment.content %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-
-  <div class="pr-3">
-    <div class="row px-3 align-items-center justify-content-between">
-      <h4 class="my-3">Pitches</h4>
-      <div class="my-3">
-        <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
-      </div>
-    </div>
-    <div class="d-inline-flex justify-content-around">
-      <% if @solution.pitches.exists? %>
-        <% @pitches.each do |pitch| %>
-          <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
-
-          <div class="actions">
-            <% if Vote.where(votable: pitch, user:  current_user).empty? %>
-              <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
-                <i class="far fa-thumbs-up"></i>
-              <% end %>
-            <% else %>
-              <i class="fas fa-thumbs-up"></i>
-            <% end %>
-            <span><%= pitch.votes.count %></span>
-          </div>
-        <% end %>
-        <br>
-      <% else %>
-        <i>When all you husslrs are ready, submit a link to your pitch deck!</i>
+  <div class="comment-bar">
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @solution, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
+          <%= f.input :content, placeholder: "Type your comment here..." %>
+          <%= f.button :button, wrapper_html: { id: 'button' } do %>
+            <i class="far fa-paper-plane"></i>
+          <% end %>
       <% end %>
     </div>
   </div>

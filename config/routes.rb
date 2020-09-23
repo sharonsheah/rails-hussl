@@ -16,10 +16,11 @@ Rails.application.routes.draw do
 
   resources :problems, only: [ :index, :show, :new, :create ]  do
     resources :solutions, only: [ :new, :create ] do
-
-      resources :comments, only: [ :create ], controller: "problem/solutions"
-
-      resources :pitches, only: [ :new, :create ]
+      resources :comments, only: [ :create ], controller: "solution/comments"
+      
+      resources :pitches, only: [ :new, :create ] do
+      resources :comments, only: [ :create ], controller: "pitch/comments"
+      end
     end
 
     resources :comments, only: [ :create ], controller: "problem/comments"

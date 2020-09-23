@@ -7,11 +7,14 @@ class SolutionsController < ApplicationController
   def show
     @solution = Solution.find(params[:id])
     @pitches = @solution.pitches
+    @problem =  @solution.problem
+    @comment = Comment.new
   end
 
   def new
     @solution = Solution.new
     @problem = Problem.find(params[:problem_id])
+    @comment = Comment.new
   end
 
   def create

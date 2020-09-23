@@ -1,28 +1,29 @@
-<div class="chat-container pitch-container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), solution_path(@pitch.solution) %>...</li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @pitch.title %></li>
-    </ol>
-  </nav>
+<div class="wrapper-pages">
+  <div class="chat-container pitch-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @pitch.solution.title.first(10), solution_path(@pitch.solution) %>...</li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @pitch.title %></li>
+      </ol>
+    </nav>
 
-  <div>
-    <h3 class="text-center mb-3"><%= @pitch.title %></h3>
-  </div>
+    <div>
+      <h3 class="text-center mb-3"><%= @pitch.title %></h3>
+    </div>
 
-  <div class="tags-time">
-    <%= render "shared/pitch-tags" %>
-    <p class="m-0 p-0 time"><%= local_time_ago(@pitch.created_at) %></p>
-  </div>
+    <div class="tags-time">
+      <%= render "shared/pitch-tags" %>
+      <p class="m-0 p-0 time"><%= local_time_ago(@pitch.created_at) %></p>
+    </div>
 
-  <div class="pitch-info">
-    <h5 class="mt-4">Solving</h5>
-    <p><%= @pitch.solution.problem.title %></p>
+    <div class="pitch-info">
+      <h5 class="mt-4">Solving</h5>
+      <p><%= @pitch.solution.problem.title %></p>
 
-    <h5 class="mt-4">Description</h5>
-    <p><%= @pitch.description %></p>
+      <h5 class="mt-4">Description</h5>
+      <p><%= @pitch.description %></p>
 
-    <h6 class="mt-4">POSTED BY</h6>
+     <h6 class="mt-4">POSTED BY</h6>
     <div class="d-flex justify-content-between mb-2">
       <%= link_to user_path(@pitch.user) do %>
         <% if @pitch.user.photo.attached? %>
@@ -42,10 +43,32 @@
         <span><%= @pitch.votes.count %></span>
       </div>
     </div> 
+      <div class="pitch-link">
+        <iframe src="<%= @pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="275px" width="375px" allowfullscreen></iframe>
+        <a href="<%= @pitch.link %>" alt="original-link">View Pitch Here</a>
+      </div>
+    </div>
+
+    <h4 class="my-3">Comments</h4>
+    <div class="comments-container">
+      <% @pitch.comments.each do |comment| %>
+        <div id="comment-<%= comment.id %>" class="comment">
+          <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+          <p><%= comment.content %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="pitch-link">
-    <iframe src="<%= @pitch.link %>" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="275px" width="375px" allowfullscreen></iframe>
-    <a href="<%= @pitch.link %>" alt="original-link">View Pitch Here</a>
+
+  <div class="comment-bar">
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @solution, @pitch, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
+          <%= f.input :content, placeholder: "Type your comment here..." %>
+          <%= f.button :button, wrapper_html: { id: 'button' } do %>
+            <i class="far fa-paper-plane"></i>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
