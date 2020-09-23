@@ -29,11 +29,13 @@
   <br>
   <div class="notifications">
     <ul class="notif-list" id="js-notification-list" data-user="<%= current_user.id %>">
-      <% @notifications.each do |notif| %> 
-        <%= render 'shared/notification', notif: notif %>
+      <% if @notifications.empty? %>
+        <p>You are all caught up! 🎉</p>
+        <% else %>
+        <% @notifications.each do |notif| %> 
+          <%= render 'shared/notification', notif: notif %>
+        <% end %>
       <% end %>
     </ul>
-
-
   </div>
 </div>
