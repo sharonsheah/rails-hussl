@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ] do
     resources :profiles, only: [ :index ]
     resources :notifications, only: [ :index ]
+    resources :bookmarked_items, only: [ :index, :destroy ]
   end
 
   resources :problems, only: [ :index, :show, :new, :create ]  do

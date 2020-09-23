@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :pitches
   has_many :votes
   has_many :bookmarks
+  has_many :bookmarked_problems, through: :bookmarks, source: :bookmarked, source_type: 'Problem'
+  has_many :bookmarked_solutions, through: :bookmarks, source: :bookmarked, source_type: 'Solution'
   has_many :notifications, foreign_key: :recipient_id, dependent: :destroy
   has_one :profile
   # has_many :solutions, through: :collaboration
