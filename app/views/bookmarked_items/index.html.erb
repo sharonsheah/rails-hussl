@@ -27,22 +27,59 @@
     </ul>
   </div>
   <br>
-    <div class="bookmarks">
-      <h5>Problems</h5>
-      <ul class="bookmarked-list list-unstyled">
-        <% current_user.bookmarked_problems.each do |bookmark| %>
-          <li class="bookmarked-item border-bottom pt-3"><p><%= bookmark.title %><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
-            <i class="fas fa-bookmark pr-1" style="color:$dark-blue;"></i>
-            <% end %></p></li>
-        <% end %>
-      </ul>
-      <h5>Solutions</h5>
-      <ul class="bookmarked-list list-unstyled">
-        <% current_user.bookmarked_solutions.each do |bookmark| %>
-          <li class="bookmarked-item border-bottom pt-3"><p><%= bookmark.title %><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
-            <i class="fas fa-bookmark pr-1" style="color:$dark-blue;"></i>
-            <% end %></p></li>
-        <% end %>
-      </ul>
-  </div>
+
+<!--     <div class="bookmarks">
+      <h5 class="py-2">Problems</h5>
+        <ul class="bookmarked-list list-unstyled">
+          <% current_user.bookmarked_problems.each do |bookmark| %>
+            <li class="bookmarked-item"><p><%= bookmark.title %><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
+              <i class="fas fa-bookmark" style="color:$dark-blue;"></i>
+              <% end %></p></li>
+          <% end %>
+        </ul>
+      <h5 class="py-2">Solutions</h5>
+        <ul class="bookmarked-list list-unstyled">
+          <% current_user.bookmarked_solutions.each do |bookmark| %>
+            <li class="bookmarked-item"><p><%= bookmark.title %><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
+              <i class="fas fa-bookmark" style="color:$dark-blue;"></i>
+              <% end %></p></li>
+            <% end %>
+          </ul>
+    </div> -->
+
+  <table>
+    <tr>
+      <td id="problem-title">PROBLEMS</td>
+      <td></td>
+    </tr>
+
+    <% current_user.bookmarked_problems.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.title %></td>
+          <td><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
+            <i class="fas fa-bookmark" style="color:$dark-blue;"></i>
+            <% end %>
+          </td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td id="solution-title">SOLUTIONS</td>
+      <td></td>
+    </tr>
+
+    <% current_user.bookmarked_solutions.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.title %></td>
+          <td><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
+            <i class="fas fa-bookmark" style="color:$dark-blue;"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+
 </div>
+
+
