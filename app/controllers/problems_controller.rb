@@ -22,7 +22,6 @@ class ProblemsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def leaderboard
@@ -35,6 +34,14 @@ class ProblemsController < ApplicationController
   def upvote
     @problem = Problem.find(params[:id])
     Vote.create(votable: @problem, user: current_user)
+    @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "voted", notifiable: @problem)
+    
+    NotificationChannel.broadcast_to(
+      @problem.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @problem.user.notifications.unread.count 
+      }
+    )
     redirect_to problem_path
   end
 
@@ -55,5 +62,4 @@ class ProblemsController < ApplicationController
   def set_params
     params.require(:problem).permit(:title, :description, :category)
   end
-  
 end

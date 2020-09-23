@@ -1,98 +1,105 @@
-<div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to @solution.problem.title.first(10), problem_path(@solution.problem) %>...</li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @solution.title.first(7) %>...</li>
-    </ol>
-  </nav>
-  <h3><%= @solution.title %></h3>
-  <div>
-    <%= render "solutions/showcard" %>
-  </div>
-  <br>
-  <div>
-    <h5>Solving</h5>
-    <p><%= @solution.problem.title %></p>
-    <h5>Description</h5>
-    <p><%= @solution.description %></p>
-    <h6>POSTED BY</h6>
+<div class="wrapper-pages">
+  <div class="chat-container pitch-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @solution.problem.title.first(10), problem_path(@solution.problem) %>...</li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @solution.title.first(7) %>...</li>
+      </ol>
+    </nav>
+
+    <h3><%= @solution.title %></h3>
+
     <div>
-      <% if @solution.user.photo.attached? %>
-        <p><span><%= cl_image_tag @solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-        <% else %>
-          <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-      <% end %>
+      <%= render "solutions/showcard" %>
     </div>
-    <div class="actions">
-      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button'  do %>
-          <i class="far fa-thumbs-up"></i>
-        <% end %>
-      <% else %>
-        <i class="fas fa-thumbs-up"></i>
-      <% end %>
-      <span><%= @solution.votes.count %></span>
-
-      <% if @solution.collaborators.include?(current_user) %>
-        <i class="fas fa-hand-paper"></i>
-      <% else %>
-        <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button'  do %>
-          <i class="far fa-hand-paper"></i>
-        <% end %>
-      <% end %>
-      <span><%= @solution.collaborators.count %></span>
-    </div>
-    <div>
-      <small><%= local_time_ago(@solution.created_at) %></small>
-    </div>
-    <br>
-      <h6>COLLABORATORS</h6>
-      <% if @solution.collaborators.exists? %>
-        <% @solution.collaborators.each do |collaborator|%>
-          <% if collaborator.photo.attached? %>
-            <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
-          <% else %>
-              <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
-          <% end %>
-
-          <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
-          <% if current_user === @solution.user && collaboration.status === "Pending" %>
-            <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
-            <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
-          <% end %>
-        <% end %>
-      <% else %>
-        <i>Raise your hand to be the first collaborator!</i>
-      <% end %>
-  </div>
-
-
-  <div class="pr-3">
-    <div class="row px-3 align-items-center justify-content-between">
-      <h4 class="my-3">Pitches</h4>
-      <div class="my-3">
-        <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+    
+    <div class="pitch-section">
+      <div class="row px-3 align-items-center justify-content-between">
+        <h4 class="my-3 pt-2">Pitches</h4>
+        <div class="my-3">
+          <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+        </div>
       </div>
-    </div>
-    <div class="d-inline-flex justify-content-around">
-      <% if @solution.pitches.exists? %>
-        <% @pitches.each do |pitch| %>
-          <h5><%= link_to pitch.title, pitch_path(pitch) %></h5>
 
-          <div class="actions">
-            <% if Vote.where(votable: pitch, user:  current_user).empty? %>
-              <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
-                <i class="far fa-thumbs-up"></i>
+      <% if @solution.pitches.empty? %> 
+        <p><small>When all you hustlers are ready, submit link/files for your pitch!</small></p>
+      <% end %> 
+      
+        <ul class="raking-list chatroom-list pl-0" id="solutions-list">
+          <% @solution.pitches.each do |pitch| %>
+            <li class="ranking-item px-2">
+              <p><%= link_to pitch.title, pitch_path(pitch) %></p>
+              <div class="actions">
+                <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+                <%= link_to upvote_pitch_path(pitch), method: :post, class: 'button'  do %>
+                  <i class="far fa-thumbs-up"></i>
+                <% end %>
+              <% else %>
+                <i class="fas fa-thumbs-up"></i>
               <% end %>
-            <% else %>
-              <i class="fas fa-thumbs-up"></i>
+              <span><%= pitch.votes.count %></span>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+
+    <div class="collaborators-section">
+      <div class="row px-3 align-items-center justify-content-between">
+        <h4 class="my-3 pt-2">Collaborators</h4>
+        <div class="my-3">
+        </div>
+      </div>
+
+      <% if @solution.collaborators.empty? %> 
+        <p><small>Raise your hand to be the first collaborator!</small></p>
+      <% end %> 
+
+      <ul class="raking-list chatroom-list pl-0" id="solutions-list">
+        <% @solution.collaborators.each do |collaborator|%>
+          <li class="ranking-item px-2 collab-items">
+            <%= link_to user_profiles_path(collaborator) do %>
+              <% if collaborator.photo.attached? %>
+                <%= cl_image_tag collaborator.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %>
+              <% else %>
+                <img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill">
+              <% end %>
+              <%= collaborator.first_name%> 
+              <%= collaborator.last_name%>
             <% end %>
-            <span><%= pitch.votes.count %></span>
-          </div>
+            <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
+            <% if current_user === @solution.user  && collaboration.status === "Pending" %>
+              <div class="collab-status">
+                <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
+                <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
+              </div>
+            <% end %>
+          </li>
         <% end %>
-        <br>
-      <% else %>
-        <i>When all you husslrs are ready, submit a link to your pitch deck!</i>
+      </ul>
+    </div>
+
+    <h4 class="my-3 pt-2">Comments</h4>     
+    <div class="comments-container">
+      <% if @problem.comments.empty? %> 
+        <p><small>Oh no! The comments section is empty.</small></p>
+      <% end %>
+      <% @solution.comments.each do |comment| %>
+        <div id="comment-<%= comment.id %>" class="comment">
+          <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+          <p><%= comment.content %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="comment-bar">
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @solution, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
+          <%= f.input :content, placeholder: "Type your comment here..." %>
+          <%= f.button :button, wrapper_html: { id: 'button' } do %>
+            <i class="far fa-paper-plane"></i>
+          <% end %>
       <% end %>
     </div>
   </div>

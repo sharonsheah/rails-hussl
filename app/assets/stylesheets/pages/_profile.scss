@@ -51,33 +51,33 @@
   }
 }
 
-tr {
+.profile-table {
   width: 313px;
   height: auto;
   display: grid;
   grid-template-columns: 0.3fr 2.45fr 0.25fr;
   padding-bottom: 8px;
+}
 
-  .user-problems {
-    height: 24px;
-    width: 24px;
-    color: white;
-    background-color: $red;
-    border-radius: 5px;
-  }
-  .user-solutions {
-    height: 24px;
-    width: 24px;
-    color: white;
-    background-color: $green;
-    border-radius: 5px;
-  }
+.user-problems {
+  height: 24px;
+  width: 24px;
+  color: white;
+  background-color: $red;
+  border-radius: 5px;
+}
+.user-solutions {
+  height: 24px;
+  width: 24px;
+  color: white;
+  background-color: $green;
+  border-radius: 5px;
+}
 
-  .user-pitches {
-    height: 24px;
-    width: 24px;
-    color: white;
-    background-color: $dark-blue;
-    border-radius: 5px;
-  }
+.user-pitches {
+  height: 24px;
+  width: 24px;
+  color: white;
+  background-color: $dark-blue;
+  border-radius: 5px;
 }

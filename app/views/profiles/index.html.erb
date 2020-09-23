@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-5">
   <div class="first-line">
     <h3 class="name"><%= @user.first_name %> <%= @user.last_name %><span class="hussl-big-yellow">.</span></h3>
     <div id="main">
@@ -19,13 +19,10 @@
   <div>
     <ul class="nav">
       <li class="nav-item">
-        <h6><%= link_to 'Summary', user_profiles_path, class: 'nav-link tab-active tabs profile-tabs' %></h6>
+        <h6><%= link_to 'Summary', user_profiles_path, class: 'nav-link tab-active tabs' %></h6>
       </li>
       <li class="nav-item">
-        <h6><%= link_to 'Notifications', user_notifications_path, class: 'nav-link tabs profile-tabs' %></h6>
-      </li>
-      <li class="nav-item">
-        <h6><%= link_to 'Saved', user_notifications_path, class: 'nav-link tabs profile-tabs' %></h6>
+        <h6><%= link_to 'Saved', user_bookmarked_items_path, class: 'nav-link tabs' %></h6>
       </li>
     </ul>
     <br>
@@ -64,7 +61,7 @@
       <table>
         <tbody>
           <% @user.problems.each do |problem| %>
-            <tr>
+            <tr class="profile-table">
               <td class="user-problems text-center">P</td>
               <td><%= problem.title %></td>
               <td><%=  problem.votes.count %></td>
@@ -72,7 +69,7 @@
           <% end %>
 
           <% @user.solutions.each do |solution| %>
-            <tr>
+            <tr class="profile-table">
               <td class="user-solutions text-center">S</td>
               <td><%= solution.title %></td>
               <td><%=  solution.votes.count %></td>
@@ -80,7 +77,7 @@
           <% end %>
 
           <% @user.pitches.each do |pitch| %>
-            <tr>
+            <tr class="profile-table">
               <td class="user-pitches text-center">P</td>
               <td><%= pitch.title %></td>
               <td><%=  pitch.votes.count %></td>

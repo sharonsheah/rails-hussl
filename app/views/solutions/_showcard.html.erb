@@ -22,11 +22,13 @@
       <div class="actions">
         <% if Bookmark.where(bookmarked: @solution, user: current_user).empty? %>
           <%= link_to bookmark_solution_path(@solution, @solution.problem), method: :post, class: 'button white'  do %>
-            <i class="far fa-bookmark pr-1" style="color:$dark-blue;"></i>
+            <i class="far fa-bookmark pr-1" style="color:#ffffff;"></i>
             <% end %>
         <% else %>
-          <i class="fas fa-bookmark pr-1" style="color:$dark-blue;"></i>
-        <% end %>
+          <%= link_to unbookmark_solution_path(@solution, @solution.problem), method: :delete, class: 'button'  do %>
+          <i class="fas fa-bookmark pr-1" style="color:#ffffff;"></i>
+          <% end %>
+      <% end %>
 
         <% if Vote.where(votable: @solution, user:  current_user).empty? %>
           <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button white'  do %>
@@ -48,9 +50,8 @@
       </div>
     </div>
 
-
     <div class="time-section">
-      <p><%= local_time_ago(@solution.created_at) %></p>
+      <p class="mb-0"><%= local_time_ago(@solution.created_at) %></p>
     </div>
 
 </div>
