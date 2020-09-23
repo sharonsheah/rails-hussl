@@ -35,6 +35,7 @@ class ProblemsController < ApplicationController
   def upvote
     @problem = Problem.find(params[:id])
     Vote.create(votable: @problem, user: current_user)
+    Notification.create(recipient: @problem.user, actor: current_user, action: "voted", notifiable: @problem)
     redirect_to problem_path
   end
 
