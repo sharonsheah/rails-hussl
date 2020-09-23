@@ -50,7 +50,16 @@ class PitchesController < ApplicationController
         }
       )
     end
-    Notification.create(recipient: @pitch.user, actor: current_user, action: "voted", notifiable: @pitch)
+
+    @notif = Notification.create(recipient: @pitch.user, actor: current_user, action: "voted", notifiable: @pitch)
+
+    NotificationChannel.broadcast_to(
+      @pitch.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @pitch.user.notifications.unread.count 
+      }
+    )
+    
     redirect_to pitch_path
   end
 
