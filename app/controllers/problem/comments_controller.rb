@@ -6,7 +6,14 @@ class Problem::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commentable = @problem
     if @comment.save
-      Notification.create(recipient: @problem.user, actor: current_user, action: "commented", notifiable: @problem)
+      @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "commented", notifiable: @problem)
+      
+      NotificationChannel.broadcast_to(
+        @problem.user,
+        { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+        notification_counter: @problem.user.notifications.unread.count 
+        }
+      )
       redirect_to problem_path(@problem, anchor: "comment-#{@comment.id}")
     else 
       @solutions = @problem.solutions
