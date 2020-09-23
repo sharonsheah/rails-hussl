@@ -22,15 +22,13 @@
       </div>
 
       <% if @solution.pitches.empty? %> 
-        <p><small>No solutions have been submitted yet. Be the first one to post!</small></p>
+        <p><small>When all you hustlers are ready, submit link/files for your pitch!</small></p>
       <% end %> 
       
-        <ul class="raking-list chatroom-list pl-0">
+        <ul class="raking-list chatroom-list pl-0" id="solutions-list">
           <% @solution.pitches.each do |pitch| %>
-            <li class="ranking-item border-bottom px-2">
+            <li class="ranking-item px-2">
               <p><%= link_to pitch.title, pitch_path(pitch) %></p>
-
-
               <div class="actions">
                 <% if Vote.where(votable: pitch, user:  current_user).empty? %>
                 <%= link_to upvote_pitch_path(pitch), method: :post, class: 'button'  do %>
@@ -50,7 +48,6 @@
       <div class="row px-3 align-items-center justify-content-between">
         <h4 class="my-3 pt-2">Collaborators</h4>
         <div class="my-3">
-          <a class="small-btn">View all requests</a>
         </div>
       </div>
 
@@ -58,21 +55,28 @@
         <p><small>Raise your hand to be the first collaborator!</small></p>
       <% end %> 
 
-      <% @solution.collaborators.each do |collaborator|%>
-        <%= link_to user_profiles_path(collaborator) do %>
-          <% if collaborator.photo.attached? %>
-            <%= cl_image_tag collaborator.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %>
-          <% else %>
-            <img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill">
-          <% end %>
+      <ul class="raking-list chatroom-list pl-0" id="solutions-list">
+        <% @solution.collaborators.each do |collaborator|%>
+          <li class="ranking-item px-2 collab-items">
+            <%= link_to user_profiles_path(collaborator) do %>
+              <% if collaborator.photo.attached? %>
+                <%= cl_image_tag collaborator.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %>
+              <% else %>
+                <img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill">
+              <% end %>
+              <%= collaborator.first_name%> 
+              <%= collaborator.last_name%>
+            <% end %>
+            <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
+            <% if current_user === @solution.user  && collaboration.status === "Pending" %>
+              <div class="collab-status">
+                <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
+                <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
+              </div>
+            <% end %>
+          </li>
         <% end %>
-
-        <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
-        <% if current_user === @solution.user && collaboration.status === "Pending" %>
-          <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
-          <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
-        <% end %>
-      <% end %>
+      </ul>
     </div>
 
     <h4 class="my-3 pt-2">Comments</h4>     
