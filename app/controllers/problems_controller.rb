@@ -22,7 +22,6 @@ class ProblemsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def leaderboard
@@ -55,5 +54,4 @@ class ProblemsController < ApplicationController
   def set_params
     params.require(:problem).permit(:title, :description, :category)
   end
-  
 end

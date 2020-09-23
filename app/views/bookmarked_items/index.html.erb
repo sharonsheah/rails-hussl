@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="first-line">
+    <h3 class="name"><%= @user.first_name %> <%= @user.last_name %><span class="hussl-big-yellow">.</span></h3>
+    <div id="main">
+      <button class="openbtn btn btn-info">&#9776;</button>
+    </div>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
+      <a href="#" class="hussl-big-white">hussl<span class="hussl-big-yellow">.</span></span></a>
+      <%= link_to 'Edit profile', edit_user_registration_path(current_user)  %>
+      <%= link_to 'About hussl', root_path  %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete  %>
+    </div>
+  </div>
+
+  <div>
+    <ul class="nav">
+      <li class="nav-item">
+        <h6><%= link_to 'Summary', user_profiles_path, class: 'nav-link tabs' %></h6>
+      </li>
+      <li class="nav-item">
+        <h6><%= link_to 'Notifications', user_notifications_path, class: 'nav-link tabs' %></h6>
+      </li>
+      <li class="nav-item">
+        <h6><%= link_to 'Saved', user_bookmarked_items_path, class: 'nav-link tab-active tabs' %></h6>
+      </li>
+    </ul>
+  </div>
+  <br>
+    <div class="bookmarks">
+      <h5>Problems</h5>
+      <ul class="bookmarked-list list-unstyled">
+        <% current_user.bookmarked_problems.each do |bookmark| %>
+          <li class="bookmarked-item border-bottom pt-3"><p><%= bookmark.title %><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
+            <i class="fas fa-bookmark pr-1" style="color:$dark-blue;"></i>
+            <% end %></p></li>
+        <% end %>
+      </ul>
+      <h5>Solutions</h5>
+      <ul class="bookmarked-list list-unstyled">
+        <% current_user.bookmarked_solutions.each do |bookmark| %>
+          <li class="bookmarked-item border-bottom pt-3"><p><%= bookmark.title %><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
+            <i class="fas fa-bookmark pr-1" style="color:$dark-blue;"></i>
+            <% end %></p></li>
+        <% end %>
+      </ul>
+  </div>
+</div>
