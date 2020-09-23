@@ -5,6 +5,10 @@ class PitchesController < ApplicationController
 
   def show
     @pitch = Pitch.find(params[:id])
+    @solution = @pitch.solution
+    @pitches = @solution.pitches
+    @problem =  @solution.problem
+    @comment = Comment.new
   end
 
   def new
@@ -35,6 +39,11 @@ class PitchesController < ApplicationController
   def upvote
     @pitch = Pitch.find(params[:id])
     Vote.create(votable: @pitch, user: current_user)
+    collaborators = @pitch.solution.collaborators
+    (collaborators.uniq - [current_user]).each do |collaborator|
+      Notification.create(recipient: collaborator, actor: current_user, action: "voted", notifiable: @pitch)
+    end
+    Notification.create(recipient: @pitch.user, actor: current_user, action: "voted", notifiable: @pitch)
     redirect_to pitch_path
   end
 

@@ -7,11 +7,14 @@ class SolutionsController < ApplicationController
   def show
     @solution = Solution.find(params[:id])
     @pitches = @solution.pitches
+    @problem =  @solution.problem
+    @comment = Comment.new
   end
 
   def new
     @solution = Solution.new
     @problem = Problem.find(params[:problem_id])
+    @comment = Comment.new
   end
 
   def create
@@ -25,10 +28,10 @@ class SolutionsController < ApplicationController
       voters = @problem.votes.map { |vote| vote.user }
 
       (voters.uniq - [current_user]).each do |voter|
-        Notification.create(recipient: voter, actor: current_user, action: "posted", notifiable: @solution)
+        Notification.create(recipient: voter, actor: current_user, action: "submitted", notifiable: @solution)
       end
-
-      Notification.create(recipient: current_user, actor: current_user, action: "posted", notifiable: @solution)
+      
+      Notification.create(recipient: @problem.user, actor: current_user, action: "submitted", notifiable: @solution)
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
       render :new
@@ -45,6 +48,8 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     Vote.create(votable: @solution, user: current_user)
+    Notification.create(recipient: @solution.user, actor: current_user, action: "voted", notifiable: @solution)
+
     redirect_to solution_path
   end
 
@@ -63,6 +68,7 @@ class SolutionsController < ApplicationController
   def collaborate
     @solution = Solution.find(params[:id])
     Collaboration.create(solution: @solution, user: current_user, status: "Pending")
+    Notification.create(recipient: @solution.user, actor: current_user, action: "requested", notifiable: @solution.collaborations.last)
 
     redirect_to solution_path(@solution)
   end
@@ -71,7 +77,9 @@ class SolutionsController < ApplicationController
     @collaboration = Collaboration.find(params[:id])
     @collaboration.status = params[:status]
     @collaboration.save!
-
+    if @collaboration.status == "Accepted"
+      Notification.create(recipient: @collaboration.user, actor: current_user, action: "accepted", notifiable: @collaboration)
+    end
     redirect_to solution_path(@collaboration.solution)
   end
 
