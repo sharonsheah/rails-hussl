@@ -3,11 +3,11 @@
   background-color: $dark-blue;
   margin-top: 0;
   padding-top: 150px;
-  padding-bottom: 100px;
+  //padding-bottom: 100px;
   width: 100vw;
   height: 100vh;
   color: white;
-
+  display: flex;
   h1 {
     padding-left: 20px;
     margin: 0;
@@ -61,3 +61,27 @@
     padding-bottom: 20px;
   }
 }
+
+.home-card {
+  height: 100vh;
+  width: 100vw;
+  //z-index: -10;
+  position: absolute;
+}
+
+.home-arrow {
+  font-size: 100px;
+  justify-content: center;
+  display: flex;
+  padding-top: 230px;
+}
+
+
+.home-carousel-scroller {
+  display: flex;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+}
+
+

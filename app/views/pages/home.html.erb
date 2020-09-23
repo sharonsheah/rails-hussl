@@ -1,13 +1,26 @@
-<div class="home-bg">
-  <div>
-    <h1 class="hussl-big-white">hussl<span class="hussl-big-yellow">.</span></h1>
-    <h4 class="hussl-small-white">Make it happen.</h4>
+<div class="home-bg home-carousel-scroller">
+  <div class="home-card">
+    <div>
+      <img href="">
+      <h1 class="hussl-big-white">hussl<span class="hussl-big-yellow">.</span></h1>
+      <h4 class="hussl-small-white">Make it happen.</h4>
+    </div>
+
+    <% if user_signed_in? %>
+      <div class="home-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="#6699CC" d="M12 16a1 1 0 0 1-.64-.23l-6-5a1 1 0 1 1 1.28-1.54L12 13.71l5.36-4.32a1 1 0 0 1 1.41.15a1 1 0 0 1-.14 1.46l-6 4.83A1 1 0 0 1 12 16z"/></svg>
+        <%= render "shared/navbar" if user_signed_in? %>
+      </div>
+    <% else %>
+      <div class="cta">
+      <h5>Start ideating now</h5>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'btn' %>
+        <%= link_to 'Log in', new_user_session_path, class: 'btn' %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="cta">
-  <h5>Start ideating now</h5>
-    <%= link_to 'Sign up', new_user_registration_path, class: 'btn' %>
-    <%= link_to 'Log in', new_user_session_path, class: 'btn' %>
+  <div class="home-card">
   </div>
-  <%= render "shared/navbar" if user_signed_in? %>
+  
 </div>
