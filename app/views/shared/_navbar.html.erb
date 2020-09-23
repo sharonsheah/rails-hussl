@@ -134,7 +134,7 @@
     <% end %>
 
     <%# Active notification icon %>
-    <% if current_page?(user_notifications_path(current_user)) %>
+    <% if current_page?(user_notifications_path(current_user)) || current_page?(user_bookmarked_items_path(current_user))%>
       <%= link_to problems_path, class: 'nav-link' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -143,7 +143,7 @@
 
       <%= link_to chatrooms_path, class: "nav-link" do %>
         <svg class="icons text-gray-500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"  viewBox="0 0 24 24">
-          <path d="M5.656 20.479A1 1 0 0 1 4 19.743V17.5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4.997l-4.347 2.979zm.844-3.093a.536.536 0 0 0 .26-.069l2.355-1.638a1 1 0 0 1 .571-.179H14a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5c0 .54.429.982 1 1c.41.016.707.083.844.226c.128.134.135.36.156.79c.003.063.003.177 0 .37a.5.5 0 0 0 .5.5zm11.5-4.87a7.136 7.136 0 0 0 0 .37v-.37c.02-.43.028-.656.156-.79c.137-.143.434-.21.844-.226c.571-.018 1-.46 1-1v-5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1H7v-1a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2v2.243a1 1 0 0 1-1.656.736L18 16.243v-3.726z" fill="#FFC433"/>
+          <path d="M5.656 20.479A1 1 0 0 1 4 19.743V17.5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4.997l-4.347 2.979zm.844-3.093a.536.536 0 0 0 .26-.069l2.355-1.638a1 1 0 0 1 .571-.179H14a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5c0 .54.429.982 1 1c.41.016.707.083.844.226c.128.134.135.36.156.79c.003.063.003.177 0 .37a.5.5 0 0 0 .5.5zm11.5-4.87a7.136 7.136 0 0 0 0 .37v-.37c.02-.43.028-.656.156-.79c.137-.143.434-.21.844-.226c.571-.018 1-.46 1-1v-5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1H7v-1a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2v2.243a1 1 0 0 1-1.656.736L18 16.243v-3.726z" fill="#2D4059"/>
         </svg>
       <% end %>
 
