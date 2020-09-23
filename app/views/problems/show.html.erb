@@ -1,6 +1,6 @@
 <div class="wrapper-pages">
 
-  <div class="container">
+  <div class="chat-container pitch-container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
@@ -51,20 +51,19 @@
         <% end %>
       </div>  
 
-      <h4 class="my-3">Comments</h4>
+      <h4 class="my-3">Comments</h4>     
       <div class="comments-container">
         <% @problem.comments.each do |comment| %>
-          <div class="comment">
+          <div id="comment-<%= comment.id %>" class="comment">
             <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
             <p><%= comment.content %></p>
           </div>
         <% end %>
-      </div>
-
+      </div>    
     </div>
   </div>
 
-  <div class="problem-comment-bar">
+  <div class="comment-bar">
     <div class="new-comment">
       <%= simple_form_for [@problem, @comment], wrapper: :inline_form, remote: true, html: { class: 'form-inline' } do |f| %>
           <%= f.input :content, placeholder: "Type your comment here..." %>

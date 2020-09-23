@@ -1,3 +1,7 @@
+.solution-container {
+  margin-bottom: 40px;
+}
+
 h5 {
   font-size: 12px;
 }
@@ -39,12 +43,12 @@ h5 {
   }
 }
 
-.solution-comment-bar {
-  width: 100%;
-  height: 60px;
-  background-color: $white;
-  position: fixed;
-  bottom: 0;
-  display: flex;
- 
-}
+// .solution-comment-bar {
+//   width: 100%;
+//   height: 60px;
+//   background-color: $white;
+//   position: fixed;
+//   bottom: 0;
+//   display: flex;
+//   justify-content: center;
+// }

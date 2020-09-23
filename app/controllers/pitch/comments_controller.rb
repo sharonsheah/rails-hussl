@@ -8,15 +8,16 @@ class Pitch::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commentable = @pitch
     if @comment.save
-      redirect_to @pitch, notice: "comment posted"
+      redirect_to pitch_path(@pitch, anchor: "comment-#{@comment.id}")
     else 
       render "pitches/show"
     end
-
-    private
-
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
   end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+  
 end

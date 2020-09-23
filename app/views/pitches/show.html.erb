@@ -49,17 +49,26 @@
       </div>
     </div>
 
-    <div class="comment-bar">
-      <div class="new-comment">
-        <%= simple_form_for [@problem, @solution, @pitch, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
-            <%= f.input :content, placeholder: "Type your comment here..." %>
-            <%= f.button :button, wrapper_html: { id: 'button' } do %>
-              <i class="far fa-paper-plane"></i>
-            <% end %>
-        <% end %>
-      </div>
-      </div>
+    <h4 class="my-3">Comments</h4>
+    <div class="comments-container">
+      <% @pitch.comments.each do |comment| %>
+        <div id="comment-<%= comment.id %>" class="comment">
+          <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+          <p><%= comment.content %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="comment-bar">
+    <div class="new-comment">
+      <%= simple_form_for [@problem, @solution, @pitch, @comment], wrapper: :inline_form, html: { class: 'form-inline' }, remote: true do |f| %>
+          <%= f.input :content, placeholder: "Type your comment here..." %>
+          <%= f.button :button, wrapper_html: { id: 'button' } do %>
+            <i class="far fa-paper-plane"></i>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

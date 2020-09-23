@@ -6,7 +6,7 @@ class Problem::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commentable = @problem
     if @comment.save
-      redirect_to @problem, notice: "comment posted"
+      redirect_to problem_path(@problem, anchor: "comment-#{@comment.id}")
     else 
       @solutions = @problem.solutions
       render "problems/show"

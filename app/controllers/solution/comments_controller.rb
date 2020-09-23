@@ -8,7 +8,7 @@ class Solution::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commentable = @solution
     if @comment.save
-      redirect_to @solution, notice: "comment posted"
+      redirect_to solution_path(@solution, anchor: "comment-#{@comment.id}")
     else 
       render "solutions/show"
     end
