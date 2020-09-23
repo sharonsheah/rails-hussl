@@ -1,0 +1,22 @@
+.notif-list {
+  font-family: "Open Sans", "sans-serif";
+  font-size: 14px;
+  font-weight: 400;
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+.notif-item {
+    display: flex;
+    padding: 16px 0px;
+    p {
+      font-family: "Open Sans", "sans-serif";
+      font-size: 14px;
+      margin: 0;
+      font-weight: 500;
+    }
+}

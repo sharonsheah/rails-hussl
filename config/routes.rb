@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'users/show'
-  devise_for :users, :controllers => {:registrations => "registrations"}
-
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   authenticated :user do
     root to: 'problems#index', as: 'prob_root'
   end
@@ -25,23 +24,27 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [ :create ], controller: "problem/comments"
-    
+
     collection do
       get :leaderboard
     end
 
     member do
       post 'upvote'
+      post 'bookmark'
+      delete 'unbookmark'
     end
   end
 
-  resources :solutions, only: [ :index, :show ] do    
+  resources :solutions, only: [ :index, :show ] do
     collection do
       get :leaderboard
     end
 
     member do
       post 'upvote'
+      post 'bookmark'
+      delete 'unbookmark'
       post 'collaborate'
       patch 'collab_status'
     end
@@ -60,4 +63,11 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [ :index, :show ] do
     resources :messages, only: :create
   end
+
+  resources :notifications, only: [ :index ] do
+    collection do
+      post :mark_as_read
+    end
+  end
+
 end

@@ -1,5 +1,6 @@
 <div class="navbar navbar-lewagon">
   <% if user_signed_in? && controller.action_name != "new" && "show" %>
+    <%# Active ideate icon %>
     <% if current_page?(problems_path) || current_page?(solutions_path) || current_page?(pitches_path) %>
       <%= link_to problems_path, class: 'nav-link active' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -26,6 +27,7 @@
       <% end %>
     <% end %>
 
+    <%# Active leaderboard icon %>
     <% if current_page?(leaderboard_problems_path) || current_page?(leaderboard_solutions_path) || current_page?(leaderboard_pitches_path) %>
       <%= link_to problems_path, class: 'nav-link' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -52,7 +54,8 @@
       <% end %>
     <% end %>
 
-    <% if current_page?(user_profiles_path(current_user)) %>
+    <%# Active profile  %>
+    <% if current_page?(user_profiles_path(current_user)) || current_page?(user_notifications_path(current_user)) %>
       <%= link_to problems_path, class: 'nav-link' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -78,6 +81,7 @@
       <% end %>
     <% end %>
 
+    <%# Active chatroom icon %>
     <% if current_page?(chatrooms_path) %>
       <%= link_to problems_path, class: 'nav-link' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

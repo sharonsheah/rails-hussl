@@ -68,18 +68,8 @@ p {
   width: 24px;
 }
 
-.pitch-link {
-  padding: 0px;
-  margin: 0px;
-}
-
 img {
   border-radius: 50px;
-}
-
-.small-avatar {
-  height: 24px;
-  width:24px;
 }
 
 .small-btn {
@@ -127,10 +117,16 @@ img {
 .container {
   margin-top: 0;
   padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .form-container {
   height: 100vh;
   overflow-y: scroll;
   padding-bottom: 200px;
+}
+
+.white {
+  color: $white;
 }

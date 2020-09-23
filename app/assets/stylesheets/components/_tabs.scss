@@ -10,3 +10,13 @@
   font-size: 18px;
   margin-right: 16px;
 }
+
+.profile-tabs {
+  padding-left: 0;
+}
+
+.profile-tab-active {
+  color: $yellow;
+  border-bottom: 3px solid $yellow;
+  bottom: 80%;
+}

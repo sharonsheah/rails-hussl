@@ -2,6 +2,7 @@ require 'open-uri'
 
 puts 'Wiping data...'
 
+Comment.destroy_all
 Message.destroy_all
 Collaboration.destroy_all
 Chatroom.destroy_all
@@ -266,4 +267,11 @@ end
 
 Solution.all.each do |solution|
   solution.chatroom = Chatroom.create!(name: solution.title, solution: solution)
+end
+
+User.all.each do |user|
+  Collaboration.create!(user: user, solution: Solution.all.sample, status: ["Pending", "Accepted", "Rejected"].sample)
+  3.times do
+    Message.create(user: user, content: "This is a sample message", chatroom: Chatroom.all.sample)
+  end  
 end
