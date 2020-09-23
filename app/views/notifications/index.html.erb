@@ -30,9 +30,9 @@
   <div class="notifications">
     <ul class="notif-list">
       <% @notifications.each do |notif| %>
-        <%= link_to problem_path(notif.notifiable.problem) do %>
+        <%# <%= link_to problem_path(notif.notifiable.problem) do %>
           <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> a <strong><%= notif.notifiable.class.to_s.underscore.humanize.downcase %></strong> for <strong><%= notif.notifiable.title  %></strong></p></li>
-        <% end %>
+
       <% end %>
     </ul>
     
