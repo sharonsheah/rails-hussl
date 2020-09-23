@@ -24,9 +24,9 @@
         <p><small>No solutions have been submitted yet. Be the first one to post!</small></p>
       <% end %>   
 
-      <ul class="raking-list chatroom-list pl-0">
+      <ul class="raking-list chatroom-list pl-0" id="solutions-list">
         <% @solutions.each do |solution| %>
-          <li class="ranking-item border-bottom px-2">
+          <li class="ranking-item px-2">
             <p><%= link_to solution.title, solution_path(solution) %></p>
             <div class="actions">
               <% if Vote.where(votable: solution, user:  current_user).empty? %>

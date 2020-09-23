@@ -14,61 +14,72 @@
     </div>
     
     <div class="pitch-section">
-      <div class="submit-pitch">
-        <h5 class="my-3">Pitches</h5>
+      <div class="row px-3 align-items-center justify-content-between">
+        <h4 class="my-3 pt-2">Pitches</h4>
         <div class="my-3">
           <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
         </div>
       </div>
-      
-      <div class="pitches">
-        <% if @solution.pitches.exists? %>
-          <% @pitches.each do |pitch| %>
-            <div class="pitch-titles">
-              <h6 id='pitch-title'><%= link_to pitch.title, pitch_path(pitch) %></h6>
-            </div>
 
-            <div class="actions">
-              <% if Vote.where(votable: pitch, user:  current_user).empty? %>
-                <%= link_to upvote_problem_path(pitch), method: :post, class: 'button'  do %>
+      <% if @solution.pitches.empty? %> 
+        <p><small>No solutions have been submitted yet. Be the first one to post!</small></p>
+      <% end %> 
+      
+        <ul class="raking-list chatroom-list pl-0">
+          <% @solution.pitches.each do |pitch| %>
+            <li class="ranking-item border-bottom px-2">
+              <p><%= link_to pitch.title, pitch_path(pitch) %></p>
+
+
+              <div class="actions">
+                <% if Vote.where(votable: pitch, user:  current_user).empty? %>
+                <%= link_to upvote_pitch_path(pitch), method: :post, class: 'button'  do %>
                   <i class="far fa-thumbs-up"></i>
                 <% end %>
               <% else %>
                 <i class="fas fa-thumbs-up"></i>
               <% end %>
-              <span class="votes"><%= pitch.votes.count %></span>
-            </div>
+              <span><%= pitch.votes.count %></span>
+              </div>
+            </li>
           <% end %>
-          <br>
-        <% else %>
-          <p class="notice">When all you husslrs are ready, submit a link to your pitch deck!</p>
-        <% end %>
-      </div>
+        </ul>
     </div>
 
     <div class="collaborators-section">
-      <h5>Collaborators</h5>
-      <% if @solution.collaborators.exists? %>
-        <% @solution.collaborators.each do |collaborator|%>
-          <% if collaborator.photo.attached? %>
-            <p><%= cl_image_tag collaborator.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= collaborator.first_name %> <%= collaborator.last_name  %></p>
-          <% else %>
-              <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= collaborator.first_name %> <%= collaborator.last_name %></span></p>
-          <% end %>
+      <div class="row px-3 align-items-center justify-content-between">
+        <h4 class="my-3 pt-2">Collaborators</h4>
+        <div class="my-3">
+          <a class="small-btn">View all requests</a>
+        </div>
+      </div>
 
-          <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
-          <% if current_user === @solution.user && collaboration.status === "Pending" %>
-            <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
-            <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
+      <% if @solution.collaborators.empty? %> 
+        <p><small>Raise your hand to be the first collaborator!</small></p>
+      <% end %> 
+
+      <% @solution.collaborators.each do |collaborator|%>
+        <%= link_to user_profiles_path(collaborator) do %>
+          <% if collaborator.photo.attached? %>
+            <%= cl_image_tag collaborator.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %>
+          <% else %>
+            <img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill">
           <% end %>
         <% end %>
-      <% else %>
-        <p class="notice">Raise your hand to be the first collaborator!</p>
+
+        <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
+        <% if current_user === @solution.user && collaboration.status === "Pending" %>
+          <%= link_to icon('fas', 'check'), collab_status_solution_path(collaboration, status: "Accepted"), method: "patch" %>
+          <%= link_to icon('fas', 'times'), collab_status_solution_path(collaboration, status: "Rejected"), method: "patch" %>
+        <% end %>
       <% end %>
     </div>
 
-    <h5 class="my-3">Comments</h5>
+    <h4 class="my-3 pt-2">Comments</h4>     
     <div class="comments-container">
+      <% if @problem.comments.empty? %> 
+        <p><small>Oh no! The comments section is empty.</small></p>
+      <% end %>
       <% @solution.comments.each do |comment| %>
         <div id="comment-<%= comment.id %>" class="comment">
           <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>

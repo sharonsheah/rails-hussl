@@ -44,9 +44,14 @@
   }
 }
 
-.border-bottom {
-  border-bottom: 1px solid lightgray;
-  align-items: center;
+#solutions-list {
+  li {
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+  }
+  :last-child {
+    border-bottom: 0px;
+  }
   .actions span, i {
     color: lightgray;
   }
