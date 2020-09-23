@@ -32,6 +32,13 @@ class SolutionsController < ApplicationController
       end
       
       Notification.create(recipient: @problem.user, actor: current_user, action: "submitted", notifiable: @solution)
+      
+      NotificationChannel.broadcast_to(
+      @solution.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @solution.user.notifications.unread.count 
+      }
+    )
       redirect_to solution_path(@solution), notice: "Solution added!"
     else
       render :new
@@ -48,8 +55,13 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     Vote.create(votable: @solution, user: current_user)
-    Notification.create(recipient: @solution.user, actor: current_user, action: "voted", notifiable: @solution)
-
+    @notif = Notification.create(recipient: @solution.user, actor: current_user, action: "voted", notifiable: @solution)
+    NotificationChannel.broadcast_to(
+      @solution.user,
+      { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+      notification_counter: @solution.user.notifications.unread.count 
+      }
+    )
     redirect_to solution_path
   end
 
