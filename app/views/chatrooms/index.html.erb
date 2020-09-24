@@ -1,18 +1,8 @@
+<div class="header-pad">
+  <%= render "shared/header" %>
+</div>
 <div class="ideate-page">
   <div class="header">
-    <div class="btn-profile">
-      <div class="logo text-right mt-2 d-flex align-items-center justify-content-between" style="font-size:8vw">
-        <h3 class="hussl-small-blue">hussl<span class="hussl-big-yellow">.</span></h3>
-        <%= link_to user_profiles_path(current_user) do %>
-          <% if current_user.photo.attached? %>
-            <span class="card-img-top"><%= cl_image_tag current_user.photo.key, height: 42, width: 42, crop: :fill, gravity: :face %></span>
-          <% else %>
-            <i class="far fa-user-circle"></i>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
     <h2>Chatrooms</h2>
 
     <ul class="nav">
