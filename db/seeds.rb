@@ -266,6 +266,11 @@ puts 'Creating problems...'
 # PROBLEMS
 # ["Software & Services", "Consumer", "Education", "Healthcare", "Real Estate & Construction", "Financial Technology", "Government", "Unspecified"]
 
+facebook_problem = Problem.create!(title: "How can I remember my high school mates' faces?", description: "I want to keep in touch with my high school friends and watch the rest of my cohort go bald or age gracefully. It's so difficult to keep in touch. Can someone think of a solution for this??", user: User.all.sample, category: "Software & Services")
+
+canva_problem = Problem.create!(title: "Designers are so expensive", description: "I run a small business and Adobe is too expensive and too difficult to use. There has to be q more affordable way to get quick graphics for my marketing! I don't know how to design too and graphic designers are too expensive!", user: User.all.sample, category: "Software & Services")
+
+uber_problem = Problem.create!(title: "Taxis are for boomers", description: "Most use aging and inefficient technology like radio dispatching. Always the same car models. Hailing is done by hand or phone(no GPS coordination between driver/passenger).", user: User.all.sample, category:"Software & Services")
 
 airbnb_problem = Problem.create!(title: "Hotels are too expensive", description: "Price is important concern for customers booking travel online. Hotels leave you disconnected from the city and its culture. No easy way exists to book a room with a local or become a host.", user: User.all.sample, category: "Consumer")
 
@@ -273,21 +278,15 @@ plant_problem = Problem.create(title: "My plants keep dying on me", description:
 
 arm_problem = Problem.create!(title: "My left arm is darker than my right", description: "How can I even out my tan?", user: annmarie_user, category: "Unspecified")
 
-facebook_problem = Problem.create!(title: "Can't remember my high school mates faces", description: "I want to keep in touch with my high school friends and watch the rest of my cohort go bald or age gracefully. It's so difficult to keep in touch. Can someone think of a solution for this??", user: User.all.sample, category: "Software & Services")
-
 aussie_problem = Problem.create!(title: "Products made in STRAYAAA", description: "I only want to buy products made in australia by australians for australians. Products made in Australia can be very hard to source (not accessible and take time). No clear supply and hard to interact online with local producers.", user: User.all.sample, category: "Consumer")
-
-heroku_problem = Problem.create!(title: "Heroku keeps ruining my layout", description: "There has to be a better way.", user: User.all.sample, category: "Software & Services")
-
-uber_problem = Problem.create!(title: "Taxis are for boomers", description: "Most use aging and inefficient technology like radio dispatching. Always the same car models. Hailing is done by hand or phone(no GPS coordination between driver/passenger).", user: User.all.sample, category:"Software & Services")
 
 importio_problem = Problem.create!(title: "Scraping data feels like mining", description: "Web pages are full of data, but harvesting that data is often manual and always time-consuming.", user: User.all.sample, category:"Software & Services")
 
 homies_problem = Problem.create!(title: "My flatmate owes me money and doesn't clean the bathroom", description: "There is no centralised digital system to manage all house hold needs.", user: User.all.sample, category: "Software & Services")
 
-weather_problem = Problem.create!(title: "Everytime I go out it starts raining", description: "The weather report is too general, and not actionable based on an individual's schedule.", user: User.all.sample, category: "Unspecified")
+weather_problem = Problem.create!(title: "Everytime I go out it starts raining.", description: "The weather report is too general, and not actionable based on an individual's schedule.", user: User.all.sample, category: "Unspecified")
 
-recyclebank_problem = Problem.create!(title: "Recycling household waste", description: "Recycling household waste is important but it’s often hard for people to stay committed to this goal.", user: User.all.sample, category: "Software & Services")
+recyclebank_problem = Problem.create!(title: "Better way of recycling household waste?", description: "Recycling household waste is important but it’s often hard for people to stay committed to this goal.", user: User.all.sample, category: "Software & Services")
 
 treeplanet_problem = Problem.create!(title: "Lack of commitment to planting new trees", description: "Deforestation is responsible for 15% of global greenhouse gas emissions. Planting new trees and whole forests is important for maintaining the natural balance but not so many people are taking action.", user: User.all.sample, category: "Education")
 
@@ -300,8 +299,6 @@ relectrify_problem = Problem.create!(title: "Short life of rechargeable batterie
 mayapedal_problem = Problem.create!(title: "Access to electricity in Guatemala", description: "The majority of rural communities in Guatemala are living below the poverty line with most work are still being done manually instead of powered by electricity.", user: User.all.sample, category: "Consumer")
 
 zerogachis_problem = Problem.create!(title: "Supermarkets throw away food", description: "Supermarkets often have to throw away food due to expiration.", user: User.all.sample, category: "Consumer")
-
-canva_problem = Problem.create!(title: "Designers are so expensive", description: "I run a small business and Adobe is too expensive and too difficult to use. There has to be q more affordable way to get quick graphics for my marketing! I don't know how to design too and graphic designers are too expensive!", user: User.all.sample, category: "Software & Services")
 
 spanx_problem = Problem.create!(title: "Undergarment problems", description: "I had spent money on a pair of cream pants. I spent $98 dollars on them, which, for me, was a lot of money. And they just hung in my closet unworn because every time I would go to wear them, you could see the undergarment.", user: User.all.sample, category: "Consumer")
 
@@ -346,6 +343,8 @@ solarity_solution = Solution.create!(title: "Smaller instalations", description:
 canva_solution = Solution.create!(title: "Simple adobe suite/ DIY designs", description: "Imagine an easy-to-use web-based design tool with ready made graphics and cool designs so that people don't need to spend thousands on hiring a professional graphic designer for a social media post. Say bye to learning how to use complex vector lines!", user: canva_founder, problem: canva_problem)
 
 spanx_solution = Solution.create!(title: "Elastic undergarment", description: "An undergarment made out of an elastic material that basically tightens and then smooths everything around your butt and thighs. Regular underwear left a panty line. The thong isn't a great solution. It also left marks that you could see. And then, the shape wear was like the girdles were so thick and overdone.", user: spanx_founder, problem: spanx_problem)
+
+ridesharing_solution = Solution.create!(title: "Carbon-neutral system", description: "An calculator app sthat takes into account transport and lifestyle and what's more, it also auto-adjusts for the country that you live in as well as the number of people in your household. ", user: paal_user, problem: ridesharing_problem)
 
 puts 'Creating pitches...'
 
