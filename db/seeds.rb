@@ -74,8 +74,8 @@ end
 #FAMOUS USERS
 
 plantlady_user = User.create!(
-                first_name: "Crazyplantlady92",
-                last_name: "Sy",
+                first_name: "Plantlady",
+                last_name: "92",
                 email: "plantlady@user.com", 
                 password: "password"
                 )
@@ -270,6 +270,8 @@ facebook_problem = Problem.create!(title: "How can I remember my high school mat
 
 canva_problem = Problem.create!(title: "Designers are so expensive", description: "I run a small business and Adobe is too expensive and too difficult to use. There has to be q more affordable way to get quick graphics for my marketing! I don't know how to design too and graphic designers are too expensive!", user: User.all.sample, category: "Software & Services")
 
+ridesharing_problem = Problem.create!(title: "UBER is destroying the planet", description: "Ride-hailing trips today result in an estimated 69 percent more climate pollution on average than the trips they displace. There's gotta be a better way.", user: tesla_founder, category: "Software & Services")
+
 uber_problem = Problem.create!(title: "Taxis are for boomers", description: "Most use aging and inefficient technology like radio dispatching. Always the same car models. Hailing is done by hand or phone(no GPS coordination between driver/passenger).", user: User.all.sample, category:"Software & Services")
 
 airbnb_problem = Problem.create!(title: "Hotels are too expensive", description: "Price is important concern for customers booking travel online. Hotels leave you disconnected from the city and its culture. No easy way exists to book a room with a local or become a host.", user: User.all.sample, category: "Consumer")
@@ -311,8 +313,6 @@ juul_problem = Problem.create(title: "Cigarette alternatives", description: "Cig
 vaccine_problem = Problem.create(title: "Coronavirus vaccine that actually works?", description: "Can someone come out with a vaccine already, I can pay good money for it.", user: User.all.sample, category: "Healthcare")
 
 stripe_problem = Problem.create(title: "Setting up online payments is just such a hassle.", description: "It’s too hard for online vendors to set up payments.", user: User.all.sample, category: "Financial Technology")
-
-ridesharing_problem = Problem.create!(title: "UBER is destroying the planet", description: "Ride-hailing trips today result in an estimated 69 percent more climate pollution on average than the trips they displace. There's gotta be a better way.", user: tesla_founder, category: "Software & Services")
 
 puts 'Creating solutions...'
 
