@@ -44,6 +44,8 @@
           </ul>
     </div> -->
 
+
+
   <table>
     <tr>
       <td id="problem-title">PROBLEMS</td>
@@ -52,13 +54,14 @@
 
     <% current_user.bookmarked_problems.each do |bookmark| %>
       <tr>
-        <td><%= bookmark.title %></td>
+        <td><%= link_to bookmark.title, problem_path(bookmark) %></td>
           <td><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
             <i class="fas fa-bookmark" style="color:$dark-blue;"></i>
             <% end %>
-          </td>
-      </tr>
-    <% end %>
+            </td>
+      <% end %>
+    </tr>
+
 
     <tr>
       <td id="solution-title">SOLUTIONS</td>
@@ -67,7 +70,7 @@
 
     <% current_user.bookmarked_solutions.each do |bookmark| %>
       <tr>
-        <td><%= bookmark.title %></td>
+        <td><%= link_to bookmark.title, solution_path(bookmark) %></td>
           <td><%= link_to user_bookmarked_item_path(bookmark, bookmark.id), method: :delete, class: 'button'  do %>
             <i class="fas fa-bookmark" style="color:$dark-blue;"></i>
           <% end %>

@@ -5,14 +5,18 @@
         <h4>Share a problem</h4>
 
         <%= simple_form_for(@problem) do |f| %>
-          <%= f.input :title, label: "Name your problem", placeholder: "Keep it short & sweet. This is what others will see first." %>
-          <%= f.input :description, label: "Describe your problem", placeholder: "Be detailed so that others can understand your exact pain" %>
+          <%= f.input :title, label: "You've got a problem? Share it!", placeholder: "Keep it short & sweet." %>
+          <%= f.input :description, label: "Tell us more", placeholder: "Please add some details to describe your problem. Think 'Who, What, Where, When and How?'" %>
           <%= f.input :category, collection: Problem::CATEGORY %>
           <%= f.button :submit, "Share problem", class: "btn btn-info" %>
         <% end %>
-        
+
       </div>
-      <%= link_to "Cancel", problems_path %>  
+
+      <div class="cancel d-flex justify-content-center">
+          <%= link_to "Cancel", problems_path %>
+      </div>
+
     </div>
   </div>
 </div>

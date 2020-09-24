@@ -8,24 +8,28 @@
   </div>
 
   <br>
-  
+
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="form">
-        
+
         <%= simple_form_for [ @problem, @solution ] do |f| %>
-          <%= f.input :title, placeholder: "Enter your solution title" %>
-          <%= f.input :description, placeholder: "Enter your full solution description" %>
+          <%= f.input :title, placeholder: "What is your solution to this problem?" %>
+          <%= f.input :description, label: "Tell us more", placeholder: "Describe in detail, how your solution will solve this problem." %>
           <%= f.input :category, collection: Problem::CATEGORY %>
           <%= f.button :submit, "Submit solution", class: "btn btn-info" %>
         <% end %>
-        
+
       </div>
-    
+
       </div>
-        <%= link_to "Cancel", problem_path(@problem) %>  
+
+       <div class="cancel d-flex justify-content-center">
+        <%= link_to "Cancel", problem_path(@problem) %>
       </div>
-      
+
+      </div>
+
     </div>
   </div>
 </div>

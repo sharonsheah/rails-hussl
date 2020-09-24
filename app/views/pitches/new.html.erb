@@ -8,7 +8,7 @@
   <div>
     <%= render "shared/solution-tags" %>
   </div>
-    
+
   <div>
     <p>Description</p>
     <p><%= @solution.description %></p>
@@ -29,16 +29,16 @@
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="form">
         <%= simple_form_for [ @problem, @solution, @pitch ] do |f| %>
-          <%= f.input :title , placeholder: "Enter your pitch title" %>
-          <%= f.input :description, placeholder: "Enter your full pitch description" %>
+          <%= f.input :title , placeholder: "Let's hear it!" %>
+          <%= f.input :description, label: "Tell us more", placeholder: "Introduce your million dollar pitch here! Please explain how your pitch will solve this problem." %>
           <%= f.input :link %>
           <%= f.input :photo, as: :file %>
           <%= f.button :submit, "Pitch your solution", class: "btn btn-info" %>
-        <% end %>       
-      </div> 
-      <div>
-        <%= link_to "Cancel", solution_path(@solution) %>  
-      </div>   
+        <% end %>
+      </div>
+      <div class="cancel d-flex justify-content-center">
+        <%= link_to "Cancel", solution_path(@solution) %>
+      </div>
     </div>
   </div>
 </div>

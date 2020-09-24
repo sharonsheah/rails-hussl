@@ -9,7 +9,7 @@
     font-weight: bold;
     }
 
-  .string.required, .select.optional, .text.required, .string.optional {
+  .string.required, .select.optional, .text.required, .string.optional, .file.optional {
     font-size: 14px;
     letter-spacing: 0.5px;
     font-weight: bold;
@@ -31,5 +31,31 @@
     margin: 10px 0;
   }
 
+  .file-optional {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+  }
+
+  #problem_description {
+    height: 100px;
+  }
+
+  #solution_description {
+    height: 100px;
+  }
+
+  #pitch_description {
+    height: 100px;
+  }
+
+  #pitch_photo.form-control-file.file.optional {
+    font-family: "Open Sans", "sans-serif";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #2D4059;
+    text-align: left;
+  }
 }
 
