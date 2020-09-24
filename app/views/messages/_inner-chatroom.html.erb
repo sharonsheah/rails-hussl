@@ -1,0 +1,3 @@
+<% chatroom.messages.each do |message| %>
+    <%= render partial: 'messages/plain-message', locals: { message: message } %>
+<% end %>

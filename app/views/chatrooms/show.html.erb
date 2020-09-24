@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>" data-user="<%= current_user.id %>">
     <% @chatroom.messages.each do |message| %>
       <%= render partial: 'messages/message', locals: { message: message } %>
     <% end %>
