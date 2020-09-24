@@ -1,17 +1,28 @@
 // Specific CSS for your home-page
 .home-bg {
-  background-color: $dark-blue;
   margin-top: 0;
-  padding-top: 150px;
-  padding-bottom: 100px;
   width: 100vw;
   height: 100vh;
   color: white;
-
+  display: flex;
+  scroll-behavior: smooth;
   h1 {
+    padding-top: 150px;
     padding-left: 20px;
     margin: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
+  .banner {
+  background-size: cover;
+  background-position: center;
+  }
+}
+
+.tagline {
+  font-size: 18px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .logo {
@@ -60,4 +71,82 @@
     text-align: center;
     padding-bottom: 20px;
   }
+}
+
+.home-card {
+  height: 100vh;
+  width: 100vw;
+}
+
+.home-arrow {
+  font-size: 100px;
+  justify-content: center;
+  display: flex;
+  padding-top: 200px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+
+.home-carousel-scroller {
+  display: flex;
+  flex-flow: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+}
+
+.circle-icon {
+  font-size: 100px;
+  color: $white;
+  border-radius: 50%;
+  width: 100px;
+  opacity: 0.5;
+  background-color: $light-blue;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba($dark-blue, 0.12);
+}
+
+#hand {
+  font-size: 60px;
+  line-height: 85px;
+}
+
+#second {
+  text-align: center;
+  padding-bottom: 40px;
+  background-color: $white;
+  color: $dark-blue;
+  .btn {
+    background-color: $yellow;
+    color: $white;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%; 
+  }
+}
+
+.step-card {
+  display: flex;
+  align-items: center;
+  padding: 8px 0px;
+  justify-content: space-around;
+  p {
+    font-size: 12px;
+    font-family: $headers-font;
+    margin-bottom: 0;
+    width: 140px;
+  }
+}
+
+#present {
+  padding: 15px;
+}
+
+.head-how {
+  padding-top: 40px;
+  height: 100px;
 }
