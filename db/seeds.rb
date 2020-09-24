@@ -57,7 +57,7 @@ rae_user = User.create!(
   email: Faker::Internet.email, 
   password: "password"
   )
-  file = URI.open("https://randomuser.me/api/portraits/thumb/men/1.jpg")
+  file = URI.open("https://randomuser.me/api/portraits/thumb/men/#{rand(1..99)}.jpg")
   fake_male_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
 end
 
@@ -67,7 +67,7 @@ end
   email: Faker::Internet.email, 
   password: "password"
   )
-  file = URI.open("https://randomuser.me/api/portraits/thumb/women/1.jpg")
+  file = URI.open("https://randomuser.me/api/portraits/thumb/women/#{rand(1..99)}.jpg")
   fake_female_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
 end
 
