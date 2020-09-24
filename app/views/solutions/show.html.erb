@@ -84,7 +84,7 @@
 
     <h4 class="my-3 pt-2">Comments</h4>     
     <div class="comments-container">
-      <% if @problem.comments.empty? %> 
+      <% if @solution.comments.empty? %> 
         <p><small>Oh no! The comments section is empty.</small></p>
       <% end %>
       <% @solution.comments.each do |comment| %>
