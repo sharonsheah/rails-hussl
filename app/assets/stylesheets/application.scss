@@ -69,7 +69,7 @@ p {
 }
 
 img {
-  border-radius: 50px;
+  border-radius: 50%;
 }
 
 .small-btn {
@@ -116,6 +116,13 @@ img {
   padding-right: 20px;
 }
 
+.profile-container {
+  margin-top: 0;
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .form-container {
   height: 100vh;
   overflow-y: scroll;
@@ -131,7 +138,7 @@ img {
   padding-top: 10px;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 20;
   background: $white;
 }
 
