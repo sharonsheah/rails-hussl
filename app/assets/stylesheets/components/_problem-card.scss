@@ -61,14 +61,13 @@
   width: 100%;
   margin: 0;
   h5 {
-      width: 90%;
-      $headings-font-family:    $headers-font;
-      color: $white;
-      opacity: 0.96;
-      font-size: 14px;
-      line-height: 20px;
-      margin: 0;
-      padding-bottom: 8px;
+    width: -webkit-fill-available;
+    $headings-font-family:    $headers-font;
+    color: $white;
+    opacity: 0.96;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
   }
 }
 .time-ago {
@@ -181,6 +180,9 @@
   scroll-snap-align: start;
   scroll-snap-align: center;
   padding-top: 57px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
   padding-bottom: 50px;
 
   .arrow {
