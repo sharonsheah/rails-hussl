@@ -5,14 +5,14 @@ class Problem::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.commentable = @problem
+
     if @comment.save
       @notif = Notification.create(recipient: @problem.user, actor: current_user, action: "commented", notifiable: @problem)
       
       NotificationChannel.broadcast_to(
         @problem.user,
         { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
-        notification_counter: @problem.user.notifications.unread.count,
-        test_key: "test_value"
+        notification_counter: @problem.user.notifications.unread.count
         }
       )
       

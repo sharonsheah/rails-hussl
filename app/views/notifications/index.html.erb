@@ -10,7 +10,7 @@
       <ul class="notif-list" id="js-notification-list" data-user="<%= current_user.id %>">
         <% if @notifications.empty? %>
           <p class="alert alert-warning">You are all caught up! 🎉</p>
-          <% else %>
+        <% else %>
           <% @notifications.each do |notif| %> 
             <%= render 'shared/notification', notif: notif %>
           <% end %>

@@ -3,66 +3,88 @@
 <%# Pitch: users can vote, comment %>
 
 <%# Notifications "USER commented on the problem PROBLEM_NAME" %>
-  <h1>this is working</h1>
-<% if notif.notifiable_type == "Problem" && notif.notifiable.comments.class.to_s == "Problem" %>
-  <%= link_to problem_path(notif.notifiable.commentable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the <%= notif.notifiable.commentable.class.to_s.underscore.humanize.downcase %> <strong><%= notif.notifiable.commentable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
-  <% end %>
+<% if notif.notifiable_type == "Problem" && notif.action == "commented" %>
+  <%= link_to problem_path(notif.notifiable) do %> 
+    <li class="notif-item">
+      <p>
+        <strong>
+          <%= notif.actor.first_name %> <%= notif.actor.last_name %>
+        </strong>
+          <%= notif.action %> on the problem 
+        <strong>
+          <%= notif.notifiable.title %>
+        </strong>
+      </p> 
+      <small><%= local_time_ago(notif.created_at) %></small>
+    </li>
+  <% end %>
 <% end %>
 
 <%# Notifications "USER voted on the problem PROBLEM_NAME" %>
-<% if notif.notifiable_type == "Vote" && notif.notifiable.votable.class.to_s == "Problem" %>
-  <%= link_to problem_path(notif.notifiable.votable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the problem <%= notif.notifiable.votable.class.to_s.underscore.humanize.downcase %><strong><%= notif.notifiable.votable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+<% if notif.notifiable_type == "Problem" && notif.action == "voted" %>
+  <%= link_to problem_path(notif.notifiable) do %> 
+  <h6><%= notif.notifiable.id %></h6>
+    <li class="notif-item">
+      <p>
+        <strong>
+          <%= notif.actor.first_name %> <%= notif.actor.last_name %>
+        </strong>
+          <%= notif.action %> on the problem 
+        <strong>
+          <%= notif.notifiable.title %>
+        </strong>
+      </p> 
+      <small><%= local_time_ago(notif.created_at) %></small>
+    </li>
   <% end %>
 <% end %>
 
 <%# Notifications "USER voted on the solution SOLUTION_NAME" %>
-<% if notif.notifiable_type == "Vote" && notif.notifiable.votable.class.to_s == "Solution" %>
-  <%= link_to solution_path(notif.notifiable.votable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the <%= notif.notifiable.votable.class.to_s.underscore.humanize.downcase %><strong><%= notif.notifiable.votable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+<% if notif.notifiable_type == "Solution" && notif.action == "voted" %>
+  <%= link_to solution_path(notif.notifiable) do %> 
+  <h1><%= notif.notifiable %></h1>
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the solution <strong><%= notif.notifiable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
 
-<%# Notifications "USER commented on the solution SOL
-UTION_NAME" %>
-<% if notif.notifiable_type == "Comment" && notif.notifiable.commentable.class.to_s == "Solution" %>
+<%# Notifications "USER commented on the solution SOLUTION_NAME" %>
+<% if notif.notifiable_type == "Solution" && notif.action == "commented" %>
   <%= link_to solution_path(notif.notifiable.commentable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the <%= notif.notifiable.commentable.class.to_s.underscore.humanize.downcase %> <strong><%= notif.notifiable.commentable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the solution <strong><%= notif.notifiable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
 
 <%# Notifications "USER requested to collaborate on SOLUTION_NAME" %>
-<% if notif.notifiable_type == "Solution" && notif.notifiable.collaborations.last.class.to_s == "Collaboration" && notif.action == "requested" %>
+<% if notif.notifiable_type == "Collaboration" && notif.action == "requested" %>
   <%= link_to solution_path(notif.notifiable) do %> 
     <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> to collaborate on <strong><%= notif.notifiable.title %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
 
 <%# Notifications "USER accepted collaboration request for SOLUTION_NAME" %>
-<% if notif.notifiable_type == "Collaboration" && notif.notifiable.class.to_s == "Collaboration" && notif.action == "accepted" %>
-  <%= link_to solution_path(notif.notifiable.solution) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> your collaboration request for <strong><%= notif.notifiable.solution.title %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+<% if notif.notifiable_type == "Collaboration" && notif.action == "accepted"%>
+  <%= link_to solution_path(notif.notifiable) do %> 
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> your collaboration request for <strong><%= notif.notifiable.title %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
 
 <%# Notifications "USER voted for the pitch PITCH_NAME" %>
-<% if notif.notifiable_type == "Vote" && notif.notifiable.votable.class.to_s == "Pitch" %>
+<% if notif.notifiable_type == "Pitch" && notif.action == "voted" %>
   <%= link_to pitch_path(notif.notifiable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> for the <%= notif.notifiable.class.to_s.underscore.humanize.downcase %> <strong><%= notif.notifiable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> for the pitch <strong><%= notif.notifiable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
 
 <%# Notifications "USER commented on the pitch PITCH_NAME" %>
-<% if notif.notifiable_type == "Comment" && notif.notifiable.commentable.class.to_s == "Pitch" %>
+<% if notif.notifiable_type == "Pitch" && notif.action == "commented" %>
   <%= link_to pitch_path(notif.notifiable.commentable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the <%= notif.notifiable.commentable.class.to_s.underscore.humanize.downcase %> <strong><%= notif.notifiable.commentable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the pitch <strong><%= notif.notifiable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
 
-<%# Notifications "USER posted a solution for PROBLEM_NAME" %>
-<% if notif.notifiable_type == "Solution" %>
-  <%= link_to problem_path(notif.notifiable.problem) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> a <strong><%= notif.notifiable.class.to_s.underscore.humanize.downcase %></strong> for <strong><%= notif.notifiable.problem.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+<%# Notifications "USER submitted a solution for PROBLEM_NAME" %>
+<% if notif.notifiable_type == "Solution" && notif.action == "submitted" %>
+  <%= link_to problem_path(notif.notifiable) do %> 
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> a solution for <strong><%= notif.notifiable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
   <% end %>
 <% end %>
