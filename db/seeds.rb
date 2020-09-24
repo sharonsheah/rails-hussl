@@ -22,7 +22,7 @@ default_user = User.create!(
                 first_name: "Sharon",
                 last_name: "Sheah",
                 email: "user@user.com", 
-                password: "password"
+                password: "password",
                 description: "I love solving problems, creating products and meeting like-minded people! I am a Ruby on Rails developer, UI/UX designern and ex speech pathologist. Talk to me about code👩🏻‍💻, design👩🏻‍🎨, healthcare👩🏻‍⚕️, dogs🐕 and bubbletea🍹!"
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sharon_sheah.jpg_qhu4tc.jpg")
