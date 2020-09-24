@@ -45,7 +45,7 @@ class SolutionsController < ApplicationController
         notification_counter: @solution.user.notifications.unread.count 
         }
       )
-      redirect_to solution_path(@solution), notice: "Solution added!"
+      redirect_to problem_path(@solution.problem), notice: "Solution added!"
     else
       render :new
     end
