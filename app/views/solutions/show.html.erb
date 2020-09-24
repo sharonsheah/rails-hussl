@@ -61,7 +61,7 @@
       <ul class="raking-list chatroom-list pl-0" id="solutions-list">
         <% @solution.collaborators.each do |collaborator|%>
           <li class="ranking-item px-2 collab-items">
-            <%= link_to user_profiles_path(collaborator) do %>
+            <%= link_to user_path(collaborator) do %>
               <% if collaborator.photo.attached? %>
                 <%= cl_image_tag collaborator.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %>
               <% else %>

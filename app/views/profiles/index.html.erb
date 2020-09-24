@@ -57,7 +57,7 @@
       <div class="cards">
         <div class="problem-card text-center align-items-center d-block">
           <h3><%= @user.problems.count %></h3>
-          <p><%= "problem".pluralize(@user.problems.count) %></p>
+          <p><%= "problem".pluralize(@user.problems.count) %></p>          
         </div>
 
         <div class="solution-card text-center align-items-center d-block">
@@ -79,7 +79,7 @@
           <% @user.problems.each do |problem| %>
             <tr class="profile-table">
               <td class="user-problems text-center">P</td>
-              <td><%= problem.title %></td>
+              <td><%= link_to problem.title, problem_path(problem) %></td>
               <td><%=  problem.votes.count %></td>
             </tr>
           <% end %>
@@ -87,7 +87,7 @@
           <% @user.solutions.each do |solution| %>
             <tr class="profile-table">
               <td class="user-solutions text-center">S</td>
-              <td><%= solution.title %></td>
+              <td><%= link_to solution.title, solution_path(solution) %></td>
               <td><%=  solution.votes.count %></td>
             </tr>
           <% end %>
@@ -95,7 +95,7 @@
           <% @user.pitches.each do |pitch| %>
             <tr class="profile-table">
               <td class="user-pitches text-center">P</td>
-              <td><%= pitch.title %></td>
+              <td><%= link_to pitch.title, pitch_path(pitch) %></td>
               <td><%=  pitch.votes.count %></td>
             </tr>
           <% end %>
