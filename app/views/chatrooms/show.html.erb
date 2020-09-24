@@ -2,8 +2,8 @@
   <%= render "shared/header" %>
 </div>
 <div class="chat-container">
-  <div class="head">
-    <h3 class="text-center mb-4"><%= @chatroom.name %></h3>
+  <div class="chat-head">
+    <h3 class=""><%= @chatroom.name %></h3>
     <%= link_to new_problem_solution_pitch_path(@chatroom.solution.problem, @chatroom.solution) do %>
       <svg class="upload-btn" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none">
       <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
