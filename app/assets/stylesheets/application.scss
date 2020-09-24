@@ -97,13 +97,8 @@ img {
 .header {
   background-color: white;
   width:100vw;
-  position: fixed;
   padding: 0 20px;
   z-index: 1000;
-}
-
-.ideate-content-container {
-  padding-top: 180px;
 }
 
 .btn-profile {
@@ -129,4 +124,13 @@ img {
 
 .white {
   color: $white;
+}
+
+.nav {
+  padding: 0 22px;
+  padding-top: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $white;
 }

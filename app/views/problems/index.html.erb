@@ -2,20 +2,20 @@
   <div class="header">
     <%= render "shared/header" %>
 
-    <h2>Ideate</h2>
-
-    <ul class="nav">
-      <li class="nav-item">
-        <h4><%= link_to 'Problems', problems_path, class: 'nav-link tab-active tabs' %></h4>
-      </li>
-      <li class="nav-item">
-        <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tabs' %></h4>
-      </li>
-      <li class="nav-item">
-        <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link tabs' %></h4>
-      </li>
-    </ul>
+    <h2 class="mb-0">Ideate</h2>
   </div>
+  
+  <ul class="nav">
+    <li class="nav-item">
+      <h4><%= link_to 'Problems', problems_path, class: 'nav-link tab-active tabs' %></h4>
+    </li>
+    <li class="nav-item">
+      <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tabs' %></h4>
+    </li>
+    <li class="nav-item">
+      <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link tabs' %></h4>
+    </li>
+  </ul>
 
   <div class="ideate-content-container pad-left">
     <% @categories.each do |tag| %>

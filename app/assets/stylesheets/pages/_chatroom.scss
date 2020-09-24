@@ -12,12 +12,8 @@
 }
 
 .chat-container {
-    max-height: 95vh;
-    padding: 20px;
-    margin-top: 40px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: 0px 4px 10px rgba($dark-blue, 0.5);
+    max-height: 100vh;
+    padding: 0 20px;
     .head {
         height: 10%;
     }
