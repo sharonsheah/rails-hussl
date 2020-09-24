@@ -7,15 +7,21 @@
   display: flex;
   scroll-behavior: smooth;
   h1 {
-    padding-top: 150px;
     padding-left: 20px;
     margin: 0;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
-  .banner {
+}
+
+.banner {
   background-size: cover;
   background-position: center;
-  }
+  padding-top: 200px;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .tagline {
@@ -54,7 +60,7 @@
 
 .cta {
   margin: 20px 20px;
-
+  margin-top: 100px;
   .btn {
     background-color: $yellow;
     color: $white;
@@ -68,6 +74,8 @@
   }
 
   h5 {
+    color: $white;
+    opacity: 0.7;
     text-align: center;
     padding-bottom: 20px;
   }
@@ -80,20 +88,12 @@
 
 .home-arrow {
   font-size: 100px;
+  opacity: 0.7;
   justify-content: center;
   display: flex;
-  padding-top: 200px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-
-.home-carousel-scroller {
-  display: flex;
-  flex-flow: column;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-snap-type: y mandatory;
-}
 
 .circle-icon {
   font-size: 100px;
@@ -113,14 +113,17 @@
 
 #second {
   text-align: center;
-  padding-bottom: 40px;
   background-color: $white;
   color: $dark-blue;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px;
+  justify-content: space-between;
   .btn {
     background-color: $yellow;
     color: $white;
     border-radius: 50px;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     align-items: center;
     justify-content: center;
@@ -132,10 +135,10 @@
 .step-card {
   display: flex;
   align-items: center;
-  padding: 8px 0px;
+  padding: 24px 0px;
   justify-content: space-around;
   p {
-    font-size: 12px;
+    font-size: 18px;
     font-family: $headers-font;
     margin-bottom: 0;
     width: 140px;
@@ -147,6 +150,7 @@
 }
 
 .head-how {
-  padding-top: 40px;
-  height: 100px;
+  text-transform: uppercase;
+  font-weight: 300px !important;
+  margin-bottom: 20px;
 }
