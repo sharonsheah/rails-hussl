@@ -5,25 +5,9 @@
   <h3><%= @solution.title %></h3>
 
   <%# insert solution card here %>
-  <div>
-    <%= render "shared/solution-tags" %>
+  <div class="pb-4">
+    <%= render "solutions/showcard" %>
   </div>
-
-  <div>
-    <p>Description</p>
-    <p><%= @solution.description %></p>
-  </div>
-
-  <div>
-    <p>POSTED BY</p>
-    <p><%= @solution.user.first_name %> <%= @solution.user.last_name %></p>
-  </div>
-
-  <%# insert votes icon %>
-  <div>
-    Votes: <%= @solution.votes.count %>
-  </div>
-  <br>
 
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
@@ -36,7 +20,7 @@
           <%= f.button :submit, "Pitch your solution", class: "btn btn-info" %>
         <% end %>
       </div>
-      <div class="cancel d-flex justify-content-center">
+      <div class="cancel d-flex justify-content-center pb-5">
         <%= link_to "Cancel", solution_path(@solution) %>
       </div>
     </div>
