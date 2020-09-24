@@ -8,6 +8,14 @@ class Solution::CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commentable = @solution
     if @comment.save
+      @notif = Notification.create(recipient: @solution.user, actor: current_user, action: "commented", notifiable: @solution)
+
+      NotificationChannel.broadcast_to(
+        @solution.user,
+        { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
+        notification_counter: @solution.user.notifications.unread.count
+        }
+      )
       redirect_to solution_path(@solution, anchor: "comment-#{@comment.id}")
     else 
       render "solutions/show"
