@@ -19,7 +19,7 @@
             <% if problem.user.photo.attached? %>
               <p><span><%= cl_image_tag problem.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
             <% else %>
-              <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
+              <p><span><img class="avatar-small" src="https://randomuser.me/api/portraits/thumb/men/1.jpg" alt="user-avatar" style="crop:fill"> <%= problem.user.first_name %> <%= problem.user.last_name.first %></span></p>
             <% end %>
           <% end %>
         </div>

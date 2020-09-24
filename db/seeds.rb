@@ -2,6 +2,7 @@ require 'open-uri'
 
 puts 'Wiping data...'
 
+Bookmark.destroy_all
 Comment.destroy_all
 Message.destroy_all
 Collaboration.destroy_all
@@ -39,6 +40,8 @@ annmarie_user = User.create!(
               email: "annmarie@user.com", 
               password: "password"
               )
+              file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQFiE_WLX4sgAA/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=o2W4NOfdqiA3mhyQ5TOGdS-it832t6pMByFoHY1q5YE")
+              annmarie_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
 
 rae_user = User.create!(
           first_name: "Rae",
@@ -47,21 +50,101 @@ rae_user = User.create!(
           password: "password"
           )  
 
-50.times do
-  fake_user = User.create!(first_name: Faker::Name.first_name, 
+
+25.times do
+  fake_male_user = User.create!(first_name: Faker::Name.male_first_name, 
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email, 
   password: "password"
   )
+  file = URI.open("https://randomuser.me/api/portraits/thumb/men/1.jpg")
+  fake_male_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
+end
+
+25.times do
+  fake_female_user = User.create!(first_name: Faker::Name.female_first_name, 
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email, 
+  password: "password"
+  )
+  file = URI.open("https://randomuser.me/api/portraits/thumb/women/1.jpg")
+  fake_female_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
 end
 
 #FAMOUS USERS
 
+plantlady_user = User.create!(
+                first_name: "Crazyplantlady92",
+                last_name: "Sy",
+                email: "plantlady@user.com", 
+                password: "password"
+                )
+                file = URI.open("https://www.plantmaid.com/wp-content/uploads/2019/12/Crazy-Plant-Lady.jpg?e7fb5a&e7fb5a")
+                plantlady_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
+
+paal_user = User.create!(
+          first_name: "Paal",
+          last_name: "Ringstaad",
+          email: "paal@user.com", 
+          password: "password"
+          )
+          file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQGSUcgEm2YIOg/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=oIPNDVN9qx08i08HCcIJy6RQ61WA0IcvOG8dTxinuRk")
+          paal_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
+
+eric_user = User.create!(
+          first_name: "Eric",
+          last_name: "Chen",
+          email: "eric@user.com", 
+          password: "password"
+          )
+          file = URI.open("https://ca.slack-edge.com/T02NE0241-U016XM5SB2B-83fbaa6522d6-512")
+          eric_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
+
+sy_user = User.create!(
+          first_name: "Sy",
+          last_name: "Rashid",
+          email: "sy@user.com", 
+          password: "password",
+          description: "My specialties: leadership, web development, full stack development, product management, Ruby, Rails, HTML, CSS, brand launches, design innovation, lean design, brand marketing, talent acquisition, start up strategy, and venture capital. Nico's bff 👨🏾‍🤝‍👨🏻"
+          )
+          file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQGAWvRcji7HZw/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=oo4aKSYDpPpI5gtnOtl9xhRx7gOn-ZWZGxmM0dx7n3c")
+          sy_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')  
+
+nico_user = User.create!(
+          first_name: "Nico",
+          last_name: "Proto",
+          email: "nico@user.com", 
+          password: "password"
+          )   
+          file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQEHw0rXyVqRvw/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=q-cobcLPRRA5LFKDsAt2njg9hmprXN7uj_xi7f3oY3Y")
+          nico_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')     
+
+sheila_user = User.create!(
+            first_name: "Sheila",
+            last_name: "Leveille",
+            email: "sheila@user.com", 
+            password: "password"
+            )  
+            file = URI.open("https://media-exp1.licdn.com/dms/image/C4E03AQFI7W3n_kawIg/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=PZtMwDhoH0wZvQNQATSzm1pTvaIgi4bDPzEgyXu7_Ew")
+            sheila_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+
+tesla_founder = User.create!(
+                first_name: "Elon", 
+                last_name: "Musk",
+                email: "elon@user.com",
+                password: "password",
+                description: "Elon co-founded Tesla and continues to oversee the company's product strategy -- including the design, engineering and manufacturing of more and more affordable electric vehicles for mainstream consumers. As Chairman and Product Architect, he helped design the ground-breaking Tesla Roadster, for which he won an Index and a Global Green award, the latter presented by Mikhail Gorbachev. In October 2008, he took on the additional responsibility of CEO,overseeing daily operations as the company was ramping up Roadster production and accelerating the development of its second vehicle, the Model S."
+                )
+                file = URI.open("https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg")
+                tesla_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
+
+
 airbnb_founder = User.create!(
                 first_name: "Brian", 
                 last_name: "Chesky",
-                email: Faker::Internet.email,
-                password: "password"
+                email: "brian@user.com",
+                password: "password",
+                description: "Brian is the Co-Founder and Chief Executive Officer at Airbnb. Brian drives the company's vision, strategy and growth as it provides interesting and unique ways for people to travel and changes the lives of its community. Under Brian's leadership, Airbnb stands at the forefront of the sharing economy and has expanded to over 1,000,000 listings in 190 countries."
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/brian_chesky_ab5qna.jpg")
                 airbnb_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -69,8 +152,11 @@ airbnb_founder = User.create!(
 uber_founder = User.create!(
                 first_name: "Travis", 
                 last_name: "Kalanick",
-                email: Faker::Internet.email, 
-                password: "password"
+                email: "travis@user.com", 
+                password: "password",
+                description: "Travis Kalanick is a CEO at City Storage Systems. He is a co-founder and the former CEO of Uber Technologies Inc. Travis Kalanick is an entrepreneur in the areas of consumer internet, transportation, and enterprise content delivery. His most recent company, Uber, an on-demand black car service, seeks to be “Everyone’s Private Driver” by bringing disruptive technology and business innovation to urban transportation challenges.
+
+                Prior to Uber, Travis founded Red Swoosh , an enterprise content delivery company that he sold to Akamai Technologies in 2007. Prior companies include Scour, the world's first peer-to-peer search engine where Kalanick also attained the dubious distinction of having been sued for $250 billion. In addition, Kalanick has been an active angel investor."
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/travis_kalanick_k91mjw.jpg")
                 uber_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -78,8 +164,9 @@ uber_founder = User.create!(
 facebook_founder = User.create!(
                 first_name: "Mark", 
                 last_name: "Zuckerberg",
-                email: "markzuckerberg@user.com", 
-                password: "password"
+                email: "mark@user.com", 
+                password: "password",
+                description: "Mark Zuckerberg is the founder and CEO of Facebook, which he started in his college dorm room in 2004 with roomates Dustin Moskovitz and Chris Hughes and from New York. Zuckerberg is responsible for setting the overall direction and product strategy for the company. He leads the design of Facebook's service and development of its core technology and infrastructure. Mark studied computer science at Harvard University before moving the company to Palo Alto, California."
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394323/mark_zuckerberg_yrbimu.jpg")
                 facebook_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -87,8 +174,9 @@ facebook_founder = User.create!(
 importio_founder = User.create!(
                     first_name: "Matthew", 
                     last_name: "Painter",
-                    email: Faker::Internet.email, 
-                    password: "password"
+                    email: "matthew@user.com", 
+                    password: "password",
+                    description: "Matt is the brains behind the powerful functionality in the import.io tool. His innovative ideas have helped import.io create a tool that allows anyone to tap into the huge potential of data on the web. Matt’s primary responsibility is to oversee the technical strategy and product roadmap of the company. As CTO, he is dedicated to building a team of world-class engineers to keep import.io at the forefront of the industry. Prior to co-founding import.io, Matt was a consultant for Sapient and worked as Senior Engineer and Product Architect for Yahoo."
                     )
                     file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/matthew_painter_t5mt1n.jpg")
                     importio_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -96,8 +184,9 @@ importio_founder = User.create!(
 recyclebank_founder = User.create!(
                     first_name: "Ron",
                     last_name: "Gonen",
-                    email: Faker::Internet.email,
-                    password: "password"
+                    email: "ron@user.com",
+                    password: "password",
+                    description: "Ron is the CEO of Closed Loop Partners, a New York based investment firm comprised of venture capital, growth equity, private equity, project finance and an innovation center focused on building the circular economy. Investors include many of the world’s largest retailers and consumer goods companies as well as family offices interested in investments that provide strong financial returns and tangible social impact."
                     )
                     file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/ron_gonen_bxihto.jpg")
                     recyclebank_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -105,8 +194,9 @@ recyclebank_founder = User.create!(
 treeplanet_founder = User.create!(
                     first_name: "Kim", 
                     last_name: "Hyung-soo",
-                    email: Faker::Internet.email, 
-                    password: "password"
+                    email: "kim@user.com", 
+                    password: "password",
+                    description: "Kim wants to help 100 million people each plant a tree to help them feel more responsible for their planet. Kim, a longtime nature activist, cofounded Tree Planet in 2010 to solve environmental and social problems by building forests. They plant trees through revenue gleaned via crowdfunding and its mobile game. The startup has planted around 900,000 trees for more than 250 forests in 12 countries and launched a crowd-farming project in Nepal to sell farmers coffee directly to the Korean market."
                     )
                     file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/kim_hyung_soo_jj8wzo.jpg")
                     treeplanet_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -114,8 +204,9 @@ treeplanet_founder = User.create!(
 solarity_founder = User.create!(
                     first_name: "Horacio", 
                     last_name: "Melo", 
-                    email: Faker::Internet.email, 
-                    password: "password"
+                    email: "horacio@user.com", 
+                    password: "password",
+                    description: "Horacio founded Solarity that revolutionized the delivery of solar energy to homes and businesses across Latin American. Solarity designs, finances, installs and operates small and medium size photovoltaic installations. The company sell clean electricity cheaper than the utility. Solarity finance the equipments, generating savings from day one in your electricity bill. Key customers are commercial/industrial clients who pays high electric rates and have mid/big size rooftops where solar systems can be installed."
                     )
                     file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/horacio_melo_xvrbaj.jpg")
                     solarity_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -123,8 +214,9 @@ solarity_founder = User.create!(
 aussie_founder = User.create!(
                 first_name: "Mathieu", 
                 last_name: "Longe",
-                email: Faker::Internet.email, 
-                password: "password"
+                email: "mathieu@user.com", 
+                password: "password",
+                description: "Mathieu is a founder of Aussie, a free app that connects you to the local producer: the producer is in the spotlight."
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/mathieu_longe_ygpsvu.jpg")
                 aussie_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -132,8 +224,9 @@ aussie_founder = User.create!(
 homies_founder = User.create!(
                 first_name: "Sergey", 
                 last_name: "Osipov",
-                email: Faker::Internet.email, 
-                password: "password"
+                email: 'sergey@user.com', 
+                password: "password",
+                description: "Sergey is the founder of fun house share organiser that helps you and your homies to stay ahead of your bills, chores and in-house events!"
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/sergey_osipov_yfpqvh.jpg")
                 homies_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -141,8 +234,9 @@ homies_founder = User.create!(
 weather_founder = User.create!(
                 first_name: "Sam", 
                 last_name: "Cheney",
-                email: Faker::Internet.email, 
-                password: "password"
+                email: "sam@user.com", 
+                password: "password",
+                description: "Sam's the founder of Weather or Not application that calls publicly available weather forecasts and filters them based on your availability before sending you a notification."
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600394321/sam_cheney_xjvt2a.jpg")
                 weather_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -150,8 +244,9 @@ weather_founder = User.create!(
 canva_founder = User.create!(
                 first_name: "Melanie", 
                 last_name: "Perkins",
-                email: Faker::Internet.email, 
-                password: "password"
+                email: "melanie@user.com",
+                password: "password",
+                description: "Melanie Perkins is an Australian technology entrepreneur. She is known as the CEO and co-founder of Canva, an online graphic design and publishing tool. Melanie is one of the youngest female CEOs to be leading a tech startup valued at over a billion dollars."
                 )
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600396202/melanie_perkins_qz0d1v.jpg")
                 canva_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
@@ -159,9 +254,9 @@ canva_founder = User.create!(
 spanx_founder = User.create!(
                 first_name: "Sara", 
                 last_name: "Blakely",
-                email: Faker::Internet.email, 
-                password: "password"
-                )
+                email: "sara@user.com", 
+                password: "password",
+                description: "Sara Blakely is an American billionaire businesswoman, and founder of Spanx, an American intimate apparel company with pants and leggings, founded in Atlanta, Georgia. In 2012, Blakely was named in Time magazine's Time 100 annual list of the 100 most influential people in the world. As of 2014, she is listed as the 93rd most powerful woman in the world by Forbes.")
                 file = URI.open("https://res.cloudinary.com/docykmjwf/image/upload/v1600398527/sara_blakely_do9tle.jpg")
                 spanx_founder.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
@@ -171,7 +266,12 @@ puts 'Creating problems...'
 # PROBLEMS
 # ["Software & Services", "Consumer", "Education", "Healthcare", "Real Estate & Construction", "Financial Technology", "Government", "Unspecified"]
 
+
 airbnb_problem = Problem.create!(title: "Hotels are too expensive", description: "Price is important concern for customers booking travel online. Hotels leave you disconnected from the city and its culture. No easy way exists to book a room with a local or become a host.", user: User.all.sample, category: "Consumer")
+
+plant_problem = Problem.create(title: "My plants keep dying on me", description: "I can never figure out how much water to give them. What can I do?", user: plantlady_user, category: "Consumer")
+
+arm_problem = Problem.create!(title: "My left arm is darker than my right", description: "How can I even out my tan?", user: annmarie_user, category: "Unspecified")
 
 facebook_problem = Problem.create!(title: "Can't remember my high school mates faces", description: "I want to keep in touch with my high school friends and watch the rest of my cohort go bald or age gracefully. It's so difficult to keep in touch. Can someone think of a solution for this??", user: User.all.sample, category: "Software & Services")
 
@@ -205,6 +305,17 @@ canva_problem = Problem.create!(title: "Designers are so expensive", description
 
 spanx_problem = Problem.create!(title: "Undergarment problems", description: "I had spent money on a pair of cream pants. I spent $98 dollars on them, which, for me, was a lot of money. And they just hung in my closet unworn because every time I would go to wear them, you could see the undergarment.", user: User.all.sample, category: "Consumer")
 
+superhero_problem = Problem.create(title: "My batman identity has been compromised", description: "I am wanted by the Russian terrorists. Need to get out of the country into Melbourne. Looking for reliable roommates to share a house with.", user: User.all.sample, category: "Consumer")
+
+dangov_problem = Problem.create(title: "Sick of this Melb lockdown", description: "Dan-when can we go out?", user: User.all.sample, category: "Government")
+
+juul_problem = Problem.create(title: "Cigarette alternatives", description: "Cigarettes cause cancer, but I still want to smoke, and there’s no way to inhale nicotine without carcinogens.", user: User.all.sample, category: "Healthcare")
+
+vaccine_problem = Problem.create(title: "Coronavirus vaccine that actually works?", description: "Can someone come out with a vaccine already, I can pay good money for it.", user: User.all.sample, category: "Healthcare")
+
+stripe_problem = Problem.create(title: "Setting up online payments is just such a hassle.", description: "It’s too hard for online vendors to set up payments.", user: User.all.sample, category: "Financial Technology")
+
+ridesharing_problem = Problem.create!(title: "UBER is destroying the planet", description: "Ride-hailing trips today result in an estimated 69 percent more climate pollution on average than the trips they displace. There's gotta be a better way.", user: tesla_founder, category: "Software & Services")
 
 puts 'Creating solutions...'
 
@@ -275,3 +386,10 @@ User.all.each do |user|
     Message.create(user: user, content: "This is a sample message", chatroom: Chatroom.all.sample)
   end  
 end
+
+# COMMENTS
+  #airbnb end-to-end
+  Comment.create(commentable: ridesharing_problem, user: sy_user, content: "It's about time someone gets cracking on this.")
+  Comment.create(commentable: ridesharing_problem, user: sy_user, content: "@ElonMusk, can you do him better?")
+  Comment.create(commentable: ridesharing_problem, user: nico_user, content: "Walking. That works too. 🚶🏻‍♂️🚶🏻‍♂️")
+  Comment.create(commentable: ridesharing_problem, user: uber_founder, content: "Would be interesting to see what everybody comes up with 👊🏼")
