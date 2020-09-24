@@ -3,10 +3,11 @@
 <%# Pitch: users can vote, comment %>
 
 <%# Notifications "USER commented on the problem PROBLEM_NAME" %>
-<% if notif.notifiable_type == "Comment" && notif.notifiable.commentable.class.to_s == "Problem" %>
-  <%= link_to problem_path(notif.notifiable.commentable) do %> 
-    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the <%= notif.notifiable.commentable.class.to_s.underscore.humanize.downcase %> <strong><%= notif.notifiable.commentable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
-  <% end %>
+  <h1>this is working</h1>
+<% if notif.notifiable_type == "Problem" && notif.notifiable.comments.class.to_s == "Problem" %>
+  <%= link_to problem_path(notif.notifiable.commentable) do %> 
+    <li class="notif-item"><p><strong><%= notif.actor.first_name %> <%= notif.actor.last_name %></strong> <%= notif.action %> on the <%= notif.notifiable.commentable.class.to_s.underscore.humanize.downcase %> <strong><%= notif.notifiable.commentable.title  %></strong></p> <small><%= local_time_ago(notif.created_at) %></small></li>
+  <% end %>
 <% end %>
 
 <%# Notifications "USER voted on the problem PROBLEM_NAME" %>

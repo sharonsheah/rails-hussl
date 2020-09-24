@@ -11,9 +11,11 @@ class Problem::CommentsController < ApplicationController
       NotificationChannel.broadcast_to(
         @problem.user,
         { notification_body: render_to_string(partial: "shared/notification", locals: { notif: @notif }),
-        notification_counter: @problem.user.notifications.unread.count 
+        notification_counter: @problem.user.notifications.unread.count,
+        test_key: "test_value"
         }
       )
+      
       redirect_to problem_path(@problem, anchor: "comment-#{@comment.id}")
     else 
       @solutions = @problem.solutions
