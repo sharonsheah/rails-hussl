@@ -22,6 +22,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .tagline {
@@ -82,7 +86,7 @@
 }
 
 .home-card {
-  height: 100vh;
+  //height: 100vh;
   width: 100vw;
 }
 
@@ -104,6 +108,7 @@
   background-color: $light-blue;
   padding: 10px;
   box-shadow: 0px 4px 10px rgba($dark-blue, 0.12);
+  margin: 15px;
 }
 
 #hand {
@@ -118,7 +123,7 @@
   display: flex;
   flex-direction: column;
   padding: 50px 0px;
-  justify-content: space-between;
+  
   .btn {
     background-color: $yellow;
     color: $white;
@@ -129,14 +134,24 @@
     justify-content: center;
     margin-top: 20px;
     width: 100%; 
+    max-width: 500px;
   }
+}
+
+.step-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .step-card {
   display: flex;
   align-items: center;
-  padding: 24px 0px;
-  justify-content: space-around;
+  padding: 24px;
+  justify-content: space-between;
+  width: 350px;
   p {
     font-size: 18px;
     font-family: $headers-font;
@@ -153,4 +168,18 @@
   text-transform: uppercase;
   font-weight: 300px !important;
   margin-bottom: 20px;
+}
+
+@media(max-width: 992px) {
+ 
+  .step-card {
+    min-width: 25%;
+  }
+}
+
+@media(max-width: 768px) {
+  .step-card-container {
+    flex-direction: column;
+  }
+  
 }
