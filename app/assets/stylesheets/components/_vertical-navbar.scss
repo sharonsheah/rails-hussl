@@ -1,10 +1,90 @@
 .vertical-navbar {
     height: 100vh;
-    padding: 20px;
     background-color: $light-gray;
-    margin-top: 82px;
+    margin-top: 92px;
 
-    a {
-        width: 200px;
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
     }
 }
+
+.vertical-navbar ul li {
+    width: 240px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icons {
+        height: 20px;
+        margin-right: 8px;
+    }
+
+    .nav-link {
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.vertical-navbar .add-new-problem {
+    background-color: $yellow;
+    width: 240px;
+    a {
+        color: $white;
+    }
+}
+
+.inner-list {
+    padding: 0 !important;
+    .inner-item {
+        padding: 5px 0 5px 60px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .logo {
+      font-size: 36px;
+      margin-top: 0px;
+      padding-top: 0px;
+      margin-bottom: 10px;
+    }
+
+    .logo h3 {
+        font-size: 30px;
+    }
+  
+    .navbar {
+      display: none;
+    }
+  
+    .header {
+      position: fixed;
+      box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+      height: 92px;
+    }
+  
+    .vertical-nav-container {
+      display: flex;
+  
+  
+      .vertical-navbar {
+        position: fixed;
+      }
+      .sibling {
+        margin-left: 240px;
+        margin-top: 92px;
+        padding-top: 20px;
+        width: -webkit-fill-available;
+      }
+      .sibling h2 {
+        padding-left: 20px;
+      }
+      .nav {
+        position: inherit;
+      }
+    }
+  }
