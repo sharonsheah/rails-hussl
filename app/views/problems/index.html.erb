@@ -24,7 +24,7 @@
           <div class="card-carousel">
             <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
             <div class="card-carousel-scroller">
-              <% @problems.each do |problem| %>
+              <% @problems.each do |problem| %>     
                 <%= render "problem_card", problem: problem, tag: tag, star: true %>
               <% end %>
             </div>
