@@ -3,80 +3,85 @@
     <%= render "shared/header" %>
   </div>
 
-  <div class="chat-container pitch-container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= @problem.title.first(10) %>...</li>
-      </ol>
-    </nav>
+  <div class="vertical-nav-container">
+    <%= render "shared/vertical-navbar" %>
+    <div class="sibling">
+      <div class="chat-container pitch-container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to 'All Problems', problems_path %></li>
+            <li class="breadcrumb-item active" aria-current="page"><%= @problem.title.first(10) %>...</li>
+          </ol>
+        </nav>
 
-    <h3><%= @problem.title %></h3>
-  
-    <%= render "show-card", locals: { problem: @problem, solutions: @problem.solutions } %>
-  
-    <div class="bottom-page">
-      <div class="row px-3 align-items-center justify-content-between">
-        <h4 class="my-3 pt-2">Solutions</h4>
-        <div class="my-3">
-          <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+        <h3><%= @problem.title %></h3>
+      
+        <%= render "show-card", locals: { problem: @problem, solutions: @problem.solutions } %>
+      
+        <div class="bottom-page">
+          <div class="row px-3 align-items-center justify-content-between">
+            <h4 class="my-3 pt-2">Solutions</h4>
+            <div class="my-3">
+              <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+            </div>
+          </div>
+              
+          <% if @solutions.empty? %> 
+            <p><small>No solutions have been submitted yet. Be the first one to post!</small></p>
+          <% end %>   
+
+          <ul class="raking-list chatroom-list pl-0" id="solutions-list">
+            <% @solutions.each do |solution| %>
+              <li class="ranking-item px-2">
+                <p><%= link_to solution.title, solution_path(solution) %></p>
+                <div class="actions">
+                  <% if Vote.where(votable: solution, user:  current_user).empty? %>
+                    <%= link_to upvote_solution_path(solution), method: :post, class: 'button'  do %>
+                      <i class="far fa-thumbs-up"></i>
+                    <% end %>
+                  <% else %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                  <span><%= solution.votes.count %></span>
+
+                  <% if solution.collaborators.include?(current_user) %>
+                    <i class="fas fa-hand-paper"></i>
+                  <% else %>
+                    <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
+                      <i class="far fa-hand-paper"></i>
+                    <% end %>
+                  <% end %>
+                  <span><%= solution.collaborators.count %></span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+
+          <h4 class="my-3 pt-2">Comments</h4>     
+          <div class="comments-container">
+            <% if @problem.comments.empty? %> 
+              <p><small>Oh no! The comments section is empty.</small></p>
+            <% end %>
+            <% @problem.comments.each do |comment| %>
+              <div id="comment-<%= comment.id %>" class="comment">
+                <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+                <p><%= comment.content %></p>
+              </div>
+            <% end %>
+          </div>    
         </div>
       </div>
-          
-      <% if @solutions.empty? %> 
-        <p><small>No solutions have been submitted yet. Be the first one to post!</small></p>
-      <% end %>   
 
-      <ul class="raking-list chatroom-list pl-0" id="solutions-list">
-        <% @solutions.each do |solution| %>
-          <li class="ranking-item px-2">
-            <p><%= link_to solution.title, solution_path(solution) %></p>
-            <div class="actions">
-              <% if Vote.where(votable: solution, user:  current_user).empty? %>
-                <%= link_to upvote_solution_path(solution), method: :post, class: 'button'  do %>
-                  <i class="far fa-thumbs-up"></i>
-                <% end %>
-              <% else %>
-                <i class="fas fa-thumbs-up"></i>
+      <div class="comment-bar">
+        <div class="new-comment">
+          <%= simple_form_for [@problem, @comment], wrapper: :inline_form, remote: true, html: { class: 'form-inline' } do |f| %>
+              <%= f.input :content, placeholder: "Type your comment here..." %>
+              <%= f.button :button, wrapper_html: { id: 'button' } do %>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1em" height="1em"   viewBox="0 0 32 32"><path d="M27.45 15.11l-22-11a1 1 0 0 0-1.08.12a1 1 0 0 0-.33 1L7 16L4 26.74A1 1 0 0 0 5 28a1 1 0 0 0 .45-.11l22-11a1 1 0 0 0 0-1.78zm-20.9 10L8.76 17H18v-2H8.76L6.55 6.89L24.76 16z" fill="white"/></svg>
               <% end %>
-              <span><%= solution.votes.count %></span>
-
-              <% if solution.collaborators.include?(current_user) %>
-                <i class="fas fa-hand-paper"></i>
-              <% else %>
-                <%= link_to collaborate_solution_path(solution), method: :post, class: 'button'  do %>
-                  <i class="far fa-hand-paper"></i>
-                <% end %>
-              <% end %>
-              <span><%= solution.collaborators.count %></span>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-
-      <h4 class="my-3 pt-2">Comments</h4>     
-      <div class="comments-container">
-        <% if @problem.comments.empty? %> 
-          <p><small>Oh no! The comments section is empty.</small></p>
-        <% end %>
-        <% @problem.comments.each do |comment| %>
-          <div id="comment-<%= comment.id %>" class="comment">
-            <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
-            <p><%= comment.content %></p>
-          </div>
-        <% end %>
-      </div>    
-    </div>
-  </div>
-
-  <div class="comment-bar">
-    <div class="new-comment">
-      <%= simple_form_for [@problem, @comment], wrapper: :inline_form, remote: true, html: { class: 'form-inline' } do |f| %>
-          <%= f.input :content, placeholder: "Type your comment here..." %>
-          <%= f.button :button, wrapper_html: { id: 'button' } do %>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1em" height="1em"   viewBox="0 0 32 32"><path d="M27.45 15.11l-22-11a1 1 0 0 0-1.08.12a1 1 0 0 0-.33 1L7 16L4 26.74A1 1 0 0 0 5 28a1 1 0 0 0 .45-.11l22-11a1 1 0 0 0 0-1.78zm-20.9 10L8.76 17H18v-2H8.76L6.55 6.89L24.76 16z" fill="white"/></svg>
           <% end %>
-      <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
