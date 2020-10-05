@@ -2,7 +2,7 @@
     height: 100vh;
     background-color: $light-gray;
     margin-top: 92px;
-
+    display: none;
     ul {
         list-style-type: none;
         padding: 0;
@@ -70,18 +70,15 @@
     .vertical-nav-container {
       display: flex;
   
-  
       .vertical-navbar {
         position: fixed;
+        display: block;
       }
       .sibling {
         margin-left: 240px;
         margin-top: 92px;
         padding-top: 20px;
         width: -webkit-fill-available;
-      }
-      .sibling h2 {
-        padding-left: 20px;
       }
       .nav {
         position: inherit;
