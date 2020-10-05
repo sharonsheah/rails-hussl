@@ -165,11 +165,39 @@ img {
 }
 
 @media only screen and (min-width: 768px) {
-  
   .logo {
     font-size: 36px;
-    // box-shadow: 0 0 15px rgba(0,0,0,0.2);
     margin-top: 0px;
     padding-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .header {
+    position: fixed;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .vertical-nav-container {
+    display: flex;
+
+
+    .vertical-navbar {
+      position: fixed;
+    }
+    .sibling {
+      margin-left: 240px;
+      padding-top: 102px;
+      width: -webkit-fill-available;
+    }
+    .sibling h2 {
+      padding-left: 20px;
+    }
+    .nav {
+      position: inherit;
+    }
   }
 }
