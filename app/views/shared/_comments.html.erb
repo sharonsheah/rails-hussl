@@ -1,0 +1,12 @@
+<h4 class="my-3 pt-2">Comments</h4>     
+<div class="comments-container">
+    <% if object.comments.empty? %> 
+        <p><small>Oh no! The comments section is empty.</small></p>
+    <% end %>
+    <% object.comments.each do |comment| %>
+        <div id="comment-<%= comment.id %>" class="comment">
+        <p id='username'><%= comment.user.first_name %> <span><%= comment.user.last_name %></span></p>
+        <p><%= comment.content %></p>
+        </div>
+    <% end %>
+</div>    

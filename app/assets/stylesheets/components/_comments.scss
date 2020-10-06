@@ -32,18 +32,18 @@
   display: flex;
   background-color: $white;
   width: -webkit-fill-available;
-
+  padding: 16px 20px;
   form {
-    height: 60px;
+    display: flex;
+    height: 35px;
     width: inherit;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    background-color: $light-gray;
-    z-index: -0.5;
   }
 
   span {
     width: -webkit-fill-available;
+    background-color: $light-gray;
   }
 
   .form-control.text.required {
@@ -53,3 +53,15 @@
   }
 }
 
+.comment-bar .btn {
+  background-color: $yellow;
+  color: $white;
+  border-radius: 5px;
+  font-size: 25px;
+  padding: 0 8px;
+  margin: 0;
+}
+
+.comment-bar .btn svg {
+display: flex;
+}
