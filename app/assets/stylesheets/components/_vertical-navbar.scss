@@ -4,9 +4,9 @@
     margin-top: 92px;
     display: none;
     ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
     }
 }
 
@@ -16,16 +16,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    cursor: pointer;
+    
     .icons {
-        height: 20px;
-        margin-right: 8px;
+      height: 20px;
+      margin-right: 8px;
     }
 
     .nav-link {
-        padding: 0;
-        display: flex;
-        align-items: center;
+      padding: 0;
+      display: flex;
+      align-items: center;
     }
 }
 
@@ -33,15 +34,15 @@
     background-color: $yellow;
     width: 240px;
     a {
-        color: $white;
+      color: $white;
     }
 }
 
 .inner-list {
     padding: 0 !important;
     .inner-item {
-        padding: 5px 0 5px 60px;
-        font-size: 14px;
+      padding: 5px 0 5px 60px;
+      font-size: 14px;
     }
 }
 
