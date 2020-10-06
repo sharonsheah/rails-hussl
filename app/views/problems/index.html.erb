@@ -1,33 +1,37 @@
 <div class="ideate-page">
   <div class="header">
     <%= render "shared/header" %>
-
-    <h2 class="mb-0">Ideate</h2>
   </div>
-  
-  <ul class="nav">
-    <li class="nav-item">
-      <h4><%= link_to 'Problems', problems_path, class: 'nav-link tab-active tabs' %></h4>
-    </li>
-    <li class="nav-item">
-      <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tabs' %></h4>
-    </li>
-    <li class="nav-item">
-      <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link tabs' %></h4>
-    </li>
-  </ul>
 
-  <div class="ideate-content-container pad-left">
-    <% @categories.each do |tag| %>
-      <div class="card-carousel">
-        <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
-        <div class="card-carousel-scroller">
-          <% @problems.each do |problem| %>
-            <%= render "problem_card", problem: problem, tag: tag, star: true %>
-          <% end %>
-        </div>
+  <div class="vertical-nav-container">
+    <%= render "shared/vertical-navbar" %>
+    <div class="sibling">
+      <h2 class="mb-0 pad-left">Ideate</h2>
+      <ul class="nav">
+        <li class="nav-item">
+          <h4><%= link_to 'Problems', problems_path, class: 'nav-link tab-active tabs' %></h4>
+        </li>
+        <li class="nav-item">
+          <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tabs' %></h4>
+        </li>
+        <li class="nav-item">
+          <h4><%= link_to 'Pitches', pitches_path, class: 'nav-link tabs' %></h4>
+        </li>
+      </ul>
+
+      <div class="ideate-content-container pad-left">
+        <% @categories.each do |tag| %>
+          <div class="card-carousel">
+            <h5 class="pt-4 mb-0"><%= tag.upcase %></h5>
+            <div class="card-carousel-scroller">
+              <% @problems.each do |problem| %>     
+                <%= render "problem_card", problem: problem, tag: tag, star: true %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 

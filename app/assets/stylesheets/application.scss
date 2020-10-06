@@ -98,8 +98,17 @@ img {
 .header {
   background-color: white;
   width:100vw;
-  padding: 0 20px;
   z-index: 1000;
+  h2 {
+    padding: 0 20px;
+  }
+  .logo {
+    padding: 0 20px;
+  }
+}
+
+.logo .card-img-top, .fa-user-circle {
+  font-size: 36px;
 }
 
 .btn-profile {
@@ -145,4 +154,16 @@ img {
 
 .header-pad {
   padding: 0px 20px;
+}
+
+.vertical-nav {
+  height: 100%;
+  width: 250px;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.hidden {
+  display: none;
 }

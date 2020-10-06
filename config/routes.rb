@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :bookmarked_items, only: [ :index, :destroy ]
   end
 
-  resources :problems, only: [ :index, :show ]  do
+  resources :problems, only: [ :index, :show, :new ]  do
     resources :solutions, only: [ :new, :create ] do
       resources :comments, only: [ :create ], controller: "solution/comments"
 

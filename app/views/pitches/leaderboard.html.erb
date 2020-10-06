@@ -1,34 +1,40 @@
 <div class="ideate-page">
-  <div class="header">
-    <%= render "shared/header" %>
-
-		<h2>Leaderboard</h2>
-
-		<ul class="nav p-0">
-			<li class="nav-item">
-				<h4><%= link_to 'Problems', leaderboard_problems_path, class: 'nav-link tabs' %></h4>
-			</li>
-			<li class="nav-item">
-				<h4><%= link_to 'Solutions', leaderboard_solutions_path, class: 'nav-link tabs' %></h4>
-			</li>
-			<li class="nav-item">
-				<h4><%= link_to 'Pitches', leaderboard_pitches_path, class: 'nav-link tab-active tabs' %></h4>
-			</li>
-		</ul>
+  	<div class="header">
+    	<%= render "shared/header" %>
 	</div>
 
-	<div class="ideate-content-container leaderboard-content-container pad-left">
-		<ol class="ranking-list">
-			<% @votes.first(10).each do |vote| %>
-				<% pitch = Pitch.find(vote.first) %>
-				<li>
-					<%= link_to pitch_path(pitch) do %>
-						<div class="ranking-item">
-							<p class="px-2"><%= pitch.title %></p>
-							<p class="d-inline-flex"><i class="far fa-thumbs-up pr-1"></i><%= pitch.votes.count %></p>						</div>
-					<% end %>
+	<div class="vertical-nav-container">
+		<%= render "shared/vertical-navbar" %>
+		<div class="sibling">
+
+			<h2 class="pad-left">Leaderboard</h2>
+
+			<ul class="nav pad-left">
+				<li class="nav-item">
+					<h4><%= link_to 'Problems', leaderboard_problems_path, class: 'nav-link tabs' %></h4>
 				</li>
-			<% end %>
-		</ol>
+				<li class="nav-item">
+					<h4><%= link_to 'Solutions', leaderboard_solutions_path, class: 'nav-link tabs' %></h4>
+				</li>
+				<li class="nav-item">
+					<h4><%= link_to 'Pitches', leaderboard_pitches_path, class: 'nav-link tab-active tabs' %></h4>
+				</li>
+			</ul>
+
+			<div class="ideate-content-container leaderboard-content-container pad-left">
+				<ol class="ranking-list">
+					<% @votes.first(10).each do |vote| %>
+						<% pitch = Pitch.find(vote.first) %>
+						<li>
+							<%= link_to pitch_path(pitch) do %>
+								<div class="ranking-item">
+									<p class="px-2"><%= pitch.title %></p>
+									<p class="d-inline-flex"><i class="far fa-thumbs-up pr-1"></i><%= pitch.votes.count %></p>						</div>
+							<% end %>
+						</li>
+					<% end %>
+				</ol>
+			</div>
+		</div>
 	</div>
 </div>
