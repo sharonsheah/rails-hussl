@@ -4,9 +4,15 @@
 	padding-right: 40px;
 	font-size: 14px;
 	font-weight: bold;
+
+	.top-three-items {
+		background-color: rgba(165, 163, 163, 0.1);
+	}
+
 	li {
 		border-bottom: 1px solid lightgray;
 	}
+
 	:last-child {
 		border-bottom: 0px;
 	}
@@ -15,7 +21,7 @@
 .ranking-item {
 	display: flex;
 	justify-content: space-between;
-	padding: 16px 0px;
+	padding: 16px 10px;
 	align-items: center;
 	p {
 		font-family: "Spartan", "sans-serif";

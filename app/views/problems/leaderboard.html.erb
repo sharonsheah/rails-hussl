@@ -18,7 +18,22 @@
 	</div>
 	<div class="ideate-content-container leaderboard-content-container pad-left">
 		<ol class="ranking-list">
-			<% @votes.first(10).each do |vote| %>
+			<div class="top-three-items">
+				<div data-aos="zoom-out" data-aos-offset="300" data-oas-easing="ease-in-sine">
+					<% @votes.first(3).each do |vote| %>
+						<% problem = Problem.find(vote.first) %>
+							<li>
+								<%= link_to problem_path(problem) do %>
+									<div class="top ranking-item">
+										<p class="px-2"><%= problem.title %></p>
+										<p class="d-inline-flex"><i class="far fa-thumbs-up pr-1"></i><%= problem.votes.count %></p>
+									</div>
+								<% end %>
+							</li>	
+					<% end %>
+				</div>
+			</div>
+			<% @votes.last(7).each do |vote| %>
 				<% problem = Problem.find(vote.first) %>
 				<li>
 					<%= link_to problem_path(problem) do %>
