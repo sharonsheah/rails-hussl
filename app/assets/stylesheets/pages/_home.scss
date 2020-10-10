@@ -63,8 +63,6 @@
 }
 
 .cta {
-  margin: 20px 20px;
-  margin-top: 100px;
   .btn {
     background-color: $yellow;
     color: $white;
@@ -76,6 +74,8 @@
     margin-bottom: 20px;
     width: 100%; 
   }
+  margin: 20px 20px;
+  margin-top: 100px;
 
   h5 {
     color: $white;
