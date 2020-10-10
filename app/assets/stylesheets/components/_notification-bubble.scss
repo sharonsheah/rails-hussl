@@ -1,0 +1,15 @@
+.notif-bubble {
+  position: relative;
+	display: inline-block;
+}
+
+.badge {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+}
+
+.badge-light {
+  color: $white;
+  background-color: $dark-blue;
+}

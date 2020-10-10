@@ -12,18 +12,17 @@ const initNotificationCable = () => {
       },
     });
   }
-  // const notificationCounter = document.getElementById('');
-  // if (notificationCounter) {
-  //   const id = notificationCounter.dataset.user;
+  const notificationCounter = document.getElementById('badge');
+  if (notificationCounter) {
+    const id = notificationCounter.dataset.user;
 
-  //   consumer.subscriptions.create({ channel: "NotificationChannel", id: id }, {
-  //     received(data) {
-  //       console.log(data); // called when data is broadcast in the cable
-  //       notificationCounter.insertAdjacentHTML('afterbegin', data.notification_body);
-
-  //     },
-  //   });
-  // }
+    consumer.subscriptions.create({ channel: "NotificationChannel", id: id }, {
+      received(data) {
+        console.log(data);
+        notificationCounter.innerHTML('afterbegin', data.notification_body);
+      },
+    });
+  }
 }
 
 export { initNotificationCable };
