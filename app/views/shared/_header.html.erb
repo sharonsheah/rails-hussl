@@ -3,12 +3,18 @@
     <%= link_to problems_path do %>
       <h3 class="hussl-small-blue">hussl<span class="hussl-big-yellow">.</span></h3>
     <% end %>
-    <%= link_to user_profiles_path(current_user) do %>
-      <% if current_user.photo.attached? %>
-        <span class="card-img-top"><%= cl_image_tag current_user.photo.key, height: 42, width: 42, crop: :fill, gravity: :face %></span>
-      <% else %>
-        <i class="far fa-user-circle"></i>
+    <% if user_signed_in? %>
+      <%= link_to user_profiles_path(current_user)  do %>
+        <% if current_user.photo.attached? %>
+          <span class="card-img-top"><%= cl_image_tag current_user.photo.key, height: 42, width: 42, crop: :fill, gravity: :face %></span>
+        <% else %>
+          <i class="far fa-user-circle"></i>
+        <% end %>
       <% end %>
+    <% else %>
+        <%= link_to new_user_registration_path do %>
+          <i class="far fa-user-circle"></i>
+        <% end %>
     <% end %>
   </div>
 </div>
