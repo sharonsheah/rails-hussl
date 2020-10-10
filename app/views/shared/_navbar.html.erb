@@ -1,6 +1,6 @@
-<div class="navbar navbar-lewagon">
-  <% if user_signed_in? && controller.action_name != "new" && "show" %>
+<% if user_signed_in? && controller.action_name != "new" && controller.action_name != "show" %>
     <%# Active ideate icon %>
+  <div class="navbar navbar-lewagon">
     <% if current_page?(problems_path) || current_page?(solutions_path) || current_page?(pitches_path) %>
       <%= link_to problems_path, class: 'nav-link active' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,6 +149,6 @@
         </svg>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
