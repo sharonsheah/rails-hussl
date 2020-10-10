@@ -1,44 +1,50 @@
-<div class="header-pad">
-  <%= render "shared/header" %>
-</div>
-<div class="ideate-page">
+<div class="wrapper-pages">
   <div class="header">
-    <h2>Chatrooms</h2>
-
-    <ul class="nav p-0">
-      <li class="nav-item">
-        <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tab-active tabs' %></h4>
-      </li>
-    </ul>
+    <%= render "shared/header" %>
   </div>
 
-  <div class="ideate-content-container leaderboard-content-container pad-left">
-      <ul class="ranking-list chatrooms-list pl-0">
-          <% @chatrooms.each do |chatroom| %>
-              <% if chatroom.solution.user === current_user %>
-                <li class="chatroom-item py-3">
-                  <% if current_user.photo.attached? %>
-                      <span><%= cl_image_tag current_user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span>
-                  <% else %>
-                      <span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span>
-                  <% end %>
-                  <%= link_to chatroom.name, chatroom_path(chatroom) %>
-                </li>
-              <% end %>
-          <% end %>
+  <div class="vertical-nav-container">
+    <%= render "shared/vertical-navbar" %>
+    <div class="sibling">
+      <div class="ideate-page">
+        <h2 class="pad-left">Chatrooms</h2>
 
-          <% @collaborations.each do |collaboration| %>
-            <% if collaboration.status === "Accepted"  %>
-              <li class="chatroom-item py-3">
-                <% if collaboration.solution.user.photo.attached? %>
-                    <span><%= cl_image_tag collaboration.solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span>
-                <% else %>
-                    <span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span>
+        <ul class="nav">
+          <li class="nav-item">
+            <h4><%= link_to 'Solutions', solutions_path, class: 'nav-link tab-active tabs' %></h4>
+          </li>
+        </ul>
+
+        <div class="ideate-content-container leaderboard-content-container pad-left">
+            <ul class="ranking-list chatrooms-list pl-0">
+                <% @chatrooms.each do |chatroom| %>
+                    <% if chatroom.solution.user === current_user %>
+                      <li class="chatroom-item py-3">
+                        <% if current_user.photo.attached? %>
+                            <span><%= cl_image_tag current_user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span>
+                        <% else %>
+                            <span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span>
+                        <% end %>
+                        <%= link_to chatroom.name, chatroom_path(chatroom) %>
+                      </li>
+                    <% end %>
                 <% end %>
-                <%= link_to collaboration.solution.chatroom.name, chatroom_path(collaboration.solution.chatroom) %>
-              </li>
-            <% end %>
-          <% end %>
-      </ul>
+
+                <% @collaborations.each do |collaboration| %>
+                  <% if collaboration.status === "Accepted"  %>
+                    <li class="chatroom-item py-3">
+                      <% if collaboration.solution.user.photo.attached? %>
+                          <span><%= cl_image_tag collaboration.solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %></span>
+                      <% else %>
+                          <span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"></span>
+                      <% end %>
+                      <%= link_to collaboration.solution.chatroom.name, chatroom_path(collaboration.solution.chatroom) %>
+                    </li>
+                  <% end %>
+                <% end %>
+            </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

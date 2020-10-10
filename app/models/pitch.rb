@@ -8,5 +8,4 @@ class Pitch < ApplicationRecord
   
   validates :title, length: { in: 3..60 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 400 }, presence: true
-  # validates :link, uniqueness: true
 end

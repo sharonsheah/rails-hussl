@@ -1,12 +1,11 @@
 .wrapper-pages {
-position: relative;
-
+  position: relative;
 }
 
 .comment {
   background-color: $light-gray;
   height: auto;
-  width: auto;
+  width: 100%;
   border-radius: 10px;
   padding: 10px 12px;
   margin-bottom: 6px;
@@ -19,63 +18,50 @@ position: relative;
     margin-bottom: 2px;
   }
 
-  > p {
+  p {
     color:$dark-blue;
     font-size: 12px;
     margin-bottom: 6px;
     letter-spacing: 0.5px;
   }
 }
+
 .comment-bar {
-  width: 100%;
-  height: 60px;
-  background-color: $white;
-  position: fixed;
-  bottom: 0;
+  position: sticky;
+  bottom: 0px;
   display: flex;
-  justify-content: center;
-}
-
-.comments-container {
-  padding-bottom: 60px;
-}
-
-.new-comment {
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  position: fixed;
-  bottom: 16px;
-  
-  .form-control.text.required {
-  height: 35px;
-  width: 90vw;
-  background-color: $light-gray;
-  position: relative;
-  z-index: -0.5;
-  font-weight: lighter;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  border: 0px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: $white;
+  width: -webkit-fill-available;
+  padding: 16px 20px;
+  form {
+    display: flex;
+    height: 35px;
+    width: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
 
-  .btn {
-  height: 35px;
+  span {
+    width: -webkit-fill-available;
+    background-color: $light-gray;
+  }
+
+  .form-control.text.required {
+    height: 35px;
+    background-color: $light-gray;
+    border: 0px;
+  }
+}
+
+.comment-bar .btn {
   background-color: $yellow;
   color: $white;
-  position: absolute;
-  right: 0%;
-  z-index: 1;
-  display: flex;
-  padding: 5px;
+  border-radius: 5px;
   font-size: 25px;
-  align-items: center;
-  }
-
-  i {
-    text-align: center;
-  }
+  padding: 0 8px;
+  margin: 0;
 }
-  
+
+.comment-bar .btn svg {
+display: flex;
+}

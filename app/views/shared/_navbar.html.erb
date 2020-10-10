@@ -1,6 +1,6 @@
-<div class="navbar navbar-lewagon">
-  <% if user_signed_in? && controller.action_name != "new" && "show" %>
+<% if user_signed_in? && controller.action_name != "new" && controller.action_name != "show" %>
     <%# Active ideate icon %>
+  <div class="navbar navbar-lewagon">
     <% if current_page?(problems_path) || current_page?(solutions_path) || current_page?(pitches_path) %>
       <%= link_to problems_path, class: 'nav-link active' do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -14,7 +14,7 @@
         </svg>
       <% end %>
 
-      <button id="open-button" class="open-button"><span class="iconify" data-icon="mi:add" data-inline="false" style="color: #FFFFFF;"></span></button>
+      <button id="open-button" class="open-button"><i class="fas fa-plus text-center" style="color: #FFFFFF;"></i></button>
       <%= render "shared/new-problem-form" %>
 
       <%= link_to leaderboard_problems_path, class: "nav-link" do %>
@@ -28,7 +28,6 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
         </svg>
       <% end %>
-
     <% end %>
 
     <%# Active leaderboard icon %>
@@ -45,7 +44,7 @@
         </svg>
       <% end %>
 
-      <button id="open-button" class="open-button"><span class="iconify" data-icon="mi:add" data-inline="false" style="color: #FFFFFF;"></span></button>
+      <button id="open-button" class="open-button"><i class="fas fa-plus text-justify" style="color: #FFFFFF;"></i></button>
       <%= render "shared/new-problem-form" %>
 
       <%= link_to leaderboard_problems_path, class: "nav-link active" do %>
@@ -75,7 +74,7 @@
         </svg>
       <% end %>
 
-      <button id="open-button" class="open-button"><span class="iconify" data-icon="mi:add" data-inline="false" style="color: #FFFFFF;"></span></button>
+      <button id="open-button" class="open-button"><i class="fas fa-plus text-justify" style="color: #FFFFFF;"></i></button>
       <%= render "shared/new-problem-form" %>
 
       <%= link_to leaderboard_problems_path, class: "nav-link" do %>
@@ -105,7 +104,7 @@
         </svg>
       <% end %>
 
-      <button id="open-button" class="open-button"><span class="iconify" data-icon="mi:add" data-inline="false" style="color: #FFFFFF;"></span></button>
+      <button id="open-button" class="open-button"><i class="fas fa-plus text-justify" style="color: #FFFFFF;"></i></button>
       <%= render "shared/new-problem-form" %>
 
       <%= link_to leaderboard_problems_path, class: "nav-link" do %>
@@ -135,7 +134,7 @@
         </svg>
       <% end %>
 
-      <button id="open-button" class="open-button"><span class="iconify" data-icon="mi:add" data-inline="false" style="color: #FFFFFF;"></span></button>
+      <button id="open-button" class="open-button"><i class="fas fa-plus text-justify" style="color: #FFFFFF;"></i></button>
       <%= render "shared/new-problem-form" %>
 
       <%= link_to leaderboard_problems_path, class: "nav-link" do %>
@@ -150,5 +149,6 @@
         </svg>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
