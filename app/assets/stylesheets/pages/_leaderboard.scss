@@ -1,16 +1,28 @@
+
+	.top-three-items {
+		background-color: rgba(165, 163, 163, 0.1);
+		list-style-type: none;
+		counter-reset: ranking 0;
+
+		
+		li {
+			counter-increment: ranking 1;
+			border-bottom: 1px solid lightgray;
+		}
+	}
+
+
+
 .ranking-list {
 	font-family: "Spartan", "sans-serif";
 	padding-left: 30px;
 	padding-right: 30px;
 	font-size: 14px;
 	font-weight: bold;
-
-	.top-three-items {
-		background-color: rgba(165, 163, 163, 0.1);
-	}
-
+	counter-reset: ranking 3;
+	
 	li {
-		border-bottom: 1px solid lightgray;
+		counter-increment: ranking;
 	}
 
 	:last-child {
