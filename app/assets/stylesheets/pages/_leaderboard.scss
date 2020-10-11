@@ -1,15 +1,11 @@
 
-	.top-three-items {
-		background-color: rgba(165, 163, 163, 0.1);
-		list-style-type: none;
-		counter-reset: ranking 0;
-
-		
-		li {
-			counter-increment: ranking 1;
-			border-bottom: 1px solid lightgray;
-		}
+.top-three-items {
+	background-color: rgba(165, 163, 163, 0.1);
+	
+	li {
+		border-bottom: 1px solid lightgray;
 	}
+}
 
 
 
