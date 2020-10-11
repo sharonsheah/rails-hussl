@@ -21,6 +21,8 @@
 
     <%# <link rel="manifest" href="<%= asset_path 'manifest.json' %>
 
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <%= render 'shared/ios_pwa_links' %>
   </head>
 
@@ -32,5 +34,9 @@
     <%= render 'shared/flashes' %>
 
     <%= yield %>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

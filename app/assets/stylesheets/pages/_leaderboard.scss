@@ -1,12 +1,26 @@
+
+.top-three-items {
+	background-color: rgba(165, 163, 163, 0.1);
+	
+	li {
+		border-bottom: 1px solid lightgray;
+	}
+}
+
+
+
 .ranking-list {
 	font-family: "Spartan", "sans-serif";
 	padding-left: 30px;
 	padding-right: 30px;
 	font-size: 14px;
 	font-weight: bold;
+	counter-reset: ranking 3;
+	
 	li {
-		border-bottom: 1px solid lightgray;
+		counter-increment: ranking;
 	}
+
 	:last-child {
 		border-bottom: 0px;
 	}
@@ -15,7 +29,7 @@
 .ranking-item {
 	display: flex;
 	justify-content: space-between;
-	padding: 16px 0px;
+	padding: 16px 10px;
 	align-items: center;
 	p {
 		font-family: "Spartan", "sans-serif";
