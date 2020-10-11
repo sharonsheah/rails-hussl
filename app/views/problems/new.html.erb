@@ -4,7 +4,7 @@
       <div class="form">
         <h4>Share a problem</h4>
 
-        <%= simple_form_for(@problem) do |f| %>
+        <%= simple_form_for(Problem.new) do |f| %>
           <%= f.input :title, label: "You've got a problem? Share it!", placeholder: "Keep it short & sweet." %>
           <%= f.input :description, label: "Tell us more", placeholder: "Please add some details to describe your problem. Think 'Who, What, Where, When and How?'" %>
           <%= f.input :category, collection: Problem::CATEGORY %>

@@ -9,7 +9,8 @@
     <meta property="og:title" content="hussl. - For the problem solvers, idea thinkers and future founders."/>
     <meta property="og:description" content="Find your community of like-minded problem solvers and idea generators. Share all kinds of problems, suggest solutions for them and collaborate with other husslrs to refine your solution and pitch it to the world! You'll feel right at home with Hussl."/>
     <meta property="og:type" content="web application"/>
-    <meta property="og:image" content="https://unsplash.com/photos/Wz-5buxsNqA"/>
+    <meta property="og:url" content="https://www.hussl.co"/>
+    <meta property="og:image" content="https://res.cloudinary.com/docykmjwf/image/upload/c_fit,h_630,w_1200/v1601006354/zachary-keimig-Wz-5buxsNqA-unsplash_fevlxm.jpg"/>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
@@ -26,7 +27,10 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <% unless action_name == "show" %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= yield %>

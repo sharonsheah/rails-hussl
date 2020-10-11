@@ -33,10 +33,12 @@ LocalTime.start();
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initNotificationCable } from "../channels/notification_channel";
 import { nav } from '../components/sidebar';
+import { collapseList } from '../components/vertical-navbar';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initChatroomCable();
   initNotificationCable();
   nav();
+  collapseList();
 });

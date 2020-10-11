@@ -70,6 +70,7 @@
     margin: 0;
   }
 }
+
 .time-ago {
   p {
       color: $light-blue;
@@ -146,16 +147,14 @@
 .solving-tag {
   display: flex;
   background-color: #5a7b9c;
-  width: fit-content;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 8px;
   align-items: center;
   max-width: -webkit-fill-available;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  width: auto;
+  top: 0;
+  left: 0;
+  width: 61.3vw;
   margin: 0;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -166,6 +165,7 @@
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

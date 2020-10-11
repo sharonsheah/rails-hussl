@@ -4,54 +4,54 @@
     <%= render "shared/solution-tags" %>
   </div>
 
-    <h5>Solving</h5>
-    <p><%= @solution.problem.title %></p>
-    <h5>Description</h5>
-    <p><%= @solution.description %></p>
-    <h6>POSTED BY</h6>
+  <h5>Solving</h5>
+  <p><%= @solution.problem.title %></p>
+  <h5>Description</h5>
+  <p><%= @solution.description %></p>
+  <h6>POSTED BY</h6>
 
-    <div class="bottom-card">
-      <%= link_to user_path(@solution.user), class: "white" do %>
-        <% if @solution.user.photo.attached? %>
-          <p><span><%= cl_image_tag @solution.user.photo.key, height: 36, width: 36, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
-          <% else %>
-            <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+  <div class="bottom-card">
+    <%= link_to user_path(@solution.user), class: "white" do %>
+      <% if @solution.user.photo.attached? %>
+        <p><span><%= cl_image_tag @solution.user.photo.key, height: 24, width: 24, crop: :fill, gravity: :face %> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+        <% else %>
+          <p><span><img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill"> <%= @solution.user.first_name %> <%= @solution.user.last_name %></span></p>
+      <% end %>
+    <% end %>
+
+    <div class="actions">
+      <% if Bookmark.where(bookmarked: @solution, user: current_user).empty? %>
+        <%= link_to bookmark_solution_path(@solution, @solution.problem), method: :post, class: 'button white'  do %>
+          <i class="far fa-bookmark pr-1" style="color:#ffffff;"></i>
+          <% end %>
+      <% else %>
+        <%= link_to unbookmark_solution_path(@solution, @solution.problem), method: :delete, class: 'button'  do %>
+        <i class="fas fa-bookmark pr-1" style="color:#ffffff;"></i>
         <% end %>
       <% end %>
 
-      <div class="actions">
-        <% if Bookmark.where(bookmarked: @solution, user: current_user).empty? %>
-          <%= link_to bookmark_solution_path(@solution, @solution.problem), method: :post, class: 'button white'  do %>
-            <i class="far fa-bookmark pr-1" style="color:#ffffff;"></i>
-            <% end %>
-        <% else %>
-          <%= link_to unbookmark_solution_path(@solution, @solution.problem), method: :delete, class: 'button'  do %>
-          <i class="fas fa-bookmark pr-1" style="color:#ffffff;"></i>
-          <% end %>
+      <% if Vote.where(votable: @solution, user:  current_user).empty? %>
+        <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button white'  do %>
+          <i class="far fa-thumbs-up"></i>
+        <% end %>
+      <% else %>
+        <i class="fas fa-thumbs-up"></i>
       <% end %>
 
-        <% if Vote.where(votable: @solution, user:  current_user).empty? %>
-          <%= link_to upvote_solution_path(@solution, @solution.problem), method: :post, class: 'button white'  do %>
-            <i class="far fa-thumbs-up"></i>
-          <% end %>
-        <% else %>
-          <i class="fas fa-thumbs-up"></i>
+      <span><%= @solution.votes.count %></span>
+
+      <% if @solution.collaborators.include?(current_user) %>
+        <i class="fas fa-hand-paper"></i>
+      <% else %>
+        <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button white'  do %>
+          <i class="far fa-hand-paper"></i>
         <% end %>
-        <span><%= @solution.votes.count %></span>
-
-        <% if @solution.collaborators.include?(current_user) %>
-          <i class="fas fa-hand-paper"></i>
-        <% else %>
-          <%= link_to collaborate_solution_path(@solution), method: :post, class: 'button white'  do %>
-            <i class="far fa-hand-paper"></i>
-          <% end %>
-        <% end %>
-        <span><%= @solution.collaborators.count %></span>
-      </div>
+      <% end %>
+      <span><%= @solution.collaborators.count %></span>
     </div>
-
-    <div class="time-section">
-      <p class="mb-0"><%= local_time_ago(@solution.created_at) %></p>
-    </div>
-
+  </div>
+  
+  <div class="time-section">
+    <p class="mb-0"><%= local_time_ago(@solution.created_at) %></p>
+  </div>
 </div>

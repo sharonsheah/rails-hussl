@@ -1,4 +1,4 @@
-Rails.application.routes.draw do   
+Rails.application.routes.draw do
   get 'users/show'
   devise_for :users, :controllers => {:registrations => "users/registrations"}
   authenticated :user do
@@ -15,10 +15,10 @@ Rails.application.routes.draw do
     resources :bookmarked_items, only: [ :index, :destroy ]
   end
 
-  resources :problems, only: [ :index, :show, :new, :create ]  do
+  resources :problems, only: [ :index, :show, :new ]  do
     resources :solutions, only: [ :new, :create ] do
       resources :comments, only: [ :create ], controller: "solution/comments"
-      
+
       resources :pitches, only: [ :new, :create ] do
       resources :comments, only: [ :create ], controller: "pitch/comments"
       end

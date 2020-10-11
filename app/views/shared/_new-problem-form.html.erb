@@ -1,0 +1,44 @@
+<div class="modal closed" id="modal">
+  <button class="close-button" id="close-button"><span class="iconify" data-icon="bi:x" data-inline="false" style="color: $dark-blue;"></span></button>
+  <div class="modal-guts">
+    <div class="container">
+      <div class="d-flex justify-content-center pr-0">
+        <div class="col-xs-12 col-sm-12">
+          <div class="form">
+            <h4>Share a problem</h4>
+
+            <%= simple_form_for(Problem.new) do |f| %>
+              <%= f.input :title, label: "You've got a problem? Share it!", placeholder: "Keep it short & sweet." %>
+              <%= f.input :description, label: "Tell us more", placeholder: "Please add some details to describe your problem. Think 'Who, What, Where, When and How?'" %>
+              <%= f.input :category, collection: Problem::CATEGORY %>
+              <%= f.button :submit, "Share problem", class: "btn btn-info" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay closed" id="modal-overlay"></div>
+
+<script>
+  const modal = document.querySelector("#modal");
+  const modalOverlay = document.querySelector("#modal-overlay");
+  const closeButton = document.querySelector("#close-button");
+  const openButton = document.querySelector("#open-button");
+
+  openButton.addEventListener("click", function() {
+    modal.classList.toggle("closed");
+    modalOverlay.classList.toggle("closed");
+  });
+
+  closeButton.addEventListener("click", function() {
+    modal.classList.toggle("closed");
+    modalOverlay.classList.toggle("closed");
+  });
+
+
+</script>
+

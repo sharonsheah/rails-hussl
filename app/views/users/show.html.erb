@@ -51,7 +51,7 @@
         <table>
           <tbody>
             <% @user.problems.each do |problem| %>
-              <tr>
+              <tr class="profile-table">
                 <td class="user-problems text-center">P</td>
                 <td><%= problem.title %></td>
                 <td><%=  problem.votes.count %></td>
@@ -59,7 +59,7 @@
             <% end %>
 
             <% @user.solutions.each do |solution| %>
-              <tr>
+              <tr class="profile-table">
                 <td class="user-solutions text-center">S</td>
                 <td><%= solution.title %></td>
                 <td><%=  solution.votes.count %></td>
@@ -67,7 +67,7 @@
             <% end %>
 
             <% @user.pitches.each do |pitch| %>
-              <tr>
+              <tr class="profile-table">
                 <td class="user-pitches text-center">P</td>
                 <td><%= pitch.title %></td>
                 <td><%=  pitch.votes.count %></td>

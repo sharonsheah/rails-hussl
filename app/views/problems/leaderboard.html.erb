@@ -1,10 +1,14 @@
 <div class="ideate-page">
   <div class="header">
 		<%= render "shared/header" %>
+	</div>
 
-  	<h2>Leaderboard</h2>
+	<div class="vertical-nav-container">
+		<%= render "shared/vertical-navbar" %>
+		<div class="sibling">
+			<h2 class="pad-left">Leaderboard</h2>
 
-		<ul class="nav p-0">
+		<ul class="nav pad-left">
 			<li class="nav-item">
 				<h4><%= link_to 'Problems', leaderboard_problems_path, class: 'nav-link tab-active tabs' %></h4>
 			</li>
@@ -16,6 +20,7 @@
 			</li>
 		</ul>
 	</div>
+
 	<div class="ideate-content-container leaderboard-content-container pad-left">
 		<ol class="ranking-list">
 			<div class="top-three-items">
@@ -43,7 +48,8 @@
 						</div>
 					<% end %>
 				</li>
-			<% end %>
+				<% end %>
 		</ol>
 	</div>
+	
 </div>
