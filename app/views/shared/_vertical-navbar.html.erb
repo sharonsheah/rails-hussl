@@ -1,10 +1,10 @@
+<div class="modal fade" id="VerticalModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+    <%= render "shared/new-problem-form" %>
+</div>
 <div class="vertical-navbar">
     <ul>
         <li class="add-new-problem">
-            <button id="open-button" class="open-button" data-toggle="modal" data-target="#VerticalModalCenter"><i class="fas fa-plus text-center" style="color: #FFFFFF;"></i>Add a new problem</button>
-            <div class="modal fade" id="VerticalModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-                <%= render "shared/new-problem-form" %>
-            </div>
+            <button class="open-button" id="add-new-vertical" data-toggle="modal" data-target="#VerticalModalCenter"><i class="fas fa-plus text-center" style="color: #FFFFFF;"></i>Add a new problem</button>
         </li>
 
         <li>

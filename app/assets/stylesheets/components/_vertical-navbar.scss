@@ -33,8 +33,12 @@
 .vertical-navbar .add-new-problem {
     background-color: $yellow;
     width: 240px;
-    a {
+    button {
       color: $white;
+      width: 100%;
+    }
+    i {
+      margin-right: 16px;
     }
 }
 
