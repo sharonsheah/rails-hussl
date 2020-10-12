@@ -15,20 +15,22 @@
         </nav>
 
         <h3><%= @problem.title %></h3>
-      
+
         <%= render "show-card", locals: { problem: @problem, solutions: @problem.solutions } %>
-      
+
         <div class="bottom-page">
           <div class="row px-3 align-items-center justify-content-between">
             <h4 class="my-3 pt-2">Solutions</h4>
             <div class="my-3">
-              <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %>
+              <button id="solution-btn" class="solution-btn" data-toggle="modal" data-target="#ModalCenter">Submit solution</button>
+              <%= render "shared/new-solution-form" %>
+     <!--          <%= link_to 'Submit a solution', new_problem_solution_path(@problem), class: 'small-btn' %> -->
             </div>
           </div>
-              
-          <% if @solutions.empty? %> 
+
+          <% if @solutions.empty? %>
             <p><small>No solutions have been submitted yet. Be the first one to post!</small></p>
-          <% end %>   
+          <% end %>
 
           <ul class="raking-list chatroom-list pl-0" id="solutions-list">
             <% @solutions.each do |solution| %>

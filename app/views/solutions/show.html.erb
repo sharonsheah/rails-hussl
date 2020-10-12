@@ -19,19 +19,21 @@
         <div>
           <%= render "solutions/showcard" %>
         </div>
-        
+
         <div class="pitch-section">
           <div class="row px-3 align-items-center justify-content-between">
             <h4 class="my-3 pt-2">Pitches</h4>
             <div class="my-3">
-              <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %>
+              <button id="pitch-btn" class="pitch-btn" data-toggle="modal" data-target="#ModalCenter">Submit pitch</button>
+              <%= render "shared/new-pitch-form" %>
+<!--               <%= link_to 'Submit a pitch', new_problem_solution_pitch_path(@solution.problem, @solution), class: 'small-btn' %> -->
             </div>
           </div>
 
-          <% if @solution.pitches.empty? %> 
+          <% if @solution.pitches.empty? %>
             <p><small>When all you hustlers are ready, submit link/files for your pitch!</small></p>
-          <% end %> 
-          
+          <% end %>
+
             <ul class="raking-list chatroom-list pl-0" id="solutions-list">
               <% @solution.pitches.each do |pitch| %>
                 <li class="ranking-item px-2">
@@ -58,9 +60,9 @@
             </div>
           </div>
 
-          <% if @solution.collaborators.empty? %> 
+          <% if @solution.collaborators.empty? %>
             <p><small>Raise your hand to be the first collaborator!</small></p>
-          <% end %> 
+          <% end %>
 
           <ul class="raking-list chatroom-list pl-0" id="solutions-list">
             <% @solution.collaborators.each do |collaborator|%>
@@ -71,7 +73,7 @@
                   <% else %>
                     <img class="avatar-small" src="https://res.cloudinary.com/docykmjwf/image/upload/v1600394322/default_profile_pic_cqfzoi.png" alt="user-avatar" style="crop:fill">
                   <% end %>
-                  <%= collaborator.first_name%> 
+                  <%= collaborator.first_name%>
                   <%= collaborator.last_name%>
                 <% end %>
                 <% collaboration = Collaboration.where(user: collaborator, solution: @solution).take %>
