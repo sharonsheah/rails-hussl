@@ -1,0 +1,35 @@
+.pitch-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  width: 100%;
+  letter-spacing: 0.5px;
+  background-color: $yellow;
+  color: $white;
+  border-radius: 50px;
+  box-shadow: $box-shadow;
+  margin: 10px 0;
+  border: none;
+}
+
+.modal-content {
+  height: auto;
+  max-height: 95vh;
+  overflow: scroll;
+
+  .simple_form {
+    display: flex;
+    flex-direction: column;
+    align-self: auto;
+    margin: auto;
+    box-shadow: none;
+    height: auto;
+    input {
+      border-radius: 10px;
+    }
+    .form-control-file {
+      border-radius: 0;
+      background-color: white;
+    }
+  }
+}
