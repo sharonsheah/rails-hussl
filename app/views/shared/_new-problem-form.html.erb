@@ -1,25 +1,23 @@
-<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="ModalCenterTitle">Share a problem</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="ModalCenterTitle">Share a problem</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form">
+      <%= simple_form_for(Problem.new) do |f| %>
+        <%= f.input :title, label: "You've got a problem? Share it!", placeholder: "Keep it short & sweet." %>
+        <%= f.input :description, label: "Tell us more", placeholder: "Please add some details to describe your problem. Think 'Who, What, Where, When and How?'" %>
+        <%= f.input :category, collection: Problem::CATEGORY %>
       </div>
-      <div class="modal-body">
-        <div class="form">
-        <%= simple_form_for(Problem.new) do |f| %>
-          <%= f.input :title, label: "You've got a problem? Share it!", placeholder: "Keep it short & sweet." %>
-          <%= f.input :description, label: "Tell us more", placeholder: "Please add some details to describe your problem. Think 'Who, What, Where, When and How?'" %>
-          <%= f.input :category, collection: Problem::CATEGORY %>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <%= f.button :submit, "Share problem", class: "btn btn-info" %>
-        <% end %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+    </div>
+    <div class="modal-footer">
+      <%= f.button :submit, "Share problem", class: "btn btn-info" %>
+      <% end %>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>

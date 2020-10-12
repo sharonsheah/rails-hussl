@@ -1,9 +1,10 @@
 <div class="vertical-navbar">
     <ul>
         <li class="add-new-problem">
-            <%= link_to new_problem_path do %>
-            <i class="fas fa-plus icons p-2"></i>Add a new problem
-            <% end %>
+            <button id="open-button" class="open-button" data-toggle="modal" data-target="#VerticalModalCenter"><i class="fas fa-plus text-center" style="color: #FFFFFF;"></i>Add a new problem</button>
+            <div class="modal fade" id="VerticalModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+                <%= render "shared/new-problem-form" %>
+            </div>
         </li>
 
         <li>

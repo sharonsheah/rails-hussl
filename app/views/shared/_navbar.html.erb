@@ -15,7 +15,9 @@
       <% end %>
 
       <button id="open-button" class="open-button" data-toggle="modal" data-target="#ModalCenter"><i class="fas fa-plus text-center" style="color: #FFFFFF;"></i></button>
-      <%= render "shared/new-problem-form" %>
+      <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <%= render "shared/new-problem-form" %>
+      </div>
 
       <%= link_to leaderboard_problems_path, class: "nav-link" do %>
         <svg class="icons h-6 w-6 text-gray-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
