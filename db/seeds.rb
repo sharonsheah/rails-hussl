@@ -41,8 +41,6 @@ annmarie_user = User.create!(
               email: "annmarie@user.com", 
               password: "password"
               )
-              file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQFiE_WLX4sgAA/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=o2W4NOfdqiA3mhyQ5TOGdS-it832t6pMByFoHY1q5YE")
-              annmarie_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg') 
 
 rae_user = User.create!(
           first_name: "Rae",
