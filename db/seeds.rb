@@ -104,8 +104,6 @@ sy_user = User.create!(
           password: "password",
           description: "My specialties: leadership, web development, full stack development, product management, Ruby, Rails, HTML, CSS, brand launches, design innovation, lean design, brand marketing, talent acquisition, start up strategy, and venture capital. Nico's bff 👨🏾‍🤝‍👨🏻"
           )
-          file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQGAWvRcji7HZw/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=oo4aKSYDpPpI5gtnOtl9xhRx7gOn-ZWZGxmM0dx7n3c")
-          sy_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')  
 
 nico_user = User.create!(
           first_name: "Nico",
@@ -113,8 +111,6 @@ nico_user = User.create!(
           email: "nico@user.com", 
           password: "password"
           )   
-          file = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQEHw0rXyVqRvw/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=q-cobcLPRRA5LFKDsAt2njg9hmprXN7uj_xi7f3oY3Y")
-          nico_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')     
 
 sheila_user = User.create!(
             first_name: "Sheila",
@@ -122,8 +118,6 @@ sheila_user = User.create!(
             email: "sheila@user.com", 
             password: "password"
             )  
-            file = URI.open("https://media-exp1.licdn.com/dms/image/C4E03AQFI7W3n_kawIg/profile-displayphoto-shrink_400_400/0?e=1606348800&v=beta&t=PZtMwDhoH0wZvQNQATSzm1pTvaIgi4bDPzEgyXu7_Ew")
-            sheila_user.photo.attach(io: file, filename: 'profilepic.jpg', content_type: 'image/jpg')
 
 tesla_founder = User.create!(
                 first_name: "Elon", 
